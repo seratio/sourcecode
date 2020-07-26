@@ -1,0 +1,18 @@
+{
+  "package_name": "student-token",
+  "version": "1.10.0",
+  "description": "StudentCoin token",
+  "authors": [
+    "Daniel Kaminski de Souza <daniel.souza@cceg.org.uk>"
+  ],
+  "keywords": [
+    "solidity",
+    "ethereum",
+    "smart",
+    "contracts",
+    "security",
+    "zeppelin",
+    "Student Coin"
+  ],
+  "license": "MIT"
+}

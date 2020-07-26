@@ -1,0 +1,165 @@
+﻿@using System.Activities.Statements
+@model Investment
+@{
+    ViewBag.Title = "New Investment";
+    Layout = "~/Areas/Users//Views/Shared/_Layout.cshtml";
+}
+
+@section JavaScript{
+    <script type="text/javascript">$(document).ready(function () { WebApp.Core.HighlightCurrentMenuItem('Investments') });</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
+    <script>
+        var c = new Clipboard('.mycopy');
+        c.on('success', function (e) {
+            alert('Our account information has been copied to your clipboard');
+            e.clearSelection();
+        });
+    </script>
+}
+
+@section CSS{
+
+}
+
+@section Breadcrumbs{
+
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/users/default/dashboard"><i class="icon-home4 position-left"></i>Dashboard</a></li>
+        <li class="breadcrumb-item"><a href="/users/investments"><i class="icon-home4 position-left"></i>Investments</a></li>
+        <li class="breadcrumb-item active">Make Investment</li>
+    </ul>
+}
+
+<div class="content-box">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="element-wrapper">
+                <div class="element-box">
+                    <h1 style="margin: 7% 0; margin-bottom: 30px; text-align: center;"><i class="fa fa-check"></i> Thank You!</h1>
+                    <p class="text-left">
+                        Thank you for participating in the @Model.Type ICO.<br />
+                        We have received your investment request.<br /><br />
+
+                        @{
+                            string _etherWalletAddress = String.Empty;
+                            string _bitcoinWalletAddress = String.Empty;
+
+                            if (Model.Type == "Womens Coin")
+                            {
+                                _etherWalletAddress = "0x205b6ab657e4F8Af2BC62534b1785F95c737174A";
+                                _bitcoinWalletAddress = "34cbHGZYCYwVeDz8zXCupamjH4VyryyR93";
+                            }
+                            else if (Model.Type == "Student Coin")
+                            {
+                                _etherWalletAddress = "0x56446d67E8e0494f5FeA026Da25f5e0094E2Bab0";
+                                _bitcoinWalletAddress = "3M2r9iYiStgrnBNe2afCw7XssprXe9R1NY";
+                            }
+                            else if (Model.Type == "Growth Token")
+                            {
+                                _etherWalletAddress = "0xF77e43A8b2c2Da1C923f02D2Dc75313B6882c200";
+                                _bitcoinWalletAddress = "3E8KA3MoT1jpQE9Excii7Lqxm28idhLETH";
+                            }
+                            else if (Model.Type == "TimeTraveler Coin")
+                            {
+                                _etherWalletAddress = "0x42035254b55fe448bEc0e178C8c86A140BB0Cb48";
+                                _bitcoinWalletAddress = "3CwNHqsvK1e83qp66ym1iGubeyYcGUcWMD";
+                            }
+
+
+                            string _accountInfo = "Please now transfer <strong>" + Model.Amount + " " + Model.Mode + "</strong> to the account given below:<br />Account Name: Centre for Citizenship, Enterprise and Governance Limited <br />" +
+                                                                  "Bank: Metro Bank <br />" +
+                                                                  "International Bank Account Number:  GB46MYMB23058025080785 <br />" +
+                                                                  "SWIFT:  MYMBGB2L </br />" +
+                                                                  "Sort Code:  23-05-80 <br />" +
+                                                                  "Account:  25080785 <br />" +
+                                                                  "Address:<br />" +
+                                                                  "         160-166 High Street Kensington <br />" +
+                                                                  "         London W8 7RG <br /> <br />Note: Swiss Bank Account details will follow.";
+
+                            if (Model.Type == "Growth Token")
+                            {
+                                _accountInfo = "Please now transfer <strong>" + Model.Amount + " " + Model.Mode + "</strong> to the account given below:<br />Account Name: Centre for Citizenship, Enterprise and Governance Limited <br />" +
+                                               "Bank: Metro Bank <br />" +
+                                               "International Bank Account Number:GB46MYMB23058026958547  <br />" +
+                                               "SWIFT:  MYMBGB2L </br />" +
+                                               "Sort Code:  23-05-80 <br />" +
+                                               "Account:  26958547 <br />" +
+                                               "Address:<br />" +
+                                               "         160-166 High Street Kensington <br />" +
+                                               "         London W8 7RG <br />";
+                            }
+
+                            if (Model.Type == "Womens Coin")
+                            {
+                                _accountInfo = "Please now transfer <strong>" + Model.Amount + " " + Model.Mode + "</strong> to the account given below:<br />Account Name: Centre for Citizenship, Enterprise and Governance Limited <br />" +
+                                               "Bank: Metro Bank <br />" +
+                                               "International Bank Account Number:  GB88MYMB23058026958725 <br />" +
+                                               "SWIFT:  MYMBGB2L </br />" +
+                                               "Sort Code:  23-05-80 <br />" +
+                                               "Account:  26958725 <br />" +
+                                               "Address:<br />" +
+                                               "         160-166 High Street Kensington <br />" +
+                                               "         London W8 7RG <br />";
+                            }
+
+                            if (Model.Type == "Student Coin")
+                            {
+                                _accountInfo = "Please now transfer <strong>" + Model.Amount + " " + Model.Mode + "</strong> to the account given below:<br />Account Name: Seratio Limited <br />" +
+                                               "Bank: NatWest Bank <br />" +
+                                               "International Bank Account Number:  GB63NWBK53613365953533 <br />" +
+                                               "SWIFT:  NWBKGB2L </br />" +
+                                               "Sort Code:  53-61-33 <br />" +
+                                               "Account:  65953533 <br />" +
+                                               "Address:<br />" +
+                                               "         18 High Street, Kettering <br />" +
+                                               "         Northamptonshire, NN16 8SZ<br />";
+                            }
+
+                            if (Model.Type == "TimeTraveler Coin")
+                            {
+                                _accountInfo = "Please now transfer <strong>" + Model.Amount + " " + Model.Mode + "</strong> to the account given below:<br /><br />" +
+                                               "Lloyds Bank Plc<br />Oldham Branch<br />PO Box 1000<br />BX1 1LT<br />UK<br /><br />For UK<br />Sort Code:<br />30 -96-26<br /><br />Account:<br />35379668<br /><br />For International<br /><br />BIC:<br />LOYDGB21446<br /><br />IBAN:<br />GB44 LOYD 3096 2635 3796 68 ";
+                            }
+
+                            string _footerText = "When making your payment, please quote your Token ID (found in the \"Your Investments page\")<br />" +
+                                                                "Please proceed to the Investments (side menu) to update and track the status of your investment.";
+
+                            switch (Model.Mode)
+                            {
+                                case "Bitcoin":
+                                    _accountInfo = $"Now you need to transfer <b>{Model.Amount}</b> Bitcoin to the account given below;<br />Wallet Address: {_bitcoinWalletAddress}";
+
+                                    _footerText = "Following your payment, Please update your \"Investments\" page by clicking \"Update\" on the investment to insert your Wallet Address. " +
+                                                 "Please proceed to the Investments (side menu) to update and track the status of your investment.";
+                                    break;
+                                case "Ethereum":
+                                    _accountInfo = $"Now you need to transfer <b>{Model.Amount}</b> Ethereum to the account given below;<br />Wallet Address: {_etherWalletAddress}";
+
+                                    _footerText = "Following your payment, Please update your \"Investments\" page by clicking \"Update\" on the investment to insert your Wallet Address. " +
+                                                  "Please proceed to the Investments (side menu) to update and track the status of your investment.";
+                                    break;
+                                case "Card":
+                                    _accountInfo = $"<br/>Your requested investment amount is noted as £{Model.Amount}<br/><br/>If your payment has already been processed by credit/debit card by the Growth Token team, then your investment will be confirmed once the funds are received by CCEG (usually within 3 days). <br/>Please note your investment will then be complete and not be reversible as per the terms and conditions,<br/><br/>If your payment has not already been made via the Growth Token team,<br/> then please contact us with your ID reference for further instructions of how to pay."; ;
+                                    break;
+                            }
+
+                            if (Model.Type == "Growth Token")
+                            {
+                                _footerText = "";
+                            }
+                        }
+                    <p id="accountinfo">@Html.Raw(_accountInfo)</p>
+                    @Html.Raw(_footerText)
+                    <br />
+                    For information please email: <a href="mailto:blockchain.lab@cceg.org.uk">blockchain.lab@cceg.org.uk</a>
+                    <br />
+                    <br />
+                    <button class="mycopy" data-clipboard-target="#accountinfo">
+                        Copy our account information to clipboard
+                    </button>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,55 @@
+﻿
+@model User
+
+@{
+    ViewBag.Title = "Update Wallet";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+@section JavaScript{
+    <script type="text/javascript">$(document).ready(function () { WebApp.Core.HighlightCurrentMenuItem('Users') });</script>
+    <script src="/wallet/scripts/jquery.validate.unobtrusive.min.js"></script>
+}
+
+@section Breadcrumbs{
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/wallet/default/dashboard">Dashboard</a></li>
+        <li class="breadcrumb-item"><a href="/wallet/admin/users/index">Users</a></li>
+        <li class="breadcrumb-item"><span>Update Wallet</span></li>
+    </ul>
+}
+
+<div class="content-box">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="element-wrapper">
+                <div class="element-box">
+                    <form method="post" class="form-horizontal" action="" enctype="multipart/form-data">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.AntiForgeryToken()
+                        <h5 class="element-header">Edit Coin</h5>
+                        <div class="heading-elements">
+                            <a href="/wallet/admin/users/index"><i class="fa fa-plus-square"></i><span>Users</span></a>
+                        </div>
+                        <div class="form-group">
+                            <label>Old Wallet Address:</label>
+                            <input type="text" class="form-control" value="@Model.WalletAddress" readonly="readonly" />
+                        </div>
+
+                        <div class="form-group">
+                            <label>New Wallet Address:</label>
+                            <input type="text" class="form-control" name="WalletAddress" placeholder="Plase enter the New wallet address" data-val="true" data-val-required="Please enter the wallet address"/>
+                            @Html.ValidationMessageFor(model => model.WalletAddress, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-buttons-w text-right">
+                            <a href="/wallet/admin/users/updatewallet/@Model.ID" class="btn btn-default">Reset</a>
+                            <button class="btn btn-primary" type="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

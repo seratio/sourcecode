@@ -1,0 +1,76 @@
+﻿@model Request
+
+@{
+    ViewBag.Title = "Requests";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section JavaScript{
+    <script type="text/javascript">$(document).ready(function () { WebApp.Core.HighlightCurrentMenuItem('Requests') });</script>
+}
+
+@section CSS{
+
+}
+
+@{
+    string _daterange = Request.QueryString["daterange"];
+    {
+        if (_daterange == null)
+        {
+            _daterange = (!string.IsNullOrEmpty(Request.QueryString["start"]) ? Request.QueryString["start"] + " - " : "") + (!string.IsNullOrEmpty(Request.QueryString["end"]) ? Request.QueryString["end"] : "");
+        }
+    }
+}
+
+@section Breadcrumbs{
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/wallet/default/dashboard">Dashboard</a></li>
+        <li class="breadcrumb-item"><a href="/wallet/se/certificate/index">My S/E Certificate</a></li>
+        <li class="breadcrumb-item"><span>Requests</span></li>
+    </ul>
+}
+
+<div class="content-box">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="element-wrapper">
+                <div class="element-box">
+                    <h5 class="element-header">Requests</h5>
+                    <div class="heading-elements">
+                        <a href="/wallet/se/requests/send"><i class="fa fa-plus-square"></i><span>Request Certificate</span></a>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table data-table table-hover" data-source="/wallet/se/requests/list/?daterange=@Request.QueryString["daterange"]" data-key="5">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Sender
+                                    </th>
+                                    <th>
+                                        Receiver
+                                    </th>
+
+                                    <th>
+                                        Sent On
+                                    </th>
+                                    <th>
+                                        Status
+                                    </th>
+                                    <th>
+                                        Replied On
+                                    </th>
+                                    <th class="no-sort">Options</th>
+
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

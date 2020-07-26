@@ -1,0 +1,82 @@
+﻿@model Coin
+
+@{
+    ViewBag.Title = "Create Coin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+
+}
+
+@section JavaScript{
+    <script type="text/javascript">$(document).ready(function () { WebApp.Core.HighlightCurrentMenuItem('Coins') });</script>
+    <script src="/wallet/scripts/jquery.validate.unobtrusive.min.js"></script>
+}
+
+@section Breadcrumbs{
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/wallet/default/dashboard">Dashboard</a></li>
+        <li class="breadcrumb-item"><a href="/wallet/admin/coins">Coins</a></li>
+        <li class="breadcrumb-item"><span>Create Coin</span></li>
+    </ul>
+}
+
+<div class="content-box">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="element-wrapper">
+                <div class="element-box">
+                    <form method="post" class="form-horizontal" action="" enctype="multipart/form-data">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.AntiForgeryToken()
+                        <h5 class="element-header">Create Coin</h5>
+                        <div class="heading-elements">
+                            <a href="/wallet/admin/coins"><span>Coins</span></a>
+                        </div>
+                        <div class="form-group">
+                            <label>@Html.DisplayNameFor(model => model.Name):</label>
+                            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @placeholder = "Please enter the Name", @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            <label>@Html.DisplayNameFor(model => model.Symbol):</label>
+                            @Html.EditorFor(model => model.Symbol, new { htmlAttributes = new { @placeholder = "Please enter the Symbol", @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Symbol, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            <label>@Html.DisplayNameFor(model => model.BlockchainID):</label>
+                            @Html.EditorFor(model => model.BlockchainID, new { htmlAttributes = new { @placeholder = "Please select a Blockchain", @class = "form-control autocomplete", @style = "width:950px", @data_source = "/wallet/admin/blockchains/Getblockchains" } })
+                            @Html.ValidationMessage("BlockchainID", "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label>@Html.DisplayNameFor(model => model.NumberOfDecimals):</label>
+                            @Html.EditorFor(model => model.NumberOfDecimals, new { htmlAttributes = new { @placeholder = "Please enter the Number of Decimals", @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.NumberOfDecimals, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            <label>@Html.DisplayNameFor(model => model.Address):</label>
+                            @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @placeholder = "Please enter the Address", @class = "form-control", data_val_required = "Please enter the value for Address", data_val = "true" } })
+                            @Html.ValidationMessage("Address", "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label>Image: </label>
+                            <input type="file" name="Image" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label>@Html.DisplayNameFor(model => model.Description):</label>
+                            @Html.TextAreaFor(model => model.Description, new { @placeholder = "Please enter the Description", @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-buttons-w text-right">
+                            <a href="/wallet/admin/coins/create" class="btn btn-default">Reset</a>
+                            <button class="btn btn-primary" type="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

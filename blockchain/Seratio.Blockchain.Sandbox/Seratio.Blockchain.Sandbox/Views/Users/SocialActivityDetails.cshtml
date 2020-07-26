@@ -1,0 +1,72 @@
+﻿@model  AcceptedSocialActivity
+@{
+    ViewBag.Title = "Social Activity Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section JavaScript{
+    <script type="text/javascript">$(document).ready(function () { WebApp.Core.HighlightCurrentMenuItem('My Profile') });</script>
+}
+@section CSS{
+
+}
+@section Breadcrumbs{
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/wallet/default/dashboard">Dashboard</a></li>
+        <li class="breadcrumb-item"><span>Social Activity Details</span></li>
+    </ul>
+}
+
+<div class="content-box">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="element-wrapper">
+                <div class="element-box">
+                    <h5 class="element-header">Social Activity Details</h5>
+                    <div class="heading-elements">
+                     @*   <a href="/wallet/users/profile/@AppManager.User.ID"><i class="fa fa-backward"></i><span>Back to Profile</span></a>*@
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="main">
+                                <table class="table table-lightborder">
+                                    <tbody>
+                                        <tr>
+                                            <td> Social Activity</td>
+                                            <td>:</td>
+                                            <td> @Model.SocialActivity.Name </td>
+                                        </tr>
+                                    <tr>
+                                        <td>Rewarding Body</td>
+                                        <td>:</td>
+                                        <td> @Model.SocialActivity.User.Email </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Description</td>
+                                        <td>:</td>
+                                        <td> @(Html.Raw(Model.Description != null ? Model.Description.Replace("\r\n", "</br>") : ""))</td>
+                                    </tr>
+                                   
+                                    <tr>
+                                        <td>Created On</td>
+                                        <td>:</td>
+                                        <td>@Model.CreatedOn.ToString()</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Last Updated On</td>
+                                        <td>:</td>
+                                        <td>@Model.LastUpdatedOn.ToString()</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>                
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

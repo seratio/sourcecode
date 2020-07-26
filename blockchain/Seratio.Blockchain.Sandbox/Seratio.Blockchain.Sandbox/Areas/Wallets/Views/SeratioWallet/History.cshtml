@@ -1,0 +1,76 @@
+﻿@model Seratio.Blockchain.Sandbox.Models.WalletTransaction
+
+@{
+    ViewBag.Title = "Transaction History";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section JavaScript{
+    <script type="text/javascript" src="/wallet/assets/plugins/tooltipster/dist/js/tooltipster.bundle.min.js"></script>
+    <script type="text/javascript">$(document).ready(function () { WebApp.Core.HighlightCurrentMenuItem('Seratio Wallet') });</script>
+}
+
+@section CSS
+{
+    <link rel="stylesheet" type="text/css" href="/wallet/assets/plugins/tooltipster/dist/css/tooltipster.bundle.min.css" />
+}
+
+@{
+    string _daterange = Request.QueryString["daterange"];
+    {
+        if (_daterange == null)
+        {
+            _daterange = (!string.IsNullOrEmpty(Request.QueryString["start"]) ? Request.QueryString["start"] + " - " : "") + (!string.IsNullOrEmpty(Request.QueryString["end"]) ? Request.QueryString["end"] : "");
+        }
+    }
+}
+
+@section Breadcrumbs{
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/wallet/default/dashboard">Dashboard</a></li>
+        <li class="breadcrumb-item"><a href="/wallet/wallets/seratiowallet">Seratio Wallet</a></li>
+        <li class="breadcrumb-item"><span>Transaction History</span></li>
+    </ul>
+}
+<div class="content-box">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="element-wrapper">
+                <div class="element-box">
+                    <h5 class="element-header">Transaction History</h5>
+                    <div class="heading-elements">
+                        <a href="/wallet/wallets/seratiowallet/transfer"><i class="fa fa-plus-square"></i><span>Transfer Coin</span></a>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table data-table table-hover" data-source="/wallet/wallets/seratiowallet/list/?daterange=@Request.QueryString["daterange"]" data-key="4">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Transaction ID
+                                    </th>
+                                    <th>
+                                        Sender
+                                    </th>
+                                    <th>
+                                        Receiver
+                                    </th>
+
+                                    <th style="width: 15%">
+                                        Amount
+                                    </th>
+
+                                    <th>
+                                        Time
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

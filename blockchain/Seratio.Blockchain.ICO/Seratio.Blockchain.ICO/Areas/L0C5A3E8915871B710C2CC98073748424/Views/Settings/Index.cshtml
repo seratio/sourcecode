@@ -1,0 +1,66 @@
+﻿@model Seratio.Platform.ICO.Models.Setting
+
+@{
+    ViewBag.Title = "Manage Settings";
+    Layout = "~/Areas/L0C5A3E8915871B710C2CC98073748424/Views/Shared/_Layout.cshtml";
+
+}
+
+@section JavaScript{
+    <script type="text/javascript">$(document).ready(function () { WebApp.Core.HighlightCurrentMenuItem('General Settings') });</script>
+    <script src="~/Areas/L0C5A3E8915871B710C2CC98073748424/Assets/plugins/bootstrap-toggle/bootstrap-toggle.min.js"></script>
+
+}
+@section CSS{
+    <link href="~/Areas/L0C5A3E8915871B710C2CC98073748424/Assets/plugins/bootstrap-toggle/bootstrap-toggle.min.css" rel="stylesheet" />
+}
+
+
+
+<div class="page-header">
+    <div class="page-header-content">
+        <div class="page-title">
+            <h4><span class="text-semibold">Manage Settings</span></h4>
+        </div>
+        <div class="heading-elements">
+            @*<div class="heading-btn-group">
+                <a class="btn btn-link btn-float has-text" href="/settings/create"><i class="icon-googleplus5 text-primary"></i><span>Create Setting</span></a>
+            </div>*@
+        </div>
+    </div>
+    <div class="breadcrumb-line">
+        <ul class="breadcrumb">
+            <li><a href="/L0C5A3E8915871B710C2CC98073748424/default/dashboard"><i class="icon-home4 position-left"></i>Dashboard</a></li>
+            <li class="active">Settings</li>
+        </ul>
+    </div>
+</div>
+<div class="content">
+    <form method="post" class="form-horizontal" action="" enctype="multipart/form-data" autocomplete="off">
+        <div class="panel panel-flat">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Allow Automatic Exchange Rate Syncing:</label>
+                            <div class="col-lg-7">
+                                
+                                @Html.CheckBoxFor(model => model.AllowAutomaticExchangeRateSyncing, new { @class = "toggle-switch" })
+                                @Html.ValidationMessageFor(model => model.AllowAutomaticExchangeRateSyncing, "", new { @class = "text-danger" })                           
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <hr>
+                <div class="text-right">
+                    <a href="/L0C5A3E8915871B710C2CC98073748424/settings" class="btn btn-default">Reset<i class="icon-reload-alt position-right"></i> </a>
+                    <button type="submit" class="btn btn-primary">Submit <i class="icon-arrow-right14 position-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

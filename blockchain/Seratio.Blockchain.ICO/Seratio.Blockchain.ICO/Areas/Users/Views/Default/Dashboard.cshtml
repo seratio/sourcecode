@@ -1,0 +1,293 @@
+﻿@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Areas/Users//Views/Shared/_Layout.cshtml";
+}
+@section JavaScript{
+    <script type="text/javascript">$(document).ready(function () { WebApp.Core.HighlightCurrentMenuItem('Dashboard') });</script>
+    <script src="~/Areas/Users/Assets/js/remodal.min.js" type="text/javascript"></script>
+}
+@section Breadcrumbs{
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><span>Dashboard</span></li>
+    </ul>
+}
+@{
+    if (ViewBag.SessionCount == 1)
+    {
+        string _instructionDocument = "Instructions.pdf";
+
+        if (Session["ICOType"] != null)
+        {
+            string _icoType = Session["ICOType"].ToString();
+
+            if (_icoType == "Womens Coin")
+            {
+                _instructionDocument = "Instructions_WC.pdf";
+            }
+        }
+
+        <div class="remodal" data-remodal-id="terms" id="terms" role="dialog">
+            <button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="text-left">Thank you for registering with us!</h2>
+                    <p class="text-left"> You are now entering a secure investment page. Please check our <a href="/files/@_instructionDocument" target="_blank">Contribution Instructions</a> for easy navigation through the website.</p>
+                </div>
+            </div>
+        </div>
+    }
+
+}
+
+
+<div class="content-box">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="element-wrapper">
+                <div class="element-box">
+                    <h5 class="element-header">Current Exchange Rates</h5>
+                    <div class="heading-elements">
+                        @{
+                            if (Session["ICOType"] != null)
+                            {
+                                string _icoType = Session["ICOType"].ToString();
+
+                                if (_icoType == "Womens Coin")
+                                {
+                                    <a href="/users/investments/create?ICOType=Womens Coin"><i class="fa fa-plus-square"></i><span>Start new investment</span></a>
+                                }
+
+                                if (_icoType == "Student Coin")
+                                {
+                                    <a href="/users/investments/create?ICOType=Student Coin"><i class="fa fa-plus-square"></i><span>Start new investment</span></a>
+                                }
+
+                                if (_icoType == "TimeTraveler Coin")
+                                {
+                                    <a href="/users/investments/create?ICOType=TimeTraveler Coin"><i class="fa fa-plus-square"></i><span>Start new investment</span></a>
+                                }
+                            }
+                            else
+                            {
+                                <a href="/users/investments/create"><i class="fa fa-plus-square"></i><span>Start new investment</span></a>
+                            }
+                        }
+
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="box type-1">
+                                <img src="/Assets/images/coin-icon-1.png">
+                                <div class="right">
+                                    <div class="heading">BTC</div>
+                                    <div class="value"> @(AppManager.db.ExchangeRates.Any(e => e.From == "BTC") ? Math.Round(double.Parse(AppManager.db.ExchangeRates.OrderByDescending(e => e.Time).FirstOrDefault(e => e.From == "BTC").ExchangePrice), 3).ToString() : "0")</div>
+                                    <div class="count">GBP</div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="box type-2">
+                                <img src="/Assets/images/coin-icon-2.png">
+                                <div class="right">
+                                    <div class="heading">ETH</div>
+                                    <div class="value"> @(AppManager.db.ExchangeRates.Any(e => e.From == "ETH") ? Math.Round(double.Parse(AppManager.db.ExchangeRates.OrderByDescending(e => e.Time).FirstOrDefault(e => e.From == "ETH").ExchangePrice), 3).ToString() : "0")</div>
+                                    <div class="count">GBP</div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="box type-5">
+                                <img src="/Assets/images/coin-icon-5.png">
+                                <div class="right">
+                                    <div class="heading">USD</div>
+                                    <div class="value">@(AppManager.db.ExchangeRates.Any(e => e.From == "USD") ? Math.Round(double.Parse(AppManager.db.ExchangeRates.OrderByDescending(e => e.Time).FirstOrDefault(e => e.From == "USD").ExchangePrice), 3).ToString() : "0")</div>
+                                    <div class="count">GBP</div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="box type-6">
+                                <img src="/Assets/images/coin-icon-7.png">
+                                <div class="right">
+                                    <div class="heading">EUR</div>
+                                    <div class="value">@(AppManager.db.ExchangeRates.Any(e => e.From == "EUR") ? Math.Round(double.Parse(AppManager.db.ExchangeRates.OrderByDescending(e => e.Time).FirstOrDefault(e => e.From == "EUR").ExchangePrice), 3).ToString() : "0")</div>
+                                    <div class="count">GBP</div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content-box">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="element-wrapper">
+                <div class="element-box">
+                    <h5 class="element-header">Recent Investments</h5>
+                    <div class="heading-elements">
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                Amount
+                                            </th>
+                                            <th>ICO Type</th>
+                                            <th>
+                                                Status
+                                            </th>
+                                            <th>
+                                                Initialized On
+                                            </th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @{
+                                            List<Investment> _investments = ViewBag.Investments;
+                                            if (_investments != null)
+                                            {
+                                                foreach (Investment _item in _investments)
+                                                {
+                                                    <tr>
+                                                        <td>
+                                                            @{
+                                                                switch (_item.Mode)
+                                                                {
+                                                                    case "AUD":
+                                                                        @(String.Format("{0:0.00}", _item.Amount, MidpointRounding.AwayFromZero) + " " + _item.Mode);
+                                                                        break;
+                                                                    case "CAD":
+                                                                        @(String.Format("{0:0.00}", _item.Amount, MidpointRounding.AwayFromZero) + " " + _item.Mode);
+                                                                        break;
+                                                                    case "CHF":
+                                                                        @(String.Format("{0:0.00}", _item.Amount, MidpointRounding.AwayFromZero) + " " + _item.Mode);
+                                                                        break;
+                                                                    case "CNY":
+                                                                        @(String.Format("{0:0.00}", _item.Amount, MidpointRounding.AwayFromZero) + " " + _item.Mode);
+
+                                                                        break;
+                                                                    case "EUR":
+                                                                        @(String.Format("{0:0.00}", _item.Amount, MidpointRounding.AwayFromZero) + " " + _item.Mode);
+
+                                                                        break;
+                                                                    case "USD":
+                                                                        @(String.Format("{0:0.00}", _item.Amount, MidpointRounding.AwayFromZero) + " " + _item.Mode);
+
+                                                                        break;
+                                                                    case "GBP":
+                                                                        @(String.Format("{0:0.00}", _item.Amount, MidpointRounding.AwayFromZero) + " " + _item.Mode);
+
+                                                                        break;
+                                                                    case "JPY":
+                                                                        @(String.Format("{0:0.00}", _item.Amount, MidpointRounding.AwayFromZero) + " " + _item.Mode);
+
+                                                                        break;
+                                                                    case "SEK":
+                                                                        @(String.Format("{0:0.00}", _item.Amount, MidpointRounding.AwayFromZero) + " " + _item.Mode);
+
+                                                                        break;
+                                                                    case "NZD":
+                                                                        @(String.Format("{0:0.00}", _item.Amount, MidpointRounding.AwayFromZero) + " " + _item.Mode);
+
+                                                                        break;
+                                                                    case "MXN":
+                                                                        @(String.Format("{0:0.00}", _item.Amount, MidpointRounding.AwayFromZero) + " " + _item.Mode);
+
+                                                                        break;
+                                                                    case "SGD":
+                                                                        @(String.Format("{0:0.00}", _item.Amount, MidpointRounding.AwayFromZero) + " " + _item.Mode);
+
+                                                                        break;
+                                                                    case "HKD":
+                                                                        @(String.Format("{0:0.00}", _item.Amount, MidpointRounding.AwayFromZero) + " " + _item.Mode);
+
+                                                                        break;
+                                                                    case "NOK":
+                                                                        @(String.Format("{0:0.00}", _item.Amount, MidpointRounding.AwayFromZero) + " " + _item.Mode);
+
+                                                                        break;
+                                                                    case "KRW":
+                                                                        @(String.Format("{0:0.00}", _item.Amount, MidpointRounding.AwayFromZero) + " " + _item.Mode);
+
+                                                                        break;
+                                                                    case "TRY":
+                                                                        @(String.Format("{0:0.00}", _item.Amount, MidpointRounding.AwayFromZero) + " " + _item.Mode);
+
+                                                                        break;
+                                                                    case "RUB":
+                                                                        @(String.Format("{0:0.00}", _item.Amount, MidpointRounding.AwayFromZero) + " " + _item.Mode);
+
+                                                                        break;
+                                                                    case "INR":
+                                                                        @(String.Format("{0:0.00}", _item.Amount, MidpointRounding.AwayFromZero) + " " + _item.Mode);
+
+                                                                        break;
+                                                                    case "BRL":
+                                                                        @(String.Format("{0:0.00}", _item.Amount, MidpointRounding.AwayFromZero) + " " + _item.Mode);
+
+                                                                        break;
+                                                                    case "ZAR":
+                                                                        @(String.Format("{0:0.00}", _item.Amount, MidpointRounding.AwayFromZero) + " " + _item.Mode);
+
+                                                                        break;
+                                                                    default:
+                                                                        @($"{_item.Amount} {_item.Mode}")
+                                                                        break;
+                                                                }
+                                                            }
+                                                        </td>
+
+                                                        <td>@_item.Type</td>
+                                                        @*<td>@($"{_item.Amount} {_item.Mode}")</td>*@
+                                                        <td>
+                                                            @{
+                                                                string _status = _item.Status;
+                                                                if (_item.Type == "Growth Token" && _item.Status == "Confirmed" && _item.HasTransferred == true)
+                                                                {
+                                                                    _status = $"<span class='label label-success'>YOUR {_item.ReceivedAmount} SER TOKENS HAVE NOW BEEN TRANSFERRED TO THE GROWTH TOKEN CRYPTOFUND</span>";
+                                                                }else if (_item.Type == "Growth Token"&&_item.Status=="Confirmed")
+                                                                {
+                                                                    _status = "<span class='label label-success1'>INVESTMENT CONFIRMED, PENDING TRANSFER TO THE GROWTH TOKEN CRYPTOFUND</span>";
+                                                                }
+                                                            }
+                                                            @Html.Raw(_status)
+                                                        </td>
+                                                        <td>@_item.InitializedOn.ToString()</td>
+                                                    </tr>
+                                                                    }
+                                                                }
+                                                                else
+                                                                {
+                                                                    <tr>
+                                                                        <td colspan="4" style="text-align: center">No Data Available</td>
+                                                                    </tr>
+                                                                }
+
+                                        }
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

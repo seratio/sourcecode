@@ -1,0 +1,278 @@
+﻿/* - - - - - - - - - - - - - - - - - - - - -
+
+ Title : Example Custom CSS : DinoMaster!
+ URL : http://wufoo.com
+
+ Last Updated : April 1, 2011
+
+- - - - - - - - - - - - - - - - - - - - - 
+
+INSTRUCTIONS
+1. Copy / Paste all or portions of these
+CSS rules into "custom.css".
+
+2. Experiment and play.
+
+- - - - - - - - - - - - - - - - - - - - - */
+
+/* - - - Default - - - */
+
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+
+/* Logo */
+#logo a {
+    background-image: url('http://wufoo.com/images/themes/logos/shark.png');
+    min-height: 0;
+    height: 40px
+}
+
+* html #logo a { /* IE6 png Support */
+    background-image: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="http://wufoo.com/images/themes/logos/shark.png", sizingMethod="crop");
+}
+
+/* Backgrounds */
+html {
+    background-image: none;
+    background-color: #99cc00;
+    background: none !important;
+}
+
+#logo {
+    background-image: none;
+    background-color: #669900
+}
+
+#container {
+    background: #FFFFFF
+}
+
+.wufoo input.text, .wufoo textarea.textarea {
+    background: #FFFFFF url(/images/fieldbg.gif) repeat-x top
+}
+
+.wufoo .focused {
+    background: #FFF7C0
+}
+
+.wufoo li.focused {
+  background: none !important;
+}
+
+.wufoo .instruct {
+    background-color: #F5F5F5
+}
+
+/* Borders */
+#container {
+    border: 0 solid #cccccc
+}
+
+.wufoo .info {
+    border-bottom: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.wufoo .instruct {
+    border: 1px solid #e6e6e6
+}
+
+/* Typography */
+.wufoo .info h2 {
+    font-size: 160%;
+    font-family: 'Poppins', sans-serif !important;
+    color: #ff7900;
+    text-align: center;
+}
+
+.wufoo .info div {
+    font-size: 95%;
+    font-family: inherit;
+    color: #444444
+}
+
+.wufoo .section h3 {
+    font-size: 110%;
+    font-family: inherit;
+    background: #FFFFFF;
+    color:#ff7900;
+}
+
+.wufoo .section div {
+    font-size: 85%;
+    font-family: inherit;
+    color: #444444
+}
+
+.wufoo label.desc, .wufoo legend.desc {
+    font-size: 95%;
+    font-family: inherit;
+    color: #fff
+}
+
+.wufoo li div, .wufoo li div label, .wufoo li span label {
+    font-family: inherit;
+    color: #444444
+}
+
+.wufoo input.text, .wufoo textarea.textarea, .wufoo select.select, .wufoo label.choice {
+    font-size: 100%;
+    font-family: inherit;
+    color: #333333
+}
+
+.wufoo label.choice {
+    color: #444444
+}
+
+.wufoo .instruct {
+    font-size: 80%;
+    font-family: inherit;
+    color: #444444
+}
+
+.field.text{
+    width:100%!important;
+}
+
+.submit {
+    background-color: #ff7900!important;
+    border-radius: 4px;
+    clear: both;
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 15px;
+    font-weight: normal;
+    height: 32px;
+    line-height: 32px;
+    margin: 0 5px 10px 0;
+    padding: 0 22px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.23s ease-in-out 0s;
+    vertical-align: top;
+    white-space: nowrap;
+    width: auto;
+}
+
+#fo9li1.notranslate {
+    float: none !important;
+margin: 0 auto !important;
+width: 551px !important;
+}
+
+#fo9li1.notranslate input {
+  background: #fff none repeat scroll 0 0 !important;
+  border: 0 none !important;
+  border-radius: 5px !important;
+  color: #444349 !important;
+  display: block !important;
+  float: left !important;
+  font-family: "Poppins",sans-serif !important;
+  font-size: 15px !important;
+  height: 70px !important;
+  line-height: 30px !important;
+  margin: 10px auto 0 !important;
+  padding: 0 20px !important;
+  width: 510px !important;
+}
+
+#fo9li3.notranslate {
+    float: none !important;
+margin: 0 auto !important;
+width: 551px !important;
+}
+
+#fo9li3.notranslate input {
+  background: #fff none repeat scroll 0 0 !important;
+  border: 0 none !important;
+  border-radius: 5px !important;
+  color: #444349 !important;
+  display: block !important;
+  float: left !important;
+  font-family: "Poppins",sans-serif !important;
+  font-size: 15px !important;
+  height: 70px !important;
+  line-height: 30px !important;
+  margin: 10px auto 0 !important;
+  padding: 0 20px !important;
+  width: 510px !important;
+}
+/*.buttons {
+    float: right !important;
+    width: 39% !important;
+}*/
+
+form li.buttons {
+  position: relative;
+  width: 115px !important;
+  margin: 0 auto !important;
+}
+.buttons input[type="submit"] {
+  background: #444349  none repeat scroll 0 0 !important;
+  border: medium none !important;
+  border-radius: 5px !important;
+  color: #fff !important;
+  cursor: pointer !important;
+  float: none !important;
+  font-family: "Poppins",sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  height: 40px !important;
+  line-height: 30px !important;
+  margin: 0 !important;
+  padding: 0 40px !important;
+  position: relative !important;
+  right: auto !important;
+  text-transform: uppercase !important;
+  top: 0 !important;
+  width: auto !important;
+}
+
+.confirm .wufoo {
+  background: #fff none repeat scroll 0 0 !important;
+  border-radius: 10px !important;
+  text-align: center !important;
+}
+
+form li.error {
+  background: none !important;
+}
+form p.error {
+  background: #fff none repeat scroll 0 0!important;
+  font-size: 11px!important;
+  margin: 2px 0!important;
+  padding: 8px !important;
+  position: relative!important;
+  width: 220px !important;
+}
+
+.field.text::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+            color: #a99a9d;
+            font-size: 14px;
+            font-weight: bold;
+            opacity: 1;
+        }
+
+        .field.text::-moz-placeholder { /* Firefox 19+ */
+            color: #a99a9d;
+            font-size: 14px;
+            font-weight: bold;
+            opacity: 1;
+        }
+
+        .field.text:-ms-input-placeholder { /* IE 10+ */
+            color: #a99a9d;
+            font-size: 14px;
+            font-weight: bold;
+            opacity: 1;
+        }
+
+        .field.text:-moz-placeholder { /* Firefox 18- */
+            color: #a99a9d;
+            font-size: 14px;
+            font-weight: bold;
+            opacity: 1;
+        }

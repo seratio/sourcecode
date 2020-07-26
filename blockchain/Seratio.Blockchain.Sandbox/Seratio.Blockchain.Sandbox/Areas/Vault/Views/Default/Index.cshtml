@@ -1,0 +1,101 @@
+﻿@using Seratio.Blockchain.Sandbox.Core
+@using Seratio.Blockchain.Sandbox.Core.Entities.Blockchain
+@using Seratio.Blockchain.Sandbox.Models
+@model  List<Coin>
+@{
+    ViewBag.Title = "Safe Vault";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string _address = ViewBag.WalletAddress;
+}
+
+@section JavaScript{
+    <script type="text/javascript">$(document).ready(function () { WebApp.Core.HighlightCurrentMenuItem('Safe Vault') });</script>
+}
+
+@section Breadcrumbs{
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/wallet/default/dashboard">Dashboard</a></li>
+        <li class="breadcrumb-item"><span>Safe Vault</span></li>
+    </ul>
+}
+
+<div class="content-box">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="element-wrapper">
+                <div class="element-box">
+                    <h5 class="element-header">Safe Vault (@_address)</h5>
+                    <div class="heading-elements">
+                        <a href="/wallet/vault/default/deposit"><i class="fa fa-plus-square"></i><span>Deposit</span></a>
+                        <a href="/wallet/vault/default/claim"><i class="fa fa-minus-square"></i><span>Claim</span></a>
+                        <a href="/wallet/vault/default/limits"><i class="fa fa-plus-square"></i><span>Vault Limit</span></a>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="main">
+                                <table class="table table-lightborder">
+                                    <tbody>
+                                        <tr>
+                                            <th>
+                                                Coin
+                                            </th>
+
+                                            <th>
+                                                Amount
+                                            </th>
+                                            <th>
+                                                Date of Deposit
+                                            </th>
+                                            <th>
+                                                Locked Until
+                                            </th>
+                                            <th>
+                                                Is Available to Claim?
+                                            </th>
+                                        </tr>
+                                    </tbody>
+                                    <tbody>
+                                        @{
+                                            if (((List<VaultInvestment>)ViewBag.Investments).Any())
+                                            {
+                                                foreach (VaultInvestment _investment in ViewBag.Investments)
+                                                {
+                                                    Coin _coin = Model.FirstOrDefault(c => (!string.IsNullOrEmpty(_investment.Token) && !string.IsNullOrEmpty(c.Address) && c.Address.ToLower() == _investment.Token.ToLower()) || (c.Address == null && _investment.Token == "0x0000000000000000000000000000000000000000"));
+
+                                                    if (_coin != null)
+                                                    {
+                                                        <tr>
+                                                            <td>@_coin.Name</td>
+                                                            <td>@_investment.Amount @_coin.Symbol</td>
+                                                            <td>
+                                                                @AppManager.UnixTimestampToDateTime(_investment.Timestamp).ToString()
+                                                            </td>
+                                                            <td>
+                                                                @AppManager.UnixTimestampToDateTime(_investment.Timestamp).AddSeconds(_investment.LockPeriod).ToString()
+                                                            </td>
+                                                            <td>
+                                                                @(_investment.HasExpired ? "Yes" : "No")
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                }
+                                            }
+                                            else
+                                            {
+                                                <tr>
+                                                    <td colspan="5" align="center">You do not have any deposits yet!</td>
+                                                </tr>
+
+                                            }
+                                        }
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,265 @@
+﻿@model Investment
+@{
+    ViewBag.Title = "New Investment";
+    Layout = "~/Areas/Users//Views/Shared/_Layout.cshtml";
+}
+
+@section JavaScript{
+    @{
+        if (!string.IsNullOrEmpty(Request.QueryString["ICOType"]))
+        {
+            <script>
+                window.REMODAL_GLOBALS = {
+                    NAMESPACE: 'remodal',
+                    DEFAULTS: {
+                        closeOnEscape: false,
+                        closeOnOutsideClick: false
+                    }
+                };
+            </script>
+            <script src="~/Areas/Users/Assets/js/remodal.min.js" type="text/javascript"></script>
+        }
+    }
+    <script type="text/javascript">$(document).ready(function () { WebApp.Core.HighlightCurrentMenuItem('Investments') });</script>
+}
+
+@section CSS{
+}
+
+@section Breadcrumbs{
+
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/users/default/dashboard"><i class="icon-home4 position-left"></i>Dashboard</a></li>
+        <li class="breadcrumb-item"><a href="/users/investments"><i class="icon-home4 position-left"></i>Investments</a></li>
+        <li class="breadcrumb-item active">Make Investment</li>
+    </ul>
+}
+
+<div class="content-box">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="element-wrapper">
+                <div class="element-box">
+                    <form method="post" class="form-horizontal" action='/users/investments/create?ICOType=@(Request.QueryString["ICOType"])' enctype="multipart/form-data" autocomplete="off">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.AntiForgeryToken()
+
+                        @{
+                            if (!string.IsNullOrEmpty(Request.QueryString["ICOType"]))
+                            {
+                                <h5 class="element-header">
+
+                                    @{
+
+                                        if (Request.QueryString["ICOType"] == "Womens Coin")
+                                        {
+                                            @($"You are making an investment in the Womens Coin Private Placement to purchase SER Tokens and Womens Coin Microshares")
+                                        }
+                                        else
+                                        {
+                                            @($"You are making an investment in {Request.QueryString["ICOType"]}")
+                                        }
+
+                                        if (Request.QueryString["ICOType"] == "Seratio Coin")
+                                        {
+                                            <img src="/areas/users/assets/images/**************logo.jpg" style="width: 5%;">
+
+                                        }
+                                        else if (Request.QueryString["ICOType"] == "Womens Coin")
+                                        {
+                                            <img src="/areas/users/assets/images/womenscoinlogov2.png" style="width: 5%;">
+
+                                        }
+
+                                        else if (Request.QueryString["ICOType"] == "Student Coin")
+                                        {
+                                            <img src="/areas/users/assets/images/studentcoin.png" style="width: 5%;">
+
+                                        }
+
+                                        else if (Request.QueryString["ICOType"] == "Growth Token")
+                                        {
+                                            <img src="/areas/users/assets/images/10xtokenlogo.png" style="width: 5%;">
+
+                                        }
+                                        else if (Request.QueryString["ICOType"] == "TimeTraveler Coin")
+                                        {
+                                            <img src="/Assets/images/timetraveler.png" style="width: 5%;">
+
+                                        }
+                                        else
+                                        {
+                                            Response.Redirect("/users/investments");
+                                        }
+                                    }
+                                </h5>
+
+                                <div id="middle-wizard">
+                                    <label>Choose your Investment Method: </label>
+                                    <div class="radio-inline">
+                                        @{
+                                            <div class="form-check">
+                                                <label class="form-check-label">
+                                                    <input class="form-check-input Mode" checked="checked" type="radio" value="Bitcoin" name="Mode">
+                                                    <img src="~/areas/users/assets/images/crypto-icon-1.png" class="crypto-icon" />
+                                                    Bitcoin
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <label class="form-check-label">
+                                                    <input class="form-check-input Mode" name="Mode" type="radio" value="Ethereum">
+                                                    <img src="~/areas/users/assets/images/crypto-icon-2.png" class="crypto-icon" />
+                                                    Ethereum
+                                                </label>
+                                            </div>
+                                            if (Request.QueryString["ICOType"] == "TimeTraveler Coin"|| Request.QueryString["ICOType"] == "Student Coin")
+                                            {
+                                                <div class="form-check">
+                                                    <label class="form-check-label">
+                                                        <input class="form-check-input Mode" name="Mode" type="radio" value="Fiat">
+                                                        <img src="~/areas/users/assets/images/crypto-icon-14.png" class="crypto-icon" />
+                                                        Bank Transfer
+                                                    </label>
+                                                </div>
+                                            }
+
+                                            if (Request.QueryString["ICOType"] == "Growth Token")
+                                            {
+                                                <div class="form-check">
+                                                    <label class="form-check-label">
+                                                        <input class="form-check-input Mode" name="Mode" type="radio" value="Card">
+                                                        <img src="~/areas/users/assets/images/card.png" class="crypto-icon" />
+                                                        Card
+                                                    </label>
+                                                </div>
+                                            }
+                                        }
+                                    
+                               
+                                    </div>
+
+                                    @{
+                                        if (Request.QueryString["ICOType"] == "TimeTraveler Coin"|| Request.QueryString["ICOType"] == "Student Coin")
+                                        {
+                                            <div class="form-group fiat" hidden="hidden">
+                                                <label>Currency: </label>
+                                                <select class="form-control select" id="fiatcoin" name="fiatcoin">
+                                                    <option value="EUR">EUR</option>
+                                                    <option value="USD">USD</option>
+                                                    <option value="GBP">GBP</option>
+                                                    <option value="JPY">JPY</option>
+                                                    <option value="AUD">AUD</option>
+                                                    <option value="CAD">CAD</option>
+                                                    <option value="CHF">CHF</option>
+                                                    <option value="CNY">CNY</option>
+                                                    <option value="SEK">SEK</option>
+                                                    <option value="NZD">NZD</option>
+                                                    <option value="MXN">MXN</option>
+                                                    <option value="SGD">SGD</option>
+                                                    <option value="HKD">HKD</option>
+                                                    <option value="NOK">NOK</option>
+                                                    <option value="KRW">KRW</option>
+                                                    <option value="TRY">TRY</option>
+                                                    <option value="RUB">RUB</option>
+                                                    <option value="INR">INR</option>
+                                                    <option value="BRL">BRL</option>
+                                                    <option value="ZAR">ZAR</option>
+                                                </select>
+                                                <span class="field-validation-valid text-danger" data-valmsg-for="fiatcoin" data-valmsg-replace="true"></span>
+                                            </div>
+                                        }
+                                    }
+
+                                    <div class="form-group">
+                                        <label>Amount: </label>
+                                        <input name="Amount" id="Amount" type="text" placeholder="Please enter Amount" class="form-control" data-val="true" data-val-required="Please enter Amount" required="required">
+                                        <span class="field-validation-valid text-danger" data-valmsg-for="Amount" data-valmsg-replace="true"></span>
+                                        @{
+                                            <input type="hidden" name="investmentid" value="@ViewBag.InvestmentID" />
+
+                                            decimal _minAmount = 0;
+                                            switch (Request.QueryString["ICOType"])
+                                            {
+                                                case "Womens Coin":
+                                                    _minAmount = 1000;
+                                                    break;
+                                                case "Student Coin":
+                                                    _minAmount = 50;
+                                                    break;
+                                                case "Growth Token":
+                                                    _minAmount = 10000;
+                                                    break;
+                                                case "TimeTraveler Coin":
+                                                    _minAmount = 10000;
+                                                    break;
+                                            }
+                                        }
+                                        <span>Minimum investment is @_minAmount GBP or its equivalent amount</span>
+                                    </div>
+
+                                </div>
+                                <div id="bottom-wizard">
+                                    <button type="submit" class="btn btn-primary investmentsubmit">Submit</button>
+                                </div>
+                                <input type="hidden" name="HasAcceptedTAndCs" id="HasAcceptedTAndCs" value="" />
+                                <input type="hidden" name="InvestmentType" id="InvestmentType" value="" />
+                                <input type="hidden" name="CampaignCode" id="CampaignCode" />
+
+                                <div class="remodal" data-remodal-id="terms" id="terms" role="dialog">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <h2 style="margin-bottom: 30px;">Confirmation Required</h2>
+                                            <div class="form-check text-left">
+                                                <label class="form-check-label">
+                                                    <input id="_HasAcceptedTAndCs" class="form-check-input" type="checkbox" data-val="true" name="_HasAcceptedTAndCs">I accept the <a href="~/Files/terms-and-conditions.pdf" target="_blank">terms and conditions</a>
+                                                </label>
+                                            </div>
+                                            <div class="form-check text-left">
+                                                <label class="form-check-label">
+                                                    <input class="form-check-input _InvestmentType" type="radio" name="_InvestmentType" value="Token">The regulatory position in many territories is changing rapidly. I confirm that ICO activity is allowable in my region.
+                                                </label>
+                                            </div>
+                                            <h5 style="font-weight: normal; padding-left: 20px; text-align: left; font-size: 15px;">OR</h5>
+                                            <div class="form-check text-left">
+                                                <label class="form-check-label">
+                                                    <input class="form-check-input _InvestmentType" type="radio" name="_InvestmentType" value="Microshares">If regulatory position does not allow my investment I wish to proceed with Microshare only token, the non-financial token
+                                                </label>
+                                            </div>
+                                            <div class="form-check text-left">
+                                                <label class="form-check-label">
+                                                    <input class="form-check-input" type="checkbox" style="margin-top: 11px;" id="chk_CampaignCode">If you have a campaign code please insert here
+                                                </label>
+                                                <input placeholder="Please enter Code" class="form-control" style="display: inline; width: 250px;" name="_CampaignCode" id="_CampaignCode" type="text" readonly="readonly">
+                                            </div>
+                                            <button class="btn btn-primary " type="submit" id="proceed" style="margin-top: 30px;">Proceed</button>
+                                            <a class="btn btn-default" style="cursor: pointer; margin-top: 30px;" href="/users/investments">Cancel</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                            else
+                            {
+                                <h5 class="element-header">Make Investment</h5>
+
+                                <div id="middle-wizard">
+                                    <div class="form-group">
+                                        <label>Coin: </label>
+                                        <select class="form-control select" id="ICOType" name="ICOType">
+                                            <option value="" selected="selected">Please select a coin</option>
+                                            <option value="Seratio Coin" disabled="disabled">Seratio Coin</option>
+                                            <option value="Womens Coin">Womens Coin</option>
+                                            <option value="Student Coin">Student Coin</option>
+                                            <option value="Growth Token" disabled="disabled">Growth Token</option>
+                                            <option value="TimeTraveler Coin">TimeTraveler Coin</option>
+                                        </select>
+                                        <span class="field-validation-valid text-danger" data-valmsg-for="ICOType" data-valmsg-replace="true"></span>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>   

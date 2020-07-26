@@ -1,0 +1,43 @@
+﻿@using System.Web.Hosting
+@{
+    ViewBag.Title = "Wallet Info. (Source)";
+    Layout = "~/Areas/L0C5A3E8915871B710C2CC98073748424/Views/Shared/_Layout.cshtml";
+
+}
+
+@section JavaScript{
+    <script type="text/javascript">$(document).ready(function () { WebApp.Core.HighlightCurrentMenuItem('Wallet Info. (Source)') });</script>
+    <script src="~/Areas/L0C5A3E8915871B710C2CC98073748424/Assets/plugins/bootstrap-toggle/bootstrap-toggle.min.js"></script>
+}
+@section CSS{
+    <link href="~/Areas/L0C5A3E8915871B710C2CC98073748424/Assets/plugins/bootstrap-toggle/bootstrap-toggle.min.css" rel="stylesheet" />
+}
+
+<div class="page-header">
+    <div class="page-header-content">
+        <div class="page-title">
+            <h4><span class="text-semibold">Wallet Info. (Source)</span></h4>
+        </div>
+    </div>
+    <div class="breadcrumb-line">
+        <ul class="breadcrumb">
+            <li><a href="/L0C5A3E8915871B710C2CC98073748424/default/dashboard"><i class="icon-home4 position-left"></i>Dashboard</a></li>
+            <li class="active">Wallet Info. (Source)</li>
+        </ul>
+    </div>
+</div>
+<div class="content">
+    <div class="panel panel-flat">
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <pre>
+@{
+    @Html.Raw(Html.Encode( File.ReadAllText(HostingEnvironment.MapPath("/areas/users/views/investments/walletinfo.cshtml"))));
+}
+</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

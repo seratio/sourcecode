@@ -1,0 +1,30 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30320.27
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Seratio.Platform.ICO", "Seratio.Blockchain.ICO\Seratio.Platform.ICO.csproj", "{99E68C0A-568F-4FEB-9651-84EE9F6A4EBB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Seratio.News", "Seratio.News\Seratio.News.csproj", "{91A7AB13-2276-40EE-81C0-F075A9EEFEE4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{99E68C0A-568F-4FEB-9651-84EE9F6A4EBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99E68C0A-568F-4FEB-9651-84EE9F6A4EBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99E68C0A-568F-4FEB-9651-84EE9F6A4EBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99E68C0A-568F-4FEB-9651-84EE9F6A4EBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91A7AB13-2276-40EE-81C0-F075A9EEFEE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91A7AB13-2276-40EE-81C0-F075A9EEFEE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91A7AB13-2276-40EE-81C0-F075A9EEFEE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91A7AB13-2276-40EE-81C0-F075A9EEFEE4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FC0727C0-06C9-4E60-9B39-9F6AC3C28EC9}
+	EndGlobalSection
+EndGlobal

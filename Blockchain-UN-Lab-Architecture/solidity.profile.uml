@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Profile xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_I0h5YB8mEeeZZpx89vcpgg" name="RootElement" metaclassReference="_Qu8yQB8mEeeZZpx89vcpgg _SmjXoB8nEeexbbSAK_wXPA">
+  <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_YZy-EB8mEeeZZpx89vcpgg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+    <contents xmi:type="ecore:EPackage" xmi:id="_U7TBcB8nEeexbbSAK_wXPA" name="RootElement" nsURI="http:///schemas/RootElement/_U7SaYB8nEeexbbSAK_wXPA/2" nsPrefix="RootElement">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_U7Togh8nEeexbbSAK_wXPA" source="PapyrusVersion">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_U7Togx8nEeexbbSAK_wXPA" key="Version" value="0.0.3"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_U7TohB8nEeexbbSAK_wXPA" key="Comment" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_U7TohR8nEeexbbSAK_wXPA" key="Copyright" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_U7Tohh8nEeexbbSAK_wXPA" key="Date" value="2017-04-11"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_U7Tohx8nEeexbbSAK_wXPA" key="Author" value=""/>
+      </eAnnotations>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_U7TBcR8nEeexbbSAK_wXPA" name="constant">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_U7TBch8nEeexbbSAK_wXPA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_TERq4B8mEeeZZpx89vcpgg"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_U7TBcx8nEeexbbSAK_wXPA" name="base_DataType" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//DataType"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_U7TBdR8nEeexbbSAK_wXPA" name="base_Parameter" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//Parameter"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+    </contents>
+    <contents xmi:type="ecore:EPackage" xmi:id="_7UqlgB8mEeexbbSAK_wXPA" name="RootElement" nsURI="http:///schemas/RootElement/_7UpXYB8mEeexbbSAK_wXPA/1" nsPrefix="RootElement">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_7UsasR8mEeexbbSAK_wXPA" source="PapyrusVersion">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_7Usash8mEeexbbSAK_wXPA" key="Version" value="0.0.2"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_7Usasx8mEeexbbSAK_wXPA" key="Comment" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_7UsatB8mEeexbbSAK_wXPA" key="Copyright" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_7UsatR8mEeexbbSAK_wXPA" key="Date" value="2017-04-11"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_7Usath8mEeexbbSAK_wXPA" key="Author" value=""/>
+      </eAnnotations>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_7UqlgR8mEeexbbSAK_wXPA" name="constant">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_7Uqlgh8mEeexbbSAK_wXPA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_TERq4B8mEeeZZpx89vcpgg"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_7Uqlgx8mEeexbbSAK_wXPA" name="base_DataType" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//DataType"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+    </contents>
+    <contents xmi:type="ecore:EPackage" xmi:id="_YZy-ER8mEeeZZpx89vcpgg" name="RootElement" nsURI="http:///schemas/RootElement/_YZxI4B8mEeeZZpx89vcpgg/0" nsPrefix="RootElement">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_YZ0MMR8mEeeZZpx89vcpgg" source="PapyrusVersion">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_YZ0MMh8mEeeZZpx89vcpgg" key="Version" value="0.0.1"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_YZ0MMx8mEeeZZpx89vcpgg" key="Comment" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_YZ0MNB8mEeeZZpx89vcpgg" key="Copyright" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_YZ0MNR8mEeeZZpx89vcpgg" key="Date" value="2017-04-11"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_YZ0MNh8mEeeZZpx89vcpgg" key="Author" value=""/>
+      </eAnnotations>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_YZy-Eh8mEeeZZpx89vcpgg" name="const">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_YZy-Ex8mEeeZZpx89vcpgg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_TERq4B8mEeeZZpx89vcpgg"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_YZy-FB8mEeeZZpx89vcpgg" name="base_DataType" ordered="false" lowerBound="1">
+          <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/5.0.0/UML#//DataType"/>
+        </eStructuralFeatures>
+      </eClassifiers>
+    </contents>
+  </eAnnotations>
+  <elementImport xmi:type="uml:ElementImport" xmi:id="_Qu8yQB8mEeeZZpx89vcpgg" alias="DataType">
+    <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#DataType"/>
+  </elementImport>
+  <elementImport xmi:type="uml:ElementImport" xmi:id="_SmjXoB8nEeexbbSAK_wXPA" alias="Parameter">
+    <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Parameter"/>
+  </elementImport>
+  <packagedElement xmi:type="uml:Stereotype" xmi:id="_TERq4B8mEeeZZpx89vcpgg" name="constant">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_VNxG8B8mEeeZZpx89vcpgg" name="base_DataType" association="_VNvRwB8mEeeZZpx89vcpgg">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#DataType"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_T8t5UB8nEeexbbSAK_wXPA" name="base_Parameter" association="_T8nLoB8nEeexbbSAK_wXPA">
+      <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Parameter"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_VNvRwB8mEeeZZpx89vcpgg" name="E_constant_DataType1" memberEnd="_VNwf4B8mEeeZZpx89vcpgg _VNxG8B8mEeeZZpx89vcpgg">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_VNwf4B8mEeeZZpx89vcpgg" name="extension_constant" type="_TERq4B8mEeeZZpx89vcpgg" aggregation="composite" association="_VNvRwB8mEeeZZpx89vcpgg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Extension" xmi:id="_T8nLoB8nEeexbbSAK_wXPA" name="E_constant_Parameter1" memberEnd="_T8srMB8nEeexbbSAK_wXPA _T8t5UB8nEeexbbSAK_wXPA">
+    <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_T8srMB8nEeexbbSAK_wXPA" name="extension_constant" type="_TERq4B8mEeeZZpx89vcpgg" aggregation="composite" association="_T8nLoB8nEeexbbSAK_wXPA"/>
+  </packagedElement>
+</uml:Profile>

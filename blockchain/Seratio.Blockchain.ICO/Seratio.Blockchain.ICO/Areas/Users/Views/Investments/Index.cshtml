@@ -1,0 +1,74 @@
+﻿@model Investment
+
+
+@{
+    ViewBag.Title = "All Investments";
+    Layout = "~/Areas/Users//Views/Shared/_Layout.cshtml";
+
+}
+
+@section JavaScript{
+    <script type="text/javascript">$(document).ready(function () { WebApp.Core.HighlightCurrentMenuItem('Investments') });</script>
+}
+
+@section CSS{
+
+}
+
+@section Breadcrumbs{
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/users/default/dashboard">Dashboard</a></li>
+        <li class="breadcrumb-item"><span>Your Investments</span></li>
+    </ul>
+}
+
+<div class="content-box">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="element-wrapper">
+                <div class="element-box">
+                    <h5 class="element-header">Your Investments</h5>
+                    <div class="heading-elements">
+                        
+                        @{
+                            if (Session["ICOType"] != null)
+                            {
+                                <a href="/users/investments/create/?ICOType=@Session["ICOType"].ToString()"><i class="fa fa-plus-square"></i><span>Make Investment</span></a>
+
+                            }
+                            else
+                            {
+                                <a href="/users/investments/create/?ICOType="><i class="fa fa-plus-square"></i><span>Make Investment</span></a>
+
+                            }
+                        }
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table data-table table-hover" data-source="/users/investments/list/" data-key="4">
+                            <thead>
+                                <tr>
+                                    <th class="no-sort">
+                                        @Html.DisplayNameFor(model => model.Token)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Type)
+                                    </th>
+                                    <th class="no-sort">
+                                        @Html.DisplayNameFor(model => model.Amount)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Status)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.InitializedOn)
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

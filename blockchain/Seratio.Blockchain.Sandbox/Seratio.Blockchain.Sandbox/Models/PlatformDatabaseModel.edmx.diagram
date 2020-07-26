@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0221fb503fea4aafb73713b7bf0ef07b" Name="Diagram1">
+        <EntityTypeShape EntityType="Seratio.Blockchain.ICO.Data.Model.AcceptedRetailPolicy" Width="1.5" PointX="3" PointY="40.25" />
+        <EntityTypeShape EntityType="Seratio.Blockchain.ICO.Data.Model.AcceptedSocialActivity" Width="1.5" PointX="8.25" PointY="46.125" />
+        <EntityTypeShape EntityType="Seratio.Blockchain.ICO.Data.Model.ActivityNotification" Width="1.5" PointX="3" PointY="95.75" />
+        <EntityTypeShape EntityType="Seratio.Blockchain.ICO.Data.Model.Administrator" Width="1.5" PointX="3" PointY="76.125" />
+        <EntityTypeShape EntityType="Seratio.Blockchain.ICO.Data.Model.AdministratorSession" Width="1.5" PointX="5.25" PointY="70.5" />
+        <EntityTypeShape EntityType="Seratio.Blockchain.ICO.Data.Model.Blockchain" Width="1.5" PointX="0.75" PointY="36.125" />
+        <EntityTypeShape EntityType="Seratio.Blockchain.ICO.Data.Model.CollectedVoucher" Width="1.5" PointX="6" PointY="51.25" />
+        <EntityTypeShape EntityType="Seratio.Blockchain.ICO.Data.Model.ExchangeRate" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Seratio.Blockchain.ICO.Data.Model.FailedForgotPasswordAttempt" Width="1.5" PointX="3" PointY="108.875" />
+        <EntityTypeShape EntityType="Seratio.Blockchain.ICO.Data.Model.FailedSignInAttempt" Width="1.5" PointX="3" PointY="103.25" />
+        <EntityTypeShape EntityType="Seratio.Blockchain.ICO.Data.Model.FailedWalletTransactionAttempt" Width="1.5" PointX="3" PointY="33.375" />
+        <EntityTypeShape EntityType="Seratio.Blockchain.ICO.Data.Model.Investment" Width="1.5" PointX="5.25" PointY="74.875" />
+        <EntityTypeShape EntityType="Seratio.Blockchain.ICO.Data.Model.MCRTokenInvestment" Width="1.5" PointX="3" PointY="35.875" />
+        <EntityTypeShape EntityType="Seratio.Blockchain.ICO.Data.Model.ModuleAccessRequest" Width="1.5" PointX="3" PointY="88.625" />
+        <EntityTypeShape EntityType="Seratio.Blockchain.ICO.Data.Model.Offer" Width="1.5" PointX="5.25" PointY="82.5" />
+        <EntityTypeShape EntityType="Seratio.Blockchain.ICO.Data.Model.PaymentRequest" Width="1.5" PointX="5.25" PointY="46" />
+        <EntityTypeShape EntityType="Seratio.Blockchain.ICO.Data.Model.QRLogin" Width="1.5" PointX="3" PointY="92.5" />
+        <EntityTypeShape EntityType="Seratio.Blockchain.ICO.Data.Model.Request" Width="1.5" PointX="3" PointY="29.5" />
+        <EntityTypeShape EntityType="Seratio.Blockchain.ICO.Data.Model.RetailPolicy" Width="1.5" PointX="8.25" PointY="50.875" />
+        <EntityTypeShape EntityType="Seratio.Blockchain.ICO.Data.Model.SERTokenInvestment" Width="1.5" PointX="3" PointY="99.5" />
+        <EntityTypeShape EntityType="Seratio.Blockchain.ICO.Data.Model.SERTokenTransfer" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Seratio.Blockchain.ICO.Data.Model.Setting" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Seratio.Blockchain.ICO.Data.Model.SocialActivity" Width="1.5" PointX="5.25" PointY="40.625" />
+        <EntityTypeShape EntityType="Seratio.Blockchain.ICO.Data.Model.StoredSocialValue" Width="1.5" PointX="3" PointY="105.75" />
+        <EntityTypeShape EntityType="Seratio.Blockchain.ICO.Data.Model.User" Width="1.5" PointX="0.75" PointY="41.25" />
+        <EntityTypeShape EntityType="Seratio.Blockchain.ICO.Data.Model.UserSession" Width="1.5" PointX="3" PointY="111.375" />
+        <EntityTypeShape EntityType="Seratio.Blockchain.ICO.Data.Model.UserWalletHistory" Width="1.5" PointX="8.25" PointY="78.875" />
+        <EntityTypeShape EntityType="Seratio.Blockchain.ICO.Data.Model.WalletTransaction" Width="1.5" PointX="8.25" PointY="39.125" />
+        <AssociationConnector Association="Seratio.Blockchain.ICO.Data.Model.FK_AcceptedRetailPolicies_RetailPolicies" />
+        <AssociationConnector Association="Seratio.Blockchain.ICO.Data.Model.FK_AcceptedRetailPolicies_Users" />
+        <AssociationConnector Association="Seratio.Blockchain.ICO.Data.Model.FK_AcceptedSocialActivities_SocialActivities" />
+        <AssociationConnector Association="Seratio.Blockchain.ICO.Data.Model.FK_AcceptedSocialActivities_Users" />
+        <AssociationConnector Association="Seratio.Blockchain.ICO.Data.Model.FK_ActivityNotifications_Users" />
+        <AssociationConnector Association="Seratio.Blockchain.ICO.Data.Model.FK_AdministratorSessions_AdministratorID" />
+        <AssociationConnector Association="Seratio.Blockchain.ICO.Data.Model.FK_Investments_Investments" />
+        <AssociationConnector Association="Seratio.Blockchain.ICO.Data.Model.FK_Offers_Administrators" />
+        <AssociationConnector Association="Seratio.Blockchain.ICO.Data.Model.FK_Offers_Administrators1" />
+        <AssociationConnector Association="Seratio.Blockchain.ICO.Data.Model.FK_CollectedVouchers_RetailPolicies" />
+        <AssociationConnector Association="Seratio.Blockchain.ICO.Data.Model.FK_CollectedVouchers_Users" />
+        <AssociationConnector Association="Seratio.Blockchain.ICO.Data.Model.FK_CollectedVouchers_WalletTransactions" />
+        <AssociationConnector Association="Seratio.Blockchain.ICO.Data.Model.FK_FailedForgotPasswordAttempts_Users" />
+        <AssociationConnector Association="Seratio.Blockchain.ICO.Data.Model.FK_FailedSignInAttempts_Users" />
+        <AssociationConnector Association="Seratio.Blockchain.ICO.Data.Model.FK_FailedWalletTransactionAttempts_Users" />
+        <AssociationConnector Association="Seratio.Blockchain.ICO.Data.Model.FK_Investments_Users" />
+        <AssociationConnector Association="Seratio.Blockchain.ICO.Data.Model.FK_Investments_UserSessions" />
+        <AssociationConnector Association="Seratio.Blockchain.ICO.Data.Model.FK_MCRTokenInvestments_Users" />
+        <AssociationConnector Association="Seratio.Blockchain.ICO.Data.Model.FK_ModuleAccessRequests_Users" />
+        <AssociationConnector Association="Seratio.Blockchain.ICO.Data.Model.FK_ModuleAccessRequests_Users1" />
+        <AssociationConnector Association="Seratio.Blockchain.ICO.Data.Model.FK_PaymentRequests_Users" />
+        <AssociationConnector Association="Seratio.Blockchain.ICO.Data.Model.FK_PaymentRequests_Users1" />
+        <AssociationConnector Association="Seratio.Blockchain.ICO.Data.Model.FK_PaymentRequests_WalletTransactions" />
+        <AssociationConnector Association="Seratio.Blockchain.ICO.Data.Model.FK_QRLogins_Users" />
+        <AssociationConnector Association="Seratio.Blockchain.ICO.Data.Model.FK_Requests_Sender" />
+        <AssociationConnector Association="Seratio.Blockchain.ICO.Data.Model.FK_RetailPolicies_Users" />
+        <AssociationConnector Association="Seratio.Blockchain.ICO.Data.Model.FK_RetailPolicies_Users1" />
+        <AssociationConnector Association="Seratio.Blockchain.ICO.Data.Model.FK_SERTokenInvestments_Users" />
+        <AssociationConnector Association="Seratio.Blockchain.ICO.Data.Model.FK_SocialActivities_Users" />
+        <AssociationConnector Association="Seratio.Blockchain.ICO.Data.Model.FK_SocialActivities_Users1" />
+        <AssociationConnector Association="Seratio.Blockchain.ICO.Data.Model.FK_StoredSocialValues_Users" />
+        <AssociationConnector Association="Seratio.Blockchain.ICO.Data.Model.FK_UserSessions_UserID" />
+        <AssociationConnector Association="Seratio.Blockchain.ICO.Data.Model.FK_UserWalletHistory_Users" />
+        <AssociationConnector Association="Seratio.Blockchain.ICO.Data.Model.FK_WalletTransactions_Users" />
+        <AssociationConnector Association="Seratio.Blockchain.ICO.Data.Model.FK_UserWalletHistory_UserSessions" />
+        <EntityTypeShape EntityType="Seratio.Blockchain.ICO.Data.Model.Coin" Width="1.5" PointX="3" PointY="45.125" />
+        <AssociationConnector Association="Seratio.Blockchain.ICO.Data.Model.FK_AcceptedSocialActivities_Coins" />
+        <AssociationConnector Association="Seratio.Blockchain.ICO.Data.Model.FK_Coins_Blockchains" />
+        <AssociationConnector Association="Seratio.Blockchain.ICO.Data.Model.FK_Coins_Users" />
+        <AssociationConnector Association="Seratio.Blockchain.ICO.Data.Model.FK_PaymentRequests_Coins" />
+        <AssociationConnector Association="Seratio.Blockchain.ICO.Data.Model.FK_RetailPolicies_Coins" />
+        <AssociationConnector Association="Seratio.Blockchain.ICO.Data.Model.FK_SocialActivities_Coins" />
+        <AssociationConnector Association="Seratio.Blockchain.ICO.Data.Model.FK_WalletTransactions_Coins" />
+        <EntityTypeShape EntityType="Seratio.Blockchain.ICO.Data.Model.MCRTokenTransfer" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="Seratio.Blockchain.ICO.Data.Model.MCRAllocation" Width="1.5" PointX="11.25" PointY="49.75" />
+        <AssociationConnector Association="Seratio.Blockchain.ICO.Data.Model.FK_MCRAllocations_Coins" />
+        <AssociationConnector Association="Seratio.Blockchain.ICO.Data.Model.FK_MCRAllocations_Users" />
+        <EntityTypeShape EntityType="Seratio.Blockchain.ICO.Data.Model.MCRTransfer" Width="1.5" PointX="10.5" PointY="45.25" />
+        <AssociationConnector Association="Seratio.Blockchain.ICO.Data.Model.FK_MCRTransfers_Coins" />
+        <AssociationConnector Association="Seratio.Blockchain.ICO.Data.Model.FK_MCRTransfers_Recipient" />
+        <AssociationConnector Association="Seratio.Blockchain.ICO.Data.Model.FK_MCRTransfers_Sender" />
+        <AssociationConnector Association="Seratio.Blockchain.ICO.Data.Model.FK_MCRTransfers_WalletTransactions" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

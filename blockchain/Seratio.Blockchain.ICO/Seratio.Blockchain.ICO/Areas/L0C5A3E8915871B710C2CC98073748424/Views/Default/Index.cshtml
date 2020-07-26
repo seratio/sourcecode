@@ -1,0 +1,95 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In - Seratio Platform</title>
+    <link rel="shortcut icon" href="/areas/users/assets/images/favicon.png">
+    <link href="/areas/users/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="/areas/users/assets/css/core.css" rel="stylesheet" type="text/css" />
+    <link href="/areas/users/assets/css/components.css" rel="stylesheet" type="text/css" />
+    <link href="/areas/users/assets/css/icons.css" rel="stylesheet" type="text/css" />
+    <link href="/areas/users/assets/css/pages.css" rel="stylesheet" type="text/css" />
+    <link href="/areas/users/assets/css/responsive.css" rel="stylesheet" type="text/css" />
+    <link href="/areas/users/assets/css/custom.css" rel="stylesheet" type="text/css" />
+    <link href="/areas/users/assets/plugins/bootstrap-toastr/toastr.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+
+    <script src="/areas/users/assets/js/modernizr.min.js"></script>
+</head>
+<body class="pantone">
+    <div class="account-pages"></div>
+    <div class="clearfix"></div>
+    <div class="wrapper-page">
+        <div class="card-box">
+            <div class="panel-heading text-center">
+                <img src="~/areas/users/assets/images/logo.png" style="width: 90%;" alt="Seratio Platform">
+            </div>
+            <div class="panel-body">
+                <h4 style="text-align:center">Admin Portal</h4>
+                <form class="form-horizontal" action="#" method="post">
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                            <input class="form-control" type="text" required="" placeholder="Email" name="Email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                            <input class="form-control" type="password" required="" placeholder="Password" name="Password">
+                        </div>
+                    </div>
+
+                    <div class="form-group text-center m-t-20">
+                        <div class="col-xs-12">
+                            <button class="btn btn-block text-uppercase waves-effect waves-light" style="background: #0168ab; color: #fff; font-weight: bold;" type="submit">Sign In</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var resizefunc = [];
+    </script>
+    <!-- jQuery  -->
+    <script type="text/javascript" src="/areas/users/assets/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/areas/users/assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/areas/users/assets/js/moment.min.js"></script>
+    <script type="text/javascript" src="~/areas/users/assets/js/select2.js"></script>
+    <script type="text/javascript" src="/areas/users/assets/plugins/pickers/pickadate/picker.js"></script>
+    <script type="text/javascript" src="/areas/users/assets/plugins/pickers/pickadate/picker.date.js"></script>
+    <script type="text/javascript" src="/areas/users/assets/plugins/forms/styling/uniform.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
+    <script src="~/areas/users/assets/js/app.js" type="text/javascript"></script>
+    <script src="~/areas/users/assets/js/jquery.livequery.js" type="text/javascript"></script>
+    <script src="~/Scripts/jquery.validate.min.js" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.0/additional-methods.min.js"></script>
+    <script src="~/areas/users/assets/plugins/bootstrap-toastr/toastr.min.js" type="text/javascript"></script>
+    <script src="/areas/users/assets/plugins/bootstrap-daterangepicker/daterangepicker.js" type="text/javascript"></script>
+    <script src="~/areas/users/assets/plugins/pickers/datepicker.js" type="text/javascript"></script>
+    <script src="/areas/users/assets/js/jquery.cookie.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    @*<script src="~/Scripts/html5-qrcode.min.js" type="text/javascript"></script>*@
+    <script type="text/javascript" src="/areas/users/assets/js/scripts.js"></script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/bassjobsen/Bootstrap-3-Typeahead/master/bootstrap3-typeahead.min.js"></script>
+    <script src="~/Scripts/app.js?_=@DateTime.Now.Ticks" type="text/javascript"></script>
+
+    <script>
+        $(document).ready(function () {
+            App.init();
+            @{
+            if (TempData["Notification"] != null)
+            {
+                Notification notification = (Notification)TempData["Notification"];
+                <text>WebApp.Notifications.Show('@notification.Type', '@notification.Text');</text>
+            }
+        }
+        });
+    </script>
+</body>
+</html>

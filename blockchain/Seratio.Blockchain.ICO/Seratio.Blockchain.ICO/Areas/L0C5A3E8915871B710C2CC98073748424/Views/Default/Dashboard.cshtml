@@ -1,0 +1,306 @@
+﻿ 
+@model Dashboard
+@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Areas/L0C5A3E8915871B710C2CC98073748424/Views/Shared/_Layout.cshtml";
+}
+
+@section JavaScript{
+    <script type="text/javascript">$(document).ready(function () { WebApp.Core.HighlightCurrentMenuItem('Dashboard') });</script>
+    <script type="text/javascript" src="/Areas/L0C5A3E8915871B710C2CC98073748424/assets/plugins/morris/raphael-min.js"></script>
+    <script type="text/javascript" src="/Areas/L0C5A3E8915871B710C2CC98073748424/assets/plugins/morris/morris.min.js"></script>
+    <script type="text/javascript" src="/Areas/L0C5A3E8915871B710C2CC98073748424/assets/plugins/visualization/d3/d3.min.js"></script>
+    <script type="text/javascript" src="/Areas/L0C5A3E8915871B710C2CC98073748424/assets/plugins/visualization/d3/d3_tooltip.js"></script>
+    <script type="text/javascript" src="/Areas/L0C5A3E8915871B710C2CC98073748424/assets/plugins/tables/datatables/datatables.min.js"></script>
+    <script>
+
+        Morris.Line({
+            element: 'graph',
+            parseTime: true,
+            lineColors:  ['#000099','#ff3300','#ff9900','#9900ff','#b61c00'],
+
+            xLabels:'day',
+            yLabelFormat: function(y){return y != Math.round(y)?'':y;},
+            dateFormat: function (x) { return moment.unix(x/1000).format("YYYY-MM-DD");},
+            data: @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.Summary)),
+            xkey: 'x',
+            ykeys: ['bitcoinYAxis','ethereumYAxis','ethereumClassicYAxis','litecoinYAxis','fiatsYAxis'],
+            labels: ['Bitcoin','Ethereum','Ethereum classic','Lite Coin','Other Fiats']
+
+        }).on('click', function (i, row) {
+            console.log(i, row);
+        });
+
+
+        Morris.Line({
+            element: 'graphsum',
+            parseTime: true,
+            lineColors:  ['#000099','#ff3300','#ff9900','#9900ff','#b61c00'],
+            xLabels:'day',
+            yLabelFormat: function(y){return y != Math.round(y)?'':y;},
+            dateFormat: function (x) { return moment.unix(x/1000).format("YYYY-MM-DD");},
+            data: @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.SummaryWithSum)),
+            xkey: 'x',
+            ykeys: ['bitcoinYAxis','ethereumYAxis','ethereumClassicYAxis','litecoinYAxis','fiatsYAxis'],
+            labels: ['Bitcoin','Ethereum','Ethereum classic','Lite Coin','Other Fiats']
+
+        }).on('click', function (i, row) {
+            console.log(i, row);
+        });
+        $(function () {
+            $(".donut-radios input").uniform({
+                radioClass: 'choice'
+            });
+        });
+
+        Morris.Donut({
+            element: 'donut-TopModes',
+            data: @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.TopModes)),
+            colors:["#7cb342 ","#fb8c00", "#039be5", "#3949ab","#e53935"]
+
+        });
+
+    </script>
+}
+@section CSS{
+    <link href="/Areas/L0C5A3E8915871B710C2CC98073748424/assets/plugins/morris/morris.css" rel="stylesheet" type="text/css" />
+}
+
+<div class="page-header">
+    <div class="page-header-content">
+        <div class="page-title">
+            <h4><span class="text-semibold">Dashboard</span></h4>
+        </div>
+      
+        <div class="heading-elements">
+            <div class="heading-btn-group">
+                <div class="heading-elements date-range2">
+
+                    <div class="input-group date controls" id="DateFilter">
+                        <span class="input-group-addon "><i class="icon-calendar3"></i></span>
+                        @{
+
+                            var daterange = (!string.IsNullOrEmpty(Request.QueryString["start"]) ? Request.QueryString["start"] : "") + (!string.IsNullOrEmpty(Request.QueryString["end"]) ? " - " + Request.QueryString["end"] : "");
+                        }
+
+                        <input type="text" placeholder="Select Date Range" value="@daterange" data-type="dashboard-List" class="form-control date-range" />
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="content">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-flat">
+                <div class="panel-heading">
+                    @{
+
+                        if (Request.QueryString["start"] != null && Request.QueryString["end"] != null)
+                        {
+                            <h5 class="panel-title"> Summary(Count) between @Request.QueryString["start"]-@Request.QueryString["end"]</h5>
+                        }
+                        else
+                        {
+                            <h5 class="panel-title"> Summary(Count) in Last 30 Days </h5>
+                        }
+                    } 
+                    <div class="heading-elements">
+                        <ul class="icons-list">
+                            <li><a data-action="collapse"></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div id="graph" style="height: 233px;"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-flat">
+                <div class="panel-heading">
+                    @{
+
+                        if (Request.QueryString["start"] != null && Request.QueryString["end"] != null)
+                        {
+                            <h5 class="panel-title"> Summary(Amount) between @Request.QueryString["start"]-@Request.QueryString["end"]</h5>
+                        }
+                        else
+                        {
+                            <h5 class="panel-title"> Summary(Amount) in Last 30 Days </h5>
+                        }
+                    }
+                    
+                    <div class="heading-elements">
+                        <ul class="icons-list">
+                            <li><a data-action="collapse"></a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="panel-body">
+                    <div class="row">
+
+                        <div class="col-lg-12">
+                            <div id="graphsum" style="height: 233px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+    
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="panel panel-flat">
+                <div class="panel-heading">
+                    <h5 class="panel-title">Investment Deals</h5>
+                    <div class="heading-elements">
+                        <ul class="icons-list">
+                            <li><a data-action="collapse"></a></li>
+                        </ul>
+                    </div>
+                    <a class="heading-elements-toggle"><i class="icon-more"></i></a>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped" style="border-top: 1px solid #ddd;">
+                        <thead>
+                        <tr>
+                            <th>Mode</th>
+                            <th>Total Amount</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @{
+                            if (Model.Investments != null&&Model.Investments.Any())
+                            {
+                                foreach (InvestmentDetail _item in Model.Investments)
+                                {
+                                    <tr>
+                                        <td>@_item.Mode</td>
+                                        @*<td>@_item.Total</td>*@
+                                        <td>
+                                            @{
+                                                switch (_item.Mode)
+                                                {
+                                                    case "AUD":
+                                                        @String.Format("{0:0.00}", _item.Total, MidpointRounding.AwayFromZero);
+                                                        break;
+                                                    case "CAD":
+                                                        @String.Format("{0:0.00}", _item.Total, MidpointRounding.AwayFromZero);
+                                                        break;
+                                                    case "CHF":
+                                                        @String.Format("{0:0.00}", _item.Total, MidpointRounding.AwayFromZero);
+                                                        break;
+                                                    case "CNY":
+                                                        @String.Format("{0:0.00}", _item.Total, MidpointRounding.AwayFromZero);
+                                                        break;
+                                                    case "EUR":
+                                                        @String.Format("{0:0.00}", _item.Total, MidpointRounding.AwayFromZero);
+                                                        break;
+                                                    case "USD":
+                                                        @String.Format("{0:0.00}", _item.Total, MidpointRounding.AwayFromZero);
+                                                        break;
+                                                    case "GBP":
+                                                        @String.Format("{0:0.00}", _item.Total, MidpointRounding.AwayFromZero);
+                                                        break;
+                                                    case "JPY":
+                                                        @String.Format("{0:0.00}", _item.Total, MidpointRounding.AwayFromZero);
+                                                        break;
+                                                    case "SEK":
+                                                        @String.Format("{0:0.00}", _item.Total, MidpointRounding.AwayFromZero);
+                                                        break;
+                                                    case "NZD":
+                                                        @String.Format("{0:0.00}", _item.Total, MidpointRounding.AwayFromZero);
+                                                        break;
+                                                    case "MXN":
+                                                        @String.Format("{0:0.00}", _item.Total, MidpointRounding.AwayFromZero);
+                                                        break;
+                                                    case "SGD":
+                                                        @String.Format("{0:0.00}", _item.Total, MidpointRounding.AwayFromZero);
+                                                        break;
+                                                    case "HKD":
+                                                        @String.Format("{0:0.00}", _item.Total, MidpointRounding.AwayFromZero);
+                                                        break;
+                                                    case "NOK":
+                                                        @String.Format("{0:0.00}", _item.Total, MidpointRounding.AwayFromZero);
+                                                        break;
+                                                    case "KRW":
+                                                        @String.Format("{0:0.00}", _item.Total, MidpointRounding.AwayFromZero);
+                                                        break;
+                                                    case "TRY":
+                                                        @String.Format("{0:0.00}", _item.Total, MidpointRounding.AwayFromZero);
+                                                        break;
+                                                    case "RUB":
+                                                        @String.Format("{0:0.00}", _item.Total, MidpointRounding.AwayFromZero);
+                                                        break;
+                                                    case "INR":
+                                                        @String.Format("{0:0.00}", _item.Total, MidpointRounding.AwayFromZero);
+                                                        break;
+                                                    case "BRL":
+                                                        @String.Format("{0:0.00}", _item.Total, MidpointRounding.AwayFromZero);
+                                                        break;
+                                                    case "ZAR":
+                                                        @String.Format("{0:0.00}", _item.Total, MidpointRounding.AwayFromZero);
+                                                        break;
+                                                    default:
+                                                        @_item.Total
+                                                        break;
+                                                }
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td colspan="4">No Data Available</td>
+                                </tr>
+                            }
+                        }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-6">
+            <div class="panel panel-flat">
+                <div class="panel-heading">
+                    <h5 class="panel-title"><i class="icon-medal-star text-muted"></i> Top Investment Modes</h5>
+                    <div class="heading-elements">
+                        <ul class="icons-list">
+                            <li><a data-action="collapse"></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-xs">
+                        <tbody>
+                        <tr>
+                            <td rowspan="@(Model.TopModes.Count + 1)" class="col-lg-4">
+                                <div id="donut-TopModes" style="height: 162px;"></div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

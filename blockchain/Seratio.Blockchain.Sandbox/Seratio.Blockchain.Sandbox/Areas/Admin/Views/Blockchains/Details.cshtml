@@ -1,0 +1,98 @@
+﻿@model  Blockchain
+@{
+    ViewBag.Title = "Blockchain Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section JavaScript{
+    <script type="text/javascript">$(document).ready(function () { WebApp.Core.HighlightCurrentMenuItem('Blockchains') });</script>
+    <script src="/wallet/assets/plugins/bootstrap-toggle/bootstrap-toggle.min.js"></script>
+}
+
+@section CSS{
+    <link href="/wallet/assets/plugins/bootstrap-toggle/bootstrap-toggle.min.css" rel="stylesheet" />
+
+}
+@section Breadcrumbs{
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/wallet/default/dashboard">Dashboard</a></li>
+        <li class="breadcrumb-item"><a href="/wallet/admin/blockchains">Blockchains</a></li>
+        <li class="breadcrumb-item"><span>Blockchain Details</span></li>
+    </ul>
+}
+
+<div class="content-box">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="element-wrapper">
+                <div class="element-box">
+                    <h5 class="element-header">Blockchain Details</h5>
+                    <div class="heading-elements">
+                        <a href="/wallet/admin/blockchains/edit/@Model.ID"><i class="os-icon os-icon-edit-1"></i><span>Edit</span></a>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="main">
+                                <table class="table table-lightborder">
+                                    <tbody>
+                                        <tr>
+                                            <td class="col-lg-2">@Html.DisplayNameFor(model => model.Name)</td>
+                                            <td class="col-lg-1">:</td>
+                                            <td> @Model.Name</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col-lg-2">@Html.DisplayNameFor(model => model.Host)</td>
+                                            <td class="col-lg-1">:</td>
+                                            <td> @Model.Host</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td class="col-lg-2">@Html.DisplayNameFor(model => model.IsPrimaryNode)</td>
+                                            <td class="col-lg-1">:</td>
+                                            <td>
+                                                @Html.EditorFor(model => model.IsPrimaryNode, new { htmlAttributes = new { @placeholder = "Please enter the RPC Port", @class = "form-control toggle-switch", @disabled = "disabled" } })
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td class="col-lg-2">@Html.DisplayNameFor(model => model.IsActive)</td>
+                                            <td class="col-lg-1">:</td>
+                                            <td>
+                                                @Html.EditorFor(model => model.IsActive, new { htmlAttributes = new { @placeholder = "Please enter the RPC Port", @class = "form-control toggle-switch", @disabled = "disabled" } })
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td class="col-lg-2">@Html.DisplayNameFor(model => model.Comments)</td>
+                                            <td class="col-lg-1">:</td>
+                                            <td> @Model.Comments</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td class="col-lg-2">@Html.DisplayNameFor(model => model.CreatedOn)</td>
+                                            <td class="col-lg-1">:</td>
+                                            <td> @Model.CreatedOn.ToString()</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col-lg-2">@Html.DisplayNameFor(model => model.LastUpdatedOn)</td>
+                                            <td class="col-lg-1">:</td>
+                                            <td> @Model.LastUpdatedOn.ToString()</td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+

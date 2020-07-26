@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "New Request";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section JavaScript{
+    <script type="text/javascript">$(document).ready(function () { WebApp.Core.HighlightCurrentMenuItem('Payment Requests') });</script>
+}
+@section CSS{
+}
+@section Breadcrumbs{
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/wallet/default/dashboard">Dashboard</a></li>
+        <li class="breadcrumb-item"><a href="/wallet/wallets/seratiowallet">Seratio Wallet</a></li>
+        <li class="breadcrumb-item"><a href="/wallet/retailend/paymentrequests">Payment Requests</a></li>
+        <li class="breadcrumb-item"><span>New Request</span></li>
+    </ul>
+}
+
+<div class="content-box">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="element-wrapper">
+                <div class="element-box">
+                    <h5 class="element-header">New Request</h5>
+                    <div class="heading-elements">
+
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <p align="center">
+                                Payment request has been successfully sent to the user.<br />
+                                Please scan the below QR Code to make the payment now.
+                            </p>
+                            <img src="data:image/jpeg;base64,@ViewBag.QRCode" style="display: block; height: 250px; margin: 0 auto; width: 250px;" id="image" />
+                            <p align="center">
+                                <a href="/wallet/retailend/default">back</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

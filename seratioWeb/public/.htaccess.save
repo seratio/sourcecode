@@ -1,0 +1,6 @@
+RewriteEngine On
+# Redirect Trailing Slashes...
+RewriteBase /
+RewriteCond %{HTTP_HOST} !^www\. [NC]
+RxewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]
+

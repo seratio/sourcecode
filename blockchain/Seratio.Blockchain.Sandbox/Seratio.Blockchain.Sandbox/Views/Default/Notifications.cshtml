@@ -1,0 +1,115 @@
+﻿@model List<ActivityNotification>
+
+@{
+    ViewBag.Title = "Notifications";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Breadcrumbs{
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/wallet/default/dashboard">Dashboard</a></li>
+        <li class="breadcrumb-item"><span>Timeline</span></li>
+    </ul>
+}
+
+<div class="content-box">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="element-wrapper">
+                <div class="element-box">
+                    <form method="post" class="form-horizontal" action="" enctype="multipart/form-data">
+                        <h5 class="element-header">Notifications</h5>
+
+                        <div class="heading-elements">
+                            <a href="/wallet/default/MarkAllAsRead"><i class="fa fa-plus-square"></i><span>Mark All as Read</span></a>
+                        </div>
+
+                        @{
+                            foreach (ActivityNotification _notification in Model)                  
+                            {
+                                <div class="timeline-item" date-is='@_notification.CreatedOn'>
+                            
+                                    @if (_notification.IsRead)
+                                    {
+                                        <p>
+                                            @if (_notification.Type == "S/E Request")
+                                            {
+                                                <a href="/wallet/se/requests/details/@_notification.RelatedItemID"><h6 class="user-title">@_notification.Message</h6></a>
+                                            }
+                                            else if (_notification.Type == "Module Access Request")
+                                            {
+                                                <a href="/wallet/admin/accessrequests/details/@_notification.RelatedItemID"><h6 class="user-title">@_notification.Message</h6></a>
+                                            }
+                                            else if (_notification.Type == "Social Activity")
+                                            {
+                                                <a href="/rewardingbody/socialactivities/details/@_notification.RelatedItemID"><h6 class="user-title">@_notification.Message</h6></a>
+                                            }
+                                            else if (_notification.Type == "Accept Reward")
+                                            {
+                                                <a href="/wallet/wallets/seratiowallet/details/@_notification.RelatedItemID"><h6 class="user-title">@_notification.Message</h6></a>
+                                            }
+                                            else if (_notification.Type == "Wallet Transaction")
+                                            {
+                                                <a href="/wallet/wallets/seratiowallet/details/@_notification.RelatedItemID"><h6 class="user-title">@_notification.Message</h6></a>
+
+                                            }
+                                            else if (_notification.Type == "Retail Policy")
+                                            {
+                                                <a href="/wallet/retailend/retailpolicies/details/@_notification.RelatedItemID"><h6 class="user-title">@_notification.Message</h6></a>
+
+                                            }
+                                            else if (_notification.Type == "Accept Retail Policy Coin")
+                                            {
+                                                <a href="/wallet/wallets/seratiowallet/details/@_notification.RelatedItemID"><h6 class="user-title">@_notification.Type </h6></a>
+                                            }
+
+                                        </p>
+                                    }
+                                    else
+                                    {
+                                        <p>
+                                            <b>
+                                                @if (_notification.Type == "S/E Request")
+                                                {
+                                                    <a href="/wallet/se/requests/details/@_notification.RelatedItemID"><h6 class="user-title">@_notification.Message</h6></a>
+                                                }
+                                                else if (_notification.Type == "Module Access Request")
+                                                {
+                                                    <a href="/wallet/admin/accessrequests/details/@_notification.RelatedItemID"><h6 class="user-title">@_notification.Message</h6></a>
+                                                }
+                                                else if (_notification.Type == "Social Activity")
+                                                {
+                                                    <a href="/rewardingbody/socialactivities/details/@_notification.RelatedItemID"><h6 class="user-title">@_notification.Message</h6></a>
+                                                }
+                                                
+                                                else if (_notification.Type == "Accept Reward")
+                                                {
+                                                    <a href="/wallet/wallets/seratiowallet/details/@_notification.RelatedItemID"><h6 class="user-title">@_notification.Message</h6></a>
+                                                }
+                                                else if (_notification.Type == "Wallet Transaction")
+                                                {
+                                                    <a href="/wallet/wallets/seratiowallet/details/@_notification.RelatedItemID"><h6 class="user-title">@_notification.Message</h6></a>
+
+                                                }
+                                                else if (_notification.Type == "Retail Policy")
+                                                {
+                                                    <a href="/wallet/retailend/retailpolicies/details/@_notification.RelatedItemID"><h6 class="user-title">@_notification.Message</h6></a>
+                                                }
+                                                else if (_notification.Type == "Accept Retail Policy Coin")
+                                                {
+                                                    <a href="/wallet/wallets/seratiowallet/details/@_notification.RelatedItemID"><h6 class="user-title">@_notification.Type </h6></a>
+                                                }
+                                            </b>
+
+                                        </p>
+                                    }
+
+                                </div>
+                            }
+                        }
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

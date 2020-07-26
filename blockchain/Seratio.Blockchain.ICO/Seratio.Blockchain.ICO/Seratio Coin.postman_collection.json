@@ -1,0 +1,146 @@
+{
+	"id": "bca0a94e-79c5-ecb3-2cfe-d47702fde854",
+	"name": "Seratio Coin",
+	"description": "",
+	"order": [
+		"0217da4d-4b2f-1fa7-e2b7-7716f12ecfb8",
+		"2bcf4e08-09c5-c331-9c64-549c0e09d9c0",
+		"eec0acc3-9c6c-0107-581f-4ff027edb733"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1521271050623,
+	"owner": 0,
+	"public": false,
+	"requests": [
+		{
+			"id": "0217da4d-4b2f-1fa7-e2b7-7716f12ecfb8",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:57039/api/users/signup?type=Womens Coin",
+			"queryParams": [
+				{
+					"key": "type",
+					"value": "Womens Coin",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "bca0a94e-79c5-ecb3-2cfe-d47702fde854",
+			"data": [
+				{
+					"key": "Email",
+					"value": "savitha@markuplab.net",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "Password",
+					"value": "savitha",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "ConfirmPassword",
+					"value": "savitha",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"name": "User Signup",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1521271097779,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "2bcf4e08-09c5-c331-9c64-549c0e09d9c0",
+			"headers": "",
+			"headerData": [],
+			"url": "http://localhost:57039/api/users/profile?ID=2159",
+			"queryParams": [
+				{
+					"key": "ID",
+					"value": "2159",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "bca0a94e-79c5-ecb3-2cfe-d47702fde854",
+			"data": null,
+			"dataMode": "params",
+			"name": "User Profile",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1521271152498,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "eec0acc3-9c6c-0107-581f-4ff027edb733",
+			"headers": "",
+			"headerData": [],
+			"url": "http://localhost:57039/api/users/index?email=savitha@markuplab.net&password=savitha",
+			"queryParams": [
+				{
+					"key": "email",
+					"value": "savitha@markuplab.net",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "savitha",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "bca0a94e-79c5-ecb3-2cfe-d47702fde854",
+			"data": null,
+			"dataMode": "params",
+			"name": "User Login",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1521271283364,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		}
+	]
+}

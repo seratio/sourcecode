@@ -1,0 +1,76 @@
+﻿@model AcceptedSocialActivity
+
+@{
+    ViewBag.Title = "Reward History";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section JavaScript{
+    <script type="text/javascript">$(document).ready(function () { WebApp.Core.HighlightCurrentMenuItem('Reward History') });</script>
+}
+
+@{
+    string _daterange = Request.QueryString["daterange"];
+    {
+        if (_daterange == null)
+        {
+            _daterange = (!string.IsNullOrEmpty(Request.QueryString["start"]) ? Request.QueryString["start"] + " - " : "") + (!string.IsNullOrEmpty(Request.QueryString["end"]) ? Request.QueryString["end"] : "");
+        }
+    }
+}
+
+@section Breadcrumbs{
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/wallet/default/dashboard">Dashboard</a></li>
+        <li class="breadcrumb-item"><a href="/wallet/rewardingbody">Social Activity</a></li>
+        <li class="breadcrumb-item"><span>Reward History</span></li>
+    </ul>
+}
+
+<div class="content-box">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="element-wrapper">
+                <div class="element-box">
+                    <h5 class="element-header">Reward History</h5>
+                    <div class="heading-elements">
+                        @{
+                            if (AppManager.User.CanAccessRewardingBody)
+                            {
+                                <a href="/wallet/rewardingbody/default/index"><i class="fa fa-plus-square"></i><span>Issue Reward</span></a>
+                            }
+                        }
+
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table data-table table-hover" data-source="/wallet/rewardingbody/default/list?daterange=@Request.QueryString["daterange"]" data-key="3">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.UserID)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.ActivityID)
+                                    </th>
+
+                                    <th>
+                                        Reward
+                                    </th>
+
+
+                                    <th>
+                                        Time
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Description)
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

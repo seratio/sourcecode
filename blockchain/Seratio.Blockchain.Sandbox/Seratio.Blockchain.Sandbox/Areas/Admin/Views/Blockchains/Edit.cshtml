@@ -1,0 +1,79 @@
+﻿@model Blockchain
+
+@{
+    ViewBag.Title = "Edit Blockchain";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+@section JavaScript{
+    <script type="text/javascript">$(document).ready(function () { WebApp.Core.HighlightCurrentMenuItem('Blockchain') });</script>
+    <script src="/wallet/scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="/wallet/assets/plugins/bootstrap-toggle/bootstrap-toggle.min.js"></script>
+}
+
+@section CSS{
+    <link href="/wallet/assets/plugins/bootstrap-toggle/bootstrap-toggle.min.css" rel="stylesheet" />
+}
+
+@section Breadcrumbs{
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/wallet/default/dashboard">Dashboard</a></li>
+        <li class="breadcrumb-item"><a href="/wallet/admin/blockchains">Blockchains</a></li>
+        <li class="breadcrumb-item"><span>Edit Blockchain</span></li>
+    </ul>
+}
+
+<div class="content-box">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="element-wrapper">
+                <div class="element-box">
+                    <form method="post" class="form-horizontal" action="" enctype="multipart/form-data">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.AntiForgeryToken()
+                        <h5 class="element-header">Edit Blockchian</h5>
+                        <div class="heading-elements">
+                            <a href="/wallet/admin/blockchains"><i class="fa fa-plus-square"></i><span>Blockchains</span></a>
+                        </div>
+                        <div class="form-group">
+                            <label>@Html.DisplayNameFor(model => model.Name):</label>
+                            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @placeholder = "Please enter the Name", @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            <label>@Html.DisplayNameFor(model => model.Host):</label>
+                            @Html.EditorFor(model => model.Host, new { htmlAttributes = new { @placeholder = "Please enter the Host", @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Host, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            <label>@Html.DisplayNameFor(model => model.IsPrimaryNode):</label>
+                            @Html.EditorFor(model => model.IsPrimaryNode, new { htmlAttributes = new { @class = "form-control toggle-switch"} })
+                            @Html.ValidationMessageFor(model => model.IsPrimaryNode, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            <label>@Html.DisplayNameFor(model => model.IsActive):</label>
+                            @Html.EditorFor(model => model.IsActive, new { htmlAttributes = new {  @class = "form-control toggle-switch"} })
+                            @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            <label>@Html.DisplayNameFor(model => model.Comments):</label>
+                            @Html.TextAreaFor(model => model.Comments, new { @placeholder = "Please enter the Comments", @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Comments, "", new { @class = "text-danger" })
+                        </div>
+
+
+                        <div class="form-buttons-w text-right">
+                            <a href="/wallet/admin/blockchains/edit/@Model.ID" class="btn btn-default">Reset</a>
+                            <button class="btn btn-primary" type="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

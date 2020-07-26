@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:RootElement="http:///schemas/RootElement/_U7SaYB8nEeexbbSAK_wXPA/2" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xsi:schemaLocation="http:///schemas/RootElement/_U7SaYB8nEeexbbSAK_wXPA/2 solidity.profile.uml#_U7TBcB8nEeexbbSAK_wXPA">
+  <uml:Model xmi:id="_y4GqAB2TEee7EJcC_y10oA" name="RootElement">
+    <packagedElement xmi:type="uml:Actor" xmi:id="_BOJigB2UEee7EJcC_y10oA" name="Organization" isAbstract="true">
+      <generalization xmi:type="uml:Generalization" xmi:id="_KAUiwB2UEee7EJcC_y10oA" general="_C1qS4B2UEee7EJcC_y10oA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Actor" xmi:id="_C1qS4B2UEee7EJcC_y10oA" name="Entity" isAbstract="true"/>
+    <packagedElement xmi:type="uml:Actor" xmi:id="_IIdpQB2UEee7EJcC_y10oA" name="Individual" isAbstract="true">
+      <generalization xmi:type="uml:Generalization" xmi:id="_KkUAoB2UEee7EJcC_y10oA" general="_C1qS4B2UEee7EJcC_y10oA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_RJAcsB2UEee7EJcC_y10oA" memberEnd="_RJK0wB2UEee7EJcC_y10oA _RJLb0B2UEee7EJcC_y10oA">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_RJC48B2UEee7EJcC_y10oA" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_RJDgAB2UEee7EJcC_y10oA" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_RJK0wB2UEee7EJcC_y10oA" name="usecase1" type="_OwwL4B2UEee7EJcC_y10oA" association="_RJAcsB2UEee7EJcC_y10oA"/>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_RJLb0B2UEee7EJcC_y10oA" name="entity" type="_AakekB2WEee7EJcC_y10oA" association="_RJAcsB2UEee7EJcC_y10oA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_R0ebkB2UEee7EJcC_y10oA" memberEnd="_R0fCoh2UEee7EJcC_y10oA _R0fCox2UEee7EJcC_y10oA">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_R0fCoB2UEee7EJcC_y10oA" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_R0fCoR2UEee7EJcC_y10oA" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_R0fCoh2UEee7EJcC_y10oA" name="blockchain" type="_V9zHwB2cEee7EJcC_y10oA" association="_R0ebkB2UEee7EJcC_y10oA"/>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_R0fCox2UEee7EJcC_y10oA" name="usecase1" type="_OwwL4B2UEee7EJcC_y10oA" association="_R0ebkB2UEee7EJcC_y10oA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Actor" xmi:id="_AakekB2WEee7EJcC_y10oA" name="User">
+      <generalization xmi:type="uml:Generalization" xmi:id="_pjgKwB2WEee7EJcC_y10oA" general="_C1qS4B2UEee7EJcC_y10oA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Actor" xmi:id="_DFGLIB2WEee7EJcC_y10oA" name="Transaction Third Party">
+      <generalization xmi:type="uml:Generalization" xmi:id="_rBGKIB2WEee7EJcC_y10oA" general="_C1qS4B2UEee7EJcC_y10oA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_cYY0UB2WEee7EJcC_y10oA" memberEnd="_cYZbYB2WEee7EJcC_y10oA _cYZbYR2WEee7EJcC_y10oA">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_cYY0UR2WEee7EJcC_y10oA" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_cYY0Uh2WEee7EJcC_y10oA" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_cYZbYB2WEee7EJcC_y10oA" name="transact" type="_ftR-cB2UEee7EJcC_y10oA" association="_cYY0UB2WEee7EJcC_y10oA"/>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_cYZbYR2WEee7EJcC_y10oA" name="entity b" type="_DFGLIB2WEee7EJcC_y10oA" association="_cYY0UB2WEee7EJcC_y10oA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Abstraction" xmi:id="_QjJkUB2ZEee7EJcC_y10oA" name="implements" client="_y4GqAB2TEee7EJcC_y10oA _1EWeIB2eEee7EJcC_y10oA" supplier="_y4GqAB2TEee7EJcC_y10oA"/>
+    <packagedElement xmi:type="uml:Abstraction" xmi:id="_XKfScB2eEee7EJcC_y10oA" name="implements" client="_JrU-oB2eEee7EJcC_y10oA" supplier="_y4GqAB2TEee7EJcC_y10oA _FTdNMB2jEeeJzqSAOJnlgA"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_qmRgQB2fEee7EJcC_y10oA" memberEnd="_qmSuYR2fEee7EJcC_y10oA _qmSuYh2fEee7EJcC_y10oA">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_qmSHUB2fEee7EJcC_y10oA" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_qmSuYB2fEee7EJcC_y10oA" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_qmSuYR2fEee7EJcC_y10oA" name="assets" type="_1EWeIB2eEee7EJcC_y10oA" association="_qmRgQB2fEee7EJcC_y10oA"/>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_qmSuYh2fEee7EJcC_y10oA" name="transact" type="_ftR-cB2UEee7EJcC_y10oA" association="_qmRgQB2fEee7EJcC_y10oA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_u1suEB2fEee7EJcC_y10oA" memberEnd="_u1suEx2fEee7EJcC_y10oA _u1tVIB2fEee7EJcC_y10oA">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_u1suER2fEee7EJcC_y10oA" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_u1suEh2fEee7EJcC_y10oA" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_u1suEx2fEee7EJcC_y10oA" name="provenance" type="_JrU-oB2eEee7EJcC_y10oA" association="_u1suEB2fEee7EJcC_y10oA"/>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_u1tVIB2fEee7EJcC_y10oA" name="monitor" type="_i50y8B2UEee7EJcC_y10oA" association="_u1suEB2fEee7EJcC_y10oA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_xWOxIB2fEee7EJcC_y10oA" memberEnd="_xWPYMB2fEee7EJcC_y10oA _xWPYMR2fEee7EJcC_y10oA">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_xWOxIR2fEee7EJcC_y10oA" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_xWOxIh2fEee7EJcC_y10oA" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_xWPYMB2fEee7EJcC_y10oA" name="assets" type="_1EWeIB2eEee7EJcC_y10oA" association="_xWOxIB2fEee7EJcC_y10oA"/>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_xWPYMR2fEee7EJcC_y10oA" name="monitor" type="_i50y8B2UEee7EJcC_y10oA" association="_xWOxIB2fEee7EJcC_y10oA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_MUaugB2jEeeJzqSAOJnlgA" memberEnd="_MUbVkh2jEeeJzqSAOJnlgA _MUb8oB2jEeeJzqSAOJnlgA">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_MUbVkB2jEeeJzqSAOJnlgA" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_MUbVkR2jEeeJzqSAOJnlgA" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_MUbVkh2jEeeJzqSAOJnlgA" name="ssc" type="_V9zHwB2cEee7EJcC_y10oA" association="_MUaugB2jEeeJzqSAOJnlgA"/>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_MUb8oB2jEeeJzqSAOJnlgA" name="sapi oracle" type="_FTdNMB2jEeeJzqSAOJnlgA" association="_MUaugB2jEeeJzqSAOJnlgA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_UISTcB2jEeeJzqSAOJnlgA" name="Seratio Platform">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_qTd9MB2YEee7EJcC_y10oA" annotatedElement="_y4GqAB2TEee7EJcC_y10oA _1EWeIB2eEee7EJcC_y10oA">
+        <body>Linked to intangible value and sets of values</body>
+      </ownedComment>
+      <ownedComment xmi:type="uml:Comment" xmi:id="_Mhw9EB2aEee7EJcC_y10oA" annotatedElement="_V9zHwB2cEee7EJcC_y10oA">
+        <body>Seratio Smart Contracts deployed to Ethereum blockchain</body>
+      </ownedComment>
+      <packagedElement xmi:type="uml:Artifact" xmi:id="_yzpHIB2bEee7EJcC_y10oA" name="Financial Assets">
+        <generalization xmi:type="uml:Generalization" xmi:id="_8VhlsB2eEee7EJcC_y10oA" general="_1EWeIB2eEee7EJcC_y10oA"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:UseCase" xmi:id="_hjTr8B2UEee7EJcC_y10oA" name="Receive from Third Party">
+        <generalization xmi:type="uml:Generalization" xmi:id="_CJVi8B2VEee7EJcC_y10oA" general="_ftR-cB2UEee7EJcC_y10oA"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Actor" xmi:id="_FTdNMB2jEeeJzqSAOJnlgA" name="SAPI Oracle"/>
+      <packagedElement xmi:type="uml:UseCase" xmi:id="_e4x_YB2UEee7EJcC_y10oA" name="Send from User">
+        <generalization xmi:type="uml:Generalization" xmi:id="_BGe-0B2VEee7EJcC_y10oA" general="_ftR-cB2UEee7EJcC_y10oA"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Artifact" xmi:id="_1EWeIB2eEee7EJcC_y10oA" name="Assets" isAbstract="true" fileName=""/>
+      <packagedElement xmi:type="uml:UseCase" xmi:id="_ftR-cB2UEee7EJcC_y10oA" name="Transact" isAbstract="true"/>
+      <packagedElement xmi:type="uml:UseCase" xmi:id="_OwwL4B2UEee7EJcC_y10oA" name="Manage digital assets">
+        <include xmi:type="uml:Include" xmi:id="_F4i_oB2VEee7EJcC_y10oA" addition="_ftR-cB2UEee7EJcC_y10oA"/>
+        <include xmi:type="uml:Include" xmi:id="_V6OTgB2VEee7EJcC_y10oA" addition="_i50y8B2UEee7EJcC_y10oA"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:UseCase" xmi:id="_i50y8B2UEee7EJcC_y10oA" name="Monitor"/>
+      <packagedElement xmi:type="uml:Artifact" xmi:id="_JrU-oB2eEee7EJcC_y10oA" name="Provenance"/>
+      <packagedElement xmi:type="uml:Artifact" xmi:id="_5dbekB2bEee7EJcC_y10oA" name="Non Financial Assets">
+        <generalization xmi:type="uml:Generalization" xmi:id="__igfEB2eEee7EJcC_y10oA" general="_1EWeIB2eEee7EJcC_y10oA"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_8u32gB8iEeeZZpx89vcpgg" memberEnd="_8u9WEB8iEeeZZpx89vcpgg _8u99IB8iEeeZZpx89vcpgg">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_8u8H8B8iEeeZZpx89vcpgg" source="org.eclipse.papyrus">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_8u8vAB8iEeeZZpx89vcpgg" key="nature" value="UML_Nature"/>
+        </eAnnotations>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_8u99IB8iEeeZZpx89vcpgg" name="standardtoken" type="_2p1z8B8MEeeDxLX5mndEjA" association="_8u32gB8iEeeZZpx89vcpgg"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_Jm88MB8jEeeZZpx89vcpgg" memberEnd="_Jm-xYR8jEeeZZpx89vcpgg _Jm__gB8jEeeZZpx89vcpgg">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Jm-KUB8jEeeZZpx89vcpgg" source="org.eclipse.papyrus">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Jm-xYB8jEeeZZpx89vcpgg" key="nature" value="UML_Nature"/>
+        </eAnnotations>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_Jm__gB8jEeeZZpx89vcpgg" name="standardtoken" type="_2p1z8B8MEeeDxLX5mndEjA" association="_Jm88MB8jEeeZZpx89vcpgg"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_GvCFIB8pEeexbbSAK_wXPA" memberEnd="_GvD6UB8pEeexbbSAK_wXPA _GvFIcB8pEeexbbSAK_wXPA">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_GvDTQB8pEeexbbSAK_wXPA" source="org.eclipse.papyrus">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_GvDTQR8pEeexbbSAK_wXPA" key="nature" value="UML_Nature"/>
+        </eAnnotations>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_GvFIcB8pEeexbbSAK_wXPA" name="basictoken" type="_jRNuMB8TEeeDxLX5mndEjA" association="_GvCFIB8pEeexbbSAK_wXPA"/>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Actor" xmi:id="_PT-acB2kEeeJzqSAOJnlgA" name="Ethereum Blockchain"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_Uz3KkB2kEeeJzqSAOJnlgA" memberEnd="_Uz4YsB2kEeeJzqSAOJnlgA _Uz4YsR2kEeeJzqSAOJnlgA">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Uz3xoB2kEeeJzqSAOJnlgA" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Uz3xoR2kEeeJzqSAOJnlgA" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_Uz4YsB2kEeeJzqSAOJnlgA" name="ssc" type="_V9zHwB2cEee7EJcC_y10oA" association="_Uz3KkB2kEeeJzqSAOJnlgA"/>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_Uz4YsR2kEeeJzqSAOJnlgA" name="ethereum blockchain" type="_PT-acB2kEeeJzqSAOJnlgA" association="_Uz3KkB2kEeeJzqSAOJnlgA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Actor" xmi:id="_1wUc4B8KEeesG7ugRIqEcQ" name="Rewarding Body">
+      <generalization xmi:type="uml:Generalization" xmi:id="_4r75cB8KEeesG7ugRIqEcQ" general="_DFGLIB2WEee7EJcC_y10oA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Actor" xmi:id="_TQpHMB8LEeesG7ugRIqEcQ" name="Retailer">
+      <generalization xmi:type="uml:Generalization" xmi:id="_VNo_YB8LEeesG7ugRIqEcQ" general="_DFGLIB2WEee7EJcC_y10oA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Component" xmi:id="_h7An0B_lEeeCb-BfYgJRtw" name="Ethereum Blockchain">
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_Kj33YB_nEeeCb-BfYgJRtw" name="Port1" type="_nbt3UB_lEeeCb-BfYgJRtw" aggregation="composite"/>
+      <ownedConnector xmi:type="uml:Connector" xmi:id="_96PA4B_nEeeCb-BfYgJRtw" name="Connector1">
+        <end xmi:type="uml:ConnectorEnd" xmi:id="_96SEMB_nEeeCb-BfYgJRtw" role="_6sZL4B_nEeeCb-BfYgJRtw"/>
+        <end xmi:type="uml:ConnectorEnd" xmi:id="_96SEMR_nEeeCb-BfYgJRtw" role="_Kj33YB_nEeeCb-BfYgJRtw"/>
+      </ownedConnector>
+      <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_qkaGkB_lEeeCb-BfYgJRtw" client="_h7An0B_lEeeCb-BfYgJRtw" supplier="_nbt3UB_lEeeCb-BfYgJRtw" contract="_nbt3UB_lEeeCb-BfYgJRtw"/>
+      <packagedElement xmi:type="uml:Component" xmi:id="_V9zHwB2cEee7EJcC_y10oA" name="Seratio Smart Contracts">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_P_q-UB8OEeeDxLX5mndEjA" annotatedElement="_V9zHwB2cEee7EJcC_y10oA">
+          <body>Open Zeppeling best practices are followed to make sure secure smart contracts are coded in solidity language. More information: 
+https://openzeppelin.org/</body>
+        </ownedComment>
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_6sZL4B_nEeeCb-BfYgJRtw" name="Port1" type="_nbt3UB_lEeeCb-BfYgJRtw" aggregation="composite"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_qW734B8MEeeDxLX5mndEjA" name="ERC20"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_1JMgkB8MEeeDxLX5mndEjA" name="SafeMath"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_2p1z8B8MEeeDxLX5mndEjA" name="StandardToken">
+          <generalization xmi:type="uml:Generalization" xmi:id="_4hbnsB8MEeeDxLX5mndEjA" general="_1JMgkB8MEeeDxLX5mndEjA"/>
+          <generalization xmi:type="uml:Generalization" xmi:id="_5q2t4B8MEeeDxLX5mndEjA" general="_qW734B8MEeeDxLX5mndEjA"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_8u9WEB8iEeeZZpx89vcpgg" name="balances" visibility="private" type="_aod2EB8bEeeDxLX5mndEjA" aggregation="composite" association="_8u32gB8iEeeZZpx89vcpgg"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_Jm-xYR8jEeeZZpx89vcpgg" name="allowed" visibility="private" type="_o4U8IB8dEeeDxLX5mndEjA" aggregation="composite" association="_Jm88MB8jEeeZZpx89vcpgg"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_VDRn0B8eEeeDxLX5mndEjA" name="transfer">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_gpKF0B8eEeeDxLX5mndEjA" name="_to" type="_g9sW8B8UEeeDxLX5mndEjA"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_hXAqUB8eEeeDxLX5mndEjA" name="_value" type="_nk24MB8UEeeDxLX5mndEjA"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_ja84AB8eEeeDxLX5mndEjA" name="success" type="_rP3l0B8eEeeDxLX5mndEjA" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_VoWDwB8eEeeDxLX5mndEjA" name="transferFrom" visibility="public">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_1u6-oB8eEeeDxLX5mndEjA" name="_from" type="_g9sW8B8UEeeDxLX5mndEjA"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_4nUvIB8eEeeDxLX5mndEjA" name="_to" type="_g9sW8B8UEeeDxLX5mndEjA"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_6LLukB8eEeeDxLX5mndEjA" name="_value" type="_nk24MB8UEeeDxLX5mndEjA"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_7yylkB8eEeeDxLX5mndEjA" name="sucess" type="_rP3l0B8eEeeDxLX5mndEjA" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_V4194B8eEeeDxLX5mndEjA" name="balanceOf" visibility="public">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_JLK78B8fEeeDxLX5mndEjA" name="_owner" type="_g9sW8B8UEeeDxLX5mndEjA"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_KzQUEB8fEeeDxLX5mndEjA" name="balance" type="_nk24MB8UEeeDxLX5mndEjA" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_WJPxYB8eEeeDxLX5mndEjA" name="approve">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_VbMjIB8fEeeDxLX5mndEjA" name="_spender" type="_g9sW8B8UEeeDxLX5mndEjA"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_WwMnMB8fEeeDxLX5mndEjA" name="_value" type="_nk24MB8UEeeDxLX5mndEjA"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_Y5ZvYB8fEeeDxLX5mndEjA" name="success" type="_rP3l0B8eEeeDxLX5mndEjA" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_WXlvYB8eEeeDxLX5mndEjA" name="allowance">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_dfV_wB8fEeeDxLX5mndEjA" name="_owner" type="_g9sW8B8UEeeDxLX5mndEjA"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_fEHlMB8fEeeDxLX5mndEjA" name="_spender" type="_g9sW8B8UEeeDxLX5mndEjA"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_hB8j0B8fEeeDxLX5mndEjA" name="remaining" type="_nk24MB8UEeeDxLX5mndEjA" direction="return"/>
+          </ownedOperation>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_JBeSkB8NEeeDxLX5mndEjA" name="SeratioCoin" isAbstract="true">
+          <generalization xmi:type="uml:Generalization" xmi:id="_odU1cB8NEeeDxLX5mndEjA" general="_jRNuMB8TEeeDxLX5mndEjA"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_gofYcB8TEeeDxLX5mndEjA" name="ERC20Basic"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_jRNuMB8TEeeDxLX5mndEjA" name="BasicToken">
+          <generalization xmi:type="uml:Generalization" xmi:id="_k6KB8B8TEeeDxLX5mndEjA" general="_gofYcB8TEeeDxLX5mndEjA"/>
+          <generalization xmi:type="uml:Generalization" xmi:id="_l_iVoB8TEeeDxLX5mndEjA" general="_1JMgkB8MEeeDxLX5mndEjA"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_GvD6UB8pEeexbbSAK_wXPA" name="balances" visibility="private" type="_aod2EB8bEeeDxLX5mndEjA" aggregation="composite" association="_GvCFIB8pEeexbbSAK_wXPA"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_9wU7MB8cEeeDxLX5mndEjA" name="transfer">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_FYYRsB8dEeeDxLX5mndEjA" name="_to" type="_g9sW8B8UEeeDxLX5mndEjA"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_HXPyIB8dEeeDxLX5mndEjA" name="_value" type="_nk24MB8UEeeDxLX5mndEjA"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_MnxQkB8dEeeDxLX5mndEjA" name="balanceOf">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_SXLDYB8dEeeDxLX5mndEjA" name="_owner" type="_g9sW8B8UEeeDxLX5mndEjA"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_XzLZEB8dEeeDxLX5mndEjA" name="balance" type="_nk24MB8UEeeDxLX5mndEjA" direction="return"/>
+          </ownedOperation>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_8CmkMB8TEeeDxLX5mndEjA" name="PrimitiveTypes">
+          <nestedClassifier xmi:type="uml:PrimitiveType" xmi:id="_g9sW8B8UEeeDxLX5mndEjA" name="address"/>
+          <nestedClassifier xmi:type="uml:PrimitiveType" xmi:id="_nk24MB8UEeeDxLX5mndEjA" name="uint"/>
+          <nestedClassifier xmi:type="uml:PrimitiveType" xmi:id="_rP3l0B8eEeeDxLX5mndEjA" name="bool"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_8scV8B8UEeeDxLX5mndEjA" name="mapping" isAbstract="true">
+          <ownedTemplateSignature xmi:type="uml:RedefinableTemplateSignature" xmi:id="_sFiYoB8VEeeDxLX5mndEjA" name="RedefinableTemplateSignature1" parameter="_UCT24B8aEeeDxLX5mndEjA _vW5CYB8aEeeDxLX5mndEjA">
+            <ownedParameter xmi:type="uml:ClassifierTemplateParameter" xmi:id="_UCT24B8aEeeDxLX5mndEjA" parameteredElement="_Vg-0UB8aEeeDxLX5mndEjA">
+              <ownedParameteredElement xmi:type="uml:DataType" xmi:id="_Vg-0UB8aEeeDxLX5mndEjA" name="indexType" templateParameter="_UCT24B8aEeeDxLX5mndEjA"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:ClassifierTemplateParameter" xmi:id="_vW5CYB8aEeeDxLX5mndEjA" parameteredElement="_xYcDYB8aEeeDxLX5mndEjA">
+              <ownedParameteredElement xmi:type="uml:DataType" xmi:id="_xYcDYB8aEeeDxLX5mndEjA" name="valueType" templateParameter="_vW5CYB8aEeeDxLX5mndEjA"/>
+            </ownedParameter>
+          </ownedTemplateSignature>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_2OCgYB8aEeeDxLX5mndEjA" name="index" type="_Vg-0UB8aEeeDxLX5mndEjA"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_M1cyIB8bEeeDxLX5mndEjA" name="value" type="_xYcDYB8aEeeDxLX5mndEjA"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_aod2EB8bEeeDxLX5mndEjA" name="mapping(address=>uint)" visibility="public">
+          <templateBinding xmi:type="uml:TemplateBinding" xmi:id="_zoMDAB8bEeeDxLX5mndEjA" signature="_sFiYoB8VEeeDxLX5mndEjA">
+            <parameterSubstitution xmi:type="uml:TemplateParameterSubstitution" xmi:id="_84E6AB8bEeeDxLX5mndEjA" actual="_g9sW8B8UEeeDxLX5mndEjA" formal="_UCT24B8aEeeDxLX5mndEjA"/>
+            <parameterSubstitution xmi:type="uml:TemplateParameterSubstitution" xmi:id="_DCZuQB8cEeeDxLX5mndEjA" actual="_nk24MB8UEeeDxLX5mndEjA" formal="_vW5CYB8aEeeDxLX5mndEjA"/>
+          </templateBinding>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_o4U8IB8dEeeDxLX5mndEjA" name="mapping(address=>mapping(address=>uint))">
+          <templateBinding xmi:type="uml:TemplateBinding" xmi:id="_2p2yUB8dEeeDxLX5mndEjA" signature="_sFiYoB8VEeeDxLX5mndEjA">
+            <parameterSubstitution xmi:type="uml:TemplateParameterSubstitution" xmi:id="_7GfVsB8dEeeDxLX5mndEjA" actual="_g9sW8B8UEeeDxLX5mndEjA" formal="_UCT24B8aEeeDxLX5mndEjA"/>
+            <parameterSubstitution xmi:type="uml:TemplateParameterSubstitution" xmi:id="_-YBX4B8dEeeDxLX5mndEjA" actual="_aod2EB8bEeeDxLX5mndEjA" formal="_vW5CYB8aEeeDxLX5mndEjA"/>
+          </templateBinding>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_dgh2EB8gEeeDxLX5mndEjA" name="MuslimCoin">
+          <generalization xmi:type="uml:Generalization" xmi:id="_jLyvwB8gEeeDxLX5mndEjA" general="_JBeSkB8NEeeDxLX5mndEjA"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_gp1wYB8gEeeDxLX5mndEjA" name="CareGiversCoin">
+          <generalization xmi:type="uml:Generalization" xmi:id="_jyrwoB8gEeeDxLX5mndEjA" general="_JBeSkB8NEeeDxLX5mndEjA"/>
+        </packagedElement>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Component" xmi:id="_lIURUB_lEeeCb-BfYgJRtw" name="Seratio Website Server">
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_NCqOAB_nEeeCb-BfYgJRtw" name="Port1" type="_nbt3UB_lEeeCb-BfYgJRtw" aggregation="composite"/>
+      <ownedConnector xmi:type="uml:Connector" xmi:id="_QuCMMB_qEeeCb-BfYgJRtw" name="Connector1">
+        <end xmi:type="uml:ConnectorEnd" xmi:id="_QuCzQB_qEeeCb-BfYgJRtw" role="_si_9YB_pEeeCb-BfYgJRtw"/>
+        <end xmi:type="uml:ConnectorEnd" xmi:id="_QuCzQR_qEeeCb-BfYgJRtw" role="_tdRNQB_pEeeCb-BfYgJRtw"/>
+      </ownedConnector>
+      <ownedConnector xmi:type="uml:Connector" xmi:id="_-T7L4B_qEeeCb-BfYgJRtw" name="Connector2">
+        <end xmi:type="uml:ConnectorEnd" xmi:id="_-T7L4R_qEeeCb-BfYgJRtw" role="_0k0pUB_qEeeCb-BfYgJRtw"/>
+        <end xmi:type="uml:ConnectorEnd" xmi:id="_-T7y8B_qEeeCb-BfYgJRtw" role="_NCqOAB_nEeeCb-BfYgJRtw"/>
+      </ownedConnector>
+      <nestedClassifier xmi:type="uml:Interface" xmi:id="_H4ztYB_pEeeCb-BfYgJRtw" name="Seratio API"/>
+      <packagedElement xmi:type="uml:Usage" xmi:id="_rb4hIB_lEeeCb-BfYgJRtw" client="_lIURUB_lEeeCb-BfYgJRtw" supplier="_nbt3UB_lEeeCb-BfYgJRtw"/>
+      <packagedElement xmi:type="uml:Component" xmi:id="_ztoNgB_oEeeCb-BfYgJRtw" name="Wallet Application">
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_si_9YB_pEeeCb-BfYgJRtw" name="Port1" type="_H4ztYB_pEeeCb-BfYgJRtw" aggregation="composite"/>
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_0k0pUB_qEeeCb-BfYgJRtw" name="Port2" type="_nbt3UB_lEeeCb-BfYgJRtw" aggregation="composite"/>
+        <packagedElement xmi:type="uml:Usage" xmi:id="_q5-xIB_pEeeCb-BfYgJRtw" client="_ztoNgB_oEeeCb-BfYgJRtw" supplier="_H4ztYB_pEeeCb-BfYgJRtw"/>
+        <packagedElement xmi:type="uml:Component" xmi:id="_y-wjEB_tEeeCb-BfYgJRtw" name="QR Code Lib"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Component" xmi:id="_AafhsB_pEeeCb-BfYgJRtw" name="Social Core">
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_tdRNQB_pEeeCb-BfYgJRtw" name="Port1" type="_H4ztYB_pEeeCb-BfYgJRtw" aggregation="composite"/>
+        <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_mKrwcB_pEeeCb-BfYgJRtw" client="_AafhsB_pEeeCb-BfYgJRtw" supplier="_H4ztYB_pEeeCb-BfYgJRtw" contract="_H4ztYB_pEeeCb-BfYgJRtw"/>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_nbt3UB_lEeeCb-BfYgJRtw" name="Web3"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_yfkUYB_nEeeCb-BfYgJRtw" client="_NCqOAB_nEeeCb-BfYgJRtw" supplier="_Kj33YB_nEeeCb-BfYgJRtw"/>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_yi-tcB8mEeexbbSAK_wXPA">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_fLdpsB8nEeexbbSAK_wXPA" source="PapyrusVersion">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_fLdpsR8nEeexbbSAK_wXPA" key="Version" value="0.0.3"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_fLdpsh8nEeexbbSAK_wXPA" key="Comment" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_fLdpsx8nEeexbbSAK_wXPA" key="Copyright" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_fLdptB8nEeexbbSAK_wXPA" key="Date" value="2017-04-11"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_fLdptR8nEeexbbSAK_wXPA" key="Author" value=""/>
+      </eAnnotations>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_yjBJsB8mEeexbbSAK_wXPA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="solidity.profile.uml#_U7TBcB8nEeexbbSAK_wXPA"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="solidity.profile.uml#_I0h5YB8mEeeZZpx89vcpgg"/>
+    </profileApplication>
+  </uml:Model>
+  <RootElement:constant xmi:id="_gjpkoB8nEeexbbSAK_wXPA" base_Parameter="_KzQUEB8fEeeDxLX5mndEjA"/>
+  <RootElement:constant xmi:id="_oXSgEB8nEeexbbSAK_wXPA" base_Parameter="_hB8j0B8fEeeDxLX5mndEjA"/>
+  <RootElement:constant xmi:id="_vOUCQB8nEeexbbSAK_wXPA" base_Parameter="_XzLZEB8dEeeDxLX5mndEjA"/>
+</xmi:XMI>

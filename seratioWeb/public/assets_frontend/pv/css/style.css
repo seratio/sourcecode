@@ -1,0 +1,32 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,600);
+body{margin:0 auto;background: url(../images/bg.jpg) top center no-repeat #525252}
+h1,h2,h3,h4,h5,h6,p{margin:0;padding:0}
+a{color:#fff;text-decoration:none}
+a:hover{color:#ccc;text-decoration:none}
+.clear{clear:both}
+/* top */
+
+.main{width:1200px; padding-top:80px; margin:0 auto}
+.top{width:1200px;}
+.logo{width:260px;height:40px; text-align:center; padding-bottom:20px;}
+.logo2{width:260px;height:40px; text-align:center;}
+.topright{width:260px;height:40px;float:right; padding:0px 20px 30px 0px;}
+.topleft{width:260px;height:40px;float:left; }
+.maintext{width:505px;float:left;text-shadow: 2px 2px #000; font:800 60px/70px 'Open Sans', sans-serif; padding:120px 0px 0px 55px; color:#fff; }
+.maintext2{width:505px;float:left;text-shadow: 2px 2px #000; font:800 30px/40px 'Open Sans', sans-serif; padding:10px 0px 0px 55px; color:#fff; }
+.middlebg{ margin-top:235px; padding:35px 75px 30px 75px;}
+.middletext{ text-align:center; font:400 24px/32px 'Open Sans', sans-serif; color:#fff;}
+.left{width:285px; float:left;}
+.right{width:285px; float:left;}
+.leftcontent{ text-align:center; text-shadow: 2px 2px #000; font:400 20px/22px 'Open Sans', sans-serif; color:#e8b21b; text-align:center; padding:20px 50px 20px 50px; }
+.rightcontent{ text-align:center; text-shadow: 2px 2px #000; font:400 20px/22px 'Open Sans', sans-serif; color:#e8b21b; text-align:center; padding:20px 50px 20px 50px; }
+.bottommiddle{width:630px; float:left; text-align:center; padding-top:10px;}
+.date{ text-align:center; text-shadow: 2px 2px #000; font:800 40px/42px 'Open Sans', sans-serif; color:#fff; padding:0px 0px 10px 0px; }
+.number{ text-align:center; text-shadow: 2px 2px #000; font:800 24px/28px 'Open Sans', sans-serif; color:#fff; padding:0px 0px 20px 0px; }
+.pv{ text-align:center; text-shadow: 2px 2px #000; font:800 24px/28px 'Open Sans', sans-serif; color:#e8b21b; padding:0px 0px 20px 0px; }
+.bottom{width:1100px; float:left; padding:0px 50px 10px 50px;}
+.bottomthumb{ width:178px; height:85px; padding:2px; float:left; border: 1px solid #24394c; font:800 14px/18px 'Open Sans', sans-serif; color:#fff; background:url(/../assets_frontend/pv/images/bottom_thumb.png) repeat}
+.bottomthumbtext{ width:182px; float:left; font:800 16px/35px 'Open Sans', sans-serif; color:#ffe200; text-align:center; }
+.mr45{ margin-right:45px;}
+.pr{ padding:5px 5px 0px 5px;}
+.social{ width:34px; height:34px; float:left;}

@@ -1,0 +1,119 @@
+﻿@model  ModuleAccessRequest
+@{
+    ViewBag.Title = "Module Access Request Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section JavaScript{
+    <script type="text/javascript">$(document).ready(function () { WebApp.Core.HighlightCurrentMenuItem('Access Requests') });</script>
+}
+@section CSS{
+
+}
+@section Breadcrumbs{
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/wallet/default/dashboard">Dashboard</a></li>
+        <li class="breadcrumb-item"><span>Module Access Request Details</span></li>
+    </ul>
+}
+
+<div class="content-box">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="element-wrapper">
+                <div class="element-box">
+                    <h5 class="element-header">Module Access Request Details</h5>
+                    
+                    <div class="heading-elements">
+                    </div>
+                    <div class="heading-elements">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="main">
+                                <table class="table table-lightborder">
+                                    <tbody>
+                                        <tr>
+                                            <td style="width: 20%;">Sender</td>
+                                            <td style="width: 10%;">:</td>
+                                            <td style="width: 70%;"> @(Model.User.NickName != null ? Model.User.NickName :  Model.User.Email)</td>
+                                        </tr>                               
+                                        <tr>
+                                            <td>@Html.DisplayNameFor(model => model.Message)</td>
+                                            <td>:</td>
+                                            <td> @(Html.Raw(Model.Message != null ? Model.Message.Replace("\r\n", "</br>") : ""))</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Status</td>
+                                            <td>:</td>
+                                            @{
+
+                                                switch (Model.IsApproved)
+                                                {
+                                                    case null:
+                                                        <td><span class="label label-primary">Pending</span></td>
+                                                        break;
+                                                    case false:
+                                                        <td><span class="label label-danger">Rejected</span></td>
+                                                        break;
+                                                    case true:
+                                                        <td><span class="label label-success">Approved</span></td>
+                                                        break;
+                                                }
+                                            }
+                                        </tr>
+                                        @{
+                                            if (Model.IsApproved == true)
+                                            {
+                                                if (Model.IsApproved == true)
+                                                {
+                                                    <tr>
+                                                        <td>Approved On</td>
+                                                        <td>:</td>
+                                                        <td>@Model.ApprovedOn.ToString()</td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td style="width: 20%;">Processed By</td>
+                                                        <td style="width: 10%;">:</td>
+                                                        <td style="width: 70%;">Administrator</td>
+                                                    </tr>
+                                                }
+                                                else
+                                                {
+                                                    <tr>
+                                                        <td>Rejected On</td>
+                                                        <td>:</td>
+                                                        <td>@Model.RejectedOn.ToString()</td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td style="width: 20%;">Processed By</td>
+                                                        <td style="width: 10%;">:</td>
+
+                                                        <td style="width: 70%;">Administrator</td>
+                                                    </tr>
+                                                }
+                                            }
+
+                                        }
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    @{
+                        if (Model.IsApproved == null && AppManager.User.IsSuperAdmin)
+                        {
+                            <hr />
+                            <div class="text-center">
+                                <a href="/wallet/admin/accessrequests/approve/@Model.ID" class="btn btn-primary confirm mr5" data-confirm="Are you sure you want to approve this Request?">Approve <i class="fa fa-thumbs-up"></i> </a>
+                                <a href="/wallet/admin/accessrequests/reject/@Model.ID" class="btn btn-danger confirm mr5" data-confirm="Are you sure you want to reject this Request?">Reject <i class="fa fa-thumbs-down"></i> </a>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,196 @@
+﻿@model Seratio.Blockchain.Sandbox.Models.RetailPolicy
+
+@{
+    ViewBag.Title = "Edit Policy";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section JavaScript{
+    <script type="text/javascript">$(document).ready(function () { WebApp.Core.HighlightCurrentMenuItem('Manage Policies') });</script>
+}
+
+@section Breadcrumbs{
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/wallet/default/dashboard">Dashboard</a></li>
+        <li class="breadcrumb-item"><a href="/wallet/retailend/default">Retail End</a></li>
+        <li class="breadcrumb-item"><span>Edit Policy</span></li>
+    </ul>
+}
+
+<div class="content-box">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="element-wrapper">
+                <div class="element-box">
+                    <form method="post" class="form-horizontal retail-policy-form" action="" enctype="multipart/form-data">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.AntiForgeryToken()
+                        <h5 class="element-header">Edit Retail Policy</h5>
+
+                        <div class="heading-elements">
+                            <a href="/wallet/retailend/retailpolicies"><i class="fa fa-tasks"></i><span>All Policies</span></a>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label>@Html.DisplayNameFor(model => model.Name):</label>
+                            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @placeholder = "Please enter the Name", @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            <label>@Html.DisplayNameFor(model => model.PolicyType):</label>
+                            <select class="form-control select" id="PolicyType" name="PolicyType">
+                                <option value="SE" @(Model.PolicyType == "SE" ? "Selected" : string.Empty)>SE</option>
+                                <option value="Coin" @(Model.PolicyType == "Coin" ? "Selected" : string.Empty)>Coin</option>
+                            </select>
+                        </div>
+
+
+                        @{
+                            if (Model.PolicyType == "SE")
+                            {
+                                <div class="scorecriteria">
+                                    <div class="form-group">
+                                        <label>@Html.DisplayNameFor(model => model.MinSESCore):</label>
+                                        @Html.EditorFor(model => model.MinSESCore, new { htmlAttributes = new { @placeholder = "Please enter the Minimum SE Score", @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.MinSESCore, "", new { @class = "text-danger" })
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label>@Html.DisplayNameFor(model => model.MaxSEScore):</label>
+                                        @Html.EditorFor(model => model.MaxSEScore, new { htmlAttributes = new { @placeholder = "Please enter the Maximum SE Score", @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.MaxSEScore, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="coincriteria" hidden="hidden">
+
+                                    <div class="form-group">
+                                        <label>@Html.DisplayNameFor(model => model.RequiredCoinID):</label>
+                                        <br />
+                                        <input name="RequiredCoinID" id="RequiredCoinID" type="text" placeholder="Please select a Coin" style="width:950px" class="form-control autocomplete" data-source="/wallet/admin/coins/GetCoins" data-select2-default="@(Json.Encode(Model.SelectedRequiredCoin))">
+                                        @Html.ValidationMessage("RequiredCoinID", "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label>@Html.DisplayNameFor(model => model.RequiredCoinQty):</label>
+                                        @Html.EditorFor(model => model.RequiredCoinQty, new { htmlAttributes = new { @placeholder = "Please enter the Required Coin Quantity", @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.RequiredCoinQty, "", new { @class = "text-danger" })
+                                    </div>
+
+                                </div>
+
+                            }
+
+
+                            else
+                            {
+                                <div class="scorecriteria" hidden="hidden">
+                                    <div class="form-group">
+                                        <label>@Html.DisplayNameFor(model => model.MinSESCore):</label>
+                                        @Html.EditorFor(model => model.MinSESCore, new { htmlAttributes = new { @placeholder = "Please enter the Minimum SE Score", @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.MinSESCore, "", new { @class = "text-danger" })
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>@Html.DisplayNameFor(model => model.MaxSEScore):</label>
+                                        @Html.EditorFor(model => model.MaxSEScore, new { htmlAttributes = new { @placeholder = "Please enter the Maximum SE Score", @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.MaxSEScore, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="coincriteria">
+                                    <div class="form-group">
+                                        <label>@Html.DisplayNameFor(model => model.RequiredCoinID):</label>
+                                        <br />
+                                        <input name="RequiredCoinID" id="RequiredCoinID" type="text" placeholder="Please select a Coin" style="width:950px" class="form-control autocomplete" data-source="/wallet/admin/coins/GetCoins" data-select2-default="@(Json.Encode(Model.SelectedRequiredCoin))">
+                                        @Html.ValidationMessage("RequiredCoinID", "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label>@Html.DisplayNameFor(model => model.RequiredCoinQty):</label>
+                                        @Html.EditorFor(model => model.RequiredCoinQty, new { htmlAttributes = new { @placeholder = "Please enter the Required Coin Quantity", @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.RequiredCoinQty, "", new { @class = "text-danger" })
+                                    </div>
+
+                                </div>
+
+
+
+                            }
+                        }
+
+                        <div class="form-group">
+                            <label>@Html.DisplayNameFor(model => model.DiscountMode):</label>
+                            <select class="form-control select" id="DiscountMode" name="DiscountMode">
+                                <option value="Amount" @(Model.DiscountMode == "Amount" ? "Selected" : string.Empty)>Amount</option>
+                                <option value="Discount" @(Model.DiscountMode == "Discount" ? "Selected" : string.Empty)>Discount (%)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>@Html.DisplayNameFor(model => model.DiscountValue):</label>
+                            @Html.EditorFor(model => model.DiscountValue, new { htmlAttributes = new { @placeholder = "Please enter the Discount Value", @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.DiscountValue, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            <label>@Html.DisplayNameFor(model => model.Category):</label>
+                            <select name="Category" class="form-control select auto-select" data-selected="@Model.Category">
+                                <option value="Not Applicable">Not Applicable</option>
+                                <option value="Appliances">Appliances</option>
+                                <option value="Arts & Crafts">Arts & Crafts</option>
+                                <option value="Auto Parts & Accessories">Auto Parts & Accessories</option>
+                                <option value="Babies & Toddlers">Babies & Toddlers</option>
+                                <option value="Bags & Travel Accessories">Bags & Travel Accessories</option>
+                                <option value="Beauty & Grooming">Beauty & Grooming</option>
+                                <option value="Books & Magazines">Books & Magazines</option>
+                                <option value="Cameras & Camcorders">Cameras & Camcorders</option>
+                                <option value="Cell Phones & Accessories">Cell Phones & Accessories</option>
+                                <option value="Computer & Electronics">Computer & Electronics</option>
+                                <option value="Computers">Computers</option>
+                                <option value="Electronics">Electronics</option>
+                                <option value="Entertainment, Recreation & Travel">Entertainment, Recreation & Travel</option>
+                                <option value="Event Ticket, Leisure & Travel">Event Ticket, Leisure & Travel</option>
+                                <option value="Fan shop">Fan shop</option>
+                                <option value="Festive Day Sales & Deals">Festive Day Sales & Deals</option>
+                                <option value="Flowers, Gifts & Party Supplies">Flowers, Gifts & Party Supplies</option>
+                                <option value="Grocery & Gourmet">Grocery & Gourmet</option>
+                                <option value="Health & Wellness">Health & Wellness</option>
+                                <option value="Home & Household">Home & Household</option>
+                                <option value="Home improvement & Tools">Home improvement & Tools</option>
+                                <option value="Indoor Living">Indoor Living</option>
+                                <option value="Jewelry & Watches">Jewelry & Watches</option>
+                                <option value="Men & Boys">Men & Boys</option>
+                                <option value="Music, Movies & TV Shows">Music, Movies & TV Shows</option>
+                                <option value="Musical Instruments">Musical Instruments</option>
+                                <option value="Office & School">Office & School</option>
+                                <option value="Outdoor Living">Outdoor Living</option>
+                                <option value="Pet Products">Pet Products</option>
+                                <option value="Services">Services</option>
+                                <option value="Software">Software</option>
+                                <option value="Sports & Fitness Products">Sports & Fitness Products</option>
+                                <option value="Today's Deals">Today's Deals</option>
+                                <option value="Toys & Games">Toys & Games</option>
+                                <option value="Uncategorized">Uncategorized</option>
+                                <option value="Video & Computer Games">Video & Computer Games</option>
+                                <option value="Women & Girls">Women & Girls</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>@Html.DisplayNameFor(model => model.Description):</label>
+                            @Html.TextAreaFor(model => model.Description, 5, 75, new { @placeholder = "Please enter the Description", @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-buttons-w text-right">
+                            <a href="/wallet/retailend/retailpolicies/edit/@Model.ID" class="btn btn-default">Reset</a>
+                            <button class="btn btn-primary" type="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

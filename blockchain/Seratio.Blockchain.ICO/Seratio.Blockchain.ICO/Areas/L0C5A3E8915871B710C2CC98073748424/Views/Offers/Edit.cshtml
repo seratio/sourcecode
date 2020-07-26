@@ -1,0 +1,72 @@
+﻿@model Offer
+
+@{
+    ViewBag.Title = "Edit Early Bird Offer";
+    Layout = "~/Areas/L0C5A3E8915871B710C2CC98073748424/Views/Shared/_Layout.cshtml";
+}
+
+@section JavaScript{
+    <script type="text/javascript">$(document).ready(function () { WebApp.Core.HighlightCurrentMenuItem('Early Bird Offers') });</script>
+}
+
+
+<div class="page-header">
+    <div class="page-header-content">
+        <div class="page-title">
+            <h4><span class="text-semibold">Edit Early Bird Offer</span></h4>
+        </div>
+        <div class="heading-elements">
+            <div class="heading-btn-group">
+                <a class="btn btn-link btn-float has-text" href="/L0C5A3E8915871B710C2CC98073748424/offers"><i class="icon-bag"></i><span>All Early Bird Offers</span></a>
+            </div>
+        </div>
+    </div>
+    <div class="breadcrumb-line">
+        <ul class="breadcrumb">
+            <li><a href="/L0C5A3E8915871B710C2CC98073748424/default/dashboard"><i class="icon-home4 position-left"></i>Dashboard</a></li>
+            <li><a href="/L0C5A3E8915871B710C2CC98073748424/offers"> Early Bird Offers</a></li>
+            <li class="active">Edit Early Bird Offer</li>
+        </ul>
+    </div>
+</div>
+<div class="content">
+    <form method="post" class="form-horizontal" action="" enctype="multipart/form-data" autocomplete="off">
+        <div class="panel panel-flat">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">@Html.DisplayNameFor(model => model.Title):</label>
+                            <div class="col-lg-7">
+                                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @placeholder="Please enter the Title", @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">@Html.DisplayNameFor(model => model.Discount):</label>
+                            <div class="col-lg-7">
+                                @Html.EditorFor(model => model.Discount, new { htmlAttributes = new { @placeholder="Please enter the Discount", @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Discount, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">@Html.DisplayNameFor(model => model.LastDate):</label>
+                            <div class="col-lg-7">
+                                @Html.EditorFor(model => model.LastDate, new { htmlAttributes = new { @placeholder="Please enter the LastDate", @class = "form-control pickadate" } })
+                                @Html.ValidationMessageFor(model => model.LastDate, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="text-right">
+                    <a href="/L0C5A3E8915871B710C2CC98073748424/offers/edit/@Model.ID" class="btn btn-default">Reset<i class="icon-reload-alt position-right"></i> </a>
+                    <button type="submit" class="btn btn-primary">Submit <i class="icon-arrow-right14 position-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

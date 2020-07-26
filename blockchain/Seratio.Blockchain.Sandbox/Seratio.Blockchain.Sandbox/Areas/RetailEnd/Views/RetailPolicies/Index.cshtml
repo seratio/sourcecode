@@ -1,0 +1,68 @@
+﻿@model Seratio.Blockchain.Sandbox.Models.RetailPolicy
+
+    @{
+        ViewBag.Title = "Manage Policies";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    @section JavaScript{
+        <script type="text/javascript">$(document).ready(function () { WebApp.Core.HighlightCurrentMenuItem('Manage Policies') });</script>
+    }
+
+    @{
+        string _daterange = Request.QueryString["daterange"];
+        {
+            if (_daterange == null)
+            {
+                _daterange = (!string.IsNullOrEmpty(Request.QueryString["start"]) ? Request.QueryString["start"] + " - " : "") + (!string.IsNullOrEmpty(Request.QueryString["end"]) ? Request.QueryString["end"] : "");
+            }
+        }
+    }
+
+    @section Breadcrumbs{
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/wallet/default/dashboard">Dashboard</a></li>
+            <li class="breadcrumb-item"><a href="/wallet/retailend/default">Retail End</a></li>
+            <li class="breadcrumb-item"><span>Manage Policies</span></li>
+        </ul>
+    }
+
+    <div class="content-box">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="element-wrapper">
+                    <div class="element-box">
+                        <h5 class="element-header">Manage Policies</h5>
+                        <div class="heading-elements">
+                            <a href="/wallet/retailend/retailpolicies/create"><i class="fa fa-plus-square"></i><span>Create Policy</span></a>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table data-table table-hover" data-source="/wallet/retailend/retailpolicies/list?daterange=@Request.QueryString["daterange"]" data-key="5">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Name)
+                                        </th>
+                                        <th>
+                                            Voucher Code
+                                        </th>
+                                        <th>
+                                            Processed By
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Category)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.LastUpdatedOn)
+                                        </th>
+                                        <th class="no-sort">Options</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,66 @@
+﻿@model Seratio.Blockchain.Sandbox.Models.WalletTransaction
+
+@{
+    ViewBag.Title = "Payment Requests";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section JavaScript{
+    <script type="text/javascript">$(document).ready(function () { WebApp.Core.HighlightCurrentMenuItem('Payment Requests') });</script>
+    <script type="text/javascript" src="/wallet/assets/plugins/tooltipster/dist/js/tooltipster.bundle.min.js"></script>
+}
+
+@section CSS
+{
+    <link rel="stylesheet" type="text/css" href="/wallet/assets/plugins/tooltipster/dist/css/tooltipster.bundle.min.css" />
+}
+
+
+@section Breadcrumbs{
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/wallet/default/dashboard">Dashboard</a></li>
+        <li class="breadcrumb-item"><a href="/wallet/wallets/seratiowallet">Seratio Wallet</a></li>
+        <li class="breadcrumb-item">Payment Requests</li>
+    </ul>
+}
+<div class="content-box">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="element-wrapper">
+                <div class="element-box">
+                    <h5 class="element-header">Payment Requests</h5>
+                    <div class="heading-elements">
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table data-table table-hover" data-source="/wallet/retailend/paymentrequests/list/?daterange=@Request.QueryString["daterange"]" data-key="4">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Amount
+                                    </th>
+                                    <th>
+                                        From
+                                    </th>
+                                    <th>
+                                        To
+                                    </th>
+
+                                    <th>
+                                        Time
+                                    </th>
+
+                                    <th class="no-sort">
+                                        Options
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

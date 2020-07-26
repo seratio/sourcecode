@@ -1,0 +1,95 @@
+﻿@model Seratio.Platform.ICO.Models.Wallet
+
+@{
+    ViewBag.Title = "Wallet Details";
+    Layout = "~/Areas/L0C5A3E8915871B710C2CC98073748424/Views/Shared/_Layout.cshtml";
+}
+
+
+@section JavaScript{
+    <script type="text/javascript">$(document).ready(function () { WebApp.Core.HighlightCurrentMenuItem('Wallets') });</script>
+}
+@section CSS{
+
+}
+<div class="page-header">
+    <div class="page-header-content">
+        <div class="page-title">
+            <h4><span class="text-semibold">Wallet Details</span></h4>
+        </div>
+        <div class="heading-elements">
+            <div class="heading-btn-group">
+                @*<a class="btn btn-link btn-float has-text" href="/L0C5A3E8915871B710C2CC98073748424/wallets/edit/@Model.ID"><i class="icon-pencil7 text-primary"></i><span>Edit</span></a>
+                <a class="btn btn-link btn-float has-text confirm mr5" title="Delete" data-confirm="Are you sure you want to delete this Wallet?" href="/L0C5A3E8915871B710C2CC98073748424/wallets/delete/@Model.ID"><i class="icon-cancel-square text-primary"></i><span>Delete</span></a>*@
+            </div>
+        </div>
+    </div>
+    <div class="breadcrumb-line">
+        <ul class="breadcrumb">
+            <li><a href="/L0C5A3E8915871B710C2CC98073748424/default/dashboard"><i class="icon-home4 position-left"></i>Dashboard</a></li>
+            <li><a href="/L0C5A3E8915871B710C2CC98073748424/wallets/index"> Wallets</a></li>
+            <li class="active">Wallet Details</li>
+        </ul>
+    </div>
+</div>
+<div class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-flat">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="main">
+                                <table class="table table-borderless table-xs content-group-sm">
+                                    <tbody>
+                                        <tr>
+                                            <td class="col-lg-2">@Html.DisplayNameFor(model => model.UserID)</td>
+                                            <td class="col-lg-1">:</td>
+                                            <td> @($"{Model.User.Email}")</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col-lg-2">@Html.DisplayNameFor(model => model.Address)</td>
+                                            <td class="col-lg-1">:</td>
+                                            <td> @Model.Address</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col-lg-2">@Html.DisplayNameFor(model => model.WalletFile)</td>
+                                            <td class="col-lg-1">:</td>
+                                            <td><a href="/uploads/@Model.WalletFile" target="_blank">Download</a></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td class="col-lg-2">@Html.DisplayNameFor(model => model.WalletHTMLFile)</td>
+                                            <td class="col-lg-1">:</td>
+                                            <td><a href="/uploads/@Model.WalletHTMLFile" target="_blank">Download</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col-lg-2">@Html.DisplayNameFor(model => model.WalletImageFile)</td>
+                                            <td class="col-lg-1">:</td>
+                                            <td><a href="/uploads/@Model.WalletImageFile" target="_blank">Download</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col-lg-2">@Html.DisplayNameFor(model => model.CreatedByID)</td>
+                                            <td class="col-lg-1">:</td>
+                                            <td> @Model.Administrator.Name</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col-lg-2">@Html.DisplayNameFor(model => model.CreatedOn)</td>
+                                        <td class="col-lg-1">:</td>
+                                        <td> @Model.CreatedOn</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col-lg-2">@Html.DisplayNameFor(model => model.LastUpdatedOn)</td>
+                                        <td class="col-lg-1">:</td>
+                                        <td> @Model.LastUpdatedOn.ToString()</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

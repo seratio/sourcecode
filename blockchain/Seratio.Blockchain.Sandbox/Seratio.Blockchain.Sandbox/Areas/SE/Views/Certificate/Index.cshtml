@@ -1,0 +1,103 @@
+﻿@model Data
+@{
+    ViewBag.Title = "My S/E Score";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section JavaScript{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.7.0/bootstrap-slider.min.js"></script>
+    <script type="text/javascript">$(document).ready(function () { WebApp.Core.HighlightCurrentMenuItem('My S/E Certificate') });</script>
+}
+@section CSS{
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.7.0/css/bootstrap-slider.min.css">
+    <style type="text/css">
+        body {
+            color: #333;
+            font-size: 14px;
+            line-height: 1.42857;
+        }
+
+        .value_bg {
+            background: rgba(0, 0, 0, 0) url("/wallet/assets/images/persoanl_value.png") no-repeat scroll center top;
+            /*height: 125px;*/
+            font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+            padding: 217px 0 50px 5px;
+        }
+
+        .corners1 {
+            border: 1px solid #134363;
+            border-radius: 7px;
+            height: 58px;
+            width: 160px;
+        }
+
+        .value_text {
+            color: #134363;
+            font: 700 42px/55px "Open Sans",sans-serif;
+            text-align: center;
+        }
+
+        p {
+            margin: 0 0 10px;
+        }
+
+        a {
+            color: #3c8dbc;
+        }
+    </style>
+}
+@section Breadcrumbs{
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/wallet/default/dashboard">Dashboard</a></li>
+        <li class="breadcrumb-item"><span>My S/E Certificate</span></li>
+    </ul>
+}
+
+<div class="content-box">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="element-wrapper">
+                <div class="element-box">
+                    <h5 class="element-header">My S/E Certificate</h5>
+                    <div class="heading-elements">
+                        <a href="/wallet/se/certificate/calculate"><i class="fa fa-plus-square"></i><span>Calculate Your S/E Score</span></a>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            
+                            @{
+                                if (Model != null)
+                                {
+                                    <div style="border: 5px ridge #ffd800; padding: 5px 0 25px;">
+                                        <div class="value_bg" align="center" style="overflow: hidden;">
+                                            <div class="corners1" style="overflow: hidden;">
+                                                <div class="value_text" style="overflow: hidden;">
+                                                    @{
+                                                        //  User _user = ViewBag.User;
+                                                        // @(_user.SE != null ? _user.SE : (decimal) Model.pv)
+                                                        @((decimal) Model.pv)
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p style="font-size: 125%; font-weight: bold;" align="center"><a href="http://seratio.com">www.seratio.com</a>
+                                        </p>
+                                        <p style="font-size: 125%; font-weight: bold;" align="center"> @(string.IsNullOrEmpty(AppManager.User.NickName) ? AppManager.User.Email : AppManager.User.NickName)</p>
+                                        @*<p style="font-size:125%; font-weight:bold;" align="center"> @Model.email </p>*@
+                                        <p style="font-size: 125%; font-weight: bold;" align="center">  @Model.updated_at</p>
+                                        <p style="font-size: 80%; font-weight: bold;" align="center"> The ratio is how much social value you create compared to your financial value</p>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="text-center">
+                                        You do not have your Social Earnings calculated. Please proceed to Calculate your Social Earnings now.
+                                    </div>
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

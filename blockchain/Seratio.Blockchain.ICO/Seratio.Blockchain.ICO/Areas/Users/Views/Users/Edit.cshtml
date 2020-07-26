@@ -1,0 +1,101 @@
+﻿@model User
+@{
+    ViewBag.Title = "Profile edit";
+    Layout = "~/Areas/Users//Views/Shared/_Layout.cshtml";
+}
+
+@section JavaScript{
+    <script type="text/javascript">$(document).ready(function () { WebApp.Core.HighlightCurrentMenuItem('Dashboard') });</script>
+    <script src="~/Areas/Users/Assets/js/remodal.min.js" type="text/javascript"></script>
+}
+
+@section CSS{
+}
+
+@section Breadcrumbs{
+
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/users/default/dashboard"><i class="icon-home4 position-left"></i>Dashboard</a></li>
+        <li class="breadcrumb-item active">Profile Edit</li>
+    </ul>
+}
+
+<div class="content-box">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="element-wrapper">
+                <div class="element-box">
+                    <form method="post" class="form-horizontal" action="" enctype="multipart/form-data">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.AntiForgeryToken()
+                        <h5 class="element-header">Profile edit</h5>
+
+                        <div class="form-group">
+                            <label>@Html.DisplayNameFor(model => model.Title):</label>
+                            <select name="Title" class="form-control">
+                                <option value="">(None)</option>
+                                <option value="Mr" @(Model.Title == "Mr" ? "Selected" : string.Empty)>Mr</option>
+                                <option value="Mrs"  @(Model.Title == "Mrs" ? "Selected" : string.Empty)>Mrs</option>
+                                <option value="Miss"  @(Model.Title == "Miss" ? "Selected" : string.Empty)>Miss</option>
+                                <option value="Ms"  @(Model.Title == "Ms" ? "Selected" : string.Empty)>Ms</option>
+                                <option value="Dr"  @(Model.Title == "Dr" ? "Selected" : string.Empty)>Dr</option>
+                                <option value="Prof"  @(Model.Title == "Prof" ? "Selected" : string.Empty)>Prof</option>
+                                <option value="Rev"  @(Model.Title == "Rev" ? "Selected" : string.Empty)>Rev</option>
+                            </select>
+                            @*@Html.EditorFor(model => model.Title, new { htmlAttributes = new { @placeholder = "Please enter the Title", @class = "form-control" } })*@
+                            @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            <label>@Html.DisplayNameFor(model => model.FirstName):</label>
+                            @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @placeholder = "Please enter the First Name", @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label>@Html.DisplayNameFor(model => model.LastName):</label>
+                            @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @placeholder = "Please enter the Last Name", @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label>@Html.DisplayNameFor(model => model.Email):</label>
+                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @placeholder = "Please enter the Email", @class = "form-control", @readonly = "readonly" } })
+                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label>Gender:</label>
+                            <select name="Gender" id="Status" class="form-control select">
+                                <option value="" @(Model.Gender == "" ? "selected" : string.Empty)>--Select--</option>
+                                <option value="Male" @(Model.Gender == "Male" ? "selected" : string.Empty)>Male</option>
+                                <option value="Female" @(Model.Gender == "Female" ? "selected" : string.Empty)>Female</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>@Html.DisplayNameFor(model => model.Position):</label>
+                            @Html.EditorFor(model => model.Position, new { htmlAttributes = new { @placeholder = "Please enter the Position", @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Position, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label>@Html.DisplayNameFor(model => model.Organization):</label>
+                            @Html.EditorFor(model => model.Organization, new { htmlAttributes = new { @placeholder = "Please enter the Organization", @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Organization, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label>@Html.DisplayNameFor(model => model.Phone):</label>
+                            @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @placeholder = "Please enter the Phone", @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label>@Html.DisplayNameFor(model => model.PostalCode):</label>
+                            @Html.EditorFor(model => model.PostalCode, new { htmlAttributes = new { @placeholder = "Please enter the Postal Address", @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.PostalCode, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-buttons-w text-right">
+                            <a href="/users/users/edit/@Model.ID" class="btn btn-default">Reset</a>
+                            <button class="btn btn-primary" type="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

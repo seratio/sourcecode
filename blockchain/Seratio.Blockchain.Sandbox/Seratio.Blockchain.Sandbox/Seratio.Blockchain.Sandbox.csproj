@@ -1,0 +1,1239 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.4\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.4\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{99E68C0A-568F-4FEB-9651-84EE9F6A4EBB}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Seratio.Blockchain.Sandbox</RootNamespace>
+    <AssemblyName>Seratio.Blockchain.Sandbox</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <Use64BitIISExpress />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.1.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
+      <HintPath>..\packages\Portable.BouncyCastle.1.8.1.3\lib\net40\BouncyCastle.Crypto.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Common.Logging, Version=3.3.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Common.Logging.3.3.1\lib\net40\Common.Logging.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Common.Logging.Core, Version=3.3.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Common.Logging.Core.3.3.1\lib\net40\Common.Logging.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EdjCase.JsonRpc.Client, Version=1.3.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EdjCase.JsonRpc.Client.1.3.1\lib\portable45-net45+win8+wpa81\EdjCase.JsonRpc.Client.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EdjCase.JsonRpc.Core, Version=1.3.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EdjCase.JsonRpc.Core.1.3.1\lib\portable45-net45+win8+wpa81\EdjCase.JsonRpc.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Excel, Version=2.1.2.3, Culture=neutral, PublicKeyToken=93517dbe6a4012fa, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExcelDataReader.2.1.2.3\lib\net45\Excel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Google.Authenticator, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoogleAuthenticator.1.2.1\lib\net45\Google.Authenticator.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.4\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NBitcoin, Version=4.0.0.51, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NBitcoin.4.0.0.51\lib\netstandard1.1\NBitcoin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nethereum.Portable, Version=1.0.6559.21110, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Nethereum.Portable.2.2.2\lib\portable45-net45+win8+wpa81\Nethereum.Portable.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="QRCoder, Version=1.2.9.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\QRCoder.1.2.9\lib\net40\QRCoder.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Quartz, Version=2.6.1.0, Culture=neutral, PublicKeyToken=f6b8c98a402cc8a4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Quartz.2.6.1\lib\net40\Quartz.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="TuesPechkin, Version=2.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\TuesPechkin.2.1.1\lib\net20\TuesPechkin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="TuesPechkin.Wkhtmltox.Win32, Version=0.12.2.1, Culture=neutral, processorArchitecture=x86">
+      <HintPath>..\packages\TuesPechkin.Wkhtmltox.Win32.0.12.2.1\lib\net20\TuesPechkin.Wkhtmltox.Win32.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\QRCoder.1.2.9\lib\net40\UnityEngine.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\bower_components\bootstrap-daterangepicker\daterangepicker.css" />
+    <Content Include="Assets\bower_components\bootstrap-daterangepicker\daterangepicker.js" />
+    <Content Include="Assets\bower_components\bootstrap-validator\dist\validator.min.js" />
+    <Content Include="Assets\bower_components\bootstrap\js\dist\tab.js" />
+    <Content Include="Assets\bower_components\bootstrap\js\dist\util.js" />
+    <Content Include="Assets\bower_components\chart.js\dist\Chart.min.js" />
+    <Content Include="Assets\bower_components\ckeditor\ckeditor.js" />
+    <Content Include="Assets\bower_components\datatables.net-bs\css\dataTables.bootstrap.min.css" />
+    <Content Include="Assets\bower_components\datatables.net-bs\js\dataTables.bootstrap.min.js" />
+    <Content Include="Assets\bower_components\datatables.net\js\jquery.dataTables.min.js" />
+    <Content Include="Assets\bower_components\dropzone\dist\dropzone.css" />
+    <Content Include="Assets\bower_components\dropzone\dist\dropzone.js" />
+    <Content Include="Assets\bower_components\editable-table\mindmup-editabletable.js" />
+    <Content Include="Assets\bower_components\fullcalendar\dist\fullcalendar.min.css" />
+    <Content Include="Assets\bower_components\fullcalendar\dist\fullcalendar.min.js" />
+    <Content Include="Assets\bower_components\jquery\dist\jquery.min.js" />
+    <Content Include="Assets\bower_components\moment\moment.js" />
+    <Content Include="Assets\bower_components\perfect-scrollbar\css\perfect-scrollbar.min.css" />
+    <Content Include="Assets\bower_components\perfect-scrollbar\js\perfect-scrollbar.jquery.min.js" />
+    <Content Include="Assets\bower_components\select2\dist\css\select2.min.css" />
+    <Content Include="Assets\bower_components\select2\dist\js\select2.full.min.js" />
+    <Content Include="Assets\css\animate.min.css" />
+    <Content Include="Assets\css\bootstrap.css" />
+    <Content Include="Assets\css\bootstrap.min.css" />
+    <Content Include="Assets\css\components.css" />
+    <Content Include="Assets\css\core.css" />
+    <Content Include="Assets\css\custom-old.css" />
+    <Content Include="Assets\css\custom.css" />
+    <Content Include="Assets\css\icons.css" />
+    <Content Include="Assets\css\icons\fontawesome\fonts\fontawesome-webfontd41d.eot" />
+    <Content Include="Assets\css\icons\fontawesome\fonts\fontawesome-webfonte0a5.eot" />
+    <Content Include="Assets\css\icons\fontawesome\fonts\fontawesome-webfonte0a5.svg" />
+    <Content Include="Assets\css\icons\fontawesome\fonts\fontawesome-webfonte0a5.ttf" />
+    <Content Include="Assets\css\icons\fontawesome\fonts\fontawesome-webfonte0a5.woff" />
+    <Content Include="Assets\css\icons\fontawesome\fonts\fontawesome-webfonte0a5.woff2" />
+    <Content Include="Assets\css\icons\fontawesome\styles.min.css" />
+    <Content Include="Assets\css\icons\glyphicons\glyphicons-halflings-regular.eot" />
+    <Content Include="Assets\css\icons\glyphicons\glyphicons-halflings-regular.svg" />
+    <Content Include="Assets\css\icons\glyphicons\glyphicons-halflings-regular.ttf" />
+    <Content Include="Assets\css\icons\glyphicons\glyphicons-halflings-regular.woff" />
+    <Content Include="Assets\css\icons\glyphicons\glyphicons-halflings-regular.woff2" />
+    <Content Include="Assets\css\icons\glyphicons\glyphicons-halflings-regulard41d.eot" />
+    <Content Include="Assets\css\icons\icomoon\fonts\icomoond41d.eot" />
+    <Content Include="Assets\css\icons\icomoon\fonts\icomoone627.eot" />
+    <Content Include="Assets\css\icons\icomoon\fonts\icomoone627.svg" />
+    <Content Include="Assets\css\icons\icomoon\fonts\icomoone627.ttf" />
+    <Content Include="Assets\css\icons\icomoon\fonts\icomoone627.woff" />
+    <Content Include="Assets\css\icons\icomoon\styles.css" />
+    <Content Include="Assets\css\jquery.tagit.css" />
+    <Content Include="Assets\css\main-backup-1-5-2018.css" />
+    <Content Include="Assets\css\main.css" />
+    <Content Include="Assets\css\menu.css" />
+    <Content Include="Assets\css\pages.css" />
+    <Content Include="Assets\css\papaerwalletfavicon.png" />
+    <Content Include="Assets\css\paperwalletstyles.css" />
+    <Content Include="Assets\css\print-1.css" />
+    <Content Include="Assets\css\responsive.css" />
+    <Content Include="Assets\css\select2-spinner.gif" />
+    <Content Include="Assets\css\select2.css" />
+    <Content Include="Assets\css\select2.png" />
+    <Content Include="Assets\css\styles.css" />
+    <Content Include="Assets\css\tagit.ui-zendesk.css" />
+    <Content Include="Assets\css\theme.css" />
+    <Content Include="Assets\fonts\fontawesome-webfont3295.svg" />
+    <Content Include="Assets\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Assets\fonts\ioniconsaa26.svg" />
+    <Content Include="Assets\fonts\Material-Design-Iconic-Fontf700.svg" />
+    <Content Include="Assets\fonts\Simple-Line-Icons4c82.svg" />
+    <Content Include="Assets\fonts\themify9f24.svg" />
+    <Content Include="Assets\fonts\typicons.svg" />
+    <Content Include="Assets\fonts\weathericons-regular-webfont.svg" />
+    <Content Include="Assets\icon_fonts_assets\batch-icons\fonts\batch35c7.svg" />
+    <Content Include="Assets\icon_fonts_assets\batch-icons\style.css" />
+    <Content Include="Assets\icon_fonts_assets\dashicons\dashicons.css" />
+    <Content Include="Assets\icon_fonts_assets\dripicons\fonts\dripicons-v2.svg" />
+    <Content Include="Assets\icon_fonts_assets\dripicons\webfont.css" />
+    <Content Include="Assets\icon_fonts_assets\eightyshades\fonts\eightyshades.svg" />
+    <Content Include="Assets\icon_fonts_assets\eightyshades\style.css" />
+    <Content Include="Assets\icon_fonts_assets\entypo\fonts\entypo3645.svg" />
+    <Content Include="Assets\icon_fonts_assets\entypo\style.css" />
+    <Content Include="Assets\icon_fonts_assets\font-awesome\css\font-awesome.min.css" />
+    <Content Include="Assets\icon_fonts_assets\font-awesome\fonts\fontawesome-webfont3e6e.svg" />
+    <Content Include="Assets\icon_fonts_assets\foundation-icon-font\foundation-icons.css" />
+    <Content Include="Assets\icon_fonts_assets\foundation-icon-font\foundation-icons.svg" />
+    <Content Include="Assets\icon_fonts_assets\metrize-icons\fonts\Metrize-Icons.svg" />
+    <Content Include="Assets\icon_fonts_assets\metrize-icons\style.css" />
+    <Content Include="Assets\icon_fonts_assets\picons-social\fonts\picons-social1994.svg" />
+    <Content Include="Assets\icon_fonts_assets\picons-social\style.css" />
+    <Content Include="Assets\icon_fonts_assets\picons-thin\fonts\piconsthin91a6.svg" />
+    <Content Include="Assets\icon_fonts_assets\picons-thin\style.css" />
+    <Content Include="Assets\icon_fonts_assets\simple-line-icons\css\simple-line-icons.css" />
+    <Content Include="Assets\icon_fonts_assets\simple-line-icons\fonts\Simple-Line-Iconsb26c.svg" />
+    <Content Include="Assets\icon_fonts_assets\themefy\fonts\themify9f24.svg" />
+    <Content Include="Assets\icon_fonts_assets\themefy\themify-icons.css" />
+    <Content Include="Assets\icon_fonts_assets\typicons\typicons.css" />
+    <Content Include="Assets\icon_fonts_assets\typicons\typicons.svg" />
+    <Content Include="Assets\icon_fonts_assets\weather-icons\css\weather-icons.min.css" />
+    <Content Include="Assets\icon_fonts_assets\weather-icons\font\weathericons-regular-webfont.svg" />
+    <Content Include="Assets\images\agsquare.png" />
+    <Content Include="Assets\images\avatar_unknown.png" />
+    <Content Include="Assets\images\avatar.jpg" />
+    <Content Include="Assets\images\avatar.png" />
+    <Content Include="Assets\images\avatar1.jpg" />
+    <Content Include="Assets\images\coin-icon.png" />
+    <Content Include="Assets\images\defaultCoin.png" />
+    <Content Include="Assets\images\error.png" />
+    <Content Include="Assets\images\favicon.png" />
+    <Content Include="Assets\images\gb.png" />
+    <Content Include="Assets\images\kw.png" />
+    <Content Include="Assets\images\logo-small.png" />
+    <Content Include="Assets\images\logo1.png" />
+    <Content Include="Assets\images\multiple-arrow.png" />
+    <Content Include="Assets\images\page_under_construction.jpg" />
+    <Content Include="Assets\images\pattern.png" />
+    <Content Include="Assets\images\persoanl_value.png" />
+    <Content Include="Assets\images\portlet-remove-icon-white.png" />
+    <Content Include="Assets\images\qr.png" />
+    <Content Include="Assets\images\rc.png" />
+    <Content Include="Assets\images\right.png" />
+    <Content Include="Assets\images\under-construction.png" />
+    <Content Include="Assets\js\app.js" />
+    <Content Include="Assets\js\bootstrap.min.js" />
+    <Content Include="Assets\js\detect.js" />
+    <Content Include="Assets\js\fastclick.js" />
+    <Content Include="Assets\js\jquery.app.js" />
+    <Content Include="Assets\js\jquery.blockUI.js" />
+    <Content Include="Assets\js\jquery.cookie.min.js" />
+    <Content Include="Assets\js\jquery.core.js" />
+    <Content Include="Assets\js\jquery.livequery.js" />
+    <Content Include="Assets\js\jquery.min.js" />
+    <Content Include="Assets\js\jquery.nicescroll.js" />
+    <Content Include="Assets\js\jquery.scrollTo.min.js" />
+    <Content Include="Assets\js\jquery.slimscroll.js" />
+    <Content Include="Assets\js\main.js" />
+    <Content Include="Assets\js\modernizr.min.js" />
+    <Content Include="Assets\js\moment.min.js" />
+    <Content Include="Assets\js\scripts.js" />
+    <Content Include="Assets\js\select2.js" />
+    <Content Include="Assets\js\tag-it.min.js" />
+    <Content Include="Assets\js\waves.js" />
+    <Content Include="Assets\js\wow.min.js" />
+    <Content Include="Assets\plugins\animate.less\animate.min.css" />
+    <Content Include="Assets\plugins\autocomplete\countries.js" />
+    <Content Include="Assets\plugins\autocomplete\jquery.autocomplete.min.js" />
+    <Content Include="Assets\plugins\autocomplete\jquery.mockjax.js" />
+    <Content Include="Assets\plugins\autoNumeric\autoNumeric.js" />
+    <Content Include="Assets\plugins\awesomplete\awesomplete.css" />
+    <Content Include="Assets\plugins\awesomplete\awesomplete.min.js" />
+    <Content Include="Assets\plugins\awesomplete\bootstrap3-typeahead.min.js" />
+    <Content Include="Assets\plugins\blockies\blockies.min.js" />
+    <Content Include="Assets\plugins\bootstrap-datepicker\dist\css\bootstrap-datepicker.min.css" />
+    <Content Include="Assets\plugins\bootstrap-datepicker\dist\js\bootstrap-datepicker.min.js" />
+    <Content Include="Assets\plugins\bootstrap-daterangepicker\daterangepicker-bs2.css" />
+    <Content Include="Assets\plugins\bootstrap-daterangepicker\daterangepicker-bs3.css" />
+    <Content Include="Assets\plugins\bootstrap-daterangepicker\daterangepicker.css" />
+    <Content Include="Assets\plugins\bootstrap-daterangepicker\daterangepicker.js" />
+    <Content Include="Assets\plugins\bootstrap-daterangepicker\examples.html" />
+    <Content Include="Assets\plugins\bootstrap-daterangepicker\moment.js" />
+    <Content Include="Assets\plugins\bootstrap-daterangepicker\moment.min.js" />
+    <Content Include="Assets\plugins\bootstrap-daterangepicker\README.md" />
+    <Content Include="Assets\plugins\bootstrap-filestyle\src\bootstrap-filestyle.min.js" />
+    <Content Include="Assets\plugins\bootstrap-inputmask\bootstrap-inputmask.min.js" />
+    <Content Include="Assets\plugins\bootstrap-maxlength\bootstrap-maxlength.min.js" />
+    <Content Include="Assets\plugins\bootstrap-select\dist\css\bootstrap-select.min.css" />
+    <Content Include="Assets\plugins\bootstrap-select\dist\js\bootstrap-select.min.js" />
+    <Content Include="Assets\plugins\bootstrap-slider\bootstrap-slider.css" />
+    <Content Include="Assets\plugins\bootstrap-slider\bootstrap-slider.js" />
+    <Content Include="Assets\plugins\bootstrap-table\dist\bootstrap-table.min.css" />
+    <Content Include="Assets\plugins\bootstrap-table\dist\bootstrap-table.min.js" />
+    <Content Include="Assets\plugins\bootstrap-tagsinput\dist\bootstrap-tagsinput.css" />
+    <Content Include="Assets\plugins\bootstrap-tagsinput\dist\bootstrap-tagsinput.min.js" />
+    <Content Include="Assets\plugins\bootstrap-toastr\README.md" />
+    <Content Include="Assets\plugins\bootstrap-toastr\toastr-icon.png" />
+    <Content Include="Assets\plugins\bootstrap-toastr\toastr.css" />
+    <Content Include="Assets\plugins\bootstrap-toastr\toastr.js" />
+    <Content Include="Assets\plugins\bootstrap-toastr\toastr.less" />
+    <Content Include="Assets\plugins\bootstrap-toastr\toastr.min.css" />
+    <Content Include="Assets\plugins\bootstrap-toastr\toastr.min.js" />
+    <Content Include="Assets\plugins\bootstrap-toastr\toastr.min.js.map" />
+    <Content Include="Assets\plugins\bootstrap-toggle\bootstrap-toggle.min.css" />
+    <Content Include="Assets\plugins\bootstrap-toggle\bootstrap-toggle.min.js" />
+    <Content Include="Assets\plugins\bootstrap-touchspin\dist\jquery.bootstrap-touchspin.min.css" />
+    <Content Include="Assets\plugins\bootstrap-touchspin\dist\jquery.bootstrap-touchspin.min.js" />
+    <Content Include="Assets\plugins\bootstrapvalidator\dist\js\bootstrapValidator.js" />
+    <Content Include="Assets\plugins\buttons\hover_dropdown.min.js" />
+    <Content Include="Assets\plugins\buttons\ladda.min.js" />
+    <Content Include="Assets\plugins\buttons\spin.min.js" />
+    <Content Include="Assets\plugins\c3\c3.min.css" />
+    <Content Include="Assets\plugins\c3\c3.min.js" />
+    <Content Include="Assets\plugins\Chart.js\Chart.min.js" />
+    <Content Include="Assets\plugins\chartist\dist\chartist.min.css" />
+    <Content Include="Assets\plugins\chartist\dist\chartist.min.js" />
+    <Content Include="Assets\plugins\clockpicker\dist\jquery-clockpicker.min.css" />
+    <Content Include="Assets\plugins\clockpicker\dist\jquery-clockpicker.min.js" />
+    <Content Include="Assets\plugins\countdown\dest\jquery.countdown.min.js" />
+    <Content Include="Assets\plugins\counterup\jquery.counterup.min.js" />
+    <Content Include="Assets\plugins\cropper\cropper.css" />
+    <Content Include="Assets\plugins\cropper\cropper.min.js" />
+    <Content Include="Assets\plugins\custombox\dist\custombox.min.css" />
+    <Content Include="Assets\plugins\custombox\dist\custombox.min.js" />
+    <Content Include="Assets\plugins\custombox\dist\legacy.min.js" />
+    <Content Include="Assets\plugins\d3\d3.min.js" />
+    <Content Include="Assets\plugins\datatables\buttons.bootstrap.min.css" />
+    <Content Include="Assets\plugins\datatables\buttons.bootstrap.min.js" />
+    <Content Include="Assets\plugins\datatables\buttons.html5.min.js" />
+    <Content Include="Assets\plugins\datatables\buttons.print.min.js" />
+    <Content Include="Assets\plugins\datatables\dataTables.bootstrap.js" />
+    <Content Include="Assets\plugins\datatables\dataTables.buttons.min.js" />
+    <Content Include="Assets\plugins\datatables\dataTables.colVis.css" />
+    <Content Include="Assets\plugins\datatables\dataTables.colVis.js" />
+    <Content Include="Assets\plugins\datatables\dataTables.fixedHeader.min.js" />
+    <Content Include="Assets\plugins\datatables\dataTables.keyTable.min.js" />
+    <Content Include="Assets\plugins\datatables\dataTables.responsive.min.js" />
+    <Content Include="Assets\plugins\datatables\dataTables.scroller.min.js" />
+    <Content Include="Assets\plugins\datatables\fixedHeader.bootstrap.min.css" />
+    <Content Include="Assets\plugins\datatables\jquery.dataTables.min.css" />
+    <Content Include="Assets\plugins\datatables\jquery.dataTables.min.js" />
+    <Content Include="Assets\plugins\datatables\jszip.min.js" />
+    <Content Include="Assets\plugins\datatables\pdfmake.min.js" />
+    <Content Include="Assets\plugins\datatables\responsive.bootstrap.min.css" />
+    <Content Include="Assets\plugins\datatables\responsive.bootstrap.min.js" />
+    <Content Include="Assets\plugins\datatables\scroller.bootstrap.min.css" />
+    <Content Include="Assets\plugins\datatables\vfs_fonts.js" />
+    <Content Include="Assets\plugins\dropzone\dist\dropzone.css" />
+    <Content Include="Assets\plugins\dropzone\dist\dropzone.js" />
+    <Content Include="Assets\plugins\editors\ace\ace.js" />
+    <Content Include="Assets\plugins\editors\summernote\summernote.min.js" />
+    <Content Include="Assets\plugins\editors\wysihtml5\locales\bootstrap-wysihtml5.ua-UA.js" />
+    <Content Include="Assets\plugins\editors\wysihtml5\parsers.js" />
+    <Content Include="Assets\plugins\editors\wysihtml5\toolbar.js" />
+    <Content Include="Assets\plugins\editors\wysihtml5\wysihtml5.min.js" />
+    <Content Include="Assets\plugins\extensions\contextmenu.js" />
+    <Content Include="Assets\plugins\extensions\cookie.js" />
+    <Content Include="Assets\plugins\extensions\mockjax.min.js" />
+    <Content Include="Assets\plugins\extensions\mousewheel.min.js" />
+    <Content Include="Assets\plugins\extensions\session_timeout.min.js" />
+    <Content Include="Assets\plugins\extras\bootstrap.min.js" />
+    <Content Include="Assets\plugins\extras\html5shiv.min.js" />
+    <Content Include="Assets\plugins\extras\jquery.timepicker.min.css" />
+    <Content Include="Assets\plugins\extras\respond.min.js" />
+    <Content Include="Assets\plugins\extras\tether.min.js" />
+    <Content Include="Assets\plugins\flot-chart\jquery.flot.crosshair.js" />
+    <Content Include="Assets\plugins\flot-chart\jquery.flot.js" />
+    <Content Include="Assets\plugins\flot-chart\jquery.flot.orderBars.min.js" />
+    <Content Include="Assets\plugins\flot-chart\jquery.flot.pie.js" />
+    <Content Include="Assets\plugins\flot-chart\jquery.flot.resize.js" />
+    <Content Include="Assets\plugins\flot-chart\jquery.flot.selection.js" />
+    <Content Include="Assets\plugins\flot-chart\jquery.flot.stack.js" />
+    <Content Include="Assets\plugins\flot-chart\jquery.flot.time.js" />
+    <Content Include="Assets\plugins\flot-chart\jquery.flot.tooltip.min.js" />
+    <Content Include="Assets\plugins\footable\css\fonts\footable.svg" />
+    <Content Include="Assets\plugins\footable\css\footable.core.css" />
+    <Content Include="Assets\plugins\footable\js\footable.all.min.js" />
+    <Content Include="Assets\plugins\forms\editable\address.js" />
+    <Content Include="Assets\plugins\forms\editable\editable.min.js" />
+    <Content Include="Assets\plugins\forms\inputs\autosize.min.js" />
+    <Content Include="Assets\plugins\forms\inputs\duallistbox.min.js" />
+    <Content Include="Assets\plugins\forms\inputs\formatter.min.js" />
+    <Content Include="Assets\plugins\forms\inputs\maxlength.min.js" />
+    <Content Include="Assets\plugins\forms\inputs\passy.js" />
+    <Content Include="Assets\plugins\forms\inputs\touchspin.min.js" />
+    <Content Include="Assets\plugins\forms\inputs\typeahead\handlebars.js" />
+    <Content Include="Assets\plugins\forms\inputs\typeahead\typeahead.bundle.min.js" />
+    <Content Include="Assets\plugins\forms\selects\bootstrap_multiselect.js" />
+    <Content Include="Assets\plugins\forms\selects\bootstrap_select.min.js" />
+    <Content Include="Assets\plugins\forms\selects\select2.min.js" />
+    <Content Include="Assets\plugins\forms\selects\selectboxit.min.js" />
+    <Content Include="Assets\plugins\forms\styling\switch.min.js" />
+    <Content Include="Assets\plugins\forms\styling\switchery.min.js" />
+    <Content Include="Assets\plugins\forms\styling\uniform.min.js" />
+    <Content Include="Assets\plugins\forms\tags\tagsinput.min.js" />
+    <Content Include="Assets\plugins\forms\tags\tokenfield.min.js" />
+    <Content Include="Assets\plugins\forms\validation\additional-methods.min.js" />
+    <Content Include="Assets\plugins\forms\validation\validate.min.js" />
+    <Content Include="Assets\plugins\forms\wizards\form_wizard\form.min.js" />
+    <Content Include="Assets\plugins\forms\wizards\form_wizard\form_wizard.min.js" />
+    <Content Include="Assets\plugins\forms\wizards\steps.min.js" />
+    <Content Include="Assets\plugins\forms\wizards\stepy.min.js" />
+    <Content Include="Assets\plugins\fullcalendar\dist\fullcalendar.css" />
+    <Content Include="Assets\plugins\fullcalendar\dist\fullcalendar.min.js" />
+    <Content Include="Assets\plugins\gmaps\gmaps.min.js" />
+    <Content Include="Assets\plugins\hopscotch\css\hopscotch.min.css" />
+    <Content Include="Assets\plugins\hopscotch\img\sprite-green.png" />
+    <Content Include="Assets\plugins\hopscotch\js\hopscotch.min.js" />
+    <Content Include="Assets\plugins\internationalization\i18next.min.js" />
+    <Content Include="Assets\plugins\ion-rangeslider\ion.rangeSlider.css" />
+    <Content Include="Assets\plugins\ion-rangeslider\ion.rangeSlider.min.js" />
+    <Content Include="Assets\plugins\ion-rangeslider\ion.rangeSlider.skinFlat.css" />
+    <Content Include="Assets\plugins\ion-rangeslider\sprite-skin-flat.png" />
+    <Content Include="Assets\plugins\isotope\dist\isotope.pkgd.min.js" />
+    <Content Include="Assets\plugins\jquery-circliful\css\jquery.circliful.css" />
+    <Content Include="Assets\plugins\jquery-circliful\js\jquery.circliful.min.js" />
+    <Content Include="Assets\plugins\jquery-datatables-editable\datatables.css" />
+    <Content Include="Assets\plugins\jquery-datatables-editable\jquery.dataTables.js" />
+    <Content Include="Assets\plugins\jquery-knob\jquery.knob.js" />
+    <Content Include="Assets\plugins\jQuery-Mask-Plugin-master\dist\jquery.mask.js" />
+    <Content Include="Assets\plugins\jQuery-Mask-Plugin-master\dist\jquery.mask.min.js" />
+    <Content Include="Assets\plugins\jQuery-Mask-Plugin-master\Gruntfile.js" />
+    <Content Include="Assets\plugins\jQuery-Mask-Plugin-master\package.js" />
+    <Content Include="Assets\plugins\jQuery-Mask-Plugin-master\src\jquery.mask.js" />
+    <Content Include="Assets\plugins\jQuery-Mask-Plugin-master\test\jquery.mask.test.js" />
+    <Content Include="Assets\plugins\jQuery-Mask-Plugin-master\test\qunit.css" />
+    <Content Include="Assets\plugins\jQuery-Mask-Plugin-master\test\qunit.js" />
+    <Content Include="Assets\plugins\jQuery-Mask-Plugin-master\test\sinon-1.10.3.js" />
+    <Content Include="Assets\plugins\jQuery-Mask-Plugin-master\test\sinon-qunit-1.0.0.js" />
+    <Content Include="Assets\plugins\jQuery-Mask-Plugin-master\test\sinon-qunit.js" />
+    <Content Include="Assets\plugins\jQuery-Mask-Plugin-master\test\test-for-jquery-1.11.1.html" />
+    <Content Include="Assets\plugins\jQuery-Mask-Plugin-master\test\test-for-jquery-1.7.2.html" />
+    <Content Include="Assets\plugins\jQuery-Mask-Plugin-master\test\test-for-jquery-1.8.3.html" />
+    <Content Include="Assets\plugins\jQuery-Mask-Plugin-master\test\test-for-jquery-1.9.1.html" />
+    <Content Include="Assets\plugins\jQuery-Mask-Plugin-master\test\test-for-jquery-2.1.1.html" />
+    <Content Include="Assets\plugins\jQuery-Mask-Plugin-master\test\test-for-jquery-3.0.0.html" />
+    <Content Include="Assets\plugins\jQuery-Mask-Plugin-master\test\test-for-zepto.html" />
+    <Content Include="Assets\plugins\jQuery-Mask-Plugin-master\test\zepto\data.js" />
+    <Content Include="Assets\plugins\jQuery-Mask-Plugin-master\test\zepto\event.js" />
+    <Content Include="Assets\plugins\jQuery-Mask-Plugin-master\test\zepto\zepto.min.js" />
+    <Content Include="Assets\plugins\jquery-quicksearch\jquery.quicksearch.js" />
+    <Content Include="Assets\plugins\jquery-sparkline\jquery.sparkline.min.js" />
+    <Content Include="Assets\plugins\jquery-ui\jquery-ui.min.js" />
+    <Content Include="Assets\plugins\jquery-validation\dist\jquery.validate.min.js" />
+    <Content Include="Assets\plugins\jquery.easy-pie-chart\dist\easypiechart.min.js" />
+    <Content Include="Assets\plugins\jquery.easy-pie-chart\dist\jquery.easypiechart.min.js" />
+    <Content Include="Assets\plugins\jquery.steps\build\jquery.steps.min.js" />
+    <Content Include="Assets\plugins\jquery.steps\demo\css\jquery.steps.css" />
+    <Content Include="Assets\plugins\jstree\32px.png" />
+    <Content Include="Assets\plugins\jstree\40px.png" />
+    <Content Include="Assets\plugins\jstree\jstree.min.js" />
+    <Content Include="Assets\plugins\jstree\style.css" />
+    <Content Include="Assets\plugins\jstree\throbber.gif" />
+    <Content Include="Assets\plugins\jvectormap\gdp-data.js" />
+    <Content Include="Assets\plugins\jvectormap\jquery-jvectormap-2.0.2.css" />
+    <Content Include="Assets\plugins\jvectormap\jquery-jvectormap-2.0.2.min.js" />
+    <Content Include="Assets\plugins\jvectormap\jquery-jvectormap-asia-mill.js" />
+    <Content Include="Assets\plugins\jvectormap\jquery-jvectormap-au-mill.js" />
+    <Content Include="Assets\plugins\jvectormap\jquery-jvectormap-ca-lcc.js" />
+    <Content Include="Assets\plugins\jvectormap\jquery-jvectormap-de-mill.js" />
+    <Content Include="Assets\plugins\jvectormap\jquery-jvectormap-in-mill.js" />
+    <Content Include="Assets\plugins\jvectormap\jquery-jvectormap-uk-mill-en.js" />
+    <Content Include="Assets\plugins\jvectormap\jquery-jvectormap-us-aea-en.js" />
+    <Content Include="Assets\plugins\jvectormap\jquery-jvectormap-us-il-chicago-mill-en.js" />
+    <Content Include="Assets\plugins\jvectormap\jquery-jvectormap-world-mill-en.js" />
+    <Content Include="Assets\plugins\loaders\blockui.min.js" />
+    <Content Include="Assets\plugins\loaders\pace.min.js" />
+    <Content Include="Assets\plugins\loaders\progressbar.min.js" />
+    <Content Include="Assets\plugins\magnific-popup\dist\jquery.magnific-popup.min.js" />
+    <Content Include="Assets\plugins\magnific-popup\dist\magnific-popup.css" />
+    <Content Include="Assets\plugins\maps\jvectormap\jvectormap.min.js" />
+    <Content Include="Assets\plugins\maps\jvectormap\map_files\countries\germany.js" />
+    <Content Include="Assets\plugins\maps\jvectormap\map_files\countries\usa.js" />
+    <Content Include="Assets\plugins\maps\jvectormap\map_files\world.js" />
+    <Content Include="Assets\plugins\media\cropper.min.js" />
+    <Content Include="Assets\plugins\media\fancybox.min.js" />
+    <Content Include="Assets\plugins\mjolnic-bootstrap-colorpicker\dist\css\bootstrap-colorpicker.min.css" />
+    <Content Include="Assets\plugins\mjolnic-bootstrap-colorpicker\dist\img\bootstrap-colorpicker\alpha-horizontal.png" />
+    <Content Include="Assets\plugins\mjolnic-bootstrap-colorpicker\dist\img\bootstrap-colorpicker\alpha.png" />
+    <Content Include="Assets\plugins\mjolnic-bootstrap-colorpicker\dist\img\bootstrap-colorpicker\hue-horizontal.png" />
+    <Content Include="Assets\plugins\mjolnic-bootstrap-colorpicker\dist\img\bootstrap-colorpicker\hue.png" />
+    <Content Include="Assets\plugins\mjolnic-bootstrap-colorpicker\dist\img\bootstrap-colorpicker\saturation.png" />
+    <Content Include="Assets\plugins\mjolnic-bootstrap-colorpicker\dist\js\bootstrap-colorpicker.min.js" />
+    <Content Include="Assets\plugins\moment\moment.js" />
+    <Content Include="Assets\plugins\morris\morris.css" />
+    <Content Include="Assets\plugins\morris\morris.min.js" />
+    <Content Include="Assets\plugins\morris\raphael-min.js" />
+    <Content Include="Assets\plugins\multiselect\css\multi-select.css" />
+    <Content Include="Assets\plugins\multiselect\img\switch.png" />
+    <Content Include="Assets\plugins\multiselect\js\jquery.multi-select.js" />
+    <Content Include="Assets\plugins\nestable\jquery.nestable.css" />
+    <Content Include="Assets\plugins\nestable\jquery.nestable.js" />
+    <Content Include="Assets\plugins\notifications\bootbox.min.js" />
+    <Content Include="Assets\plugins\notifications\jgrowl.min.js" />
+    <Content Include="Assets\plugins\notifications\notify-metro.js" />
+    <Content Include="Assets\plugins\notifications\noty.min.js" />
+    <Content Include="Assets\plugins\notifications\pnotify.min.js" />
+    <Content Include="Assets\plugins\notifications\sweet_alert.min.js" />
+    <Content Include="Assets\plugins\notifyjs\dist\notify.min.js" />
+    <Content Include="Assets\plugins\nvd3\build\nv.d3.min.css" />
+    <Content Include="Assets\plugins\nvd3\build\nv.d3.min.js" />
+    <Content Include="Assets\plugins\owl.carousel\dist\assets\owl.carousel.min.css" />
+    <Content Include="Assets\plugins\owl.carousel\dist\assets\owl.theme.default.min.css" />
+    <Content Include="Assets\plugins\owl.carousel\dist\assets\owl.video.play.png" />
+    <Content Include="Assets\plugins\owl.carousel\dist\owl.carousel.min.js" />
+    <Content Include="Assets\plugins\pagination\bootpag.min.js" />
+    <Content Include="Assets\plugins\pagination\bs_pagination.min.js" />
+    <Content Include="Assets\plugins\pagination\datepaginator.min.js" />
+    <Content Include="Assets\plugins\parsleyjs\dist\parsley.min.js" />
+    <Content Include="Assets\plugins\peity\jquery.peity.min.js" />
+    <Content Include="Assets\plugins\pickers\anytime.min.js" />
+    <Content Include="Assets\plugins\pickers\color\spectrum.js" />
+    <Content Include="Assets\plugins\pickers\datepicker.js" />
+    <Content Include="Assets\plugins\pickers\daterangepicker.js" />
+    <Content Include="Assets\plugins\pickers\location\autocomplete_addresspicker.js" />
+    <Content Include="Assets\plugins\pickers\location\location.js" />
+    <Content Include="Assets\plugins\pickers\location\typeahead_addresspicker.js" />
+    <Content Include="Assets\plugins\pickers\pickadate\legacy.js" />
+    <Content Include="Assets\plugins\pickers\pickadate\picker.date.js" />
+    <Content Include="Assets\plugins\pickers\pickadate\picker.js" />
+    <Content Include="Assets\plugins\pickers\pickadate\picker.time.js" />
+    <Content Include="Assets\plugins\radial\radial.css" />
+    <Content Include="Assets\plugins\raphael\raphael-min.js" />
+    <Content Include="Assets\plugins\rickshaw-chart\rickshaw.min.css" />
+    <Content Include="Assets\plugins\rickshaw-chart\rickshaw.min.js" />
+    <Content Include="Assets\plugins\RWD-Table-Patterns\dist\css\rwd-table.min.css" />
+    <Content Include="Assets\plugins\RWD-Table-Patterns\dist\js\rwd-table.min.js" />
+    <Content Include="Assets\plugins\seiyria-bootstrap-slider\dist\bootstrap-slider.min.js" />
+    <Content Include="Assets\plugins\seiyria-bootstrap-slider\dist\css\bootstrap-slider.min.css" />
+    <Content Include="Assets\plugins\select2\select2-spinner.gif" />
+    <Content Include="Assets\plugins\select2\select2.css" />
+    <Content Include="Assets\plugins\select2\select2.min.js" />
+    <Content Include="Assets\plugins\select2\select2.png" />
+    <Content Include="Assets\plugins\select2\select2x2.png" />
+    <Content Include="Assets\plugins\simple-text-rotator\jquery.simple-text-rotator.min.js" />
+    <Content Include="Assets\plugins\skyicons\skycons.min.js" />
+    <Content Include="Assets\plugins\sliders\ion_rangeslider.min.js" />
+    <Content Include="Assets\plugins\sliders\nouislider.min.js" />
+    <Content Include="Assets\plugins\sliders\slider_pips.min.js" />
+    <Content Include="Assets\plugins\summernote\dist\summernote.css" />
+    <Content Include="Assets\plugins\summernote\dist\summernote.min.js" />
+    <Content Include="Assets\plugins\sweetalert\dist\sweetalert.css" />
+    <Content Include="Assets\plugins\sweetalert\dist\sweetalert.min.js" />
+    <Content Include="Assets\plugins\switchery\dist\switchery.min.css" />
+    <Content Include="Assets\plugins\switchery\dist\switchery.min.js" />
+    <Content Include="Assets\plugins\tablesaw\dist\tablesaw-init.js" />
+    <Content Include="Assets\plugins\tablesaw\dist\tablesaw.css" />
+    <Content Include="Assets\plugins\tablesaw\dist\tablesaw.js" />
+    <Content Include="Assets\plugins\tables\datatables\datatables.min.js" />
+    <Content Include="Assets\plugins\tables\datatables\extensions\autofill.min.js" />
+    <Content Include="Assets\plugins\tables\datatables\extensions\buttons.min.js" />
+    <Content Include="Assets\plugins\tables\datatables\extensions\col_reorder.min.js" />
+    <Content Include="Assets\plugins\tables\datatables\extensions\fixed_columns.min.js" />
+    <Content Include="Assets\plugins\tables\datatables\extensions\fixed_header.min.js" />
+    <Content Include="Assets\plugins\tables\datatables\extensions\jszip\jszip.min.js" />
+    <Content Include="Assets\plugins\tables\datatables\extensions\key_table.min.js" />
+    <Content Include="Assets\plugins\tables\datatables\extensions\natural_sort.js" />
+    <Content Include="Assets\plugins\tables\datatables\extensions\pdfmake\pdfmake.min.js" />
+    <Content Include="Assets\plugins\tables\datatables\extensions\pdfmake\vfs_fonts.min.js" />
+    <Content Include="Assets\plugins\tables\datatables\extensions\responsive.min.js" />
+    <Content Include="Assets\plugins\tables\datatables\extensions\row_reorder.min.js" />
+    <Content Include="Assets\plugins\tables\datatables\extensions\scroller.min.js" />
+    <Content Include="Assets\plugins\tables\datatables\extensions\select.min.js" />
+    <Content Include="Assets\plugins\tables\footable\footable.min.js" />
+    <Content Include="Assets\plugins\tables\handsontable\handsontable.min.js" />
+    <Content Include="Assets\plugins\tables\handsontable\languages\de.js" />
+    <Content Include="Assets\plugins\tables\handsontable\zero_clipboard.min.js" />
+    <Content Include="Assets\plugins\timepicker\bootstrap-timepicker.min.css" />
+    <Content Include="Assets\plugins\timepicker\bootstrap-timepicker.min.js" />
+    <Content Include="Assets\plugins\tiny-editable\mindmup-editabletable.js" />
+    <Content Include="Assets\plugins\tiny-editable\numeric-input-example.js" />
+    <Content Include="Assets\plugins\tinymce\tinymce.min.js" />
+    <Content Include="Assets\plugins\tooltipster\dist\css\tooltipster.bundle.min.css" />
+    <Content Include="Assets\plugins\tooltipster\dist\js\tooltipster.bundle.min.js" />
+    <Content Include="Assets\plugins\trees\fancytree_all.min.js" />
+    <Content Include="Assets\plugins\trees\fancytree_childcounter.js" />
+    <Content Include="Assets\plugins\ui\dragula.min.js" />
+    <Content Include="Assets\plugins\ui\drilldown.js" />
+    <Content Include="Assets\plugins\ui\fullcalendar\fullcalendar.min.js" />
+    <Content Include="Assets\plugins\ui\fullcalendar\lang\all.js" />
+    <Content Include="Assets\plugins\ui\fullcalendar\lang\ar.js" />
+    <Content Include="Assets\plugins\ui\headroom\headroom.min.js" />
+    <Content Include="Assets\plugins\ui\headroom\headroom_jquery.min.js" />
+    <Content Include="Assets\plugins\ui\moment\moment.min.js" />
+    <Content Include="Assets\plugins\ui\moment\moment_locales.min.js" />
+    <Content Include="Assets\plugins\ui\nicescroll.min.js" />
+    <Content Include="Assets\plugins\ui\prism.min.js" />
+    <Content Include="Assets\plugins\uploaders\dropzone.min.js" />
+    <Content Include="Assets\plugins\uploaders\fileinput.min.js" />
+    <Content Include="Assets\plugins\uploaders\plupload\plupload.full.min.js" />
+    <Content Include="Assets\plugins\uploaders\plupload\plupload.queue.min.js" />
+    <Content Include="Assets\plugins\velocity\velocity.min.js" />
+    <Content Include="Assets\plugins\velocity\velocity.ui.min.js" />
+    <Content Include="Assets\plugins\visualization\c3\c3.min.js" />
+    <Content Include="Assets\plugins\visualization\d3\d3.min.js" />
+    <Content Include="Assets\plugins\visualization\d3\d3_tooltip.js" />
+    <Content Include="Assets\plugins\visualization\d3\venn.js" />
+    <Content Include="Assets\plugins\visualization\dimple\dimple.min.js" />
+    <Content Include="Assets\plugins\visualization\echarts\echarts.js" />
+    <Content Include="Assets\plugins\visualization\sparkline.min.js" />
+    <Content Include="Assets\plugins\waypoints\lib\jquery.waypoints.js" />
+    <Content Include="Assets\plugins\x-editable\dist\bootstrap3-editable\css\bootstrap-editable.css" />
+    <Content Include="Assets\plugins\x-editable\dist\bootstrap3-editable\img\clear.png" />
+    <Content Include="Assets\plugins\x-editable\dist\bootstrap3-editable\img\loading.gif" />
+    <Content Include="Assets\plugins\x-editable\dist\bootstrap3-editable\js\bootstrap-editable.min.js" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Encryption\script.js" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Models\PlatformDatabaseModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PlatformDatabaseModel.edmx</DependentUpon>
+      <LastGenOutput>PlatformDatabaseModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\PlatformDatabaseModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PlatformDatabaseModel.edmx</DependentUpon>
+      <LastGenOutput>PlatformDatabaseModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="Scripts\app.js" />
+    <Content Include="Assets\fonts\fontawesome-webfont3295.eot" />
+    <Content Include="Assets\fonts\fontawesome-webfont3295.ttf" />
+    <Content Include="Assets\fonts\fontawesome-webfont3295.woff" />
+    <Content Include="Assets\fonts\fontawesome-webfont3295.woff2" />
+    <Content Include="Assets\fonts\fontawesome-webfontd41d.eot" />
+    <Content Include="Assets\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Assets\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Assets\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Assets\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Assets\fonts\glyphicons-halflings-regulard41d.eot" />
+    <Content Include="Assets\fonts\ioniconsaa26.eot" />
+    <Content Include="Assets\fonts\ioniconsaa26.ttf" />
+    <Content Include="Assets\fonts\ioniconsaa26.woff" />
+    <Content Include="Assets\fonts\Material-Design-Iconic-Fontd41d.eot" />
+    <Content Include="Assets\fonts\Material-Design-Iconic-Fontf700.eot" />
+    <Content Include="Assets\fonts\Material-Design-Iconic-Fontf700.ttf" />
+    <Content Include="Assets\fonts\Material-Design-Iconic-Fontf700.woff" />
+    <Content Include="Assets\fonts\Simple-Line-Icons4c82.eot" />
+    <Content Include="Assets\fonts\Simple-Line-Icons4c82.ttf" />
+    <Content Include="Assets\fonts\Simple-Line-Icons4c82.woff" />
+    <Content Include="Assets\fonts\Simple-Line-Icons4c82.woff2" />
+    <Content Include="Assets\fonts\Simple-Line-Iconsd41d.eot" />
+    <Content Include="Assets\fonts\themify9f24.eot" />
+    <Content Include="Assets\fonts\themify9f24.ttf" />
+    <Content Include="Assets\fonts\themify9f24.woff" />
+    <Content Include="Assets\fonts\themifyd41d.eot" />
+    <Content Include="Assets\fonts\typicons.eot" />
+    <Content Include="Assets\fonts\typicons.ttf" />
+    <Content Include="Assets\fonts\typicons.woff" />
+    <Content Include="Assets\fonts\typiconsd41d.eot" />
+    <Content Include="Assets\fonts\weathericons-regular-webfont.eot" />
+    <Content Include="Assets\fonts\weathericons-regular-webfont.ttf" />
+    <Content Include="Assets\fonts\weathericons-regular-webfont.woff" />
+    <Content Include="Assets\fonts\weathericons-regular-webfont.woff2" />
+    <Content Include="Assets\fonts\weathericons-regular-webfontd41d.eot" />
+    <Content Include="Assets\plugins\footable\css\fonts\footable.eot" />
+    <Content Include="Assets\plugins\footable\css\fonts\footable.ttf" />
+    <Content Include="Assets\plugins\footable\css\fonts\footable.woff" />
+    <Content Include="Assets\plugins\footable\css\fonts\footabled41d.eot" />
+    <Content Include="Assets\icon_fonts_assets\batch-icons\fonts\batch35c7.ttf" />
+    <Content Include="Assets\icon_fonts_assets\batch-icons\fonts\batch35c7.woff" />
+    <Content Include="Assets\icon_fonts_assets\batch-icons\fonts\batch35c7.woff2" />
+    <Content Include="Assets\icon_fonts_assets\dashicons\dashiconsbb5d.eot" />
+    <Content Include="Assets\icon_fonts_assets\dashicons\dashiconsbb5d.ttf" />
+    <Content Include="Assets\icon_fonts_assets\dashicons\dashiconsd41d.eot" />
+    <Content Include="Assets\icon_fonts_assets\dripicons\fonts\dripicons-v2.eot" />
+    <Content Include="Assets\icon_fonts_assets\dripicons\fonts\dripicons-v2.ttf" />
+    <Content Include="Assets\icon_fonts_assets\dripicons\fonts\dripicons-v2.woff" />
+    <Content Include="Assets\icon_fonts_assets\dripicons\fonts\dripicons-v2d41d.eot" />
+    <Content Include="Assets\icon_fonts_assets\eightyshades\fonts\eightyshades.eot" />
+    <Content Include="Assets\icon_fonts_assets\eightyshades\fonts\eightyshades.ttf" />
+    <Content Include="Assets\icon_fonts_assets\eightyshades\fonts\eightyshades.woff" />
+    <Content Include="Assets\icon_fonts_assets\eightyshades\fonts\eightyshadesd41d.eot" />
+    <Content Include="Assets\icon_fonts_assets\entypo\fonts\entypo3645.eot" />
+    <Content Include="Assets\icon_fonts_assets\entypo\fonts\entypo3645.ttf" />
+    <Content Include="Assets\icon_fonts_assets\entypo\fonts\entypo3645.woff" />
+    <Content Include="Assets\icon_fonts_assets\entypo\fonts\entypo3645.woff2" />
+    <Content Include="Assets\icon_fonts_assets\font-awesome\fonts\fontawesome-webfont3e6e.eot" />
+    <Content Include="Assets\icon_fonts_assets\font-awesome\fonts\fontawesome-webfont3e6e.ttf" />
+    <Content Include="Assets\icon_fonts_assets\font-awesome\fonts\fontawesome-webfont3e6e.woff" />
+    <Content Include="Assets\icon_fonts_assets\font-awesome\fonts\fontawesome-webfont3e6e.woff2" />
+    <Content Include="Assets\icon_fonts_assets\font-awesome\fonts\fontawesome-webfontd41d.eot" />
+    <Content Include="Assets\icon_fonts_assets\foundation-icon-font\foundation-icons.eot" />
+    <Content Include="Assets\icon_fonts_assets\foundation-icon-font\foundation-icons.ttf" />
+    <Content Include="Assets\icon_fonts_assets\foundation-icon-font\foundation-icons.woff" />
+    <Content Include="Assets\icon_fonts_assets\foundation-icon-font\foundation-iconsd41d.eot" />
+    <Content Include="Assets\icon_fonts_assets\metrize-icons\fonts\Metrize-Icons.eot" />
+    <Content Include="Assets\icon_fonts_assets\metrize-icons\fonts\Metrize-Icons.ttf" />
+    <Content Include="Assets\icon_fonts_assets\metrize-icons\fonts\Metrize-Icons.woff" />
+    <Content Include="Assets\icon_fonts_assets\metrize-icons\fonts\Metrize-Iconsd41d.eot" />
+    <Content Include="Assets\icon_fonts_assets\picons-social\fonts\picons-social1994.ttf" />
+    <Content Include="Assets\icon_fonts_assets\picons-social\fonts\picons-social1994.woff" />
+    <Content Include="Assets\icon_fonts_assets\picons-social\fonts\picons-social1994.woff2" />
+    <Content Include="Assets\icon_fonts_assets\picons-thin\fonts\piconsthin91a6.ttf" />
+    <Content Include="Assets\icon_fonts_assets\picons-thin\fonts\piconsthin91a6.woff" />
+    <Content Include="Assets\icon_fonts_assets\picons-thin\fonts\piconsthin91a6.woff2" />
+    <Content Include="Assets\icon_fonts_assets\simple-line-icons\fonts\Simple-Line-Iconsb26c.eot" />
+    <Content Include="Assets\icon_fonts_assets\simple-line-icons\fonts\Simple-Line-Iconsb26c.ttf" />
+    <Content Include="Assets\icon_fonts_assets\simple-line-icons\fonts\Simple-Line-Iconsb26c.woff" />
+    <Content Include="Assets\icon_fonts_assets\simple-line-icons\fonts\Simple-Line-Iconsb26c.woff2" />
+    <Content Include="Assets\icon_fonts_assets\themefy\fonts\themify9f24.eot" />
+    <Content Include="Assets\icon_fonts_assets\themefy\fonts\themify9f24.ttf" />
+    <Content Include="Assets\icon_fonts_assets\themefy\fonts\themify9f24.woff" />
+    <Content Include="Assets\icon_fonts_assets\themefy\fonts\themifyd41d.eot" />
+    <Content Include="Assets\icon_fonts_assets\typicons\typicons.eot" />
+    <Content Include="Assets\icon_fonts_assets\typicons\typicons.ttf" />
+    <Content Include="Assets\icon_fonts_assets\typicons\typicons.woff" />
+    <Content Include="Assets\icon_fonts_assets\typicons\typiconsd41d.eot" />
+    <Content Include="Assets\icon_fonts_assets\weather-icons\font\weathericons-regular-webfont.eot" />
+    <Content Include="Assets\icon_fonts_assets\weather-icons\font\weathericons-regular-webfont.ttf" />
+    <Content Include="Assets\icon_fonts_assets\weather-icons\font\weathericons-regular-webfont.woff" />
+    <Content Include="Assets\icon_fonts_assets\weather-icons\font\weathericons-regular-webfont.woff2" />
+    <Content Include="Assets\icon_fonts_assets\weather-icons\font\weathericons-regular-webfontd41d.eot" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\SE\Views\web.config" />
+    <Content Include="Areas\RewardingBody\Views\web.config" />
+    <Content Include="Areas\Wallets\Views\web.config" />
+    <Content Include="Areas\RewardingBody\Views\Default\AcceptedSocialActivities.cshtml" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="packages.config" />
+    <Content Include="Areas\Wallets\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Wallets\Views\SeratioWallet\Transfer.cshtml" />
+    <Content Include="Areas\Admin\Views\AccessRequests\Details.cshtml" />
+    <Content Include="Areas\Wallets\Views\SeratioWallet\History.cshtml" />
+    <Content Include="Areas\Wallets\Views\SeratioWallet\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Coins\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Coins\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Coins\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Coins\Index.cshtml" />
+    <Content Include="Areas\RetailEnd\Views\web.config" />
+    <Content Include="Areas\Admin\Views\Blockchains\Info.cshtml" />
+    <Content Include="Areas\RewardingBody\Views\SocialActivities\Details.cshtml" />
+    <Content Include="Areas\RetailEnd\Views\RetailPolicies\Index.cshtml" />
+    <Content Include="Areas\RetailEnd\Views\RetailPolicies\Create.cshtml" />
+    <Content Include="Areas\RetailEnd\Views\RetailPolicies\Edit.cshtml" />
+    <Content Include="Areas\RetailEnd\Views\RetailPolicies\Details.cshtml" />
+    <Content Include="Areas\RetailEnd\Views\Default\Index.cshtml" />
+    <Content Include="Areas\RetailEnd\Views\Default\AcceptedPolicies.cshtml" />
+    <Content Include="Areas\Admin\Views\SocialActivities\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Blockchains\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Blockchains\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Blockchains\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Blockchains\Index.cshtml" />
+    <Content Include="Assets\plugins\jQuery-Mask-Plugin-master\.gitignore" />
+    <Content Include="Assets\plugins\jQuery-Mask-Plugin-master\.jshintrc" />
+    <Content Include="Assets\plugins\jQuery-Mask-Plugin-master\.ruby-version" />
+    <Content Include="Assets\plugins\jQuery-Mask-Plugin-master\.travis.yml" />
+    <Content Include="Assets\plugins\jQuery-Mask-Plugin-master\bower.json" />
+    <Content Include="Assets\plugins\jQuery-Mask-Plugin-master\CHANGELOG.md" />
+    <Content Include="Assets\plugins\jQuery-Mask-Plugin-master\component.json" />
+    <Content Include="Assets\plugins\jQuery-Mask-Plugin-master\composer.json" />
+    <Content Include="Assets\plugins\jQuery-Mask-Plugin-master\CONTRIBUTING.md" />
+    <Content Include="Assets\plugins\jQuery-Mask-Plugin-master\deploy.rb" />
+    <Content Include="Assets\plugins\jQuery-Mask-Plugin-master\docker-compose.yml" />
+    <Content Include="Assets\plugins\jQuery-Mask-Plugin-master\Dockerfile" />
+    <Content Include="Assets\plugins\jQuery-Mask-Plugin-master\ISSUE_TEMPLATE.md" />
+    <Content Include="Assets\plugins\jQuery-Mask-Plugin-master\LICENSE" />
+    <Content Include="Assets\plugins\jQuery-Mask-Plugin-master\package.json" />
+    <Content Include="Assets\plugins\jQuery-Mask-Plugin-master\README.md" />
+    <Content Include="Files\SeratioBountyCampaign.xlsx" />
+    <Content Include="Files\Investments.xlsx" />
+    <Content Include="Files\Seratio Wallet Instructions 24 Jan 18.pdf" />
+    <Content Include="Files\Seratio Wallet Instructions_CN_20180125.pdf" />
+    <Content Include="Files\Wallet FAQ 24th Jan.pdf" />
+    <Content Include="Areas\Minting\Views\web.config" />
+    <Content Include="Areas\Admin\Views\Users\UpdateWallet.cshtml" />
+    <Content Include="ABI\vaultContractABI.json" />
+    <Content Include="Areas\Vault\Views\Default\Deposit.cshtml" />
+    <Content Include="Areas\Vault\Views\Default\Details.cshtml" />
+    <Content Include="Areas\Vault\Views\Default\Index.cshtml" />
+    <Content Include="ABI\dummySERContractABI.json" />
+    <Content Include="Areas\Vault\Views\web.config" />
+    <Content Include="Areas\Vault\Views\Default\Limits.cshtml" />
+    <Content Include="Areas\Vault\Views\Default\Update.cshtml" />
+    <Content Include="Areas\Vault\Views\Default\Claim.cshtml" />
+    <Content Include="ABI\InvestmentRecordListABI.json" />
+    <Content Include="ABI\InvestmentRecordABI.json" />
+    <Content Include="Files\lock_in.pdf" />
+    <Content Include="Files\lock_in_cn.pdf" />
+    <Content Include="Areas\Admin\Views\RetailPolicies\Index.cshtml" />
+    <Content Include="Areas\RetailEnd\Views\PaymentRequests\New.cshtml" />
+    <Content Include="Areas\RetailEnd\Views\PaymentRequests\Index.cshtml" />
+    <Content Include="Areas\Wallets\Views\SeratioWallet\Pay.cshtml" />
+    <Content Include="Areas\RetailEnd\Views\Vouchers\Index.cshtml" />
+    <Content Include="Areas\RetailEnd\Views\Vouchers\Details.cshtml" />
+    <Content Include="Areas\RetailEnd\Views\Vouchers\My.cshtml" />
+    <Content Include="Areas\RetailEnd\Views\Vouchers\Accept.cshtml" />
+    <Content Include="Areas\RewardingBody\Views\SocialActivities\available.cshtml" />
+    <Content Include="Areas\RetailEnd\Views\Vouchers\Feedback.cshtml" />
+    <Content Include="Encryption\package-lock.json" />
+    <Content Include="Areas\Provenance\Views\web.config" />
+    <Content Include="Areas\Admin\Views\MCRCategories\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\MCRCategories\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\MCRCategories\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\MCRCategories\Index.cshtml" />
+    <Content Include="Areas\Wallets\Views\Microshares\Index.cshtml" />
+    <Content Include="Areas\Wallets\Views\Microshares\Allocate.cshtml" />
+    <None Include="job_scheduling_data_2_0.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Print\PrintSE-%40athira.pdf" />
+    <EntityDeploy Include="Models\PlatformDatabaseModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>PlatformDatabaseModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\PlatformDatabaseModel.edmx.diagram">
+      <DependentUpon>PlatformDatabaseModel.edmx</DependentUpon>
+    </Content>
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\html5-qrcode.min.js" />
+    <None Include="Scripts\jquery-1.10.2-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="SmartContracts\bumblebee.txt" />
+    <Content Include="SmartContracts\contracts\CityCoin.sol" />
+    <Content Include="SmartContracts\contracts\EduCoin.sol" />
+    <Content Include="SmartContracts\contracts\Migrations.sol" />
+    <Content Include="SmartContracts\contracts\MuslimCoin.sol" />
+    <Content Include="SmartContracts\contracts\SDGCoin.sol" />
+    <Content Include="SmartContracts\contracts\ERC20Vault.sol" />
+    <Content Include="SmartContracts\contracts\WomenCoin.sol" />
+    <Content Include="SmartContracts\migrations\1_initial_migration.js" />
+    <Content Include="SmartContracts\migrations\2_deploy_contracts.js" />
+    <Content Include="SmartContracts\truffle.js" />
+    <Content Include="Uploads\1ae5ae13-7c67-4f77-b541-6cbd6631786f.png" />
+    <Content Include="Uploads\72deb99b-4a65-4779-86b7-3de8d495a75e.png" />
+    <Content Include="Uploads\852e80a0-530a-4deb-b0a6-18442dd17b14.png" />
+    <Content Include="Uploads\coin-icon-2.png" />
+    <Content Include="Uploads\coin-icon-4.png" />
+    <Content Include="Uploads\coin1.png" />
+    <Content Include="Uploads\coin2.png" />
+    <Content Include="Uploads\defaultCoin.png" />
+    <Content Include="Uploads\Ether.png" />
+    <Content Include="Uploads\images.jpg" />
+    <Content Include="Uploads\index.jpg" />
+    <Content Include="Uploads\Muslim.png" />
+    <Content Include="Uploads\sdg.png" />
+    <Content Include="Uploads\Women.png" />
+    <Content Include="Views\Template.html" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\BlockchainsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AccessRequestsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\MCRCategoriesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CoinsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\RetailPoliciesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SeratioInvestmentsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SocialActivitiesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UsersController.cs" />
+    <Compile Include="Areas\Minting\Controllers\MCRTransferController.cs" />
+    <Compile Include="Areas\Minting\Controllers\MCRController.cs" />
+    <Compile Include="Areas\Minting\Controllers\DefaultController.cs" />
+    <Compile Include="Areas\Minting\MintingAreaRegistration.cs" />
+    <Compile Include="Areas\Provenance\ProvenanceAreaRegistration.cs" />
+    <Compile Include="Areas\RetailEnd\Controllers\DefaultController.cs" />
+    <Compile Include="Areas\RetailEnd\Controllers\VouchersController.cs" />
+    <Compile Include="Areas\RetailEnd\Controllers\RetailPoliciesController.cs" />
+    <Compile Include="Areas\RetailEnd\RetailEndAreaRegistration.cs" />
+    <Compile Include="Areas\RewardingBody\Controllers\DefaultController.cs" />
+    <Compile Include="Areas\RewardingBody\Controllers\SocialActivitiesController.cs" />
+    <Compile Include="Areas\RewardingBody\RewardingBodyAreaRegistration.cs" />
+    <Compile Include="Areas\SE\SEAreaRegistration.cs" />
+    <Compile Include="Areas\Vault\VaultAreaRegistration.cs" />
+    <Compile Include="Areas\RetailEnd\Controllers\PaymentRequestsController.cs" />
+    <Compile Include="Areas\Wallets\Controllers\MicrosharesController.cs" />
+    <Compile Include="Areas\Wallets\Controllers\SeratioWalletController.cs" />
+    <Compile Include="Areas\Wallets\Controllers\TestController.cs" />
+    <Compile Include="Areas\Vault\Controllers\DefaultController.cs" />
+    <Compile Include="Areas\Wallets\WalletsAreaRegistration.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\DefaultController.cs" />
+    <Compile Include="Areas\SE\Controllers\RequestsController.cs" />
+    <Compile Include="Areas\SE\Controllers\CertificateController.cs" />
+    <Compile Include="Controllers\ImportController.cs" />
+    <Compile Include="Controllers\QRController.cs" />
+    <Compile Include="Controllers\TwoFAController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Controllers\KeysController.cs" />
+    <Compile Include="Core\AppManager.cs" />
+    <Compile Include="Core\BackgroundJobs\ETHExplorerTxSyncer.cs" />
+    <Compile Include="Core\BackgroundJobs\ExchangeRateCleaner.cs" />
+    <Compile Include="Core\BackgroundJobs\TransactionStatusMonitor.cs" />
+    <Compile Include="Core\BackgroundJobs\KeyCleaner.cs" />
+    <Compile Include="Core\BackgroundJobs\Scheduler.cs" />
+    <Compile Include="Core\BlockChainManager.cs" />
+    <Compile Include="Core\Blockchain\SecureRandom.cs" />
+    <Compile Include="Core\Blockchain\Wallet.cs" />
+    <Compile Include="Core\Entities\Blockchain\VaultInvestment.cs" />
+    <Compile Include="Core\Entities\Blockchain\EtherChainApiresponse.cs" />
+    <Compile Include="Core\Entities\Blockchain\ETHPlorerAPIResponse.cs" />
+    <Compile Include="Core\Entities\Blockchain\WalletInfo.cs" />
+    <Compile Include="Core\Entities\Common\AppUser.cs" />
+    <Compile Include="Core\Entities\Common\DataTableRequest.cs" />
+    <Compile Include="Core\Entities\Common\DataTableResponse.cs" />
+    <Compile Include="Core\Entities\Common\Notification.cs" />
+    <Compile Include="Core\Entities\Common\Select2Item.cs" />
+    <Compile Include="Core\Entities\Common\Select2PagedResult.cs" />
+    <Compile Include="Core\Entities\Common\Select2TextItem.cs" />
+    <Compile Include="Core\Entities\Common\TransferResult.cs" />
+    <Compile Include="Core\Entities\SAPI\SAPIResponse.cs" />
+    <Compile Include="Core\ETHEncryption.cs" />
+    <Compile Include="Core\MintingManager.cs" />
+    <Compile Include="Core\Security\AuthorizeAccessAttribute.cs" />
+    <Compile Include="Core\Utilities\ExceptionHandler.cs" />
+    <Compile Include="Core\Utilities\ExtensionMethods.cs" />
+    <Compile Include="Core\Utilities\Rijndael.cs" />
+    <Compile Include="Core\Utilities\ValidateFileAttribute.cs" />
+    <Compile Include="Core\WalletManager.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AcceptedRetailPolicy.cs">
+      <DependentUpon>PlatformDatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AcceptedSocialActivity.cs">
+      <DependentUpon>PlatformDatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ActivityNotification.cs">
+      <DependentUpon>PlatformDatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Administrator.cs">
+      <DependentUpon>PlatformDatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AdministratorSession.cs">
+      <DependentUpon>PlatformDatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Blockchain.cs">
+      <DependentUpon>PlatformDatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Coin.cs">
+      <DependentUpon>PlatformDatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CollectedVoucher.cs">
+      <DependentUpon>PlatformDatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DatabaseContextManager.cs" />
+    <Compile Include="Models\ExchangeRate.cs">
+      <DependentUpon>PlatformDatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FailedForgotPasswordAttempt.cs">
+      <DependentUpon>PlatformDatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FailedSignInAttempt.cs">
+      <DependentUpon>PlatformDatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FailedWalletTransactionAttempt.cs">
+      <DependentUpon>PlatformDatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Investment.cs">
+      <DependentUpon>PlatformDatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MCRAllocation.cs">
+      <DependentUpon>PlatformDatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MCRTokenInvestment.cs">
+      <DependentUpon>PlatformDatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MCRTokenTransfer.cs">
+      <DependentUpon>PlatformDatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MCRTransfer.cs">
+      <DependentUpon>PlatformDatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModuleAccessRequest.cs">
+      <DependentUpon>PlatformDatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Offer.cs">
+      <DependentUpon>PlatformDatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PaymentRequest.cs">
+      <DependentUpon>PlatformDatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PlatformDatabaseModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PlatformDatabaseModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PlatformDatabaseModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PlatformDatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PlatformDatabaseModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PlatformDatabaseModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\QRLogin.cs">
+      <DependentUpon>PlatformDatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Request.cs">
+      <DependentUpon>PlatformDatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RetailPolicy.cs">
+      <DependentUpon>PlatformDatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SERTokenInvestment.cs">
+      <DependentUpon>PlatformDatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SERTokenTransfer.cs">
+      <DependentUpon>PlatformDatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Setting.cs">
+      <DependentUpon>PlatformDatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SocialActivity.cs">
+      <DependentUpon>PlatformDatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StoredSocialValue.cs">
+      <DependentUpon>PlatformDatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\User.cs">
+      <DependentUpon>PlatformDatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserSession.cs">
+      <DependentUpon>PlatformDatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserWalletHistory.cs">
+      <DependentUpon>PlatformDatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ViewModels\AcceptedRetailPolicy.cs" />
+    <Compile Include="Models\ViewModels\AcceptedSocialActivity.cs" />
+    <Compile Include="Models\ViewModels\Blockchain.cs" />
+    <Compile Include="Models\ViewModels\Coin.cs" />
+    <Compile Include="Models\ViewModels\RetailPolicy.cs" />
+    <Compile Include="Models\ViewModels\SocialActivity.cs" />
+    <Compile Include="Models\ViewModels\Users.cs" />
+    <Compile Include="Models\WalletTransaction.cs">
+      <DependentUpon>PlatformDatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Default\Index.cshtml" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Default\Signup.cshtml" />
+    <Content Include="Views\Users\ChangeCredential.cshtml" />
+    <Content Include="Views\Default\Forgot.cshtml" />
+    <Content Include="Views\Default\ResetPassword.cshtml" />
+    <Content Include="Views\Users\Profile.cshtml" />
+    <Content Include="Views\Default\Dashboard.cshtml" />
+    <Content Include="Views\Users\Edit.cshtml" />
+    <Content Include="Views\QR\Index.cshtml" />
+    <Content Include="Views\Users\RequestAccess.cshtml" />
+    <Content Include="Areas\Admin\Views\AccessRequests\Index.cshtml" />
+    <Content Include="Areas\SE\Views\Certificate\Calculate.cshtml" />
+    <Content Include="Areas\SE\Views\Certificate\Email.cshtml" />
+    <Content Include="Areas\SE\Views\Certificate\Index.cshtml" />
+    <Content Include="Areas\SE\Views\Certificate\PDF.cshtml" />
+    <Content Include="Areas\Admin\Views\Users\Index.cshtml" />
+    <Content Include="Areas\RewardingBody\Views\SocialActivities\Create.cshtml" />
+    <Content Include="Areas\RewardingBody\Views\SocialActivities\Edit.cshtml" />
+    <Content Include="Areas\RewardingBody\Views\SocialActivities\Index.cshtml" />
+    <Content Include="Areas\SE\Views\Requests\Details.cshtml" />
+    <Content Include="Areas\SE\Views\Requests\Index.cshtml" />
+    <Content Include="Areas\SE\Views\Requests\Send.cshtml" />
+    <Content Include="Areas\RewardingBody\Views\Default\Index.cshtml" />
+    <Content Include="Areas\Wallets\Views\SeratioWallet\Index.cshtml" />
+    <Content Include="Views\Default\Notifications.cshtml" />
+    <Content Include="Views\Users\SocialActivityDetails.cshtml" />
+    <Content Include="SmartContracts\build\contracts\CityCoin.json" />
+    <Content Include="SmartContracts\build\contracts\EduCoin.json" />
+    <Content Include="SmartContracts\build\contracts\Migrations.json" />
+    <Content Include="SmartContracts\build\contracts\MuslimCoin.json" />
+    <Content Include="SmartContracts\build\contracts\SDGCoin.json" />
+    <Content Include="SmartContracts\build\contracts\Token.json" />
+    <Content Include="SmartContracts\build\contracts\WomenCoin.json" />
+    <Content Include="Views\Users\ReGenerateQR.cshtml" />
+    <Content Include="Views\Default\Reset.cshtml" />
+    <Content Include="Views\TwoFA\Activate.cshtml" />
+    <Content Include="Views\TwoFA\Index.cshtml" />
+    <Content Include="Views\Keys\Index.cshtml" />
+    <Content Include="Views\Keys\PrintWallet.cshtml" />
+    <Content Include="Views\Default\Error.cshtml" />
+    <Content Include="Views\Default\Provenance.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\Blockchain\" />
+    <Folder Include="Areas\Admin\Views\SeratioInvestments\" />
+    <Folder Include="Areas\Minting\Models\" />
+    <Folder Include="Areas\Minting\Views\Default\" />
+    <Folder Include="Areas\Minting\Views\Shared\" />
+    <Folder Include="Areas\Provenance\Controllers\" />
+    <Folder Include="Areas\Provenance\Models\" />
+    <Folder Include="Areas\Provenance\Views\Shared\" />
+    <Folder Include="Areas\RetailEnd\Models\" />
+    <Folder Include="Areas\RewardingBody\Models\" />
+    <Folder Include="Areas\SE\Models\" />
+    <Folder Include="Areas\SE\Views\Shared\" />
+    <Folder Include="Areas\Vault\Models\" />
+    <Folder Include="Areas\Vault\Views\Shared\" />
+    <Folder Include="Areas\Wallets\Models\" />
+    <Folder Include="Areas\Wallets\Views\Test\" />
+    <Folder Include="Areas\Wallets\Views\Vault\" />
+    <Folder Include="keys\" />
+    <Folder Include="Views\Import\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>51081</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost/wallet</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.4\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.4\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

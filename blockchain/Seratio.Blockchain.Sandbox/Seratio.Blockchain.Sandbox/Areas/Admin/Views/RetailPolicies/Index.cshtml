@@ -1,0 +1,67 @@
+﻿@model Seratio.Blockchain.Sandbox.Models.RetailPolicy
+
+    @{
+        ViewBag.Title = "Manage Retail Policy Requests";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    @section JavaScript{
+        <script type="text/javascript">$(document).ready(function () { WebApp.Core.HighlightCurrentMenuItem('Retail Policy Requests') });</script>
+    }
+
+    @{
+        string _daterange = Request.QueryString["daterange"];
+        {
+            if (_daterange == null)
+            {
+                _daterange = (!string.IsNullOrEmpty(Request.QueryString["start"]) ? Request.QueryString["start"] + " - " : "") + (!string.IsNullOrEmpty(Request.QueryString["end"]) ? Request.QueryString["end"] : "");
+            }
+        }
+    }
+
+    @section Breadcrumbs{
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/wallet/default/dashboard">Dashboard</a></li>
+            <li class="breadcrumb-item"><a href="javascript:void(0);">Administrator Body</a></li>
+            <li class="breadcrumb-item"><span>Manage Retail Policy Requests</span></li>
+        </ul>
+    }
+
+    <div class="content-box">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="element-wrapper">
+                    <div class="element-box">
+                        <h5 class="element-header">Manage Retail Policy Requests</h5>
+                        <div class="heading-elements">
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table data-table table-hover" data-source="/wallet/admin/retailpolicies/list?daterange=@Request.QueryString["daterange"]" data-key="5">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Name)
+                                        </th>
+                                        <th>
+                                            Status
+                                        </th>
+                                        <th>
+                                            Retail End
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Description)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.LastUpdatedOn)
+                                        </th>
+                                        <th class="no-sort">Options</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

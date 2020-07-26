@@ -1,0 +1,174 @@
+﻿@model User
+
+@{
+    ViewBag.Title = "Edit Profile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section JavaScript{
+    <script type="text/javascript">$(document).ready(function () { WebApp.Core.HighlightCurrentMenuItem('Users') });</script>
+    <script src="/wallet/assets/plugins/bootstrap-toggle/bootstrap-toggle.min.js"></script>
+    <script src="/wallet/scripts/jquery.validate.unobtrusive.min.js"></script>
+}
+
+@section CSS{
+    <link href="/wallet/assets/plugins/bootstrap-toggle/bootstrap-toggle.min.css" rel="stylesheet" />
+}
+
+@section Breadcrumbs{
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/wallet/default/dashboard">Dashboard</a></li>
+        <li class="breadcrumb-item"><span>Edit Profile</span></li>
+    </ul>
+}
+
+
+<div class="content-box">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="element-wrapper">
+                <div class="element-box">
+                    <form method="post" class="form-horizontal" action="" enctype="multipart/form-data">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.AntiForgeryToken()
+                        <h5 class="element-header">Edit Profile</h5>                      
+
+                        <div class="form-group">
+                            <label>@Html.DisplayNameFor(model => model.NickName):</label>
+                            @Html.EditorFor(model => model.NickName, new { htmlAttributes = new { @placeholder = "Please enter the Preferred Name", @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.NickName, "", new { @class = "text-danger" })
+                        </div>
+
+
+                        <div class="form-group">
+                            <label>@Html.DisplayNameFor(model => model.Email):</label>
+                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @placeholder = "Please enter the Email", @class = "form-control", @readonly = "readonly" } })
+                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            <label>Gender:</label>
+                            <select name="Gender" id="Status" class="form-control select">
+                                <option value="" @(Model.Gender == "" ? "selected" : string.Empty)>--Select--</option>
+                                <option value="Male" @(Model.Gender == "Male" ? "selected" : string.Empty)>Male</option>
+                                <option value="Female" @(Model.Gender == "Female" ? "selected" : string.Empty)>Female</option>
+                                <option value="Other" @(Model.Gender == "Other" ? "selected" : string.Empty)>Other</option>
+                            </select>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label>@Html.DisplayNameFor(model => model.Phone):</label>
+                            @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @placeholder = "Please enter the Phone", @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                        </div>
+
+
+                        <div class="form-group">
+                            <label>@Html.DisplayNameFor(model => model.AssetTransactionCriteria):</label>
+                            <div class="criteriaDiv">
+                                <select name="AssetTransactionCriteria" id="Criteria" class="form-control select Asset Transaction Criteria">
+                                    <option value="" @(Model.AssetTransactionCriteria == "" ? "selected" : string.Empty)>--Select--</option>
+                                    <option value="<=" @(Model.AssetTransactionCriteria == "<=" ? "selected" : string.Empty)>Less than or equal to</option>
+                                    <option value=">=" @(Model.AssetTransactionCriteria == ">=" ? "selected" : string.Empty)>Greater than or equal to</option>
+                                    <option value="=" @(Model.AssetTransactionCriteria == "=" ? "selected" : string.Empty)>Equal to</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+
+                        @{
+                            if (Model.AssetTransactionCriteria != null)
+                            {
+                                <div class="form-group CriteriaValueDiv" id="CriteriaValueDiv">
+                                    <label>@Html.DisplayNameFor(model => model.AssetTransactionCriteriaValue):</label>
+                                    @Html.EditorFor(model => model.AssetTransactionCriteriaValue, new { htmlAttributes = new { @placeholder = "Please enter the Asset Transaction Criteria Value", @class = "form-control", data_val = true, data_val_required = "Please enter a value for Criteria Value" } })
+                                    @Html.ValidationMessageFor(model => model.AssetTransactionCriteriaValue, "", new { @class = "text-danger" })
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="form-group hidden CriteriaValueDiv" id="CriteriaValueDiv">
+                                    <label>@Html.DisplayNameFor(model => model.AssetTransactionCriteriaValue):</label>
+                                    @Html.EditorFor(model => model.AssetTransactionCriteriaValue, new { htmlAttributes = new { @placeholder = "Please enter the Asset Transaction Criteria Value", @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.AssetTransactionCriteriaValue, "", new { @class = "text-danger" })
+                                </div>
+                            }
+
+                            if (string.IsNullOrEmpty(Model.SaftyQuestion) || Model.SaftyAnswer == null)
+                            {
+                                <div class="form-group">
+                                    <label>@Html.DisplayNameFor(model => model.SaftyQuestion):</label>
+                                    <select class="form-control select" id="SaftyQuestion" name="SaftyQuestion">
+                                        <option>Please Select the Question</option>
+
+                                        <option value="What was your childhood nickname?" @("What was your childhood nickname?" == Model.SaftyQuestion ? "Selected" : string.Empty)>What was your childhood nickname?</option>
+                                        <option value="In what city did you meet your spouse/significant other?" @("In what city did you meet your spouse/significant other?" == Model.SaftyQuestion ? "Selected" : string.Empty)>In what city did you meet your spouse/significant other?</option>
+                                        <option value="What street did you live on in third grade?" @("What street did you live on in third grade?" == Model.SaftyQuestion ? "Selected" : string.Empty)>What street did you live on in third grade?</option>
+                                        <option value="What is the name of your favorite childhood friend?" @("What is the name of your favorite childhood friend?" == Model.SaftyQuestion ? "Selected" : string.Empty)>What is the name of your favorite childhood friend?</option>
+                                        <option value="What is your oldest sibling’s birthday month and year?" @("What is your oldest sibling’s birthday month and year?" == Model.SaftyQuestion ? "Selected" : string.Empty)>What is your oldest sibling’s birthday month and year? (e.g., January 1900)</option>
+                                        <option value="What is the middle name of your oldest child?" @("What is the middle name of your oldest child?" == Model.SaftyQuestion ? "Selected" : string.Empty)>What is the middle name of your oldest child?</option>
+                                        <option value="What is your oldest sibling's middle name?" @("What is your oldest sibling's middle name?" == Model.SaftyQuestion ? "Selected" : string.Empty)>What is your oldest sibling's middle name?</option>
+                                        <option value="What school did you attend for sixth grade?" @("What school did you attend for sixth grade?" == Model.SaftyQuestion ? "Selected" : string.Empty)>What school did you attend for sixth grade?</option>
+                                        <option value="What was your childhood phone number including area code?" @("What was your childhood phone number including area code?" == Model.SaftyQuestion ? "Selected" : string.Empty)>What was your childhood phone number including area code? (e.g., 000-000-0000)</option>
+                                        <option value="What is your oldest cousin's first and last name?" @("What is your oldest cousin's first and last name?" == Model.SaftyQuestion ? "Selected" : string.Empty)>What is your oldest cousin's first and last name?</option>
+                                        <option value="What was the name of your first stuffed animal?" @("What was the name of your first stuffed animal?" == Model.SaftyQuestion ? "Selected" : string.Empty)>What was the name of your first stuffed animal?</option>
+                                        <option value="In what city or town did your mother and father meet?" @("In what city or town did your mother and father meet?" == Model.SaftyQuestion ? "Selected" : string.Empty)>In what city or town did your mother and father meet?</option>
+                                        <option value="Where were you when you had your first kiss?" @("Where were you when you had your first kiss?" == Model.SaftyQuestion ? "Selected" : string.Empty)>Where were you when you had your first kiss?</option>
+                                        <option value="What is the first name of the boy or girl that you first kissed?" @("What is the first name of the boy or girl that you first kissed?" == Model.SaftyQuestion ? "Selected" : string.Empty)>What is the first name of the boy or girl that you first kissed?</option>
+                                        <option value="What was the last name of your third grade teacher?" @("What was the last name of your third grade teacher?" == Model.SaftyQuestion ? "Selected" : string.Empty)>What was the last name of your third grade teacher?</option>
+                                        <option value="In what city does your nearest sibling live?" @("In what city does your nearest sibling live?" == Model.SaftyQuestion ? "Selected" : string.Empty)>In what city does your nearest sibling live?</option>
+                                        <option value="What is your oldest brother’s birthday month and year?" @("What is your oldest brother’s birthday month and year?" == Model.SaftyQuestion ? "Selected" : string.Empty)>What is your oldest brother’s birthday month and year? (e.g., January 1900)</option>
+                                        <option value="What is your maternal grandmother's maiden name?" @("What is your maternal grandmother's maiden name?" == Model.SaftyQuestion ? "Selected" : string.Empty)>What is your maternal grandmother's maiden name?</option>
+                                        <option value="In what city or town was your first job?" @("In what city or town was your first job?" == Model.SaftyQuestion ? "Selected" : string.Empty)>In what city or town was your first job?</option>
+                                        <option value="What is the name of the place your wedding reception was held?" @("What is the name of the place your wedding reception was held?" == Model.SaftyQuestion ? "Selected" : string.Empty)>What is the name of the place your wedding reception was held?</option>
+                                        <option value="What is the name of a college you applied to but didn't attend?" @("What is the name of a college you applied to but didn't attend?" == Model.SaftyQuestion ? "Selected" : string.Empty)>What is the name of a college you applied to but didn't attend?</option>
+                                        <option value="Where were you when you first heard about 9/11?" @("Where were you when you first heard about 9/11?" == Model.SaftyQuestion ? "Selected" : string.Empty)>Where were you when you first heard about 9/11?</option>
+
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>@Html.DisplayNameFor(model => model.Answer):</label>
+                                    @Html.EditorFor(model => model.Answer, new { htmlAttributes = new { @placeholder = "Please enter the Security Answer", @class = "form-control" } })
+                                    @*@Html.ValidationMessageFor(model => model.AssetTransactionCriteriaValue, "", new { @class = "text-danger" })*@
+                                </div>
+                            }
+                        }
+
+
+                        <div class="form-group">
+                            <label>@Html.DisplayNameFor(model => model.IsSearchable)</label>
+                            <div> @Html.EditorFor(model => model.IsSearchable, new { htmlAttributes = new { @class = "form-control toggle-switch" } })
+                                @Html.ValidationMessageFor(model => model.IsSearchable, "", new { @class = "text-danger" })
+                            </div>
+                           
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>@Html.DisplayNameFor(model => model.ShouldAllowSignInWithQR)</label>
+                            <div>  @Html.EditorFor(model => model.ShouldAllowSignInWithQR, new { htmlAttributes = new { @class = "form-control toggle-switch" } })
+                                @Html.ValidationMessageFor(model => model.ShouldAllowSignInWithQR, "", new { @class = "text-danger" })</div>
+                          
+                        </div>
+                        
+                        <div class="form-group">
+                          
+                            <label>@Html.DisplayNameFor(model => model.AllowEmailNotifications)</label>
+                            <div>  @Html.EditorFor(model => model.AllowEmailNotifications, new {htmlAttributes = new {@class = "form-control toggle-switch"}})
+                                @Html.ValidationMessageFor(model => model.AllowEmailNotifications, "", new {@class = "text-danger"})</div>
+                            
+                        </div>
+
+
+                        <div class="form-buttons-w text-right">
+                            <a href="/wallet/users/edit/@Model.ID" class="btn btn-default">Reset</a>
+                            <button class="btn btn-primary" type="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

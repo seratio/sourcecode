@@ -1,0 +1,245 @@
+﻿@model User
+
+@{
+    ViewBag.Title = "My Profile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section JavaScript{
+    <script type="text/javascript">$(document).ready(function () { WebApp.Core.HighlightCurrentMenuItem('My Profile') });</script>
+    <script src="/wallet/assets/plugins/bootstrap-toggle/bootstrap-toggle.min.js"></script>
+    <script src="/wallet/scripts/jquery.validate.unobtrusive.min.js"></script>
+}
+@section CSS{
+    <link href="/wallet/assets/plugins/bootstrap-toggle/bootstrap-toggle.min.css" rel="stylesheet" />
+}
+@section Breadcrumbs{
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/wallet/default/dashboard">Dashboard</a></li>
+        <li class="breadcrumb-item"><span>My Profile</span></li>
+    </ul>
+}
+
+<div class="content-box">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="element-wrapper">
+                <div class="element-box">
+                    <h5 class="element-header">My Profile</h5>
+                    <div class="heading-elements">
+                        <a href="/wallet/users/edit/@Model.ID"><i class="os-icon os-icon-edit-1"></i><span>Edit</span></a>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <ul class="nav nav-tabs" role="tablist" style="margin-bottom: 1.5rem;">
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="#account-information" role="tab" data-toggle="tab">Account Information</a>
+                                </li>
+                                @*<li class="nav-item">
+                                    <a class="nav-link" href="#access-request" role="tab" data-toggle="tab">My Access Requests</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#social-activities" role="tab" data-toggle="tab">My Social Activities</a>
+                                </li>*@
+                            </ul>
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade in active" id="account-information">
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <div class="table-responsive">
+                                                <table class="table table-lightborder">
+                                                    <tbody>
+                                                       
+                                                        <tr>
+                                                            <td>@Html.DisplayNameFor(model => model.NickName)</td>
+                                                            <td>:</td>
+                                                            <td>@Model.NickName</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>@Html.DisplayNameFor(model => model.Email)</td>
+                                                            <td>:</td>
+                                                            <td>@Model.Email</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td> Your Seratio Wallet Address</td>
+                                                            <td>:</td>
+                                                            <td>@Model.WalletAddress</td>
+                                                        </tr>
+
+
+                                                        <tr>
+                                                            <td>@Html.DisplayNameFor(model => model.Gender)</td>
+                                                            <td>:</td>
+                                                            <td>@Model.Gender</td>
+                                                        </tr>
+                                                        @{
+                                                            string _criteriaMessage = "";
+
+                                                            switch (Model.AssetTransactionCriteria)
+                                                            {
+                                                                case ">=":
+                                                                    _criteriaMessage = "Social Earning greater than or equal to " + Model.AssetTransactionCriteriaValue;
+                                                                    break;
+
+                                                                case "<=":
+                                                                    _criteriaMessage = "Social Earning less than or equal to " + Model.AssetTransactionCriteriaValue;
+                                                                    break;
+
+                                                                case "=":
+                                                                    _criteriaMessage = "Social Earning equal to " + Model.AssetTransactionCriteriaValue;
+                                                                    break;
+                                                                default:
+                                                                    _criteriaMessage = "No Criteria";
+                                                                    break;
+                                                            }
+                                                        }
+                                                        <tr>
+                                                            <td>@Html.DisplayNameFor(model => model.AssetTransactionCriteria)</td>
+                                                            <td>:</td>
+                                                            <td>@_criteriaMessage</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>@Html.DisplayNameFor(model => model.Phone)</td>
+                                                            <td>:</td>
+                                                            <td>@Model.Phone</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>@Html.DisplayNameFor(model => model.IsSearchable)</td>
+                                                            <td>:</td>
+                                                            <td>@Html.EditorFor(model => model.IsSearchable, new { htmlAttributes = new { @class = "toggle-switch", @disabled = "disabled" } })</td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>@Html.DisplayNameFor(model => model.ShouldAllowSignInWithQR)</td>
+                                                            <td>:</td>
+                                                            <td>@Html.EditorFor(model => model.ShouldAllowSignInWithQR, new { htmlAttributes = new { @class = "toggle-switch", @disabled = "disabled" } })</td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>@Html.DisplayNameFor(model => model.AllowEmailNotifications)</td>
+                                                            <td>:</td>
+                                                            <td>@Html.EditorFor(model => model.AllowEmailNotifications, new { htmlAttributes = new { @class = "toggle-switch", @disabled = "disabled" } })</td>
+                                                        </tr>
+
+
+                                                        <tr>
+                                                            <td>@Html.DisplayNameFor(model => model.EmailVerifiedOn)</td>
+                                                            <td>:</td>
+                                                            <td>@(Model.EmailVerifiedOn != null ? Model.EmailVerifiedOn.ToString() : "")</td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>Two Factor Authentication</td>
+                                                            <td>:</td>
+                                                            <td>
+                                                                @if (Model.EnableTwoFactorAuthentication)
+                                                                {
+                                                                    <a href="/wallet/twofa/deactivate"><span>Deactivate</span></a>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <a href="/wallet/twofa/activate"><span>Activate</span></a>
+                                                                }
+                                                            </td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>@Html.DisplayNameFor(model => model.SaftyQuestion)</td>
+                                                            <td>:</td>
+                                                            <td>@Model.SaftyQuestion</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>@Html.DisplayNameFor(model => model.CreatedOn)</td>
+                                                            <td>:</td>
+                                                            <td>@Model.CreatedOn</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>@Html.DisplayNameFor(model => model.LastUpdatedOn)</td>
+                                                            <td>:</td>
+                                                            <td>@Model.LastUpdatedOn</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                        @*@{
+                                            if (Model.ShouldAllowSignInWithQR)
+                                            {
+                                                <div class="col-md-4">
+                                                    <img src="data:image/jpeg;base64,@ViewBag.Base" style="display:block; height:250px; margin: 0 auto; width:250px;" id="image" />
+                                                    <p align="center">
+                                                        <a href="javascript:void(0)" id="download-qr">Click here to Download</a>
+                                                    </p>
+                                                    <p align="center">
+                                                        <a href="/wallet/users/regenerateqr/@Model.ID">Re-Generate QR</a>
+                                                    </p>
+                                                </div>
+                                            }
+                                        }*@
+
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="access-request">
+                                    <div class="table-responsive">
+                                        <table class="table data-table table-hover" data-source="/wallet/users/AccessRequestList/" data-key="3">
+                                            <thead>
+                                                <tr>
+                                                    <th>
+                                                        Module
+                                                    </th>
+                                                    <th>
+                                                        Message
+                                                    </th>
+                                                    <th>
+                                                        Status
+                                                    </th>
+                                                    <th class="no-sort">
+                                                        Responded On
+                                                    </th>
+
+                                                    <th>
+                                                        Requested On
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody></tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+
+                                <div role="tabpanel" class="tab-pane fade" id="social-activities">
+                                    <div class="table-responsive">
+                                        <table class="table data-table table-hover" data-source="/wallet/users/SentSocialActivityList/" data-key="4">
+                                            <thead>
+                                                <tr>
+                                                    <th>
+                                                        Social Activity
+                                                    </th>
+                                                    <th>
+                                                        Rewarding Body
+                                                    </th>
+                                                    <th>
+                                                        Reward
+                                                    </th>
+                                                    <th>
+                                                        Time
+                                                    </th>
+                                                    <th class="no-sort">
+                                                        Options
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody></tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

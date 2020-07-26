@@ -1,0 +1,118 @@
+﻿@model SAPIResponse
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>PDF</title>
+    <style type="text/css">
+        body {
+            color: #333;
+            font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+            font-size: 14px;
+            line-height: 1.42857;
+            padding: 35px 15px 35px 20px;
+        }
+
+        .value_bg {
+            background: rgba(0, 0, 0, 0) url("/wallet/assets/images/persoanl_value.png") no-repeat scroll center top;
+            height: 125px;
+            padding: 210px 0 0 5px;
+        }
+
+        .corners1 {
+            border: 1px solid #134363;
+            border-radius: 7px;
+            height: 58px;
+            width: 160px;
+        }
+
+        .value_text {
+            color: #134363;
+            font: 700 42px/55px "Open Sans",sans-serif;
+            text-align: center;
+        }
+
+        p {
+            margin: 0 0 10px;
+        }
+
+        a {
+            color: #3c8dbc;
+        }
+    </style>
+</head>
+<body>
+
+
+    <div style="border: 5px ridge #ffd800; padding: 5px 0 25px;">
+        <div class="value_bg" align="center" style="overflow:hidden;">
+            <div class="corners1" style="overflow:hidden;">
+                <div class="value_text" style="overflow:hidden;">
+                    @{
+                      User _user = ViewBag.User;
+                      //  @(_user.SE != null ? _user.SE : (decimal)Model.data.pv)
+                        @((decimal)Model.data.pv)
+
+                    }
+                </div>
+            </div>
+        </div>
+        <p style="font-size:125%; font-weight:bold;" align="center"><a href="http://seratio.com">www.seratio.com</a></p>
+        <p style="font-size:125%; font-weight:bold;" align="center"> @(string.IsNullOrEmpty(_user.NickName) ? _user.Email : _user.NickName)</p>
+        @*<p style="font-size:125%; font-weight:bold;" align="center"> @Model.email </p>*@
+        <p style="font-size:125%; font-weight:bold;" align="center">  @Model.data.updated_at</p>
+        <p style="font-size:80%; font-weight:bold;" align="center"> The ratio is how much social value you create compared to your financial value</p>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    @*<div style="border: 5px ridge #ffd800; padding: 5px 0 25px;">
+        <div style="padding: 407px 0;">
+            <div class="value_bg" align="center" style="overflow:hidden;">
+                <div class="corners1" style="overflow:hidden;">
+               
+
+                        @{
+                            User _user = ViewBag.User;
+                            @(_user.SE != null ? _user.SE : (decimal)Model.data.pv)
+                        }
+
+                    
+
+                </div>
+            </div>
+
+            <p style="font-size:125%; font-weight:bold;" align="center"><a href="www.seratio.com">www.seratio.com</a></p>
+
+
+            <p style="font-size:125%; font-weight:bold;" align="center"> @ViewBag.Nickname</p>
+
+          
+            @{
+                if (Model.data != null)
+                {
+                    <p style="font-size:125%; font-weight:bold;" align="center"> @Model.data.updated_at</p>
+
+                }
+
+            }
+            <p style="font-size:80%; font-weight:bold;" align="center"> The ratio is how much social value you create compared to your financial value</p>
+        </div>
+    </div>*@
+</body>
+</html>

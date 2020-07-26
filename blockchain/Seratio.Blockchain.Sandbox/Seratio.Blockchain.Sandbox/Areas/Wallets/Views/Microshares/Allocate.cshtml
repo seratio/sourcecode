@@ -1,0 +1,113 @@
+﻿@model List<Coin>
+@{
+    ViewBag.Title = "Allocate Microshares";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section JavaScript{
+    <script type="text/javascript">$(document).ready(function () { WebApp.Core.HighlightCurrentMenuItem('Microshares') });</script>
+}
+
+@section CSS
+{
+    <style>
+        .alert-info {
+            color: #bce8f1;
+            background: #004250 none repeat scroll 0 0;
+        }
+
+        .alert {
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid transparent;
+            border-top-color: transparent;
+            border-right-color: transparent;
+            border-bottom-color: transparent;
+            border-left-color: transparent;
+            border-radius: 4px;
+        }
+
+        .alert-info .alert-link {
+            color: #245269;
+        }
+
+        .alert .alert-link {
+            font-weight: 700;
+        }
+    </style>
+}
+@section Breadcrumbs{
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/wallet/default/dashboard">Dashboard</a></li>
+        <li class="breadcrumb-item"><span>Microshares</span></li>
+    </ul>
+}
+
+@{
+    if (ViewBag.UnAllocatedAmount != null && (decimal)ViewBag.UnAllocatedAmount > 0)
+    {
+        <div class="content-box" style="padding-bottom: 0 !important">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="alert alert-info">
+                        <strong>Attention!</strong> You have unallocated Microshares (@ViewBag.UnAllocatedAmount MCR) in your Seratio wallet.
+                    </div>
+                    <input type="hidden" id="unallocated_mcr" value="@ViewBag.UnAllocatedAmount" />
+                </div>
+            </div>
+        </div>
+    }
+}
+
+<div class="content-box">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="element-wrapper">
+                <div class="element-box">
+                    <form method="post" class="form-horizontal" action="" enctype="multipart/form-data">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.AntiForgeryToken()
+                        <h5 class="element-header">Allocate Microshares</h5>
+                        <div class="heading-elements">
+                            <a href="/wallet/wallets/microshares"><span>Microshares</span></a>
+                        </div>
+
+                        @{
+                            int index = 0;
+                            foreach (Coin _coin in Model)
+                            {
+                                <div class="form-group">
+                                    <input type="hidden" name="model[@index].CoinID" value="@_coin.ID" />
+
+                                    <label>@_coin.Name (@_coin.Symbol):</label>
+                                    <input class="form-control text-box single-line allocated_mcr" data-val="true" data-val-number="This field must be a number." data-val-required="Please enter a value for @_coin.Name" name="model[@index].Amount" placeholder="Please enter an amount for @_coin.Name" value="@_coin.Balance" type="number">
+                                    <span class="field-validation-valid text-danger" data-valmsg-for="model[@index].Amount" data-valmsg-replace="true"></span>
+                                </div>
+
+                                index++;
+                            }
+
+                            <div class="form-group">
+                                <label><b>Total MCR Balance:</b></label>
+                                <div><span>@(ViewBag.MCRBalance)</span> MCR</div>
+                            </div>
+                            <div class="form-group">
+                                <label><b>Allocated Total:</b></label>
+                                <div><span id="allocated_total">@(Model.Sum(c => c.Balance))</span> MCR</div>
+                            </div>
+                            <div class="form-group">
+                                <label><b>Unallocated Total:</b></label>
+                                <div><span id="unallocated_total">@ViewBag.UnAllocatedAmount</span> MCR</div>
+                            </div>
+                        }
+
+                        <div class="form-buttons-w text-right">
+                            <a href="/wallet/wallets/microshares" class="btn btn-default">Reset</a>
+                            <button class="btn btn-primary" type="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

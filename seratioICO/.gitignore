@@ -1,0 +1,13 @@
+*.iws
+workspace.xml
+tasks.xml
+
+build/
+contracts/zeppelin/
+
+*.swp
+*.swo
+node_modules/
+.DS_Store/
+/coverage
+coverage.json

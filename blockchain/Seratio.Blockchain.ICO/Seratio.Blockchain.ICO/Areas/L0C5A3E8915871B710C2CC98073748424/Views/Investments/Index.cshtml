@@ -1,0 +1,81 @@
+﻿@model Investment
+
+
+@{
+    ViewBag.Title = "Manage Investments";
+    Layout = "~/Areas/L0C5A3E8915871B710C2CC98073748424/Views/Shared/_Layout.cshtml";
+}
+
+@section JavaScript{
+    <script type="text/javascript">$(document).ready(function () { WebApp.Core.HighlightCurrentMenuItem('Investments') });</script>
+}
+
+@{
+    string _daterange = Request.QueryString["daterange"];
+    {
+        if (_daterange == null)
+        {
+            _daterange = (!string.IsNullOrEmpty(Request.QueryString["start"]) ? Request.QueryString["start"] + " - " : "") + (!string.IsNullOrEmpty(Request.QueryString["end"]) ? Request.QueryString["end"] : "");
+        }
+    }
+}
+
+<div class="page-header">
+    <div class="page-header-content">
+        <div class="page-title">
+            <h4><span class="text-semibold">Manage Investments</span></h4>
+        </div>
+        <div class="heading-elements">
+            <div class="heading-btn-group">
+                <a href="~/L0C5A3E8915871B710C2CC98073748424/investments/export/?type=seratio" class="btn btn-success">Export Seratio Coin <i class="icon-download7 position-right"></i></a>
+                <a href="~/L0C5A3E8915871B710C2CC98073748424/investments/export/?type=womenscoin" class="btn btn-success">Export Womens Coin <i class="icon-download7 position-right"></i></a>
+                <a href="~/L0C5A3E8915871B710C2CC98073748424/investments/export/?type=studentcoin" class="btn btn-success">Export Student Coin <i class="icon-download7 position-right"></i></a>
+                <a href="~/L0C5A3E8915871B710C2CC98073748424/investments/export/?type=10xgrowth" class="btn btn-success">Export Growth Token <i class="icon-download7 position-right"></i></a>
+                <a href="~/L0C5A3E8915871B710C2CC98073748424/investments/export/?type=ttc" class="btn btn-success">Export TimeTraveler Coin <i class="icon-download7 position-right"></i></a>
+
+            </div>
+        </div>
+
+    </div>
+    <div class="breadcrumb-line">
+        <ul class="breadcrumb">
+            <li><a href="/L0C5A3E8915871B710C2CC98073748424/default/dashboard"><i class="icon-home4 position-left"></i>Dashboard</a></li>
+            <li class="active">Investments</li>
+        </ul>
+    </div>
+</div>
+<div class="content">
+    <div class="panel panel-flat">
+
+        <table class="table data-table table-bordered table-striped table-hover" data-source="/L0C5A3E8915871B710C2CC98073748424/investments/list/" data-key="8">
+            <thead>
+                <tr>
+                    <th class="no-sort">
+                        @Html.DisplayNameFor(model => model.Token)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.UserID)
+                    </th>
+                    <th>@Html.DisplayNameFor(model => model.Type)</th>
+                    <th class="no-sort">
+                        @Html.DisplayNameFor(model => model.Amount)
+                    </th>
+                    <th class="no-sort">
+                        @Html.DisplayNameFor(model => model.TxReferenceNumber)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Status)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.InitializedOn)
+                    </th>
+                    <th>Campaign Code</th>
+                    <th class="no-sort">
+                        Options
+                    </th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</div>

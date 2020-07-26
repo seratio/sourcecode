@@ -1,0 +1,526 @@
+﻿<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <meta content="ie=edge" http-equiv="x-ua-compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>@ViewBag.Title - Seratio Platform</title>
+    <link href="/wallet/assets/images/favicon.png" rel="icon" type="image/png">
+    <link href="/wallet/assets/icon_fonts_assets/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/wallet/assets/bower_components/perfect-scrollbar/css/perfect-scrollbar.min.css" rel="stylesheet">
+    <link href="/wallet/assets/css/main.css" rel="stylesheet">
+    <link href="/wallet/assets/css/custom.css" rel="stylesheet">
+    <link href="/wallet/assets/css/select2.css" rel="stylesheet" type="text/css">
+    <link href="/wallet/assets/css/jquery.tagit.css" rel="stylesheet" type="text/css">
+    <link href="/wallet/assets/css/tagit.ui-zendesk.css" rel="stylesheet" type="text/css">
+    <link href="/wallet/assets/plugins/bootstrap-toastr/toastr.min.css" rel="stylesheet" type="text/css" />
+    <link href="/wallet/assets/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
+    <link href="/wallet/assets/plugins/awesomplete/awesomplete.css" rel="stylesheet" />
+    @RenderSection("CSS", required: false)
+    <style>
+        #icon {
+            width: 64px;
+            height: 64px;
+            background-size: cover;
+            background-repeat: no-repeat;
+            border-radius: 50%;
+            box-shadow: inset rgba(255, 255, 255, 0.6) 0 2px 2px, inset rgba(0, 0, 0, 0.3) 0 -2px 6px;
+        }
+    </style>
+    <link href="/wallet/Assets/plugins/extras/jquery.timepicker.min.css" rel="stylesheet" />
+    <!--[if lt IE 9]>
+    <script src="/wallet/Assets/plugins/extras/html5shiv.min.js"></script>
+    <script src="/wallet/Assets/plugins/extras/respond.min.js"></script>
+        <![endif]-->
+</head>
+<body class="pantone">
+    <div class="all-wrapper menu-side">
+        <div class="layout-w">
+            <div class="menu-mobile menu-activated-on-click color-scheme-dark">
+                <div class="mm-logo-buttons-w">
+                    <a class="mm-logo" href="/wallet/default/dashboard"><img src="/wallet/assets/images/logo1.png"><span>Seratio Platform</span></a>
+                    <div class="mm-buttons">
+                        <div class="content-panel-open">
+                            <div class="os-icon os-icon-grid-circles"></div>
+                        </div>
+                        <div class="mobile-menu-trigger">
+                            <div class="os-icon os-icon-hamburger-menu-1"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-and-user">
+                    <div class="logged-user-w">
+                        <div class="avatar-w"><img alt="@(AppManager.User.NickName!=null?AppManager.User.NickName:  AppManager.User.Email.ToLower())" src="/wallet/assets/images/avatar.png"></div>
+                        <div class="logged-user-info-w">
+                            <div class="logged-user-name">@(AppManager.User.NickName != null ? AppManager.User.NickName : AppManager.User.Email.ToLower())</div>
+
+                            @*@{
+                                    if (AppManager.User.IsSuperAdmin)
+                                    {
+                                        <div class="logged-user-role">Administrator</div>
+                                    }
+                                    else
+                                    {
+                                        <div class="logged-user-role">User</div>
+
+                                    }
+                                }*@
+
+                        </div>
+                    </div>
+                    <ul class="main-menu">
+                        <li>
+                            <a href="/wallet/default/dashboard">
+                                <div class="icon-w">
+                                    <div class="os-icon os-icon-window-content"></div>
+                                </div>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="has-sub-menu">
+                            <a href="javascript:void(0)">
+                                <div class="icon-w">
+                                    <div class="fa fa-vcard"></div>
+                                </div>
+                                <span>
+                                    S/E Certificates<br />
+                                    <small style="color: #747678 !important;">Optional (Alpha mode)</small>
+                                </span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li><a href="/wallet/se/certificate">My S/E Certificate</a></li>
+                                <li><a href="/wallet/se/requests">Requests</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="has-sub-menu">
+                            <a href="javascript:void(0)">
+                                <div class="icon-w">
+                                    <div class="fa fa-briefcase"></div>
+                                </div>
+                                <span>Wallets</span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li><a href="/wallet/wallets/seratiowallet">Seratio Wallet</a></li>
+                                @*<li><a href="/wallet/wallets/microshares">Microshares</a></li>*@
+                                <li class="third-item"><a href="/wallet/vault">Safe Vault</a></li>
+                                @*<li><a href="/wallet/retailend/paymentrequests">Payment Requests</a></li>*@
+                            </ul>
+
+                        </li>
+                        <li class="has-sub-menu">
+                            <a href="javascript:void(0)">
+                                <div class="icon-w">
+                                    <div class="fa fa-sitemap"></div>
+                                </div>
+                                <span>Rewarding Body</span>
+                            </a>
+                            <ul class="sub-menu">
+                                @{
+                                    if (AppManager.User.CanAccessRewardingBody || AppManager.User.IsSuperAdmin)
+                                    {
+                                        <li><a href="/wallet/rewardingbody/socialactivities">Manage Social Activities</a></li>
+                                        <li><a href="/wallet/rewardingbody/default/AcceptedSocialActivities">Reward History</a></li>
+                                        <li><a href="/wallet/rewardingbody">Issue Reward</a></li>
+                                    }
+
+                                    <li><a href="/wallet/rewardingbody/socialactivities/available">Available Activities</a></li>
+                                }
+                            </ul>
+
+                        </li>
+
+                        <li class="has-sub-menu">
+                            <a href="javascript:void(0)">
+                                <div class="icon-w">
+                                    <div class="fa fa-bank"></div>
+                                </div>
+                                <span>Retail End</span>
+                            </a>
+                            <ul class="sub-menu">
+                                @{
+                                    if (AppManager.User.CanAccessRetailEnd || AppManager.User.IsSuperAdmin)
+                                    {
+                                        <li><a href="/wallet/retailend/retailpolicies">Manage Policies</a></li>
+                                        <li><a href="/wallet/retailend/default/acceptedpolicies">Accepted Policies</a></li>
+                                        <li><a href="/wallet/retailend/paymentrequests">Payment Requests</a></li>
+                                        <li><a href="/wallet/retailend/default">Request Payment</a></li>
+                                        <li><a href="/wallet/retailend/vouchers/accept">Accept Voucher</a></li>
+                                    }
+                                }
+
+                                <li><a href="/wallet/retailend/vouchers">All Vouchers</a></li>
+                                <li><a href="/wallet/retailend/vouchers/my">My Vouchers</a></li>
+                            </ul>
+                        </li>
+
+
+                        <li class="has-sub-menu">
+                            <a href="javascript:void(0)">
+                                <div class="icon-w">
+                                    <div class="fa fa-info-circle"></div>
+                                </div>
+                                <span>Info Help</span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li><a href="/wallet/files/Seratio Wallet Instructions 24 Jan 18.pdf" target="_blank">Instructions (English)</a></li>
+                                <li><a href="/wallet/files/Seratio Wallet Instructions_CN_20180125.pdf" target="_blank">Instructions (Chinese)</a></li>
+                                <li><a href="/wallet/files/lock_in.pdf" target="_blank">Lock-in instructions (English)</a></li>
+                                <li><a href="/wallet/files/lock_in_cn.pdf" target="_blank">Lock-in instructions (Chinese)</a></li>
+                                <li><a href="/wallet/files/Wallet FAQ 24th Jan.pdf" target="_blank">FAQ</a></li>
+                                <li><a href="mailto:blockchain.lab@cceg.org.uk" target="_blank">Contact Us</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="desktop-menu menu-side-w menu-activated-on-click">
+                <div class="logo-w">
+                    <a class="logo" href="javascript:void(0)">
+                        <img src="/wallet/assets/images/logo1.png"><br />
+                        <span style="color: #0168ab; font-size: 21px; font-weight: 600;">Seratio Platform</span>
+                    </a>
+                </div>
+                <div class="menu-and-user">
+                    <div class="logged-user-w">
+                        <div class="avatar-w"><a href="/wallet/default/dashboard"><img id="icon" /></a></div>
+                        <div class="logged-user-info-w">
+                            <div class="logged-user-name">@(AppManager.User.NickName != null ? AppManager.User.NickName : AppManager.User.Email.ToLower())</div>
+
+                            @{
+                                @*if (AppManager.User.IsSuperAdmin)
+                                    {
+                                        <div class="logged-user-role">Administrator</div>
+                                    }
+                                    else
+                                    {
+                                        <div class="logged-user-role">User</div>
+
+                                    }*@
+                            }
+
+                        </div>
+                    </div>
+                    <ul class="main-menu">
+                        <li>
+                            <a href="/wallet/default/dashboard">
+                                <div class="icon-w">
+                                    <div class="fa fa-home"></div>
+                                </div>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+
+                        <li class="has-sub-menu">
+                            <a href="javascript:void(0)">
+                                <div class="icon-w">
+                                    <div class="fa fa-vcard"></div>
+                                </div>
+                                <span>
+                                    S/E Certificates<br />
+                                    <small style="color: #747678 !important;">Optional (Alpha mode)</small>
+                                </span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li><a href="/wallet/se/certificate">My S/E Certificate</a></li>
+                                <li><a href="/wallet/se/requests">Requests</a></li>
+                            </ul>
+                        </li>
+
+
+
+                        <li class="has-sub-menu">
+                            <a href="javascript:void(0)">
+                                <div class="icon-w">
+                                    <div class="fa fa-briefcase"></div>
+                                </div>
+                                <span>Wallets</span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li><a href="/wallet/wallets/seratiowallet">Seratio Wallet</a></li>
+                                @*<li class="third-item"><a href="/wallet/wallets/microshares">Microshares</a></li>*@
+                                <li><a href="/wallet/vault">Safe Vault</a></li>
+                            </ul>
+
+                        </li>
+
+
+                        <li class="has-sub-menu">
+                            <a href="javascript:void(0)">
+                                <div class="icon-w">
+                                    <div class="fa fa-sitemap"></div>
+                                </div>
+                                <span>Rewarding Body</span>
+                            </a>
+                            <ul class="sub-menu">
+                                @{
+                                    if (AppManager.User.CanAccessRewardingBody || AppManager.User.IsSuperAdmin)
+                                    {
+                                        <li><a href="/wallet/rewardingbody/socialactivities">Manage Social Activities</a></li>
+                                        <li><a href="/wallet/rewardingbody/default/AcceptedSocialActivities">Reward History</a></li>
+                                        <li><a href="/wallet/rewardingbody">Issue Reward</a></li>
+                                    }
+
+                                    <li><a href="/wallet/rewardingbody/socialactivities/available">Available Activities</a></li>
+                                }
+                            </ul>
+
+                        </li>
+
+                        <li class="has-sub-menu">
+                            <a href="javascript:void(0)">
+                                <div class="icon-w">
+                                    <div class="fa fa-bank"></div>
+                                </div>
+                                <span>Retail End</span>
+                            </a>
+                            <ul class="sub-menu">
+                                @{
+                                    if (AppManager.User.CanAccessRetailEnd || AppManager.User.IsSuperAdmin)
+                                    {
+                                        <li><a href="/wallet/retailend/retailpolicies">Manage Policies</a></li>
+                                        <li><a href="/wallet/retailend/default/acceptedpolicies">Accepted Policies</a></li>
+                                        <li><a href="/wallet/retailend/paymentrequests">Payment Requests</a></li>
+                                        <li><a href="/wallet/retailend/default">Request Payment</a></li>
+                                        <li><a href="/wallet/retailend/vouchers/accept">Accept Voucher</a></li>
+                                    }
+                                }
+
+                                <li><a href="/wallet/retailend/vouchers">All Vouchers</a></li>
+                                <li><a href="/wallet/retailend/vouchers/my">My Vouchers</a></li>
+                            </ul>
+                        </li>
+                        @{
+
+                            if (AppManager.User.IsSuperAdmin)
+                            {
+                                <li class="has-sub-menu">
+                                    <a href="javascript:void(0)">
+                                        <div class="icon-w">
+                                            <div class="fa fa-user-circle"></div>
+                                        </div>
+                                        <span>Administrator Body</span>
+                                    </a>
+                                    <ul class="sub-menu">
+                                        <li><a href="/wallet/admin/users">All Users</a></li>
+                                        <li><a href="/wallet/admin/accessrequests">Access Requests</a></li>
+                                        <li><a href="/wallet/admin/coins">Coins</a></li>
+                                        <li><a href="/wallet/admin/mcrcategories">MCR Categories</a></li>
+                                        <li><a href="/wallet/admin/blockchains">Blockchains</a></li>
+                                        <li><a href="/wallet/admin/socialactivities">Social Activity Requests</a></li>
+                                        <li><a href="/wallet/admin/retailpolicies">Retail Policy Requests</a></li>
+                                    </ul>
+                                </li>
+                            }
+
+                        }
+
+                        <li class="has-sub-menu">
+                            <a href="javascript:void(0)">
+                                <div class="icon-w">
+                                    <div class="fa fa-info-circle"></div>
+                                </div>
+                                <span>Info Help</span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li><a href="/wallet/files/Seratio Wallet Instructions 24 Jan 18.pdf" target="_blank">Instructions (English)</a></li>
+                                <li><a href="/wallet/files/Seratio Wallet Instructions_CN_20180125.pdf" target="_blank">Instructions (Chinese)</a></li>
+                                <li><a href="/wallet/files/lock_in.pdf" target="_blank">Lock-in instructions (English)</a></li>
+                                <li><a href="/wallet/files/lock_in_cn.pdf" target="_blank">Lock-in instructions (Chinese)</a></li>
+                                <li><a href="/wallet/files/Wallet FAQ 24th Jan.pdf" target="_blank">FAQ</a></li>
+                                <li><a href="mailto:blockchain.lab@cceg.org.uk" target="_blank">Contact Us</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="content-w">
+                <div class="top-bar">
+                    @RenderSection("Breadcrumbs", required: false)
+
+                    <ul class="nav nav-pills smaller nav navbar-nav">
+                        @{
+                            int _count = AppManager.GetAllNotification().Count;
+
+                            if (_count > 0)
+                            {
+                                <li class="nav-item"><a class="nav-link activity with-badge" data-toggle="tab" href="javascript:void(0)" aria-expanded="false" title="Notification"><i class="fa fa-bell"></i><span class="badge bg-danger">@_count</span></a></li>
+                            }
+                            else
+                            {
+                                <li class="nav-item"><a class="nav-link activity" data-toggle="tab" href="javascript:void(0)" aria-expanded="false" title="Notification"><i class="fa fa-bell"></i></a></li>
+
+                            }
+                        }
+
+                        <li class="nav-item">
+                            <div class="btn-group">
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" title="Settings"><i class="fa fa-cog"></i></a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <a class="dropdown-item" href="/wallet/users/profile"><i class="fa fa-user-plus"></i> My Profile</a>
+                                    <a class="dropdown-item" href="/wallet/users/changecredential"><i class="fa fa-lock"></i> Change Credentials</a>
+                                    <a class="dropdown-item" href="/wallet/default/logout"><i class="fa fa-power-off"></i> Logout</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <div class="floated-chat-w activity-body">
+                        <div class="floated-chat-i">
+                            <div class="activity-close"><i class="os-icon os-icon-close"></i></div>
+                            <div class="chat-head">
+                                <div class="user-w with-status status-green">
+                                    <div class="user-name">
+
+                                        <h6 class="user-title">Notifications</h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="chat-messages ps ps--theme_default">
+
+                                @{
+                                    foreach (ActivityNotification _notification in AppManager.GetAllNotification().Take(10))
+                                    {
+                                        <div class="users-list-w">
+                                            <div class="user-w with-status">
+                                                @*<div class="user-avatar-w">
+                                                        <div class="user-avatar"><img alt="" src="/wallet/assets/images/avatar.png">
+                                                        </div>
+                                                    </div>*@
+                                                <div class="user-name">
+
+                                                    @if (_notification.Type == "S/E Request")
+                                                    {
+                                                        <a href="/wallet/se/requests/details/@_notification.RelatedItemID"><h6 class="user-title">@_notification.Type</h6></a>
+                                                    }
+                                                    else if (_notification.Type == "Module Access Request")
+                                                    {
+                                                        <a href="/wallet/admin/accessrequests/details/@_notification.RelatedItemID"><h6 class="user-title">@_notification.Type</h6></a>
+                                                    }
+
+                                                    else if (_notification.Type == "Social Activity")
+                                                    {
+                                                        <a href="/rewardingbody/socialactivities/details/@_notification.RelatedItemID"><h6 class="user-title">@_notification.Type</h6></a>
+                                                    }
+                                                    @*else if (_notification.Type == "Accept Reward")
+                                                        {
+                                                            <a href="/rewardingbody/default/AcceptedSocialActivities"><h6 class="user-title">@_notification.Type</h6></a>
+                                                        }*@
+
+                                                    else if (_notification.Type == "Accept Reward")
+                                                    {
+                                                        <a href="/wallet/wallets/seratiowallet/details/@_notification.RelatedItemID"><h6 class="user-title">@_notification.Type</h6></a>
+                                                    }
+                                                    else if (_notification.Type == "Wallet Transaction")
+                                                    {
+                                                        <a href="/wallet/wallets/seratiowallet/details/@_notification.RelatedItemID"><h6 class="user-title">@_notification.Type</h6></a>
+                                                    }
+                                                    else if (_notification.Type == "Retail Policy")
+                                                    {
+                                                        <a href="/wallet/retailend/retailpolicies/details/@_notification.RelatedItemID"><h6 class="user-title">@_notification.Type</h6></a>
+                                                    }
+                                                    else if (_notification.Type == "Accept Retail Policy Coin")
+                                                    {
+                                                        <a href="/wallet/wallets/seratiowallet/details/@_notification.RelatedItemID"><h6 class="user-title">@_notification.Type </h6></a>
+                                                    }
+
+                                                    <div class="user-role">@_notification.CreatedOn</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+
+
+                                    var _notifications = AppManager.GetAllReadedNotification();
+
+                                    if (_notifications != null && _notifications.Any())
+                                    {
+                                        <div class="user-role"><a href="/wallet/default/notifications" class="all-notifiaction">View all Notifications</a></div>
+
+                                    }
+                                }
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class='add-on-body @(Request.Url.PathAndQuery.ToLower().StartsWith("/wallet/default/dashboard")?"active":string.Empty)'>
+                    <div class="row" style="margin: 0; width: 100%;">
+                        <div class="close"><i class="os-icon os-icon-close"></i></div>
+                        <div class="col-sm-4">
+                            <a href="/wallet/rewardingbody" class="main">
+                                <div class="round"><i class="fa fa-sitemap"></i></div>Rewarding Body
+                            </a>
+                        </div>
+                        <div class="col-sm-4">
+                            <a href="/wallet/retailend/default" class="main">
+                                <div class="round"><i class="fa fa-bank"></i></div>Retail End
+                            </a>
+                        </div>
+                        <div class="col-sm-4">
+                            <a href="/wallet/default/provenance" class="main" style="border-right: none;">
+                                <div class="round"><i class="fa fa-flag"></i></div>Provenance
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-i">
+                    @RenderBody()
+                    <div class="footer">© @DateTime.Today.Year Seratio®. All Rights Reserved.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/wallet/assets/js/jquery.min.js"></script>
+    <script src="/wallet/Assets/plugins/extras/tether.min.js"></script>
+    <script src="/wallet/Assets/plugins/extras/bootstrap.min.js"></script>
+    <script src="/wallet/assets/bower_components/bootstrap/js/dist/util.js"></script>
+    <script src="/wallet/assets/bower_components/bootstrap/js/dist/tab.js"></script>
+    <script src="/wallet/assets/bower_components/perfect-scrollbar/js/perfect-scrollbar.jquery.min.js"></script>
+    <script src="/wallet/assets/js/main.js"></script>
+    <script type="text/javascript" src="/wallet/assets/js/moment.min.js"></script>
+    <script type="text/javascript" src="/wallet/assets/js/select2.js"></script>
+    <script type="text/javascript" src="/wallet/assets/plugins/pickers/pickadate/picker.js"></script>
+    <script type="text/javascript" src="/wallet/assets/plugins/pickers/pickadate/picker.date.js"></script>
+    <script type="text/javascript" src="/wallet/assets/plugins/forms/styling/uniform.min.js"></script>
+    <script src="/wallet/Assets/plugins/tables/datatables/datatables.min.js"></script>
+    <script src="/wallet/assets/js/jquery.livequery.js" type="text/javascript"></script>
+    <script src="/wallet/scripts/jquery.validate.min.js" type="text/javascript"></script>
+    <script src="/wallet/Assets/plugins/forms/validation/additional-methods.min.js"></script>
+    <script src="/wallet/assets/plugins/bootstrap-toastr/toastr.min.js" type="text/javascript"></script>
+    <script src="/wallet/assets/plugins/bootstrap-daterangepicker/daterangepicker.js" type="text/javascript"></script>
+    <script src="/wallet/assets/plugins/pickers/datepicker.js" type="text/javascript"></script>
+    <script src="/wallet/assets/js/jquery.cookie.min.js" type="text/javascript"></script>
+    <script src="/wallet/scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="/wallet/assets/plugins/awesomplete/bootstrap3-typeahead.min.js"></script>
+    <script src="/wallet/assets/plugins/awesomplete/awesomplete.min.js"></script>
+    @RenderSection("JavaScript", required: false)
+    <script src="/wallet/scripts/app.js?_=@DateTime.Now.Ticks" type="text/javascript"></script>
+    <script src="/wallet/assets/plugins/blockies/blockies.min.js"></script>
+    @{
+        string _address = AppManager.db.Users.FirstOrDefault(u => u.ID == AppManager.User.ID)?.WalletAddress;
+    }
+    <script>
+        $(document).ready(function () {
+            var icon = document.getElementById('icon');
+            icon.src = blockies.create({ seed: '@_address', size: 8, scale: 16 }).toDataURL();
+
+            @{
+            if (TempData["Notification"] != null)
+            {
+                Notification notification = (Notification)TempData["Notification"];
+                <text>WebApp.Notifications.Show('@notification.Type', '@notification.Text');</text>
+            }
+        }
+        });
+    </script>
+    @{
+        if (Session["LastTxHash"] != null)
+        {
+            <script type="text/javascript">$(document).ready(function () { WebApp.Core.CheckForTransactionStatus() });</script>
+        }
+    }
+</body>
+</html>

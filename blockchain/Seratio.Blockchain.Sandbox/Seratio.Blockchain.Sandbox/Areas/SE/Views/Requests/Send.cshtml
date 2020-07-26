@@ -1,0 +1,73 @@
+﻿@*@model BlockChainWebApplication.Models.Request*@
+
+@{
+    ViewBag.Title = "Request Certificate";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section JavaScript{
+    <script type="text/javascript">$(document).ready(function () { WebApp.Core.HighlightCurrentMenuItem('Certificate Requests') });</script>
+
+}
+
+@section CSS{
+
+}
+
+@section Breadcrumbs{
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/wallet/default/dashboard">Dashboard</a></li>
+        <li class="breadcrumb-item"><a href="/wallet/se/certificate/index">S/E Certificates</a></li>
+        <li class="breadcrumb-item"><span>Request</span></li>
+    </ul>
+}
+
+
+@*<div class="page-header">
+        <div class="page-header-content">
+            <div class="page-title">
+                <h4><span class="text-semibold">Send Request</span></h4>
+            </div>
+            <div class="heading-elements">
+                <div class="heading-btn-group">
+                    <a class="btn btn-link btn-float has-text" href="/requests/index"><i class="icon-bag"></i><span>All Requests</span></a>
+                </div>
+            </div>
+        </div>
+
+    </div>*@
+
+<div class="content-box">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="element-wrapper">
+                <div class="element-box">
+                    <form method="post" class="form-horizontal" action="" enctype="multipart/form-data">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.AntiForgeryToken()
+                        <h5 class="element-header">Request</h5>
+
+                        <input type="hidden" name="receiver" id="receiver" class="receiver" />
+
+                        <div class="form-group">
+                            <label>  Recipient: </label>
+                            <input name="recipient" id="recipient" type="text" placeholder="Please enter the Recipient" class="form-control recipient" data-val="true" data-val-required="Please enter a valid Recipient." required="required" autocomplete="off">
+                            @Html.ValidationMessage("recipient", "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            <label>Message: </label>
+                            <textarea name="message" type="" placeholder="Please enter the Message" class="form-control"></textarea>
+                        </div>
+
+                        <div class="form-buttons-w text-right">
+                            <a href="/wallet/se/requests/Send" class="btn btn-default">Reset</a>
+                            <button class="btn btn-primary" type="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

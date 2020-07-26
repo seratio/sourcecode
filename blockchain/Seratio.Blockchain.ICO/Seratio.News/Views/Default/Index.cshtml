@@ -1,0 +1,161 @@
+﻿@using Seratio.News.Models
+@model List<Tweet>
+@{
+    TwitterAccount Account = ViewBag.Account as TwitterAccount;
+
+    int group = 1;
+    foreach (Tweet _tweet in Model.OrderByDescending(t => t.TweetID))
+    {
+        _tweet.Column = group;
+
+        if (group == 4)
+        {
+            group = 1;
+        }
+        else
+        {
+            group++;
+        }
+    }
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>@(Account?.Name) News</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet" />
+    <link rel="stylesheet" href="/news/assets/css/stylesheet.css?_@DateTime.Now.Ticks" />
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            @{
+                if (Account == null)
+                {
+                    <h3>LATEST NEWS FROM ALL OUR MEMBERS</h3>
+                    <p class="text-center">You are following the latest news from Cryptocurrencies of Values based on SERATIO Platform. Established in the UK and operated by one of the largest blockchain teams in the world, SERATIO Platform is the home of WOMEN’s Coin, STUDENT Coin, GROWTH Token and UBUNTU Coin.</p>
+                }
+                else if (Account.Handle == "womenscoin")
+                {
+                    <a href="https://twitter.com/@Account.Handle" itempr itemprop="url" target="_blank">
+                        <img class="coin" src="/news/assets/images/womenscoinlogov2.png" />
+                    </a>
+                    <p class="text-center">A currency of value that gives women a voice, empowers through education and fosters a virtual cycle of investment and reinvestment in the things we hold dear. Our family, our lives, our health and wellbeing, our community, our country, our planet. </p>
+                    <p class="text-center">Virtually unhackable the currency offers the highest level of security and is a UK founded crypto currency. Women's Coin™ creates a virtuous market place for women to meet, share ideas, support and product offering. The Women's Coin™ Foundation (WCF) supports UN empowerment principles, delivering access to education for women and girls worldwide through blockchain technology. The Women's Coin™ Foundation (WCF) will also provide invaluable access to finance and business support for women’s small and medium enterprices. </p>
+                }
+                else if (Account.Handle == "theCCEG")
+                {
+                    <a href="https://twitter.com/@Account.Handle" itempr itemprop="url" target="_blank">
+                        <img class="coin" src="/news/assets/images/ser-token.png?_=1" />
+                    </a>
+                    <p class="text-center">The Centre for Citizenship Enterprise and Governance (CCEG) is the world’s leading think tank on the movement of value. Established in the UK with academic networks across Europe, Asia and the Americas, we have developed a vision for a Circular Economy based on Values. Since 2011, our experts have provided financial and non-financial metrics which underpin global legislation and have become internationally recognised as a standard.</p>
+                    <p class="text-center">This is the first issue of a resilient Ethereum token, for a UK based organisation. Fundraising will fulfil the foundation and infrastructure to deliver the vision of Cryptocurrencies with Values. Planned connected coins will grow market adoption, including the already commissioned Women’s Coin, City Coin, Faith Coin, Edu Coin Leadership Coin and other UN Sustainable Development Goals.</p>
+                }
+                else if (Account.Handle == "student_coin")
+                {
+                    <a href="https://twitter.com/@Account.Handle" itempr itemprop="url" target="_blank">
+                        <img class="coin" src="/news/assets/images/studentcoin.png" />
+                    </a>
+                    <p class="text-center">Student Coin is a payment system, powered by Seratio, delivering automatic discounts for students whilst applying non-financial values to our everyday transactions.</p>
+                    <p class="text-center">We aim to have an app which you will use for your everyday payments, ranging from your weekly shop to splitting the bill on a night out.</p>
+                    <p class="text-center">To bring investment opportunities to students, no longer are they the exclusive opportunity for the few.</p>
+                }
+
+                else if (Account.Handle == "bisgit_iov")
+                {
+                    <a href="https://twitter.com/@Account.Handle" itempr itemprop="url" target="_blank">
+                        <img class="coin" src="/news/assets/images/bisgit_iov.png" />
+                    </a>
+                    <p class="text-center">A free membership group promoting the use of Internet-of-Value and Blockchain technology for good social and environmental outcomes. This open space has the power to revolutionise the world for the better so please join us and see what all the excitement is about</p>
+                }
+                else if (Account.Handle == "theSERatio")
+                {
+                    <a href="https://twitter.com/@Account.Handle" itempr itemprop="url" target="_blank">
+                        <img class="coin" src="/news/assets/images/ser.png" />
+                    </a>
+                    <p class="text-center">The most rapidly adopted social impact measure in the world, the Social Earnings Ratio (S/E), a tool to help institutions measure the social impact of decisions</p>
+                }
+                else if (Account.Handle == "EfficiencyEx")
+                {
+                    <a href="https://twitter.com/@Account.Handle" itempr itemprop="url" target="_blank">
+                        <img class="coin" src="/news/assets/images/efficiencyEx.png" />
+                    </a>
+                    <p class="text-center">Efficiency Exchange is here to help you and your institution discover and share good practice and innovation in the delivery of value for students. On our website you will find ideas, and resources, case studies and interviews shared by colleagues working in all areas of university life. Efficiency Exchange is where you and your colleagues can share achievements, reflections, initiatives and projects showcasing how the HE sector adds value to our student experience and learning.</p>
+                }
+                else if (Account.Handle == "rothbadi")
+                {
+                    <a href="https://twitter.com/@Account.Handle" itempr itemprop="url" target="_blank">
+                        <img class="coin" src="/news/assets/images/rothbadi.png" />
+                    </a>
+                    <p class="text-center">Rothbadi & Co is an institutional blockchain consultancy with a laser focus on the Internet of Value. We consult on the adaptation of blockchain technology for large scale and high impact projects. We advise on Blockchain & Crypto investments.</p>
+                }
+                else if (Account.Handle == "10xgrowthac")
+                {
+                    <a href="https://twitter.com/@Account.Handle" itempr itemprop="url" target="_blank">
+                        <img class="coin" src="/news/assets/images/growth-token.png" />
+                    </a>
+                    <p class="text-center">The 10x Growth Account is a UK based investment opportunity that enables you access to a portfolio of cryptocurrencies such as Bitcoin, Ethereum and Ripple through a collaboration with the Centre for Citizenship Enterprise and Governance Limited (CCEG) and their secure platform seratio-coins.world</p>
+                }
+                else if (Account.Handle == "UbuntuCoin")
+                {
+                    <a href="https://twitter.com/@Account.Handle" itempr itemprop="url" target="_blank">
+                        <img class="coin" src="/news/assets/images/ubuntu.png" />
+                    </a>
+                    <p class="text-center">Ubuntu Coin, or U-Coin,  is an asset backed digital currency designed to accelerate the socio-economic growth and well being of the Afro-descendant community globally. U-Coin intends to create the ethical standard for the purchasing power of the world’s Afro-descendant community by translating Afro-values into an alternative currency.</p>
+                }
+            }
+
+        </header>
+        <div class="row">
+            @{
+                if (Request.Browser.IsMobileDevice)
+                {
+                    <div class="col-md-3 static">
+
+                        @{
+                            foreach (Tweet _tweet in Model.OrderByDescending(t => t.TweetID))
+                            {
+                                @Html.Partial("_Card", _tweet)
+                            }
+                        }
+                    </div>
+                            }
+                            else
+                            {
+                                for (int i = 1; i <= 4; i++)
+                                {
+                                    <div class="col-md-3 static">
+
+                                        @{
+                                            foreach (Tweet _tweet in Model.Where(t => t.Column == i))
+                                            {
+                                                @Html.Partial("_Card", _tweet)
+                                            }
+                                        }
+                                    </div>
+                                                }
+                                            }
+            }
+        </div>
+
+    </div>
+
+    <footer id="tg-footer" class="tg-footer tg-haslayout tg-footervfour">
+        <div class="tg-foorterbar">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <p class="text-center pb-10 mt-30">&copy; 2020 Centre for Citizenship Enterprise and Governance </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

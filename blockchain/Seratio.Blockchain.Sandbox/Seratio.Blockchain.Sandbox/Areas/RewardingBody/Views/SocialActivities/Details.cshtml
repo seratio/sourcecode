@@ -1,0 +1,236 @@
+﻿@model  SocialActivity
+@{
+    ViewBag.Title = "Social Activity Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section JavaScript{
+    <script type="text/javascript">$(document).ready(function () { WebApp.Core.HighlightCurrentMenuItem('Manage Social Activities') });</script>
+}
+
+@{
+    string _daterange = Request.QueryString["daterange"];
+    {
+        if (_daterange == null)
+        {
+            _daterange = (!string.IsNullOrEmpty(Request.QueryString["start"]) ? Request.QueryString["start"] + " - " : "") + (!string.IsNullOrEmpty(Request.QueryString["end"]) ? Request.QueryString["end"] : "");
+        }
+    }
+}
+
+@section Breadcrumbs{
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/wallet/default/dashboard">Dashboard</a></li>
+        <li class="breadcrumb-item"><a href="/wallet/rewardingbody/socialactivities">Social Activities</a></li>
+
+        <li class="breadcrumb-item"><span>Social Activity Details</span></li>
+    </ul>
+}
+
+
+
+
+<div class="content-box">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="element-wrapper">
+                <div class="element-box">
+                    <h5 class="element-header">Social Activity Details</h5>
+                    
+                    <div class="heading-elements">
+                  @*      <a href="/rewardingbody/socialactivities"><i class="fa fa-backward"></i><span>Back to Social Acticities</span></a>*@
+                    </div>
+                    <div class="heading-elements">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="main">
+                                <table class="table table-lightborder">
+                                    <tbody>
+                                    <tr>
+                                        <td style="width: 20%;">Name</td>
+                                        <td style="width: 10%;">:</td>
+                                        <td style="width: 70%;"> @Model.Name</td>
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.Description)</td>
+                                        <td>:</td>
+                                        <td> @(Html.Raw(Model.Description != null ? Model.Description.Replace("\r\n", "</br>") : ""))</td>
+                                    </tr>
+                                        
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.RewardingCoinID)</td>
+                                        <td>:</td>
+                                        <td> @Model.Coin.Name</td>
+                                    </tr>
+                                        
+                                    <tr>
+                                        <td>@Html.DisplayNameFor(model => model.RewardAmount)</td>
+                                        <td>:</td>
+                                        <td> @Model.RewardAmount</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Status</td>
+                                        <td>:</td>
+                                        @{
+
+                                            switch (Model.IsApproved)
+                                            {
+                                                case null:
+                                                    <td><span class="label label-primary">Pending</span></td>
+                                                    break;
+                                                case false:
+                                                    <td><span class="label label-danger">Rejected</span></td>
+                                                    break;
+                                                case true:
+                                                    <td><span class="label label-success">Approved</span></td>
+                                                    break;
+                                            }
+                                        }
+                                    </tr>
+                                        
+                                    @{
+                                        if (Model.IsApproved == true)
+                                        {
+                                            if (Model.IsApproved == true)
+                                            {
+                                                <tr>
+                                                    <td>Approved On</td>
+                                                    <td>:</td>
+                                                    <td>@Model.ApprovedOn.ToString()</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td style="width: 20%;">Processed By</td>
+                                                    <td style="width: 10%;">:</td>
+                                                    <td style="width: 70%;">Administrator</td>
+                                                </tr>
+                                            }
+                                            else
+                                            {
+                                                <tr>
+                                                    <td>Rejected On</td>
+                                                    <td>:</td>
+                                                    <td>@Model.RejectedOn.ToString()</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td style="width: 20%;">Processed By</td>
+                                                    <td style="width: 10%;">:</td>
+                                                    <td style="width: 70%;">Administrator</td>
+                                                </tr>
+                                            }
+                                        }
+
+
+                                    }
+                                    <tr>
+                                        <td style="width: 20%;">Rewarding Body</td>
+                                        <td style="width: 10%;">:</td>
+                                        <td style="width: 70%;"> @(Model.User.NickName != null ? Model.User.NickName : Model.User.Email)</td>
+                                    </tr>
+                                  
+                                 
+                           
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    @{
+                        if (Model.IsApproved == null && AppManager.User.IsSuperAdmin)
+                        {
+                            <hr />
+                            <div class="text-center">
+                                <a href="/wallet/admin/socialactivities/approve/@Model.ID" class="btn btn-primary confirm mr5" data-confirm="Are you sure you want to approve this Request?">Approve <i class="fa fa-thumbs-up"></i> </a>
+                                <a href="/wallet/admin/socialactivities/reject/@Model.ID" class="btn btn-danger confirm mr5" data-confirm="Are you sure you want to reject this Request?">Reject <i class="fa fa-thumbs-down"></i> </a>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+@*<div class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-flat">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="main">
+                                    <table class="table table-borderless table-xs content-group-sm">
+                                        <tbody>
+
+
+                                            <tr>
+                                                <td class="col-lg-2">Sender</td>
+                                                <td class="col-lg-1">:</td>
+                                                <td> @(Model.User.NickName != null ? Model.User.NickName : "@" + Model.User.Username)</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="col-lg-2">Receiver</td>
+                                                <td class="col-lg-1">:</td>
+                                                <td> @ViewBag.receiver </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="col-lg-2">@Html.DisplayNameFor(model => model.Message)</td>
+                                                <td class="col-lg-1">:</td>
+                                                <td> @(Html.Raw(Model.Message != null ? Model.Message.Replace("\r\n", "</br>") : ""))</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="col-lg-2">@Html.DisplayNameFor(model => model.Status)</td>
+                                                <td class="col-lg-1">:</td>
+                                                @{
+
+                                                    switch (Model.Status)
+                                                    {
+                                                        case "Pending":
+                                                            <td><span class="label label-primary">Pending</span></td>
+                                                            break;
+                                                        case "Rejected":
+                                                            <td><span class="label label-danger">Rejected</span></td>
+                                                            break;
+                                                        case "Approved":
+                                                            <td><span class="label label-success">Approved</span></td>
+                                                            break;
+                                                    }
+                                                }
+
+                                            </tr>
+                                            <tr>
+                                                <td class="col-lg-2">Sent On</td>
+                                                <td class="col-lg-1">:</td>
+                                                <td> @Model.SentOn</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="col-lg-2">Responded On</td>
+                                                <td class="col-lg-1">:</td>
+                                                <td> @Model.RespondedOn</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        @{
+                            if (Model.Recipient.ToLower() == AppManager.User.Email.ToLower() && Model.Status == "Pending")
+                            {
+                                <hr />
+                                <div class="text-center">
+                                    <a href="/requests/approve/@Model.ID" class="btn btn-primary confirm mr5" data-confirm="Are you sure you want to approve this Request?">Approve<i class="icon-shield-check position-right"></i> </a>
+                                    <a href="/requests/reject/@Model.ID" class="btn btn-danger confirm mr5" data-confirm="Are you sure you want to reject this Request?">Reject<i class="icon-cancel-circle2 position-right"></i> </a>
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>*@

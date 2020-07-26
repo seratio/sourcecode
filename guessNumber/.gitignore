@@ -1,0 +1,9 @@
+# Created by .ignore support plugin (hsz.mobi)
+
+# JetBrains files to ignore According to:
+# https://intellij-support.jetbrains.com/hc/en-us/articles/206544839-How-to-manage-projects-under-Version-Control-Systems
+.idea/workspace.xml
+.idea/tasks.xml
+
+installed_contracts
+build

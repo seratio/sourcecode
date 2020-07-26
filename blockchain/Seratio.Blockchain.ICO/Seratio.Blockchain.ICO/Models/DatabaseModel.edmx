@@ -1,0 +1,2445 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Seratio.Platform.ICO.Data.Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AcceptedRetailPolicies">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="PolicyID" Type="int" Nullable="false" />
+          <Property Name="BillAmount" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Discount" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="NetAmount" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedOn" Type="datetime" Nullable="false" />
+          <Property Name="DeletedOn" Type="datetime" />
+          <Property Name="IsDataActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AcceptedSocialActivities">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="ActivityID" Type="int" Nullable="false" />
+          <Property Name="RewardedCoinID" Type="int" Nullable="false" />
+          <Property Name="RewardedAmount" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedOn" Type="datetime" Nullable="false" />
+          <Property Name="DeletedOn" Type="datetime" />
+          <Property Name="IsDataActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ActivityNotifications">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="RelatedItemID" Type="int" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Message" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Time" Type="datetime" Nullable="false" />
+          <Property Name="IsRead" Type="bit" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="ReadOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Administrators">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IsSuperAdmin" Type="bit" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AuthString" Type="varbinary" MaxLength="256" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedOn" Type="datetime" Nullable="false" />
+          <Property Name="DeletedOn" Type="datetime" />
+          <Property Name="IsDataActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AdministratorSessions">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AdministratorID" Type="int" Nullable="false" />
+          <Property Name="IPAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserAgent" Type="nvarchar" MaxLength="500" />
+          <Property Name="StartTime" Type="datetime" Nullable="false" />
+          <Property Name="EndTime" Type="datetime" />
+          <Property Name="Token" Type="uniqueidentifier" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="HasTerminated" Type="bit" Nullable="false" />
+          <Property Name="IsDataActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Blockchains">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Host" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsPrimaryNode" Type="bit" Nullable="false" />
+          <Property Name="Comments" Type="nvarchar(max)" />
+          <Property Name="IsDataActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedOn" Type="datetime" Nullable="false" />
+          <Property Name="DeletedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Coins">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="BlockchainID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Symbol" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Image" Type="nvarchar" MaxLength="100" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" />
+          <Property Name="NumberOfDecimals" Type="int" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedOn" Type="datetime" Nullable="false" />
+          <Property Name="DeletedOn" Type="datetime" />
+          <Property Name="IsDataActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ExchangeRates">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="From" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="To" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ExchangePrice" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Time" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FailedForgotPasswordAttempts">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="Time" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FailedSignInAttempts">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="Time" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FailedWalletTransactionAttempts">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="Time" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Investments">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="UserSessionID" Type="int" />
+          <Property Name="LastUpdatedByID" Type="int" />
+          <Property Name="InvestmentID" Type="uniqueidentifier" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Mode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Amount" Type="decimal" Precision="38" Scale="8" Nullable="false" />
+          <Property Name="Token" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Comments" Type="nvarchar(max)" />
+          <Property Name="TxReferenceNumber" Type="nvarchar" MaxLength="500" />
+          <Property Name="InitializedOn" Type="datetime" Nullable="false" />
+          <Property Name="TxRefNoUpdatedOn" Type="datetime" />
+          <Property Name="ReceivedAmount" Type="decimal" Precision="38" Scale="2" />
+          <Property Name="ExchangeRate" Type="nvarchar" MaxLength="50" />
+          <Property Name="TokenAmount" Type="nvarchar" MaxLength="250" />
+          <Property Name="OriginalExchangeRate" Type="nvarchar" MaxLength="50" />
+          <Property Name="InvestmentType" Type="nvarchar" MaxLength="50" />
+          <Property Name="CampaignCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="HasAcceptedTAndCs" Type="bit" Nullable="false" />
+          <Property Name="HasTransferred" Type="bit" />
+          <Property Name="ConfirmedOn" Type="datetime" />
+          <Property Name="RejectedOn" Type="datetime" />
+          <Property Name="IssuedOn" Type="datetime" />
+          <Property Name="LastUpdatedOn" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MCRTokenInvestments">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="IsFromSERMintingList" Type="bit" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="7" Nullable="false" />
+          <Property Name="TxHash" Type="nvarchar" MaxLength="250" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="QueuedOn" Type="datetime" />
+          <Property Name="MintingStartedOn" Type="datetime" />
+          <Property Name="MintedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="MCRTokenTransfers">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WalletAddress" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="7" Nullable="false" />
+          <Property Name="TxHash" Type="nvarchar" MaxLength="250" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="QueuedOn" Type="datetime" />
+          <Property Name="TransferStartedOn" Type="datetime" />
+          <Property Name="TransferredOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ModuleAccessRequests">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="ProcessedBy" Type="int" />
+          <Property Name="Module" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Message" Type="nvarchar(max)" />
+          <Property Name="IsApproved" Type="bit" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="ApprovedOn" Type="datetime" />
+          <Property Name="RejectedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Offers">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CreatedByID" Type="int" Nullable="false" />
+          <Property Name="LastUpdatedByID" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Discount" Type="int" Nullable="false" />
+          <Property Name="LastDate" Type="date" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedOn" Type="datetime" Nullable="false" />
+          <Property Name="DeletedOn" Type="datetime" />
+          <Property Name="IsDataActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Requests">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SenderID" Type="int" Nullable="false" />
+          <Property Name="Recipient" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Message" Type="nvarchar(max)" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="HasDownloaded" Type="bit" Nullable="false" />
+          <Property Name="HasRejected" Type="bit" Nullable="false" />
+          <Property Name="SentOn" Type="datetime" Nullable="false" />
+          <Property Name="RespondedOn" Type="datetime" />
+          <Property Name="IsDataActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RetailPolicies">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="RequiredCoinID" Type="int" />
+          <Property Name="ProcessedBy" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="PolicyType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MinSESCore" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="MaxSEScore" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="RequiredCoinQty" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="DiscountMode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DiscountValue" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="IsApproved" Type="bit" />
+          <Property Name="ApprovedOn" Type="datetime" />
+          <Property Name="RejectedOn" Type="datetime" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedOn" Type="datetime" Nullable="false" />
+          <Property Name="DeletedOn" Type="datetime" />
+          <Property Name="IsDataActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SERTokenInvestments">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="7" Nullable="false" />
+          <Property Name="TxHash" Type="nvarchar" MaxLength="250" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="QueuedOn" Type="datetime" />
+          <Property Name="MintingStartedOn" Type="datetime" />
+          <Property Name="MintedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Settings">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AllowAutomaticExchangeRateSyncing" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SocialActivities">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="RewardingCoinID" Type="int" Nullable="false" />
+          <Property Name="ProcessedBy" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="RewardAmount" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="IsApproved" Type="bit" />
+          <Property Name="ApprovedOn" Type="datetime" />
+          <Property Name="RejectedOn" Type="datetime" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedOn" Type="datetime" Nullable="false" />
+          <Property Name="DeletedOn" Type="datetime" />
+          <Property Name="IsDataActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AuthString" Type="varbinary" MaxLength="256" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AutoLoginToken" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ForgotPasswordToken" Type="uniqueidentifier" />
+          <Property Name="WalletAddress" Type="nvarchar" MaxLength="500" />
+          <Property Name="NickName" Type="nvarchar" MaxLength="50" />
+          <Property Name="SE" Type="decimal" Precision="18" Scale="1" />
+          <Property Name="AssetTransactionCriteria" Type="nvarchar" MaxLength="50" />
+          <Property Name="AssetTransactionCriteriaValue" Type="decimal" Precision="18" Scale="8" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PostalCode" Type="nvarchar" MaxLength="500" />
+          <Property Name="Position" Type="nvarchar" MaxLength="50" />
+          <Property Name="Organization" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="AllowEmailNotifications" Type="bit" Nullable="false" />
+          <Property Name="ShouldAllowSignInWithQR" Type="bit" Nullable="false" />
+          <Property Name="EnableTwoFactorAuthentication" Type="bit" Nullable="false" />
+          <Property Name="TwoFAKey" Type="nvarchar" MaxLength="100" />
+          <Property Name="SaftyQuestion" Type="nvarchar" MaxLength="250" />
+          <Property Name="SaftyAnswer" Type="varbinary" MaxLength="256" />
+          <Property Name="EmailVerificationToken" Type="uniqueidentifier" />
+          <Property Name="IsBlockedWallet" Type="bit" Nullable="false" />
+          <Property Name="IsEmailVerified" Type="bit" Nullable="false" />
+          <Property Name="IsSearchable" Type="bit" Nullable="false" />
+          <Property Name="EmailVerifiedOn" Type="datetime" />
+          <Property Name="IsSuperAdmin" Type="bit" Nullable="false" />
+          <Property Name="ReferralSource" Type="nvarchar" MaxLength="100" />
+          <Property Name="WalletPassPhrase" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedOn" Type="datetime" Nullable="false" />
+          <Property Name="DeletedOn" Type="datetime" />
+          <Property Name="IsDataActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserSessions">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="IPAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserAgent" Type="nvarchar" MaxLength="500" />
+          <Property Name="Token" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="SignInMethod" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="HasTerminated" Type="bit" Nullable="false" />
+          <Property Name="StartTime" Type="datetime" Nullable="false" />
+          <Property Name="EndTime" Type="datetime" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDataActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserWalletHistory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="SessionID" Type="int" Nullable="false" />
+          <Property Name="OldWalletAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="NewWalletAddress" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Time" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WalletTransactions">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="CoinID" Type="int" Nullable="false" />
+          <Property Name="SessionID" Type="int" />
+          <Property Name="TransactionID" Type="uniqueidentifier" />
+          <Property Name="Recipient" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="7" Nullable="false" />
+          <Property Name="TransactionHash" Type="nvarchar" MaxLength="250" />
+          <Property Name="TransactionIndex" Type="nvarchar" MaxLength="50" />
+          <Property Name="BlockHash" Type="nvarchar" MaxLength="500" />
+          <Property Name="BlockNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="CumulativeGasUsed" Type="nvarchar" MaxLength="50" />
+          <Property Name="GasUsed" Type="nvarchar" MaxLength="50" />
+          <Property Name="Logs" Type="text" />
+          <Property Name="Time" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedOn" Type="datetime" Nullable="false" />
+          <Property Name="IsSyncedFromEthplorer" Type="bit" />
+        </EntityType>
+        <Association Name="FK_AcceptedRetailPolicies_RetailPolicies">
+          <End Role="RetailPolicies" Type="Self.RetailPolicies" Multiplicity="1" />
+          <End Role="AcceptedRetailPolicies" Type="Self.AcceptedRetailPolicies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RetailPolicies">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AcceptedRetailPolicies">
+              <PropertyRef Name="PolicyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AcceptedRetailPolicies_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="AcceptedRetailPolicies" Type="Self.AcceptedRetailPolicies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AcceptedRetailPolicies">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AcceptedSocialActivities_Coins">
+          <End Role="Coins" Type="Self.Coins" Multiplicity="1" />
+          <End Role="AcceptedSocialActivities" Type="Self.AcceptedSocialActivities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Coins">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AcceptedSocialActivities">
+              <PropertyRef Name="RewardedCoinID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AcceptedSocialActivities_SocialActivities">
+          <End Role="SocialActivities" Type="Self.SocialActivities" Multiplicity="1" />
+          <End Role="AcceptedSocialActivities" Type="Self.AcceptedSocialActivities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SocialActivities">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AcceptedSocialActivities">
+              <PropertyRef Name="ActivityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AcceptedSocialActivities_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="AcceptedSocialActivities" Type="Self.AcceptedSocialActivities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AcceptedSocialActivities">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ActivityNotifications_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="ActivityNotifications" Type="Self.ActivityNotifications" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ActivityNotifications">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdministratorSessions_AdministratorID">
+          <End Role="Administrators" Type="Self.Administrators" Multiplicity="1" />
+          <End Role="AdministratorSessions" Type="Self.AdministratorSessions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Administrators">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AdministratorSessions">
+              <PropertyRef Name="AdministratorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Coins_Blockchains">
+          <End Role="Blockchains" Type="Self.Blockchains" Multiplicity="1" />
+          <End Role="Coins" Type="Self.Coins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Blockchains">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Coins">
+              <PropertyRef Name="BlockchainID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Coins_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Coins" Type="Self.Coins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Coins">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FailedForgotPasswordAttempts_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="FailedForgotPasswordAttempts" Type="Self.FailedForgotPasswordAttempts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FailedForgotPasswordAttempts">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FailedSignInAttempts_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="FailedSignInAttempts" Type="Self.FailedSignInAttempts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FailedSignInAttempts">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FailedWalletTransactionAttempts_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="FailedWalletTransactionAttempts" Type="Self.FailedWalletTransactionAttempts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FailedWalletTransactionAttempts">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Investments_Investments">
+          <End Role="Administrators" Type="Self.Administrators" Multiplicity="0..1" />
+          <End Role="Investments" Type="Self.Investments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Administrators">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Investments">
+              <PropertyRef Name="LastUpdatedByID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Investments_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Investments" Type="Self.Investments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Investments">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Investments_UserSessions">
+          <End Role="UserSessions" Type="Self.UserSessions" Multiplicity="0..1" />
+          <End Role="Investments" Type="Self.Investments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserSessions">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Investments">
+              <PropertyRef Name="UserSessionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MCRTokenInvestments_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="MCRTokenInvestments" Type="Self.MCRTokenInvestments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MCRTokenInvestments">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ModuleAccessRequests_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="ModuleAccessRequests" Type="Self.ModuleAccessRequests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ModuleAccessRequests">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ModuleAccessRequests_Users1">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="ModuleAccessRequests" Type="Self.ModuleAccessRequests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ModuleAccessRequests">
+              <PropertyRef Name="ProcessedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Offers_Administrators">
+          <End Role="Administrators" Type="Self.Administrators" Multiplicity="1" />
+          <End Role="Offers" Type="Self.Offers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Administrators">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Offers">
+              <PropertyRef Name="CreatedByID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Offers_Administrators1">
+          <End Role="Administrators" Type="Self.Administrators" Multiplicity="1" />
+          <End Role="Offers" Type="Self.Offers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Administrators">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Offers">
+              <PropertyRef Name="LastUpdatedByID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Requests_Sender">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Requests" Type="Self.Requests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Requests">
+              <PropertyRef Name="SenderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RetailPolicies_Coins">
+          <End Role="Coins" Type="Self.Coins" Multiplicity="0..1" />
+          <End Role="RetailPolicies" Type="Self.RetailPolicies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Coins">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RetailPolicies">
+              <PropertyRef Name="RequiredCoinID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RetailPolicies_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="RetailPolicies" Type="Self.RetailPolicies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RetailPolicies">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RetailPolicies_Users1">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="RetailPolicies" Type="Self.RetailPolicies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RetailPolicies">
+              <PropertyRef Name="ProcessedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SERTokenInvestments_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="SERTokenInvestments" Type="Self.SERTokenInvestments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SERTokenInvestments">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SocialActivities_Coins">
+          <End Role="Coins" Type="Self.Coins" Multiplicity="1" />
+          <End Role="SocialActivities" Type="Self.SocialActivities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Coins">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SocialActivities">
+              <PropertyRef Name="RewardingCoinID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SocialActivities_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="SocialActivities" Type="Self.SocialActivities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SocialActivities">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SocialActivities_Users1">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="SocialActivities" Type="Self.SocialActivities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SocialActivities">
+              <PropertyRef Name="ProcessedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserSessions_UserID">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UserSessions" Type="Self.UserSessions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserSessions">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserWalletHistory_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UserWalletHistory" Type="Self.UserWalletHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserWalletHistory">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserWalletHistory_UserSessions">
+          <End Role="UserSessions" Type="Self.UserSessions" Multiplicity="1" />
+          <End Role="UserWalletHistory" Type="Self.UserWalletHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserSessions">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserWalletHistory">
+              <PropertyRef Name="SessionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WalletTransactions_Coins">
+          <End Role="Coins" Type="Self.Coins" Multiplicity="1" />
+          <End Role="WalletTransactions" Type="Self.WalletTransactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Coins">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="WalletTransactions">
+              <PropertyRef Name="CoinID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WalletTransactions_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="WalletTransactions" Type="Self.WalletTransactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="WalletTransactions">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SeratioPlatformICODataModelStoreContainer">
+          <EntitySet Name="AcceptedRetailPolicies" EntityType="Self.AcceptedRetailPolicies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AcceptedSocialActivities" EntityType="Self.AcceptedSocialActivities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ActivityNotifications" EntityType="Self.ActivityNotifications" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Administrators" EntityType="Self.Administrators" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AdministratorSessions" EntityType="Self.AdministratorSessions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Blockchains" EntityType="Self.Blockchains" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Coins" EntityType="Self.Coins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExchangeRates" EntityType="Self.ExchangeRates" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FailedForgotPasswordAttempts" EntityType="Self.FailedForgotPasswordAttempts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FailedSignInAttempts" EntityType="Self.FailedSignInAttempts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FailedWalletTransactionAttempts" EntityType="Self.FailedWalletTransactionAttempts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Investments" EntityType="Self.Investments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MCRTokenInvestments" EntityType="Self.MCRTokenInvestments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MCRTokenTransfers" EntityType="Self.MCRTokenTransfers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ModuleAccessRequests" EntityType="Self.ModuleAccessRequests" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Offers" EntityType="Self.Offers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Requests" EntityType="Self.Requests" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RetailPolicies" EntityType="Self.RetailPolicies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SERTokenInvestments" EntityType="Self.SERTokenInvestments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Settings" EntityType="Self.Settings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SocialActivities" EntityType="Self.SocialActivities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserSessions" EntityType="Self.UserSessions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserWalletHistory" EntityType="Self.UserWalletHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WalletTransactions" EntityType="Self.WalletTransactions" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AcceptedRetailPolicies_RetailPolicies" Association="Self.FK_AcceptedRetailPolicies_RetailPolicies">
+            <End Role="RetailPolicies" EntitySet="RetailPolicies" />
+            <End Role="AcceptedRetailPolicies" EntitySet="AcceptedRetailPolicies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AcceptedRetailPolicies_Users" Association="Self.FK_AcceptedRetailPolicies_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="AcceptedRetailPolicies" EntitySet="AcceptedRetailPolicies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AcceptedSocialActivities_Coins" Association="Self.FK_AcceptedSocialActivities_Coins">
+            <End Role="Coins" EntitySet="Coins" />
+            <End Role="AcceptedSocialActivities" EntitySet="AcceptedSocialActivities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AcceptedSocialActivities_SocialActivities" Association="Self.FK_AcceptedSocialActivities_SocialActivities">
+            <End Role="SocialActivities" EntitySet="SocialActivities" />
+            <End Role="AcceptedSocialActivities" EntitySet="AcceptedSocialActivities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AcceptedSocialActivities_Users" Association="Self.FK_AcceptedSocialActivities_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="AcceptedSocialActivities" EntitySet="AcceptedSocialActivities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ActivityNotifications_Users" Association="Self.FK_ActivityNotifications_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="ActivityNotifications" EntitySet="ActivityNotifications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdministratorSessions_AdministratorID" Association="Self.FK_AdministratorSessions_AdministratorID">
+            <End Role="Administrators" EntitySet="Administrators" />
+            <End Role="AdministratorSessions" EntitySet="AdministratorSessions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Coins_Blockchains" Association="Self.FK_Coins_Blockchains">
+            <End Role="Blockchains" EntitySet="Blockchains" />
+            <End Role="Coins" EntitySet="Coins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Coins_Users" Association="Self.FK_Coins_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Coins" EntitySet="Coins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FailedForgotPasswordAttempts_Users" Association="Self.FK_FailedForgotPasswordAttempts_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="FailedForgotPasswordAttempts" EntitySet="FailedForgotPasswordAttempts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FailedSignInAttempts_Users" Association="Self.FK_FailedSignInAttempts_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="FailedSignInAttempts" EntitySet="FailedSignInAttempts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FailedWalletTransactionAttempts_Users" Association="Self.FK_FailedWalletTransactionAttempts_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="FailedWalletTransactionAttempts" EntitySet="FailedWalletTransactionAttempts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Investments_Investments" Association="Self.FK_Investments_Investments">
+            <End Role="Administrators" EntitySet="Administrators" />
+            <End Role="Investments" EntitySet="Investments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Investments_Users" Association="Self.FK_Investments_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Investments" EntitySet="Investments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Investments_UserSessions" Association="Self.FK_Investments_UserSessions">
+            <End Role="UserSessions" EntitySet="UserSessions" />
+            <End Role="Investments" EntitySet="Investments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MCRTokenInvestments_Users" Association="Self.FK_MCRTokenInvestments_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="MCRTokenInvestments" EntitySet="MCRTokenInvestments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ModuleAccessRequests_Users" Association="Self.FK_ModuleAccessRequests_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="ModuleAccessRequests" EntitySet="ModuleAccessRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ModuleAccessRequests_Users1" Association="Self.FK_ModuleAccessRequests_Users1">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="ModuleAccessRequests" EntitySet="ModuleAccessRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Offers_Administrators" Association="Self.FK_Offers_Administrators">
+            <End Role="Administrators" EntitySet="Administrators" />
+            <End Role="Offers" EntitySet="Offers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Offers_Administrators1" Association="Self.FK_Offers_Administrators1">
+            <End Role="Administrators" EntitySet="Administrators" />
+            <End Role="Offers" EntitySet="Offers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Requests_Sender" Association="Self.FK_Requests_Sender">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Requests" EntitySet="Requests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RetailPolicies_Coins" Association="Self.FK_RetailPolicies_Coins">
+            <End Role="Coins" EntitySet="Coins" />
+            <End Role="RetailPolicies" EntitySet="RetailPolicies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RetailPolicies_Users" Association="Self.FK_RetailPolicies_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="RetailPolicies" EntitySet="RetailPolicies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RetailPolicies_Users1" Association="Self.FK_RetailPolicies_Users1">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="RetailPolicies" EntitySet="RetailPolicies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SERTokenInvestments_Users" Association="Self.FK_SERTokenInvestments_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="SERTokenInvestments" EntitySet="SERTokenInvestments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SocialActivities_Coins" Association="Self.FK_SocialActivities_Coins">
+            <End Role="Coins" EntitySet="Coins" />
+            <End Role="SocialActivities" EntitySet="SocialActivities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SocialActivities_Users" Association="Self.FK_SocialActivities_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="SocialActivities" EntitySet="SocialActivities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SocialActivities_Users1" Association="Self.FK_SocialActivities_Users1">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="SocialActivities" EntitySet="SocialActivities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserSessions_UserID" Association="Self.FK_UserSessions_UserID">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserSessions" EntitySet="UserSessions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserWalletHistory_Users" Association="Self.FK_UserWalletHistory_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserWalletHistory" EntitySet="UserWalletHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserWalletHistory_UserSessions" Association="Self.FK_UserWalletHistory_UserSessions">
+            <End Role="UserSessions" EntitySet="UserSessions" />
+            <End Role="UserWalletHistory" EntitySet="UserWalletHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WalletTransactions_Coins" Association="Self.FK_WalletTransactions_Coins">
+            <End Role="Coins" EntitySet="Coins" />
+            <End Role="WalletTransactions" EntitySet="WalletTransactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WalletTransactions_Users" Association="Self.FK_WalletTransactions_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="WalletTransactions" EntitySet="WalletTransactions" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Seratio.Platform.ICO.Data.Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DatabaseEntities" annotation:LazyLoadingEnabled="true" >
+          <EntitySet Name="AcceptedRetailPolicies" EntityType="Seratio.Platform.ICO.Data.Model.AcceptedRetailPolicy" />
+          <EntitySet Name="AcceptedSocialActivities" EntityType="Seratio.Platform.ICO.Data.Model.AcceptedSocialActivity" />
+          <EntitySet Name="ActivityNotifications" EntityType="Seratio.Platform.ICO.Data.Model.ActivityNotification" />
+          <EntitySet Name="Administrators" EntityType="Seratio.Platform.ICO.Data.Model.Administrator" />
+          <EntitySet Name="AdministratorSessions" EntityType="Seratio.Platform.ICO.Data.Model.AdministratorSession" />
+          <EntitySet Name="Blockchains" EntityType="Seratio.Platform.ICO.Data.Model.Blockchain" />
+          <EntitySet Name="Coins" EntityType="Seratio.Platform.ICO.Data.Model.Coin" />
+          <EntitySet Name="ExchangeRates" EntityType="Seratio.Platform.ICO.Data.Model.ExchangeRate" />
+          <EntitySet Name="FailedForgotPasswordAttempts" EntityType="Seratio.Platform.ICO.Data.Model.FailedForgotPasswordAttempt" />
+          <EntitySet Name="FailedSignInAttempts" EntityType="Seratio.Platform.ICO.Data.Model.FailedSignInAttempt" />
+          <EntitySet Name="FailedWalletTransactionAttempts" EntityType="Seratio.Platform.ICO.Data.Model.FailedWalletTransactionAttempt" />
+          <EntitySet Name="Investments" EntityType="Seratio.Platform.ICO.Data.Model.Investment" />
+          <EntitySet Name="MCRTokenInvestments" EntityType="Seratio.Platform.ICO.Data.Model.MCRTokenInvestment" />
+          <EntitySet Name="MCRTokenTransfers" EntityType="Seratio.Platform.ICO.Data.Model.MCRTokenTransfer" />
+          <EntitySet Name="ModuleAccessRequests" EntityType="Seratio.Platform.ICO.Data.Model.ModuleAccessRequest" />
+          <EntitySet Name="Offers" EntityType="Seratio.Platform.ICO.Data.Model.Offer" />
+          <EntitySet Name="Requests" EntityType="Seratio.Platform.ICO.Data.Model.Request" />
+          <EntitySet Name="RetailPolicies" EntityType="Seratio.Platform.ICO.Data.Model.RetailPolicy" />
+          <EntitySet Name="SERTokenInvestments" EntityType="Seratio.Platform.ICO.Data.Model.SERTokenInvestment" />
+          <EntitySet Name="Settings" EntityType="Seratio.Platform.ICO.Data.Model.Setting" />
+          <EntitySet Name="SocialActivities" EntityType="Seratio.Platform.ICO.Data.Model.SocialActivity" />
+          <EntitySet Name="Users" EntityType="Seratio.Platform.ICO.Data.Model.User" />
+          <EntitySet Name="UserSessions" EntityType="Seratio.Platform.ICO.Data.Model.UserSession" />
+          <EntitySet Name="UserWalletHistories" EntityType="Seratio.Platform.ICO.Data.Model.UserWalletHistory" />
+          <EntitySet Name="WalletTransactions" EntityType="Seratio.Platform.ICO.Data.Model.WalletTransaction" />
+          <AssociationSet Name="FK_AcceptedRetailPolicies_RetailPolicies" Association="Seratio.Platform.ICO.Data.Model.FK_AcceptedRetailPolicies_RetailPolicies">
+            <End Role="RetailPolicy" EntitySet="RetailPolicies" />
+            <End Role="AcceptedRetailPolicy" EntitySet="AcceptedRetailPolicies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AcceptedRetailPolicies_Users" Association="Seratio.Platform.ICO.Data.Model.FK_AcceptedRetailPolicies_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="AcceptedRetailPolicy" EntitySet="AcceptedRetailPolicies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AcceptedSocialActivities_Coins" Association="Seratio.Platform.ICO.Data.Model.FK_AcceptedSocialActivities_Coins">
+            <End Role="Coin" EntitySet="Coins" />
+            <End Role="AcceptedSocialActivity" EntitySet="AcceptedSocialActivities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AcceptedSocialActivities_SocialActivities" Association="Seratio.Platform.ICO.Data.Model.FK_AcceptedSocialActivities_SocialActivities">
+            <End Role="SocialActivity" EntitySet="SocialActivities" />
+            <End Role="AcceptedSocialActivity" EntitySet="AcceptedSocialActivities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AcceptedSocialActivities_Users" Association="Seratio.Platform.ICO.Data.Model.FK_AcceptedSocialActivities_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="AcceptedSocialActivity" EntitySet="AcceptedSocialActivities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ActivityNotifications_Users" Association="Seratio.Platform.ICO.Data.Model.FK_ActivityNotifications_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="ActivityNotification" EntitySet="ActivityNotifications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdministratorSessions_AdministratorID" Association="Seratio.Platform.ICO.Data.Model.FK_AdministratorSessions_AdministratorID">
+            <End Role="Administrator" EntitySet="Administrators" />
+            <End Role="AdministratorSession" EntitySet="AdministratorSessions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Investments_Investments" Association="Seratio.Platform.ICO.Data.Model.FK_Investments_Investments">
+            <End Role="Administrator" EntitySet="Administrators" />
+            <End Role="Investment" EntitySet="Investments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Offers_Administrators" Association="Seratio.Platform.ICO.Data.Model.FK_Offers_Administrators">
+            <End Role="Administrator" EntitySet="Administrators" />
+            <End Role="Offer" EntitySet="Offers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Offers_Administrators1" Association="Seratio.Platform.ICO.Data.Model.FK_Offers_Administrators1">
+            <End Role="Administrator" EntitySet="Administrators" />
+            <End Role="Offer" EntitySet="Offers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Coins_Blockchains" Association="Seratio.Platform.ICO.Data.Model.FK_Coins_Blockchains">
+            <End Role="Blockchain" EntitySet="Blockchains" />
+            <End Role="Coin" EntitySet="Coins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Coins_Users" Association="Seratio.Platform.ICO.Data.Model.FK_Coins_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Coin" EntitySet="Coins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RetailPolicies_Coins" Association="Seratio.Platform.ICO.Data.Model.FK_RetailPolicies_Coins">
+            <End Role="Coin" EntitySet="Coins" />
+            <End Role="RetailPolicy" EntitySet="RetailPolicies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SocialActivities_Coins" Association="Seratio.Platform.ICO.Data.Model.FK_SocialActivities_Coins">
+            <End Role="Coin" EntitySet="Coins" />
+            <End Role="SocialActivity" EntitySet="SocialActivities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WalletTransactions_Coins" Association="Seratio.Platform.ICO.Data.Model.FK_WalletTransactions_Coins">
+            <End Role="Coin" EntitySet="Coins" />
+            <End Role="WalletTransaction" EntitySet="WalletTransactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FailedForgotPasswordAttempts_Users" Association="Seratio.Platform.ICO.Data.Model.FK_FailedForgotPasswordAttempts_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="FailedForgotPasswordAttempt" EntitySet="FailedForgotPasswordAttempts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FailedSignInAttempts_Users" Association="Seratio.Platform.ICO.Data.Model.FK_FailedSignInAttempts_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="FailedSignInAttempt" EntitySet="FailedSignInAttempts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FailedWalletTransactionAttempts_Users" Association="Seratio.Platform.ICO.Data.Model.FK_FailedWalletTransactionAttempts_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="FailedWalletTransactionAttempt" EntitySet="FailedWalletTransactionAttempts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Investments_Users" Association="Seratio.Platform.ICO.Data.Model.FK_Investments_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Investment" EntitySet="Investments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Investments_UserSessions" Association="Seratio.Platform.ICO.Data.Model.FK_Investments_UserSessions">
+            <End Role="UserSession" EntitySet="UserSessions" />
+            <End Role="Investment" EntitySet="Investments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MCRTokenInvestments_Users" Association="Seratio.Platform.ICO.Data.Model.FK_MCRTokenInvestments_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="MCRTokenInvestment" EntitySet="MCRTokenInvestments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ModuleAccessRequests_Users" Association="Seratio.Platform.ICO.Data.Model.FK_ModuleAccessRequests_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="ModuleAccessRequest" EntitySet="ModuleAccessRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ModuleAccessRequests_Users1" Association="Seratio.Platform.ICO.Data.Model.FK_ModuleAccessRequests_Users1">
+            <End Role="User" EntitySet="Users" />
+            <End Role="ModuleAccessRequest" EntitySet="ModuleAccessRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Requests_Sender" Association="Seratio.Platform.ICO.Data.Model.FK_Requests_Sender">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Request" EntitySet="Requests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RetailPolicies_Users" Association="Seratio.Platform.ICO.Data.Model.FK_RetailPolicies_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="RetailPolicy" EntitySet="RetailPolicies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RetailPolicies_Users1" Association="Seratio.Platform.ICO.Data.Model.FK_RetailPolicies_Users1">
+            <End Role="User" EntitySet="Users" />
+            <End Role="RetailPolicy" EntitySet="RetailPolicies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SERTokenInvestments_Users" Association="Seratio.Platform.ICO.Data.Model.FK_SERTokenInvestments_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="SERTokenInvestment" EntitySet="SERTokenInvestments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SocialActivities_Users" Association="Seratio.Platform.ICO.Data.Model.FK_SocialActivities_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="SocialActivity" EntitySet="SocialActivities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SocialActivities_Users1" Association="Seratio.Platform.ICO.Data.Model.FK_SocialActivities_Users1">
+            <End Role="User" EntitySet="Users" />
+            <End Role="SocialActivity" EntitySet="SocialActivities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserSessions_UserID" Association="Seratio.Platform.ICO.Data.Model.FK_UserSessions_UserID">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserSession" EntitySet="UserSessions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserWalletHistory_Users" Association="Seratio.Platform.ICO.Data.Model.FK_UserWalletHistory_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserWalletHistory" EntitySet="UserWalletHistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WalletTransactions_Users" Association="Seratio.Platform.ICO.Data.Model.FK_WalletTransactions_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="WalletTransaction" EntitySet="WalletTransactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserWalletHistory_UserSessions" Association="Seratio.Platform.ICO.Data.Model.FK_UserWalletHistory_UserSessions">
+            <End Role="UserSession" EntitySet="UserSessions" />
+            <End Role="UserWalletHistory" EntitySet="UserWalletHistories" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AcceptedRetailPolicy">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="PolicyID" Type="Int32" Nullable="false" />
+          <Property Name="BillAmount" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Discount" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="NetAmount" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DeletedOn" Type="DateTime" Precision="3" />
+          <Property Name="IsDataActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="RetailPolicy" Relationship="Seratio.Platform.ICO.Data.Model.FK_AcceptedRetailPolicies_RetailPolicies" FromRole="AcceptedRetailPolicy" ToRole="RetailPolicy" />
+          <NavigationProperty Name="User" Relationship="Seratio.Platform.ICO.Data.Model.FK_AcceptedRetailPolicies_Users" FromRole="AcceptedRetailPolicy" ToRole="User" />
+        </EntityType>
+        <EntityType Name="AcceptedSocialActivity">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="ActivityID" Type="Int32" Nullable="false" />
+          <Property Name="RewardedCoinID" Type="Int32" Nullable="false" />
+          <Property Name="RewardedAmount" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DeletedOn" Type="DateTime" Precision="3" />
+          <Property Name="IsDataActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Coin" Relationship="Seratio.Platform.ICO.Data.Model.FK_AcceptedSocialActivities_Coins" FromRole="AcceptedSocialActivity" ToRole="Coin" />
+          <NavigationProperty Name="SocialActivity" Relationship="Seratio.Platform.ICO.Data.Model.FK_AcceptedSocialActivities_SocialActivities" FromRole="AcceptedSocialActivity" ToRole="SocialActivity" />
+          <NavigationProperty Name="User" Relationship="Seratio.Platform.ICO.Data.Model.FK_AcceptedSocialActivities_Users" FromRole="AcceptedSocialActivity" ToRole="User" />
+        </EntityType>
+        <EntityType Name="ActivityNotification">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="RelatedItemID" Type="Int32" />
+          <Property Name="Type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Message" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsRead" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ReadOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="User" Relationship="Seratio.Platform.ICO.Data.Model.FK_ActivityNotifications_Users" FromRole="ActivityNotification" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Administrator">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IsSuperAdmin" Type="Boolean" Nullable="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AuthString" Type="Binary" Nullable="false" MaxLength="256" FixedLength="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DeletedOn" Type="DateTime" Precision="3" />
+          <Property Name="IsDataActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AdministratorSessions" Relationship="Seratio.Platform.ICO.Data.Model.FK_AdministratorSessions_AdministratorID" FromRole="Administrator" ToRole="AdministratorSession" />
+          <NavigationProperty Name="Investments" Relationship="Seratio.Platform.ICO.Data.Model.FK_Investments_Investments" FromRole="Administrator" ToRole="Investment" />
+          <NavigationProperty Name="Offers" Relationship="Seratio.Platform.ICO.Data.Model.FK_Offers_Administrators" FromRole="Administrator" ToRole="Offer" />
+          <NavigationProperty Name="Offers1" Relationship="Seratio.Platform.ICO.Data.Model.FK_Offers_Administrators1" FromRole="Administrator" ToRole="Offer" />
+        </EntityType>
+        <EntityType Name="AdministratorSession">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdministratorID" Type="Int32" Nullable="false" />
+          <Property Name="IPAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserAgent" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="StartTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndTime" Type="DateTime" Precision="3" />
+          <Property Name="Token" Type="Guid" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="HasTerminated" Type="Boolean" Nullable="false" />
+          <Property Name="IsDataActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Administrator" Relationship="Seratio.Platform.ICO.Data.Model.FK_AdministratorSessions_AdministratorID" FromRole="AdministratorSession" ToRole="Administrator" />
+        </EntityType>
+        <EntityType Name="Blockchain">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Host" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsPrimaryNode" Type="Boolean" Nullable="false" />
+          <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsDataActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DeletedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Coins" Relationship="Seratio.Platform.ICO.Data.Model.FK_Coins_Blockchains" FromRole="Blockchain" ToRole="Coin" />
+        </EntityType>
+        <EntityType Name="Coin">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="BlockchainID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Symbol" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NumberOfDecimals" Type="Int32" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DeletedOn" Type="DateTime" Precision="3" />
+          <Property Name="IsDataActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AcceptedSocialActivities" Relationship="Seratio.Platform.ICO.Data.Model.FK_AcceptedSocialActivities_Coins" FromRole="Coin" ToRole="AcceptedSocialActivity" />
+          <NavigationProperty Name="Blockchain" Relationship="Seratio.Platform.ICO.Data.Model.FK_Coins_Blockchains" FromRole="Coin" ToRole="Blockchain" />
+          <NavigationProperty Name="User" Relationship="Seratio.Platform.ICO.Data.Model.FK_Coins_Users" FromRole="Coin" ToRole="User" />
+          <NavigationProperty Name="RetailPolicies" Relationship="Seratio.Platform.ICO.Data.Model.FK_RetailPolicies_Coins" FromRole="Coin" ToRole="RetailPolicy" />
+          <NavigationProperty Name="SocialActivities" Relationship="Seratio.Platform.ICO.Data.Model.FK_SocialActivities_Coins" FromRole="Coin" ToRole="SocialActivity" />
+          <NavigationProperty Name="WalletTransactions" Relationship="Seratio.Platform.ICO.Data.Model.FK_WalletTransactions_Coins" FromRole="Coin" ToRole="WalletTransaction" />
+        </EntityType>
+        <EntityType Name="ExchangeRate">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="From" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="To" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ExchangePrice" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Time" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="FailedForgotPasswordAttempt">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="Time" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="User" Relationship="Seratio.Platform.ICO.Data.Model.FK_FailedForgotPasswordAttempts_Users" FromRole="FailedForgotPasswordAttempt" ToRole="User" />
+        </EntityType>
+        <EntityType Name="FailedSignInAttempt">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="Time" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="User" Relationship="Seratio.Platform.ICO.Data.Model.FK_FailedSignInAttempts_Users" FromRole="FailedSignInAttempt" ToRole="User" />
+        </EntityType>
+        <EntityType Name="FailedWalletTransactionAttempt">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="Time" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="User" Relationship="Seratio.Platform.ICO.Data.Model.FK_FailedWalletTransactionAttempts_Users" FromRole="FailedWalletTransactionAttempt" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Investment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="UserSessionID" Type="Int32" />
+          <Property Name="LastUpdatedByID" Type="Int32" />
+          <Property Name="InvestmentID" Type="Guid" />
+          <Property Name="Type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="38" Scale="8" />
+          <Property Name="Token" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TxReferenceNumber" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="InitializedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TxRefNoUpdatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ReceivedAmount" Type="Decimal" Precision="38" Scale="2" />
+          <Property Name="ExchangeRate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TokenAmount" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="OriginalExchangeRate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InvestmentType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CampaignCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HasAcceptedTAndCs" Type="Boolean" Nullable="false" />
+          <Property Name="HasTransferred" Type="Boolean" />
+          <Property Name="ConfirmedOn" Type="DateTime" Precision="3" />
+          <Property Name="RejectedOn" Type="DateTime" Precision="3" />
+          <Property Name="IssuedOn" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Administrator" Relationship="Seratio.Platform.ICO.Data.Model.FK_Investments_Investments" FromRole="Investment" ToRole="Administrator" />
+          <NavigationProperty Name="User" Relationship="Seratio.Platform.ICO.Data.Model.FK_Investments_Users" FromRole="Investment" ToRole="User" />
+          <NavigationProperty Name="UserSession" Relationship="Seratio.Platform.ICO.Data.Model.FK_Investments_UserSessions" FromRole="Investment" ToRole="UserSession" />
+        </EntityType>
+        <EntityType Name="MCRTokenInvestment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="IsFromSERMintingList" Type="Boolean" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="18" Scale="7" />
+          <Property Name="TxHash" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="QueuedOn" Type="DateTime" Precision="3" />
+          <Property Name="MintingStartedOn" Type="DateTime" Precision="3" />
+          <Property Name="MintedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="User" Relationship="Seratio.Platform.ICO.Data.Model.FK_MCRTokenInvestments_Users" FromRole="MCRTokenInvestment" ToRole="User" />
+        </EntityType>
+        <EntityType Name="MCRTokenTransfer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WalletAddress" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="18" Scale="7" />
+          <Property Name="TxHash" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="QueuedOn" Type="DateTime" Precision="3" />
+          <Property Name="TransferStartedOn" Type="DateTime" Precision="3" />
+          <Property Name="TransferredOn" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="ModuleAccessRequest">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="ProcessedBy" Type="Int32" />
+          <Property Name="Module" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsApproved" Type="Boolean" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ApprovedOn" Type="DateTime" Precision="3" />
+          <Property Name="RejectedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="User" Relationship="Seratio.Platform.ICO.Data.Model.FK_ModuleAccessRequests_Users" FromRole="ModuleAccessRequest" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="Seratio.Platform.ICO.Data.Model.FK_ModuleAccessRequests_Users1" FromRole="ModuleAccessRequest" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Offer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreatedByID" Type="Int32" Nullable="false" />
+          <Property Name="LastUpdatedByID" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Discount" Type="Int32" Nullable="false" />
+          <Property Name="LastDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DeletedOn" Type="DateTime" Precision="3" />
+          <Property Name="IsDataActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Administrator" Relationship="Seratio.Platform.ICO.Data.Model.FK_Offers_Administrators" FromRole="Offer" ToRole="Administrator" />
+          <NavigationProperty Name="Administrator1" Relationship="Seratio.Platform.ICO.Data.Model.FK_Offers_Administrators1" FromRole="Offer" ToRole="Administrator" />
+        </EntityType>
+        <EntityType Name="Request">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SenderID" Type="Int32" Nullable="false" />
+          <Property Name="Recipient" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HasDownloaded" Type="Boolean" Nullable="false" />
+          <Property Name="HasRejected" Type="Boolean" Nullable="false" />
+          <Property Name="SentOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RespondedOn" Type="DateTime" Precision="3" />
+          <Property Name="IsDataActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Seratio.Platform.ICO.Data.Model.FK_Requests_Sender" FromRole="Request" ToRole="User" />
+        </EntityType>
+        <EntityType Name="RetailPolicy">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="RequiredCoinID" Type="Int32" />
+          <Property Name="ProcessedBy" Type="Int32" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PolicyType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MinSESCore" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="MaxSEScore" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="RequiredCoinQty" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="DiscountMode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DiscountValue" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="IsApproved" Type="Boolean" />
+          <Property Name="ApprovedOn" Type="DateTime" Precision="3" />
+          <Property Name="RejectedOn" Type="DateTime" Precision="3" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DeletedOn" Type="DateTime" Precision="3" />
+          <Property Name="IsDataActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AcceptedRetailPolicies" Relationship="Seratio.Platform.ICO.Data.Model.FK_AcceptedRetailPolicies_RetailPolicies" FromRole="RetailPolicy" ToRole="AcceptedRetailPolicy" />
+          <NavigationProperty Name="Coin" Relationship="Seratio.Platform.ICO.Data.Model.FK_RetailPolicies_Coins" FromRole="RetailPolicy" ToRole="Coin" />
+          <NavigationProperty Name="User" Relationship="Seratio.Platform.ICO.Data.Model.FK_RetailPolicies_Users" FromRole="RetailPolicy" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="Seratio.Platform.ICO.Data.Model.FK_RetailPolicies_Users1" FromRole="RetailPolicy" ToRole="User" />
+        </EntityType>
+        <EntityType Name="SERTokenInvestment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="18" Scale="7" />
+          <Property Name="TxHash" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="QueuedOn" Type="DateTime" Precision="3" />
+          <Property Name="MintingStartedOn" Type="DateTime" Precision="3" />
+          <Property Name="MintedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="User" Relationship="Seratio.Platform.ICO.Data.Model.FK_SERTokenInvestments_Users" FromRole="SERTokenInvestment" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Setting">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AllowAutomaticExchangeRateSyncing" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SocialActivity">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="RewardingCoinID" Type="Int32" Nullable="false" />
+          <Property Name="ProcessedBy" Type="Int32" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RewardAmount" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="IsApproved" Type="Boolean" />
+          <Property Name="ApprovedOn" Type="DateTime" Precision="3" />
+          <Property Name="RejectedOn" Type="DateTime" Precision="3" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DeletedOn" Type="DateTime" Precision="3" />
+          <Property Name="IsDataActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AcceptedSocialActivities" Relationship="Seratio.Platform.ICO.Data.Model.FK_AcceptedSocialActivities_SocialActivities" FromRole="SocialActivity" ToRole="AcceptedSocialActivity" />
+          <NavigationProperty Name="Coin" Relationship="Seratio.Platform.ICO.Data.Model.FK_SocialActivities_Coins" FromRole="SocialActivity" ToRole="Coin" />
+          <NavigationProperty Name="User" Relationship="Seratio.Platform.ICO.Data.Model.FK_SocialActivities_Users" FromRole="SocialActivity" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="Seratio.Platform.ICO.Data.Model.FK_SocialActivities_Users1" FromRole="SocialActivity" ToRole="User" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AuthString" Type="Binary" Nullable="false" MaxLength="256" FixedLength="false" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AutoLoginToken" Type="Guid" Nullable="false" />
+          <Property Name="ForgotPasswordToken" Type="Guid" />
+          <Property Name="WalletAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="NickName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SE" Type="Decimal" Precision="18" Scale="1" />
+          <Property Name="AssetTransactionCriteria" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AssetTransactionCriteriaValue" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="Gender" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PostalCode" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Position" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Organization" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AllowEmailNotifications" Type="Boolean" Nullable="false" />
+          <Property Name="ShouldAllowSignInWithQR" Type="Boolean" Nullable="false" />
+          <Property Name="EnableTwoFactorAuthentication" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFAKey" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SaftyQuestion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="SaftyAnswer" Type="Binary" MaxLength="256" FixedLength="false" />
+          <Property Name="EmailVerificationToken" Type="Guid" />
+          <Property Name="IsBlockedWallet" Type="Boolean" Nullable="false" />
+          <Property Name="IsEmailVerified" Type="Boolean" Nullable="false" />
+          <Property Name="IsSearchable" Type="Boolean" Nullable="false" />
+          <Property Name="EmailVerifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="IsSuperAdmin" Type="Boolean" Nullable="false" />
+          <Property Name="ReferralSource" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="WalletPassPhrase" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DeletedOn" Type="DateTime" Precision="3" />
+          <Property Name="IsDataActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AcceptedRetailPolicies" Relationship="Seratio.Platform.ICO.Data.Model.FK_AcceptedRetailPolicies_Users" FromRole="User" ToRole="AcceptedRetailPolicy" />
+          <NavigationProperty Name="AcceptedSocialActivities" Relationship="Seratio.Platform.ICO.Data.Model.FK_AcceptedSocialActivities_Users" FromRole="User" ToRole="AcceptedSocialActivity" />
+          <NavigationProperty Name="ActivityNotifications" Relationship="Seratio.Platform.ICO.Data.Model.FK_ActivityNotifications_Users" FromRole="User" ToRole="ActivityNotification" />
+          <NavigationProperty Name="Coins" Relationship="Seratio.Platform.ICO.Data.Model.FK_Coins_Users" FromRole="User" ToRole="Coin" />
+          <NavigationProperty Name="FailedForgotPasswordAttempts" Relationship="Seratio.Platform.ICO.Data.Model.FK_FailedForgotPasswordAttempts_Users" FromRole="User" ToRole="FailedForgotPasswordAttempt" />
+          <NavigationProperty Name="FailedSignInAttempts" Relationship="Seratio.Platform.ICO.Data.Model.FK_FailedSignInAttempts_Users" FromRole="User" ToRole="FailedSignInAttempt" />
+          <NavigationProperty Name="FailedWalletTransactionAttempts" Relationship="Seratio.Platform.ICO.Data.Model.FK_FailedWalletTransactionAttempts_Users" FromRole="User" ToRole="FailedWalletTransactionAttempt" />
+          <NavigationProperty Name="Investments" Relationship="Seratio.Platform.ICO.Data.Model.FK_Investments_Users" FromRole="User" ToRole="Investment" />
+          <NavigationProperty Name="MCRTokenInvestments" Relationship="Seratio.Platform.ICO.Data.Model.FK_MCRTokenInvestments_Users" FromRole="User" ToRole="MCRTokenInvestment" />
+          <NavigationProperty Name="ModuleAccessRequests" Relationship="Seratio.Platform.ICO.Data.Model.FK_ModuleAccessRequests_Users" FromRole="User" ToRole="ModuleAccessRequest" />
+          <NavigationProperty Name="ModuleAccessRequests1" Relationship="Seratio.Platform.ICO.Data.Model.FK_ModuleAccessRequests_Users1" FromRole="User" ToRole="ModuleAccessRequest" />
+          <NavigationProperty Name="Requests" Relationship="Seratio.Platform.ICO.Data.Model.FK_Requests_Sender" FromRole="User" ToRole="Request" />
+          <NavigationProperty Name="RetailPolicies" Relationship="Seratio.Platform.ICO.Data.Model.FK_RetailPolicies_Users" FromRole="User" ToRole="RetailPolicy" />
+          <NavigationProperty Name="RetailPolicies1" Relationship="Seratio.Platform.ICO.Data.Model.FK_RetailPolicies_Users1" FromRole="User" ToRole="RetailPolicy" />
+          <NavigationProperty Name="SERTokenInvestments" Relationship="Seratio.Platform.ICO.Data.Model.FK_SERTokenInvestments_Users" FromRole="User" ToRole="SERTokenInvestment" />
+          <NavigationProperty Name="SocialActivities" Relationship="Seratio.Platform.ICO.Data.Model.FK_SocialActivities_Users" FromRole="User" ToRole="SocialActivity" />
+          <NavigationProperty Name="SocialActivities1" Relationship="Seratio.Platform.ICO.Data.Model.FK_SocialActivities_Users1" FromRole="User" ToRole="SocialActivity" />
+          <NavigationProperty Name="UserSessions" Relationship="Seratio.Platform.ICO.Data.Model.FK_UserSessions_UserID" FromRole="User" ToRole="UserSession" />
+          <NavigationProperty Name="UserWalletHistories" Relationship="Seratio.Platform.ICO.Data.Model.FK_UserWalletHistory_Users" FromRole="User" ToRole="UserWalletHistory" />
+          <NavigationProperty Name="WalletTransactions" Relationship="Seratio.Platform.ICO.Data.Model.FK_WalletTransactions_Users" FromRole="User" ToRole="WalletTransaction" />
+        </EntityType>
+        <EntityType Name="UserSession">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="IPAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserAgent" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Token" Type="Guid" Nullable="false" />
+          <Property Name="SignInMethod" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HasTerminated" Type="Boolean" Nullable="false" />
+          <Property Name="StartTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndTime" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDataActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Investments" Relationship="Seratio.Platform.ICO.Data.Model.FK_Investments_UserSessions" FromRole="UserSession" ToRole="Investment" />
+          <NavigationProperty Name="User" Relationship="Seratio.Platform.ICO.Data.Model.FK_UserSessions_UserID" FromRole="UserSession" ToRole="User" />
+          <NavigationProperty Name="UserWalletHistories" Relationship="Seratio.Platform.ICO.Data.Model.FK_UserWalletHistory_UserSessions" FromRole="UserSession" ToRole="UserWalletHistory" />
+        </EntityType>
+        <EntityType Name="UserWalletHistory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="SessionID" Type="Int32" Nullable="false" />
+          <Property Name="OldWalletAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NewWalletAddress" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Time" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="User" Relationship="Seratio.Platform.ICO.Data.Model.FK_UserWalletHistory_Users" FromRole="UserWalletHistory" ToRole="User" />
+          <NavigationProperty Name="UserSession" Relationship="Seratio.Platform.ICO.Data.Model.FK_UserWalletHistory_UserSessions" FromRole="UserWalletHistory" ToRole="UserSession" />
+        </EntityType>
+        <EntityType Name="WalletTransaction">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="CoinID" Type="Int32" Nullable="false" />
+          <Property Name="SessionID" Type="Int32" />
+          <Property Name="TransactionID" Type="Guid" />
+          <Property Name="Recipient" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="18" Scale="7" />
+          <Property Name="TransactionHash" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="TransactionIndex" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BlockHash" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="BlockNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CumulativeGasUsed" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GasUsed" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Logs" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsSyncedFromEthplorer" Type="Boolean" />
+          <NavigationProperty Name="Coin" Relationship="Seratio.Platform.ICO.Data.Model.FK_WalletTransactions_Coins" FromRole="WalletTransaction" ToRole="Coin" />
+          <NavigationProperty Name="User" Relationship="Seratio.Platform.ICO.Data.Model.FK_WalletTransactions_Users" FromRole="WalletTransaction" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_AcceptedRetailPolicies_RetailPolicies">
+          <End Type="Seratio.Platform.ICO.Data.Model.RetailPolicy" Role="RetailPolicy" Multiplicity="1" />
+          <End Type="Seratio.Platform.ICO.Data.Model.AcceptedRetailPolicy" Role="AcceptedRetailPolicy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RetailPolicy">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AcceptedRetailPolicy">
+              <PropertyRef Name="PolicyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AcceptedRetailPolicies_Users">
+          <End Type="Seratio.Platform.ICO.Data.Model.User" Role="User" Multiplicity="1" />
+          <End Type="Seratio.Platform.ICO.Data.Model.AcceptedRetailPolicy" Role="AcceptedRetailPolicy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AcceptedRetailPolicy">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AcceptedSocialActivities_Coins">
+          <End Type="Seratio.Platform.ICO.Data.Model.Coin" Role="Coin" Multiplicity="1" />
+          <End Type="Seratio.Platform.ICO.Data.Model.AcceptedSocialActivity" Role="AcceptedSocialActivity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Coin">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AcceptedSocialActivity">
+              <PropertyRef Name="RewardedCoinID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AcceptedSocialActivities_SocialActivities">
+          <End Type="Seratio.Platform.ICO.Data.Model.SocialActivity" Role="SocialActivity" Multiplicity="1" />
+          <End Type="Seratio.Platform.ICO.Data.Model.AcceptedSocialActivity" Role="AcceptedSocialActivity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SocialActivity">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AcceptedSocialActivity">
+              <PropertyRef Name="ActivityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AcceptedSocialActivities_Users">
+          <End Type="Seratio.Platform.ICO.Data.Model.User" Role="User" Multiplicity="1" />
+          <End Type="Seratio.Platform.ICO.Data.Model.AcceptedSocialActivity" Role="AcceptedSocialActivity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AcceptedSocialActivity">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ActivityNotifications_Users">
+          <End Type="Seratio.Platform.ICO.Data.Model.User" Role="User" Multiplicity="1" />
+          <End Type="Seratio.Platform.ICO.Data.Model.ActivityNotification" Role="ActivityNotification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ActivityNotification">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdministratorSessions_AdministratorID">
+          <End Type="Seratio.Platform.ICO.Data.Model.Administrator" Role="Administrator" Multiplicity="1" />
+          <End Type="Seratio.Platform.ICO.Data.Model.AdministratorSession" Role="AdministratorSession" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Administrator">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AdministratorSession">
+              <PropertyRef Name="AdministratorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Investments_Investments">
+          <End Type="Seratio.Platform.ICO.Data.Model.Administrator" Role="Administrator" Multiplicity="0..1" />
+          <End Type="Seratio.Platform.ICO.Data.Model.Investment" Role="Investment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Administrator">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Investment">
+              <PropertyRef Name="LastUpdatedByID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Offers_Administrators">
+          <End Type="Seratio.Platform.ICO.Data.Model.Administrator" Role="Administrator" Multiplicity="1" />
+          <End Type="Seratio.Platform.ICO.Data.Model.Offer" Role="Offer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Administrator">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Offer">
+              <PropertyRef Name="CreatedByID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Offers_Administrators1">
+          <End Type="Seratio.Platform.ICO.Data.Model.Administrator" Role="Administrator" Multiplicity="1" />
+          <End Type="Seratio.Platform.ICO.Data.Model.Offer" Role="Offer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Administrator">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Offer">
+              <PropertyRef Name="LastUpdatedByID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Coins_Blockchains">
+          <End Type="Seratio.Platform.ICO.Data.Model.Blockchain" Role="Blockchain" Multiplicity="1" />
+          <End Type="Seratio.Platform.ICO.Data.Model.Coin" Role="Coin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Blockchain">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Coin">
+              <PropertyRef Name="BlockchainID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Coins_Users">
+          <End Type="Seratio.Platform.ICO.Data.Model.User" Role="User" Multiplicity="1" />
+          <End Type="Seratio.Platform.ICO.Data.Model.Coin" Role="Coin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Coin">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RetailPolicies_Coins">
+          <End Type="Seratio.Platform.ICO.Data.Model.Coin" Role="Coin" Multiplicity="0..1" />
+          <End Type="Seratio.Platform.ICO.Data.Model.RetailPolicy" Role="RetailPolicy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Coin">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RetailPolicy">
+              <PropertyRef Name="RequiredCoinID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SocialActivities_Coins">
+          <End Type="Seratio.Platform.ICO.Data.Model.Coin" Role="Coin" Multiplicity="1" />
+          <End Type="Seratio.Platform.ICO.Data.Model.SocialActivity" Role="SocialActivity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Coin">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SocialActivity">
+              <PropertyRef Name="RewardingCoinID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WalletTransactions_Coins">
+          <End Type="Seratio.Platform.ICO.Data.Model.Coin" Role="Coin" Multiplicity="1" />
+          <End Type="Seratio.Platform.ICO.Data.Model.WalletTransaction" Role="WalletTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Coin">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="WalletTransaction">
+              <PropertyRef Name="CoinID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FailedForgotPasswordAttempts_Users">
+          <End Type="Seratio.Platform.ICO.Data.Model.User" Role="User" Multiplicity="1" />
+          <End Type="Seratio.Platform.ICO.Data.Model.FailedForgotPasswordAttempt" Role="FailedForgotPasswordAttempt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FailedForgotPasswordAttempt">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FailedSignInAttempts_Users">
+          <End Type="Seratio.Platform.ICO.Data.Model.User" Role="User" Multiplicity="1" />
+          <End Type="Seratio.Platform.ICO.Data.Model.FailedSignInAttempt" Role="FailedSignInAttempt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FailedSignInAttempt">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FailedWalletTransactionAttempts_Users">
+          <End Type="Seratio.Platform.ICO.Data.Model.User" Role="User" Multiplicity="1" />
+          <End Type="Seratio.Platform.ICO.Data.Model.FailedWalletTransactionAttempt" Role="FailedWalletTransactionAttempt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FailedWalletTransactionAttempt">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Investments_Users">
+          <End Type="Seratio.Platform.ICO.Data.Model.User" Role="User" Multiplicity="1" />
+          <End Type="Seratio.Platform.ICO.Data.Model.Investment" Role="Investment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Investment">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Investments_UserSessions">
+          <End Type="Seratio.Platform.ICO.Data.Model.UserSession" Role="UserSession" Multiplicity="0..1" />
+          <End Type="Seratio.Platform.ICO.Data.Model.Investment" Role="Investment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserSession">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Investment">
+              <PropertyRef Name="UserSessionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MCRTokenInvestments_Users">
+          <End Type="Seratio.Platform.ICO.Data.Model.User" Role="User" Multiplicity="1" />
+          <End Type="Seratio.Platform.ICO.Data.Model.MCRTokenInvestment" Role="MCRTokenInvestment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MCRTokenInvestment">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ModuleAccessRequests_Users">
+          <End Type="Seratio.Platform.ICO.Data.Model.User" Role="User" Multiplicity="1" />
+          <End Type="Seratio.Platform.ICO.Data.Model.ModuleAccessRequest" Role="ModuleAccessRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ModuleAccessRequest">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ModuleAccessRequests_Users1">
+          <End Type="Seratio.Platform.ICO.Data.Model.User" Role="User" Multiplicity="0..1" />
+          <End Type="Seratio.Platform.ICO.Data.Model.ModuleAccessRequest" Role="ModuleAccessRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ModuleAccessRequest">
+              <PropertyRef Name="ProcessedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Requests_Sender">
+          <End Type="Seratio.Platform.ICO.Data.Model.User" Role="User" Multiplicity="1" />
+          <End Type="Seratio.Platform.ICO.Data.Model.Request" Role="Request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Request">
+              <PropertyRef Name="SenderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RetailPolicies_Users">
+          <End Type="Seratio.Platform.ICO.Data.Model.User" Role="User" Multiplicity="1" />
+          <End Type="Seratio.Platform.ICO.Data.Model.RetailPolicy" Role="RetailPolicy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RetailPolicy">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RetailPolicies_Users1">
+          <End Type="Seratio.Platform.ICO.Data.Model.User" Role="User" Multiplicity="0..1" />
+          <End Type="Seratio.Platform.ICO.Data.Model.RetailPolicy" Role="RetailPolicy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RetailPolicy">
+              <PropertyRef Name="ProcessedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SERTokenInvestments_Users">
+          <End Type="Seratio.Platform.ICO.Data.Model.User" Role="User" Multiplicity="1" />
+          <End Type="Seratio.Platform.ICO.Data.Model.SERTokenInvestment" Role="SERTokenInvestment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SERTokenInvestment">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SocialActivities_Users">
+          <End Type="Seratio.Platform.ICO.Data.Model.User" Role="User" Multiplicity="1" />
+          <End Type="Seratio.Platform.ICO.Data.Model.SocialActivity" Role="SocialActivity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SocialActivity">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SocialActivities_Users1">
+          <End Type="Seratio.Platform.ICO.Data.Model.User" Role="User" Multiplicity="0..1" />
+          <End Type="Seratio.Platform.ICO.Data.Model.SocialActivity" Role="SocialActivity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SocialActivity">
+              <PropertyRef Name="ProcessedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserSessions_UserID">
+          <End Type="Seratio.Platform.ICO.Data.Model.User" Role="User" Multiplicity="1" />
+          <End Type="Seratio.Platform.ICO.Data.Model.UserSession" Role="UserSession" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserSession">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserWalletHistory_Users">
+          <End Type="Seratio.Platform.ICO.Data.Model.User" Role="User" Multiplicity="1" />
+          <End Type="Seratio.Platform.ICO.Data.Model.UserWalletHistory" Role="UserWalletHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserWalletHistory">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WalletTransactions_Users">
+          <End Type="Seratio.Platform.ICO.Data.Model.User" Role="User" Multiplicity="1" />
+          <End Type="Seratio.Platform.ICO.Data.Model.WalletTransaction" Role="WalletTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="WalletTransaction">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserWalletHistory_UserSessions">
+          <End Type="Seratio.Platform.ICO.Data.Model.UserSession" Role="UserSession" Multiplicity="1" />
+          <End Type="Seratio.Platform.ICO.Data.Model.UserWalletHistory" Role="UserWalletHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserSession">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserWalletHistory">
+              <PropertyRef Name="SessionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SeratioPlatformICODataModelStoreContainer" CdmEntityContainer="DatabaseEntities" >
+          <EntitySetMapping Name="AcceptedRetailPolicies">
+            <EntityTypeMapping TypeName="Seratio.Platform.ICO.Data.Model.AcceptedRetailPolicy">
+              <MappingFragment StoreEntitySet="AcceptedRetailPolicies">
+                <ScalarProperty Name="IsDataActive" ColumnName="IsDataActive" />
+                <ScalarProperty Name="DeletedOn" ColumnName="DeletedOn" />
+                <ScalarProperty Name="LastUpdatedOn" ColumnName="LastUpdatedOn" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="NetAmount" ColumnName="NetAmount" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="BillAmount" ColumnName="BillAmount" />
+                <ScalarProperty Name="PolicyID" ColumnName="PolicyID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AcceptedSocialActivities">
+            <EntityTypeMapping TypeName="Seratio.Platform.ICO.Data.Model.AcceptedSocialActivity">
+              <MappingFragment StoreEntitySet="AcceptedSocialActivities">
+                <ScalarProperty Name="IsDataActive" ColumnName="IsDataActive" />
+                <ScalarProperty Name="DeletedOn" ColumnName="DeletedOn" />
+                <ScalarProperty Name="LastUpdatedOn" ColumnName="LastUpdatedOn" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="RewardedAmount" ColumnName="RewardedAmount" />
+                <ScalarProperty Name="RewardedCoinID" ColumnName="RewardedCoinID" />
+                <ScalarProperty Name="ActivityID" ColumnName="ActivityID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ActivityNotifications">
+            <EntityTypeMapping TypeName="Seratio.Platform.ICO.Data.Model.ActivityNotification">
+              <MappingFragment StoreEntitySet="ActivityNotifications">
+                <ScalarProperty Name="ReadOn" ColumnName="ReadOn" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="IsRead" ColumnName="IsRead" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="RelatedItemID" ColumnName="RelatedItemID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Administrators">
+            <EntityTypeMapping TypeName="Seratio.Platform.ICO.Data.Model.Administrator">
+              <MappingFragment StoreEntitySet="Administrators">
+                <ScalarProperty Name="IsDataActive" ColumnName="IsDataActive" />
+                <ScalarProperty Name="DeletedOn" ColumnName="DeletedOn" />
+                <ScalarProperty Name="LastUpdatedOn" ColumnName="LastUpdatedOn" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="AuthString" ColumnName="AuthString" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="IsSuperAdmin" ColumnName="IsSuperAdmin" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AdministratorSessions">
+            <EntityTypeMapping TypeName="Seratio.Platform.ICO.Data.Model.AdministratorSession">
+              <MappingFragment StoreEntitySet="AdministratorSessions">
+                <ScalarProperty Name="IsDataActive" ColumnName="IsDataActive" />
+                <ScalarProperty Name="HasTerminated" ColumnName="HasTerminated" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Token" ColumnName="Token" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="UserAgent" ColumnName="UserAgent" />
+                <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+                <ScalarProperty Name="AdministratorID" ColumnName="AdministratorID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Blockchains">
+            <EntityTypeMapping TypeName="Seratio.Platform.ICO.Data.Model.Blockchain">
+              <MappingFragment StoreEntitySet="Blockchains">
+                <ScalarProperty Name="DeletedOn" ColumnName="DeletedOn" />
+                <ScalarProperty Name="LastUpdatedOn" ColumnName="LastUpdatedOn" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="IsDataActive" ColumnName="IsDataActive" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="IsPrimaryNode" ColumnName="IsPrimaryNode" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Host" ColumnName="Host" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Coins">
+            <EntityTypeMapping TypeName="Seratio.Platform.ICO.Data.Model.Coin">
+              <MappingFragment StoreEntitySet="Coins">
+                <ScalarProperty Name="IsDataActive" ColumnName="IsDataActive" />
+                <ScalarProperty Name="DeletedOn" ColumnName="DeletedOn" />
+                <ScalarProperty Name="LastUpdatedOn" ColumnName="LastUpdatedOn" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="NumberOfDecimals" ColumnName="NumberOfDecimals" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Symbol" ColumnName="Symbol" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="BlockchainID" ColumnName="BlockchainID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExchangeRates">
+            <EntityTypeMapping TypeName="Seratio.Platform.ICO.Data.Model.ExchangeRate">
+              <MappingFragment StoreEntitySet="ExchangeRates">
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="ExchangePrice" ColumnName="ExchangePrice" />
+                <ScalarProperty Name="To" ColumnName="To" />
+                <ScalarProperty Name="From" ColumnName="From" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FailedForgotPasswordAttempts">
+            <EntityTypeMapping TypeName="Seratio.Platform.ICO.Data.Model.FailedForgotPasswordAttempt">
+              <MappingFragment StoreEntitySet="FailedForgotPasswordAttempts">
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FailedSignInAttempts">
+            <EntityTypeMapping TypeName="Seratio.Platform.ICO.Data.Model.FailedSignInAttempt">
+              <MappingFragment StoreEntitySet="FailedSignInAttempts">
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FailedWalletTransactionAttempts">
+            <EntityTypeMapping TypeName="Seratio.Platform.ICO.Data.Model.FailedWalletTransactionAttempt">
+              <MappingFragment StoreEntitySet="FailedWalletTransactionAttempts">
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Investments">
+            <EntityTypeMapping TypeName="Seratio.Platform.ICO.Data.Model.Investment">
+              <MappingFragment StoreEntitySet="Investments">
+                <ScalarProperty Name="LastUpdatedOn" ColumnName="LastUpdatedOn" />
+                <ScalarProperty Name="IssuedOn" ColumnName="IssuedOn" />
+                <ScalarProperty Name="RejectedOn" ColumnName="RejectedOn" />
+                <ScalarProperty Name="ConfirmedOn" ColumnName="ConfirmedOn" />
+                <ScalarProperty Name="HasTransferred" ColumnName="HasTransferred" />
+                <ScalarProperty Name="HasAcceptedTAndCs" ColumnName="HasAcceptedTAndCs" />
+                <ScalarProperty Name="CampaignCode" ColumnName="CampaignCode" />
+                <ScalarProperty Name="InvestmentType" ColumnName="InvestmentType" />
+                <ScalarProperty Name="OriginalExchangeRate" ColumnName="OriginalExchangeRate" />
+                <ScalarProperty Name="TokenAmount" ColumnName="TokenAmount" />
+                <ScalarProperty Name="ExchangeRate" ColumnName="ExchangeRate" />
+                <ScalarProperty Name="ReceivedAmount" ColumnName="ReceivedAmount" />
+                <ScalarProperty Name="TxRefNoUpdatedOn" ColumnName="TxRefNoUpdatedOn" />
+                <ScalarProperty Name="InitializedOn" ColumnName="InitializedOn" />
+                <ScalarProperty Name="TxReferenceNumber" ColumnName="TxReferenceNumber" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Token" ColumnName="Token" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Mode" ColumnName="Mode" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="InvestmentID" ColumnName="InvestmentID" />
+                <ScalarProperty Name="LastUpdatedByID" ColumnName="LastUpdatedByID" />
+                <ScalarProperty Name="UserSessionID" ColumnName="UserSessionID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MCRTokenInvestments">
+            <EntityTypeMapping TypeName="Seratio.Platform.ICO.Data.Model.MCRTokenInvestment">
+              <MappingFragment StoreEntitySet="MCRTokenInvestments">
+                <ScalarProperty Name="MintedOn" ColumnName="MintedOn" />
+                <ScalarProperty Name="MintingStartedOn" ColumnName="MintingStartedOn" />
+                <ScalarProperty Name="QueuedOn" ColumnName="QueuedOn" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="TxHash" ColumnName="TxHash" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="IsFromSERMintingList" ColumnName="IsFromSERMintingList" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MCRTokenTransfers">
+            <EntityTypeMapping TypeName="Seratio.Platform.ICO.Data.Model.MCRTokenTransfer">
+              <MappingFragment StoreEntitySet="MCRTokenTransfers">
+                <ScalarProperty Name="TransferredOn" ColumnName="TransferredOn" />
+                <ScalarProperty Name="TransferStartedOn" ColumnName="TransferStartedOn" />
+                <ScalarProperty Name="QueuedOn" ColumnName="QueuedOn" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="TxHash" ColumnName="TxHash" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="WalletAddress" ColumnName="WalletAddress" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ModuleAccessRequests">
+            <EntityTypeMapping TypeName="Seratio.Platform.ICO.Data.Model.ModuleAccessRequest">
+              <MappingFragment StoreEntitySet="ModuleAccessRequests">
+                <ScalarProperty Name="RejectedOn" ColumnName="RejectedOn" />
+                <ScalarProperty Name="ApprovedOn" ColumnName="ApprovedOn" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Module" ColumnName="Module" />
+                <ScalarProperty Name="ProcessedBy" ColumnName="ProcessedBy" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Offers">
+            <EntityTypeMapping TypeName="Seratio.Platform.ICO.Data.Model.Offer">
+              <MappingFragment StoreEntitySet="Offers">
+                <ScalarProperty Name="IsDataActive" ColumnName="IsDataActive" />
+                <ScalarProperty Name="DeletedOn" ColumnName="DeletedOn" />
+                <ScalarProperty Name="LastUpdatedOn" ColumnName="LastUpdatedOn" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="LastDate" ColumnName="LastDate" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="LastUpdatedByID" ColumnName="LastUpdatedByID" />
+                <ScalarProperty Name="CreatedByID" ColumnName="CreatedByID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Requests">
+            <EntityTypeMapping TypeName="Seratio.Platform.ICO.Data.Model.Request">
+              <MappingFragment StoreEntitySet="Requests">
+                <ScalarProperty Name="IsDataActive" ColumnName="IsDataActive" />
+                <ScalarProperty Name="RespondedOn" ColumnName="RespondedOn" />
+                <ScalarProperty Name="SentOn" ColumnName="SentOn" />
+                <ScalarProperty Name="HasRejected" ColumnName="HasRejected" />
+                <ScalarProperty Name="HasDownloaded" ColumnName="HasDownloaded" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Recipient" ColumnName="Recipient" />
+                <ScalarProperty Name="SenderID" ColumnName="SenderID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RetailPolicies">
+            <EntityTypeMapping TypeName="Seratio.Platform.ICO.Data.Model.RetailPolicy">
+              <MappingFragment StoreEntitySet="RetailPolicies">
+                <ScalarProperty Name="IsDataActive" ColumnName="IsDataActive" />
+                <ScalarProperty Name="DeletedOn" ColumnName="DeletedOn" />
+                <ScalarProperty Name="LastUpdatedOn" ColumnName="LastUpdatedOn" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="RejectedOn" ColumnName="RejectedOn" />
+                <ScalarProperty Name="ApprovedOn" ColumnName="ApprovedOn" />
+                <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+                <ScalarProperty Name="DiscountValue" ColumnName="DiscountValue" />
+                <ScalarProperty Name="DiscountMode" ColumnName="DiscountMode" />
+                <ScalarProperty Name="RequiredCoinQty" ColumnName="RequiredCoinQty" />
+                <ScalarProperty Name="MaxSEScore" ColumnName="MaxSEScore" />
+                <ScalarProperty Name="MinSESCore" ColumnName="MinSESCore" />
+                <ScalarProperty Name="PolicyType" ColumnName="PolicyType" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ProcessedBy" ColumnName="ProcessedBy" />
+                <ScalarProperty Name="RequiredCoinID" ColumnName="RequiredCoinID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SERTokenInvestments">
+            <EntityTypeMapping TypeName="Seratio.Platform.ICO.Data.Model.SERTokenInvestment">
+              <MappingFragment StoreEntitySet="SERTokenInvestments">
+                <ScalarProperty Name="MintedOn" ColumnName="MintedOn" />
+                <ScalarProperty Name="MintingStartedOn" ColumnName="MintingStartedOn" />
+                <ScalarProperty Name="QueuedOn" ColumnName="QueuedOn" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="TxHash" ColumnName="TxHash" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Settings">
+            <EntityTypeMapping TypeName="Seratio.Platform.ICO.Data.Model.Setting">
+              <MappingFragment StoreEntitySet="Settings">
+                <ScalarProperty Name="AllowAutomaticExchangeRateSyncing" ColumnName="AllowAutomaticExchangeRateSyncing" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SocialActivities">
+            <EntityTypeMapping TypeName="Seratio.Platform.ICO.Data.Model.SocialActivity">
+              <MappingFragment StoreEntitySet="SocialActivities">
+                <ScalarProperty Name="IsDataActive" ColumnName="IsDataActive" />
+                <ScalarProperty Name="DeletedOn" ColumnName="DeletedOn" />
+                <ScalarProperty Name="LastUpdatedOn" ColumnName="LastUpdatedOn" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="RejectedOn" ColumnName="RejectedOn" />
+                <ScalarProperty Name="ApprovedOn" ColumnName="ApprovedOn" />
+                <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+                <ScalarProperty Name="RewardAmount" ColumnName="RewardAmount" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ProcessedBy" ColumnName="ProcessedBy" />
+                <ScalarProperty Name="RewardingCoinID" ColumnName="RewardingCoinID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="Seratio.Platform.ICO.Data.Model.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="IsDataActive" ColumnName="IsDataActive" />
+                <ScalarProperty Name="DeletedOn" ColumnName="DeletedOn" />
+                <ScalarProperty Name="LastUpdatedOn" ColumnName="LastUpdatedOn" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="WalletPassPhrase" ColumnName="WalletPassPhrase" />
+                <ScalarProperty Name="ReferralSource" ColumnName="ReferralSource" />
+                <ScalarProperty Name="IsSuperAdmin" ColumnName="IsSuperAdmin" />
+                <ScalarProperty Name="EmailVerifiedOn" ColumnName="EmailVerifiedOn" />
+                <ScalarProperty Name="IsSearchable" ColumnName="IsSearchable" />
+                <ScalarProperty Name="IsEmailVerified" ColumnName="IsEmailVerified" />
+                <ScalarProperty Name="IsBlockedWallet" ColumnName="IsBlockedWallet" />
+                <ScalarProperty Name="EmailVerificationToken" ColumnName="EmailVerificationToken" />
+                <ScalarProperty Name="SaftyAnswer" ColumnName="SaftyAnswer" />
+                <ScalarProperty Name="SaftyQuestion" ColumnName="SaftyQuestion" />
+                <ScalarProperty Name="TwoFAKey" ColumnName="TwoFAKey" />
+                <ScalarProperty Name="EnableTwoFactorAuthentication" ColumnName="EnableTwoFactorAuthentication" />
+                <ScalarProperty Name="ShouldAllowSignInWithQR" ColumnName="ShouldAllowSignInWithQR" />
+                <ScalarProperty Name="AllowEmailNotifications" ColumnName="AllowEmailNotifications" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Organization" ColumnName="Organization" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="AssetTransactionCriteriaValue" ColumnName="AssetTransactionCriteriaValue" />
+                <ScalarProperty Name="AssetTransactionCriteria" ColumnName="AssetTransactionCriteria" />
+                <ScalarProperty Name="SE" ColumnName="SE" />
+                <ScalarProperty Name="NickName" ColumnName="NickName" />
+                <ScalarProperty Name="WalletAddress" ColumnName="WalletAddress" />
+                <ScalarProperty Name="ForgotPasswordToken" ColumnName="ForgotPasswordToken" />
+                <ScalarProperty Name="AutoLoginToken" ColumnName="AutoLoginToken" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="AuthString" ColumnName="AuthString" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserSessions">
+            <EntityTypeMapping TypeName="Seratio.Platform.ICO.Data.Model.UserSession">
+              <MappingFragment StoreEntitySet="UserSessions">
+                <ScalarProperty Name="IsDataActive" ColumnName="IsDataActive" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="HasTerminated" ColumnName="HasTerminated" />
+                <ScalarProperty Name="SignInMethod" ColumnName="SignInMethod" />
+                <ScalarProperty Name="Token" ColumnName="Token" />
+                <ScalarProperty Name="UserAgent" ColumnName="UserAgent" />
+                <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserWalletHistories">
+            <EntityTypeMapping TypeName="Seratio.Platform.ICO.Data.Model.UserWalletHistory">
+              <MappingFragment StoreEntitySet="UserWalletHistory">
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="NewWalletAddress" ColumnName="NewWalletAddress" />
+                <ScalarProperty Name="OldWalletAddress" ColumnName="OldWalletAddress" />
+                <ScalarProperty Name="SessionID" ColumnName="SessionID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WalletTransactions">
+            <EntityTypeMapping TypeName="Seratio.Platform.ICO.Data.Model.WalletTransaction">
+              <MappingFragment StoreEntitySet="WalletTransactions">
+                <ScalarProperty Name="IsSyncedFromEthplorer" ColumnName="IsSyncedFromEthplorer" />
+                <ScalarProperty Name="LastUpdatedOn" ColumnName="LastUpdatedOn" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Logs" ColumnName="Logs" />
+                <ScalarProperty Name="GasUsed" ColumnName="GasUsed" />
+                <ScalarProperty Name="CumulativeGasUsed" ColumnName="CumulativeGasUsed" />
+                <ScalarProperty Name="BlockNumber" ColumnName="BlockNumber" />
+                <ScalarProperty Name="BlockHash" ColumnName="BlockHash" />
+                <ScalarProperty Name="TransactionIndex" ColumnName="TransactionIndex" />
+                <ScalarProperty Name="TransactionHash" ColumnName="TransactionHash" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Recipient" ColumnName="Recipient" />
+                <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
+                <ScalarProperty Name="SessionID" ColumnName="SessionID" />
+                <ScalarProperty Name="CoinID" ColumnName="CoinID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,395 @@
+﻿@model Investment
+
+@{
+    Layout = null;
+}
+
+<html>
+
+<head>
+    <meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+    <meta name=Generator content="Microsoft Word 15 (filtered)">
+    <link href="~/Areas/Users/Assets/css/receipt.css" rel="stylesheet" />
+
+</head>
+
+<body lang=EN-IN link=blue vlink="#954F72" style="margin: 0;">
+
+    <div class=WordSection1 style="padding: 50px 100px;">
+
+        <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+                                                                                                   10.0pt;text-autospace:none'>
+            <span style='position:absolute;z-index:-1895825920;
+                                                                   margin-left:82px;margin-top:15px;width:624px;height:72px'>
+                <img width=624
+                     height=72 src="/areas/Users/Assets/images/image001.png">
+            </span><a name=page1></a>
+        </p>
+
+        <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+                                                                                                                                                             13.65pt;text-autospace:none'>
+            <span lang=EN-US style='font-size:12.0pt;
+                                                                    font-family:"Times New Roman",serif'>&nbsp;</span>
+        </p>
+
+        <table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 width="100%"
+               style='width:100.0%; border-collapse: collapse; margin-top: 100px'>
+            <tr style='height:39.75pt'>
+                <td width=361 rowspan=2 valign=top style='width:270.6pt;padding:0cm 5.4pt 0cm 5.4pt;
+                                                                                                                                                                                                                                   height:39.75pt'>
+                    <h2><span lang=EN-US>From: </span></h2><br>
+                    <p class=MsoNormal>
+                        @{
+                            if (!string.IsNullOrEmpty(Model.User.FirstName))
+                            {
+                                <span lang=EN-US style='font-size: 11.0pt; line-height: 107%; font-family: "Calibri", sans-serif'>@(Model.User.Title + " " + Model.User.FirstName + " " + Model.User.LastName)</span>
+                            }
+                            else
+                            {
+                                <span lang=EN-US style='font-size:11.0pt;line-height:107%;  font-family:"Calibri",sans-serif'>@(Model.User.Email)</span>
+
+                            }
+                        }
+
+                    </p><br>
+                    <p class=MsoNormal>
+                        <b>
+                            <span lang=EN-US>
+                                To:<br /><br />
+                                Centre for Citizenship Enterprise and<br />
+                                Governance Limited
+                            </span>
+                        </b>
+                    </p>
+                    <p class=MsoNormal>
+                        <span lang=EN-US>
+                            <br>
+                        </span><span lang=EN-US style='font-size:11.0pt;line-height:107%;font-family:
+                                                                                                       "Calibri",sans-serif;background:white'>Trinity Chapel</span><span lang=EN-US
+                                                                                                                                                                     style='font-size:11.0pt;line-height:107%;font-family:"Calibri",sans-serif'>
+                            <br>
+                            <span style='background:white'>Nixonville, MT</span><br>
+                            <span style='background:white'>
+                                Northampton<br>
+                                UK
+                            </span><br>
+                        </span><span lang=EN-US>
+                            <span style='font-size:11.0pt;line-height:107%;font-family:"Calibri",sans-serif;
+                                                                                                                                                                                                                                                                                                                                                                         color:windowtext;background:white'>NN1 1SY</span>
+
+                        </span>
+                    </p>
+                    <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+                    <h2><span lang=EN-US>For:</span></h2>
+                    <p class=MsoNormal><span lang=EN-US>Contribution for Seratio Token/microshares</span></p>
+                </td>
+                <td width=359 valign=top style='width:269.4pt;padding:0cm 5.4pt 0cm 5.4pt;
+                                                                            height:39.75pt'>
+                    <h1 style="margin-bottom: 30px;"><span lang=EN-US>RECEIPT</span></h1>
+                    <p class=RightAligned align=left style='text-align:right'>
+                        <span lang=EN-US>
+                            REceipt #: SER-ICO-RCP-@Model.ID
+                        </span>
+                    </p>
+                    <p class=RightAligned align=left style='text-align:right'>
+                        <span lang=EN-US>
+                            Date: @Model.ConfirmedOn.ToString()
+                        </span>
+                    </p>
+                </td>
+            </tr>
+        </table>
+
+        <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+
+        <table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0 width="100%"
+               style='width:100.0%;border-collapse:collapse;border:none'>
+            <tr style='page-break-inside:avoid;height:14.4pt'>
+                <td width=342 style='width:256.6pt;border:solid windowtext 1.0pt;border-top:
+                                                                                                                                                                                                                                                                                                        solid windowtext 1.5pt;padding:2.15pt 5.75pt 2.15pt 5.75pt;height:14.4pt'>
+                    <p class=Columnheading><span lang=EN-US>DESCRIPTION</span></p>
+                </td>
+                <td width=91 style='width:68.6pt;border-top:solid windowtext 1.5pt;
+                                                                                                                   border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+                                                                                                                   padding:2.15pt 5.75pt 2.15pt 5.75pt;height:14.4pt'>
+                    <p class=Columnheading>
+                        <span lang=EN-US>
+                            CONTRIBUTION<br>
+                            AMOUNT
+                        </span>
+                    </p>
+                </td>
+                @*<td width=90 style='width:67.25pt;border-top:solid windowtext 1.5pt;
+                                                                                                border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+                                                                                                padding:2.15pt 5.75pt 2.15pt 5.75pt;height:14.4pt'>
+                        <p class=Columnheading><span lang=EN-US>RATE</span></p>
+                    </td>*@
+                <td width=93 style='width:70.05pt;border-top:solid windowtext 1.5pt;
+                                                                                            border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+                                                                                            padding:2.15pt 5.75pt 2.15pt 5.75pt;height:14.4pt'>
+                    <p class=Columnheading><span lang=EN-US>TOKEN/MICROSHARES</span></p>
+                </td>
+            </tr>
+            <tr style='page-break-inside:avoid;height:14.4pt'>
+                <td width=342 style='width:256.6pt;border-top:none;border-left:solid windowtext 1.0pt;
+                                                                                                                                                                                                                                                                    border-bottom:none;border-right:solid windowtext 1.0pt;padding:2.15pt 5.75pt 2.15pt 5.75pt;
+                                                                                                                                                                                                                                                                    height:14.4pt'>
+                    <p class=MsoNormal>
+                        <span lang=EN-US>
+                            Contribution to the Centre for
+                            Citizenship Enterprise and Governance for the allocation of Seratio Token / Microshares
+                        </span>
+                    </p>
+                </td>
+                <td width=91 style='width:68.6pt;border:none;border-right:solid windowtext 1.0pt;
+                                                                                                                                                                                                                                padding:2.15pt 10.8pt 2.15pt 10.8pt;height:14.4pt'>
+                    <p class=MsoNormal style="text-align: center;"><span lang=EN-US>@String.Format("{0:0.00}", Model.ReceivedAmount.ToString(), MidpointRounding.AwayFromZero) GBP</span></p>
+                </td>
+                @*<td width=90 style='width:67.25pt;border:none;border-right:solid windowtext 1.0pt;
+                                                                                                                                                                                                                                                                                                                                  padding:2.15pt 10.8pt 2.15pt 10.8pt;height:14.4pt'>
+                        <p class=Amount><span lang=EN-US>@String.Format("{0:0.0000000}", Model.ExchangeRate.ToString(), MidpointRounding.AwayFromZero)</span></p>
+                    </td>*@
+                <td width=93 style='width:70.05pt;border:none;border-right:solid windowtext 1.0pt;
+                                                                                                                                                                                                                                                                                                                                                                                                                    padding:2.15pt 10.8pt 2.15pt 10.8pt;height:14.4pt'>
+                    <p class=Amount><span lang=EN-US>@Model.TokenAmount</span></p>
+                </td>
+            </tr>
+
+
+
+
+
+            @*Not Usable TR
+                ============================================*@
+
+
+
+
+            @*<tr style='page-break-inside:avoid;height:14.4pt'>
+                    <td width=342 style='width:256.6pt;border-top:none;border-left:solid windowtext 1.0pt;
+                                                                                                                                                                              border-bottom:none;border-right:solid windowtext 1.0pt;padding:2.15pt 5.75pt 2.15pt 5.75pt;
+                                                                                                                                                                              height:14.4pt'>
+                        <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+                    </td>
+                    <td width=91 style='width:68.6pt;border:none;border-right:solid windowtext 1.0pt;
+                                                            padding:2.15pt 10.8pt 2.15pt 10.8pt;height:14.4pt'>
+                        <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+                    </td>
+                    <td width=90 style='width:67.25pt;border:none;border-right:solid windowtext 1.0pt;
+                                                                                                padding:2.15pt 10.8pt 2.15pt 10.8pt;height:14.4pt'>
+                        <p class=Amount><span lang=EN-US>&nbsp;</span></p>
+                    </td>
+                    <td width=93 style='width:70.05pt;border:none;border-right:solid windowtext 1.0pt;
+                                                                                                padding:2.15pt 10.8pt 2.15pt 10.8pt;height:14.4pt'>
+                        <p class=Amount><span lang=EN-US style='font-size:10.0pt;line-height:110%'>&nbsp;</span></p>
+                    </td>
+                </tr>
+                <tr style='page-break-inside:avoid;height:14.4pt'>
+                    <td width=342 style='width:256.6pt;border-top:none;border-left:solid windowtext 1.0pt;
+                                                                                                                                                                                                                                                          border-bottom:none;border-right:solid windowtext 1.0pt;padding:2.15pt 5.75pt 2.15pt 5.75pt;
+                                                                                                                                                                                                                                                          height:14.4pt'>
+                        <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+                    </td>
+                    <td width=91 style='width:68.6pt;border:none;border-right:solid windowtext 1.0pt;
+                                                            padding:2.15pt 10.8pt 2.15pt 10.8pt;height:14.4pt'>
+                        <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+                    </td>
+                    <td width=90 style='width:67.25pt;border:none;border-right:solid windowtext 1.0pt;
+                                                                                                padding:2.15pt 10.8pt 2.15pt 10.8pt;height:14.4pt'>
+                        <p class=Amount><span lang=EN-US>&nbsp;</span></p>
+                    </td>
+                    <td width=93 style='width:70.05pt;border:none;border-right:solid windowtext 1.0pt;
+                                                                                                padding:2.15pt 10.8pt 2.15pt 10.8pt;height:14.4pt'>
+                        <p class=Amount><span lang=EN-US>&nbsp;</span></p>
+                    </td>
+                </tr>
+                <tr style='page-break-inside:avoid;height:14.4pt'>
+                    <td width=342 style='width:256.6pt;border-top:none;border-left:solid windowtext 1.0pt;
+                                                                                                                                                                              border-bottom:none;border-right:solid windowtext 1.0pt;padding:2.15pt 5.75pt 2.15pt 5.75pt;
+                                                                                                                                                                              height:14.4pt'>
+                        <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+                    </td>
+                    <td width=91 style='width:68.6pt;border:none;border-right:solid windowtext 1.0pt;
+                                                            padding:2.15pt 10.8pt 2.15pt 10.8pt;height:14.4pt'>
+                        <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+                    </td>
+                    <td width=90 style='width:67.25pt;border:none;border-right:solid windowtext 1.0pt;
+                                                                                                padding:2.15pt 10.8pt 2.15pt 10.8pt;height:14.4pt'>
+                        <p class=Amount><span lang=EN-US>&nbsp;</span></p>
+                    </td>
+                    <td width=93 style='width:70.05pt;border:none;border-right:solid windowtext 1.0pt;
+                                                                                                padding:2.15pt 10.8pt 2.15pt 10.8pt;height:14.4pt'>
+                        <p class=Amount><span lang=EN-US>&nbsp;</span></p>
+                    </td>
+                </tr>
+                <tr style='page-break-inside:avoid;height:14.4pt'>
+                    <td width=342 style='width:256.6pt;border-top:none;border-left:solid windowtext 1.0pt;
+                                                                                                                                                                              border-bottom:none;border-right:solid windowtext 1.0pt;padding:2.15pt 5.75pt 2.15pt 5.75pt;
+                                                                                                                                                                              height:14.4pt'>
+                        <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+                    </td>
+                    <td width=91 style='width:68.6pt;border:none;border-right:solid windowtext 1.0pt;
+                                                            padding:2.15pt 10.8pt 2.15pt 10.8pt;height:14.4pt'>
+                        <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+                    </td>
+                    <td width=90 style='width:67.25pt;border:none;border-right:solid windowtext 1.0pt;
+                                                                                                padding:2.15pt 10.8pt 2.15pt 10.8pt;height:14.4pt'>
+                        <p class=Amount><span lang=EN-US>&nbsp;</span></p>
+                    </td>
+                    <td width=93 style='width:70.05pt;border:none;border-right:solid windowtext 1.0pt;
+                                                                                                padding:2.15pt 10.8pt 2.15pt 10.8pt;height:14.4pt'>
+                        <p class=Amount><span lang=EN-US>&nbsp;</span></p>
+                    </td>
+                </tr>
+                <tr style='page-break-inside:avoid;height:14.4pt'>
+                    <td width=342 style='width:256.6pt;border-top:none;border-left:solid windowtext 1.0pt;
+                                                                                                                                                                              border-bottom:none;border-right:solid windowtext 1.0pt;padding:2.15pt 5.75pt 2.15pt 5.75pt;
+                                                                                                                                                                              height:14.4pt'>
+                        <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+                    </td>
+                    <td width=91 style='width:68.6pt;border:none;border-right:solid windowtext 1.0pt;
+                                                            padding:2.15pt 10.8pt 2.15pt 10.8pt;height:14.4pt'>
+                        <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+                    </td>
+                    <td width=90 style='width:67.25pt;border:none;border-right:solid windowtext 1.0pt;
+                                                                                                padding:2.15pt 10.8pt 2.15pt 10.8pt;height:14.4pt'>
+                        <p class=Amount><span lang=EN-US>&nbsp;</span></p>
+                    </td>
+                    <td width=93 style='width:70.05pt;border:none;border-right:solid windowtext 1.0pt;
+                                                                                                padding:2.15pt 10.8pt 2.15pt 10.8pt;height:14.4pt'>
+                        <p class=Amount><span lang=EN-US>&nbsp;</span></p>
+                    </td>
+                </tr>
+                <tr style='page-break-inside:avoid;height:14.4pt'>
+                    <td width=342 style='width:256.6pt;border-top:none;border-left:solid windowtext 1.0pt;
+                                                                                                                                                                              border-bottom:none;border-right:solid windowtext 1.0pt;padding:2.15pt 5.75pt 2.15pt 5.75pt;
+                                                                                                                                                                              height:14.4pt'>
+                        <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+                    </td>
+                    <td width=91 style='width:68.6pt;border:none;border-right:solid windowtext 1.0pt;
+                                                            padding:2.15pt 10.8pt 2.15pt 10.8pt;height:14.4pt'>
+                        <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+                    </td>
+                    <td width=90 style='width:67.25pt;border:none;border-right:solid windowtext 1.0pt;
+                                                                                                padding:2.15pt 10.8pt 2.15pt 10.8pt;height:14.4pt'>
+                        <p class=Amount><span lang=EN-US>&nbsp;</span></p>
+                    </td>
+                    <td width=93 style='width:70.05pt;border:none;border-right:solid windowtext 1.0pt;
+                                                                                                padding:2.15pt 10.8pt 2.15pt 10.8pt;height:14.4pt'>
+                        <p class=Amount><span lang=EN-US>&nbsp;</span></p>
+                    </td>
+                </tr>
+                <tr style='page-break-inside:avoid;height:14.4pt'>
+                    <td width=342 style='width:256.6pt;border-top:none;border-left:solid windowtext 1.0pt;
+                                                                                                                                                                              border-bottom:none;border-right:solid windowtext 1.0pt;padding:2.15pt 5.75pt 2.15pt 5.75pt;
+                                                                                                                                                                              height:14.4pt'>
+                        <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+                    </td>
+                    <td width=91 style='width:68.6pt;border:none;border-right:solid windowtext 1.0pt;
+                                                            padding:2.15pt 10.8pt 2.15pt 10.8pt;height:14.4pt'>
+                        <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+                    </td>
+                    <td width=90 style='width:67.25pt;border:none;border-right:solid windowtext 1.0pt;
+                                                                                                padding:2.15pt 10.8pt 2.15pt 10.8pt;height:14.4pt'>
+                        <p class=Amount><span lang=EN-US>&nbsp;</span></p>
+                    </td>
+                    <td width=93 style='width:70.05pt;border:none;border-right:solid windowtext 1.0pt;
+                                                                                                padding:2.15pt 10.8pt 2.15pt 10.8pt;height:14.4pt'>
+                        <p class=Amount><span lang=EN-US>&nbsp;</span></p>
+                    </td>
+                </tr>
+                <tr style='page-break-inside:avoid;height:14.4pt'>
+                    <td width=342 style='width:256.6pt;border-top:none;border-left:solid windowtext 1.0pt;
+                                                                                                                                                                              border-bottom:none;border-right:solid windowtext 1.0pt;padding:2.15pt 5.75pt 2.15pt 5.75pt;
+                                                                                                                                                                              height:14.4pt'>
+                        <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+                    </td>
+                    <td width=91 style='width:68.6pt;border:none;border-right:solid windowtext 1.0pt;
+                                                            padding:2.15pt 10.8pt 2.15pt 10.8pt;height:14.4pt'>
+                        <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+                    </td>
+                    <td width=90 style='width:67.25pt;border:none;border-right:solid windowtext 1.0pt;
+                                                                                                padding:2.15pt 10.8pt 2.15pt 10.8pt;height:14.4pt'>
+                        <p class=Amount><span lang=EN-US>&nbsp;</span></p>
+                    </td>
+                    <td width=93 style='width:70.05pt;border:none;border-right:solid windowtext 1.0pt;
+                                                                                                padding:2.15pt 10.8pt 2.15pt 10.8pt;height:14.4pt'>
+                        <p class=Amount><span lang=EN-US>&nbsp;</span></p>
+                    </td>
+                </tr>*@
+            <tr style='page-break-inside:avoid;height:1.35pt'>
+                <td width=342 valign=top style='width:256.6pt;border:none;border-top:solid windowtext 1.0pt;
+                                                                                                                                                                          padding:2.15pt 5.75pt 2.15pt 5.75pt;height:1.35pt'>
+                    <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+                </td>
+                @*<td width=91 style='width:68.6pt;border:none;border-top:solid windowtext 1.0pt;
+                                                                                                padding:2.15pt 10.8pt 2.15pt 10.8pt;height:1.35pt'>
+                        <p class=MsoNormal><span lang=EN-US>&nbsp;</span></p>
+                    </td>*@
+                <td width=90 style='width:67.25pt;border-top:solid windowtext 1.0pt;
+                                                                                            border-left:none;border-bottom:none;border-right:solid windowtext 1.0pt;
+                                                                                            padding:2.15pt 5.75pt 2.15pt 5.75pt;height:1.35pt'>
+                    <p class=RightAligned><span lang=EN-US>TOTAL</span></p>
+                </td>
+                <td width=93 style='width:70.05pt;border:solid windowtext 1.0pt;border-left:
+                                                                                                                                                   none;padding:2.15pt 10.8pt 2.15pt 10.8pt;height:1.35pt'>
+                    <p class=RightAligned>
+                        <span lang=EN-US style='font-size:11.0pt;line-height:
+                                                                                                                               110%'>@Model.TokenAmount</span>
+                                                                                                                        </p>
+                                                                                                                    </td>
+                                                                                                                </tr>
+                                                                                                            </table>
+
+                                                                                                            <p class=Thankyou align=left style='text-align:center'>
+                                                                                                                <span lang=EN-US>
+                                                                                                                    TERMS AND
+                                                                                                                    CONDITIONS APPLY: Contribution to Centre for Citizenship Enterprise and
+                                                                                                                    Governance and SERATIO token allocation
+                                                                                                                </span><span lang=EN-US
+                                                                                                                             style='font-size:8.0pt;line-height:110%;font-family:"Arial",sans-serif;
+                                                                                                               color:#222222;background:white;font-weight:normal'>(available at</span><span lang=EN-US>
+                                                                                                                    <a href="https://www.seratio-coins.world/">
+                                                                                                                        <span style='font-size:8.0pt;line-height:110%;font-family:"Arial",sans-serif;
+                                                                                          background:white'>www.seratio-coins.world</span>
+                                                                                                                    </a>
+                                                                                                                </span><span lang=EN-US
+                                                                                                                             style='font-size:8.0pt;line-height:110%;font-family:"Arial",sans-serif;
+                                                         color:#222222;background:white;font-weight:normal'>
+                                                                                                                    )<br>
+                                                                                                                    <br>
+                                                                                                                </span><span lang=EN-US style='font-size:9.5pt;line-height:110%;font-family:
+                                                                                                                                        "Arial",sans-serif;color:#222222;background:white'>
+                                                                                                                    Thank you!
+                                                                                                                </span>
+                                                                                                            </p>
+
+                                                                                                            <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+                                                                                                                                                      10.0pt;text-autospace:none'>
+                                                                                                                <span lang=EN-US style='font-size:12.0pt;
+                                                                   font-family:"Times New Roman",serif'>&nbsp;</span>
+                                                                                                            </p>
+
+                                                                                                            <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+                                                                                                                                        17.35pt;text-autospace:none'>
+                                                                                                                <span lang=EN-US style='font-size:12.0pt;
+                                                                    font-family:"Times New Roman",serif'>&nbsp;</span>
+                                                                                                            </p>
+
+                                                                                                            <p class=MsoNormal style='font-size:7.5pt;line-height:13px;color:#2F5496; text-align: center'>
+                                                                                                                <span lang=EN-US
+                                                                                                                      style=''>
+                                                                                                                    The Centre for
+                                                                                                                    Citizenship Enterprise and Governance Limited
+                                                                                                                    09796798 is a not for profit organisation
+                                                                                                                    has its
+                                                                                                                    registered office at Trinity Chapel, Nixonville, MT, Northampton NN1
+                                                                                                                    1SY United Kingdom
+                                                                                                                </span>
+                                                                                                            </p>
+
+                                                                                                        </div>
+
+                                                                                                    </body>
+
+                                                                                                </html>

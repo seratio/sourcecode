@@ -1,0 +1,65 @@
+﻿@model Investment
+
+@section JavaScript{
+    <script type="text/javascript">$(document).ready(function () { WebApp.Core.HighlightCurrentMenuItem('Investments') });</script>
+    @*  <script src="~/Areas/Users/Assets/js/jquery.wizard.js"></script>*@
+    @*  <script src="~/Areas/Users/Assets/js/remodal.min.js" type="text/javascript"></script>*@
+}
+
+@section CSS{
+    @*  <link href="~/Areas/Users/Assets/css/survey.css" rel="stylesheet" />*@
+}
+
+@{
+    ViewBag.Title = "Update Tx. Reference Number";
+    Layout = "~/Areas/L0C5A3E8915871B710C2CC98073748424/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-header">
+    <div class="page-header-content">
+        <div class="page-title">
+            <h4><span class="text-semibold">Update Transaction Reference Number</span></h4>
+        </div>
+        <div class="heading-elements">
+            <div class="heading-btn-group">
+                <a class="btn btn-link btn-float has-text" href="/L0C5A3E8915871B710C2CC98073748424/investments"><i class="icon-wallet"></i><span>All Investments</span></a>
+            </div>
+        </div>
+    </div>
+    <div class="breadcrumb-line">
+        <ul class="breadcrumb">
+            <li><a href="/L0C5A3E8915871B710C2CC98073748424/default/dashboard"><i class="icon-home4 position-left"></i>Dashboard</a></li>
+            <li><a href="/L0C5A3E8915871B710C2CC98073748424/investments"> Investments</a></li>
+            <li class="breadcrumb-item active">Updated Transaction Reference Number</li>
+        </ul>
+    </div>
+</div>
+      
+<div class="content">
+    <form method="post" class="form-horizontal" action="" enctype="multipart/form-data" autocomplete="off">
+        <div class="panel panel-flat">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.AntiForgeryToken()
+                        @Html.HiddenFor(model=>model.UserID,Model.UserID)
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Transaction Reference Number :</label>
+                            <div class="col-lg-7">
+                                @Html.EditorFor(model => model.TxReferenceNumber, new { htmlAttributes = new { @placeholder = "Please enter the Transaction Reference Number", @class = "form-control", @required = "required", @data_val = "true", @data_val_required = "Please enter a value for Transaction Reference Number." } })
+                                @Html.ValidationMessage("TxReferenceNumber", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <hr>
+                <div class="text-right">
+                    <a  href="/L0C5A3E8915871B710C2CC98073748424/investments/updatereferencenumber/@Model.ID" class="btn btn-default">Reset<i class="icon-reload-alt position-right"></i> </a>
+                    <button type="submit" class="btn btn-primary">Confirm <i class="icon-arrow-right14 position-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>    

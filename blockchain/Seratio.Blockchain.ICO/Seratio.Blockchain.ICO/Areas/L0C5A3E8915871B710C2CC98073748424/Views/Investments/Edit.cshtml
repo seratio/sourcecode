@@ -1,0 +1,143 @@
+﻿@model Seratio.Platform.ICO.Models.Investment
+
+@{
+    ViewBag.Title = "Edit Investment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section JavaScript{
+    <script type="text/javascript">$(document).ready(function () { WebApp.Core.HighlightCurrentMenuItem('Investments') });</script>
+}
+
+
+<div class="page-header">
+    <div class="page-header-content">
+        <div class="page-title">
+            <h4><span class="text-semibold">Edit Investment</span></h4>
+        </div>
+        <div class="heading-elements">
+            <div class="heading-btn-group">
+                <a class="btn btn-link btn-float has-text" href="/investments"><i class="icon-bag"></i><span>All Investments</span></a>
+            </div>
+        </div>
+    </div>
+    <div class="breadcrumb-line">
+        <ul class="breadcrumb">
+            <li><a href="/L0C5A3E8915871B710C2CC98073748424/default/dashboard"><i class="icon-home4 position-left"></i>Dashboard</a></li>
+            <li><a href="/investments"> Investments</a></li>
+            <li class="active">Edit Investment</li>
+        </ul>
+    </div>
+</div>
+<div class="content">
+    <form method="post" class="form-horizontal" action="" enctype="multipart/form-data" autocomplete="off">
+        <div class="panel panel-flat">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">@Html.DisplayNameFor(model => model.UserID):</label>
+                            <div class="col-lg-7">
+                                @Html.EditorFor(model => model.UserID, new { htmlAttributes = new { @placeholder = "Please enter the UserID", @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.UserID, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">@Html.DisplayNameFor(model => model.LastUpdatedByID):</label>
+                            <div class="col-lg-7">
+                                @Html.EditorFor(model => model.LastUpdatedByID, new { htmlAttributes = new { @placeholder = "Please enter the LastUpdatedByID", @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.LastUpdatedByID, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">@Html.DisplayNameFor(model => model.Mode):</label>
+                            <div class="col-lg-7">
+                                @Html.EditorFor(model => model.Mode, new { htmlAttributes = new { @placeholder = "Please enter the Mode", @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Mode, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">@Html.DisplayNameFor(model => model.Amount):</label>
+                            <div class="col-lg-7">
+                                @Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @placeholder = "Please enter the Amount", @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Amount, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">@Html.DisplayNameFor(model => model.Token):</label>
+                            <div class="col-lg-7">
+                                @Html.EditorFor(model => model.Token, new { htmlAttributes = new { @placeholder = "Please enter the Token", @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Token, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">@Html.DisplayNameFor(model => model.Status):</label>
+                            <div class="col-lg-7">
+                                @Html.EditorFor(model => model.Status, new { htmlAttributes = new { @placeholder = "Please enter the Status", @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">@Html.DisplayNameFor(model => model.Comments):</label>
+                            <div class="col-lg-7">
+                                @Html.EditorFor(model => model.Comments, new { htmlAttributes = new { @placeholder = "Please enter the Comments", @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Comments, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">@Html.DisplayNameFor(model => model.TxReferenceNumber):</label>
+                            <div class="col-lg-7">
+                                @Html.EditorFor(model => model.TxReferenceNumber, new { htmlAttributes = new { @placeholder = "Please enter the TxReferenceNumber", @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.TxReferenceNumber, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">@Html.DisplayNameFor(model => model.InitializedOn):</label>
+                            <div class="col-lg-7">
+                                @Html.EditorFor(model => model.InitializedOn, new { htmlAttributes = new { @placeholder = "Please enter the InitializedOn", @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.InitializedOn, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">@Html.DisplayNameFor(model => model.TxRefNoUpdatedOn):</label>
+                            <div class="col-lg-7">
+                                @Html.EditorFor(model => model.TxRefNoUpdatedOn, new { htmlAttributes = new { @placeholder = "Please enter the TxRefNoUpdatedOn", @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.TxRefNoUpdatedOn, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">@Html.DisplayNameFor(model => model.ConfirmedOn):</label>
+                            <div class="col-lg-7">
+                                @Html.EditorFor(model => model.ConfirmedOn, new { htmlAttributes = new { @placeholder = "Please enter the ConfirmedOn", @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.ConfirmedOn, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">@Html.DisplayNameFor(model => model.RejectedOn):</label>
+                            <div class="col-lg-7">
+                                @Html.EditorFor(model => model.RejectedOn, new { htmlAttributes = new { @placeholder = "Please enter the RejectedOn", @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.RejectedOn, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">@Html.DisplayNameFor(model => model.IssuedOn):</label>
+                            <div class="col-lg-7">
+                                @Html.EditorFor(model => model.IssuedOn, new { htmlAttributes = new { @placeholder = "Please enter the IssuedOn", @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.IssuedOn, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="text-right">
+                    <a href="/investments/edit/@Model.ID" class="btn btn-default">Reset<i class="icon-reload-alt position-right"></i> </a>
+                    <button type="submit" class="btn btn-primary">Submit <i class="icon-arrow-right14 position-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

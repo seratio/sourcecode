@@ -1,0 +1,272 @@
+﻿@model Investment
+
+@{
+    ViewBag.Title = "Investment Details";
+    Layout = "~/Areas/L0C5A3E8915871B710C2CC98073748424/Views/Shared/_Layout.cshtml";
+}
+@section JavaScript{
+    <script type="text/javascript">$(document).ready(function () { WebApp.Core.HighlightCurrentMenuItem('Investments') });</script>
+    <script src="~/areas/L0C5A3E8915871B710C2CC98073748424/Assets/plugins/bootstrap-toggle/bootstrap-toggle.min.js"></script>
+    <script type="text/javascript">
+        $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+            $($.fn.dataTable.tables(true)).DataTable()
+                .columns.adjust();
+        });
+    </script>
+}
+@section CSS{
+    <link href="~/areas/L0C5A3E8915871B710C2CC98073748424/Assets/plugins/bootstrap-toggle/bootstrap-toggle.min.css" rel="stylesheet" />
+}
+
+<div class="page-header">
+    <div class="page-header-content">
+        <div class="page-title">
+            <h4><span class="text-semibold">Investment Details</span></h4>
+        </div>
+        <div class="heading-elements">
+            <div class="heading-btn-group">
+                @{
+                    if (Model.Status == "Waiting for Confirmation")
+                    {
+                        <a class="btn btn-link btn-float has-text" href="/L0C5A3E8915871B710C2CC98073748424/investments/confirm/@Model.ID"><i class="icon-thumbs-up2 text-primary"></i><span>Confirm</span></a>
+
+                    }
+
+                    if (Model.Status != "Rejected")
+                    {
+                        <a class="btn btn-link btn-float has-text confirm mr5" title="Delete" data-confirm="Are you sure you want to reject this Investment?" href="/L0C5A3E8915871B710C2CC98073748424/investments/reject/@Model.ID"><i class="icon-cancel-square text-primary"></i><span>Reject</span></a>
+
+                    }
+
+                    <a class="btn btn-link btn-float has-text" href="mailto:@Model.User.Email"><i class="icon-mail-read text-primary"></i><span>Contact</span></a>
+
+                }
+
+            </div>
+        </div>
+    </div>
+    <div class="breadcrumb-line">
+        <ul class="breadcrumb">
+            <li><a href="/L0C5A3E8915871B710C2CC98073748424/default/dashboard"><i class="icon-home4 position-left"></i>Dashboard</a></li>
+            <li><a href="/L0C5A3E8915871B710C2CC98073748424/investments/index"> Investments</a></li>
+            <li class="active">Investment Details</li>
+        </ul>
+    </div>
+</div>
+<div class="content">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-flat">
+                <div class="panel-body">
+
+                    <div class="main">
+                        <div class="col-md-12">
+                            <table class="table table-borderless table-xs content-group-sm">
+                                <tbody>
+
+                                    <tr>
+                                        <td class="col-lg-3">@Html.DisplayNameFor(model => model.UserID)</td>
+                                        <td class="col-lg-1">:</td>
+                                        <td>   @(Model.User.Email)</td>
+                                    </tr>
+                                <tr>
+                                    <td class="col-lg-3">@Html.DisplayNameFor(model => model.Mode)</td>
+                                    <td class="col-lg-1">:</td>
+                                    <td> @Model.Mode</td>
+                                </tr>
+                                <tr>
+                                    <td class="col-lg-3">@Html.DisplayNameFor(model => model.Type)</td>
+                                    <td class="col-lg-1">:</td>
+                                    <td> @Model.Type</td>
+                                </tr>
+                                    <tr>
+                                        <td class="col-lg-3">@Html.DisplayNameFor(model => model.Amount)</td>
+                                        <td class="col-lg-1">:</td>
+                                        <td>
+                                            @{
+                                                switch (Model.Mode)
+                                                {
+                                                    case "AUD":
+                                                        @String.Format("{0:0.00}", Model.Amount, MidpointRounding.AwayFromZero);
+                                                        break;
+                                                    case "CAD":
+                                                        @String.Format("{0:0.00}", Model.Amount, MidpointRounding.AwayFromZero);
+                                                        break;
+                                                    case "CHF":
+                                                        @String.Format("{0:0.00}", Model.Amount, MidpointRounding.AwayFromZero);
+                                                        break;
+                                                    case "CNY":
+                                                        @String.Format("{0:0.00}", Model.Amount, MidpointRounding.AwayFromZero);
+                                                        break;
+                                                    case "EUR":
+                                                        @String.Format("{0:0.00}", Model.Amount, MidpointRounding.AwayFromZero);
+                                                        break;
+                                                    case "USD":
+                                                        @String.Format("{0:0.00}", Model.Amount, MidpointRounding.AwayFromZero);
+                                                        break;
+                                                    case "GBP":
+                                                        @String.Format("{0:0.00}", Model.Amount, MidpointRounding.AwayFromZero);
+                                                        break;
+                                                    case "JPY":
+                                                        @String.Format("{0:0.00}", Model.Amount, MidpointRounding.AwayFromZero);
+                                                        break;
+                                                    case "SEK":
+                                                        @String.Format("{0:0.00}", Model.Amount, MidpointRounding.AwayFromZero);
+                                                        break;
+                                                    case "NZD":
+                                                        @String.Format("{0:0.00}", Model.Amount, MidpointRounding.AwayFromZero);
+                                                        break;
+                                                    case "MXN":
+                                                        @String.Format("{0:0.00}", Model.Amount, MidpointRounding.AwayFromZero);
+                                                        break;
+                                                    case "SGD":
+                                                        @String.Format("{0:0.00}", Model.Amount, MidpointRounding.AwayFromZero);
+                                                        break;
+                                                    case "HKD":
+                                                        @String.Format("{0:0.00}", Model.Amount, MidpointRounding.AwayFromZero);
+                                                        break;
+                                                    case "NOK":
+                                                        @String.Format("{0:0.00}", Model.Amount, MidpointRounding.AwayFromZero);
+                                                        break;
+                                                    case "KRW":
+                                                        @String.Format("{0:0.00}", Model.Amount, MidpointRounding.AwayFromZero);
+                                                        break;
+                                                    case "TRY":
+                                                        @String.Format("{0:0.00}", Model.Amount, MidpointRounding.AwayFromZero);
+                                                        break;
+                                                    case "RUB":
+                                                        @String.Format("{0:0.00}", Model.Amount, MidpointRounding.AwayFromZero);
+                                                        break;
+                                                    case "INR":
+                                                        @String.Format("{0:0.00}", Model.Amount, MidpointRounding.AwayFromZero);
+                                                        break;
+                                                    case "BRL":
+                                                        @String.Format("{0:0.00}", Model.Amount, MidpointRounding.AwayFromZero);
+                                                        break;
+                                                    case "ZAR":
+                                                        @String.Format("{0:0.00}", Model.Amount, MidpointRounding.AwayFromZero);
+                                                        break;
+                                                    default:
+                                                        @Model.Amount
+                                                        break;
+                                                }
+                                            }
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td class="col-lg-3">@Html.DisplayNameFor(model => model.OriginalExchangeRate)</td>
+                                        <td class="col-lg-1">:</td>
+                                        <td> @Model.OriginalExchangeRate</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col-lg-3">Investment Type</td>
+                                        <td class="col-lg-1">:</td>
+                                        <td>@Model.InvestmentType</td>
+                                </tr>
+                                <tr>
+                                    <td class="col-lg-3">Campaign Code</td>
+                                    <td class="col-lg-1">:</td>
+                                    <td>@Model.CampaignCode</td>
+                                </tr>
+                                <tr>
+                                    <td class="col-lg-3">@Html.DisplayNameFor(model => model.Status)</td>
+                                    <td class="col-lg-1">:</td>
+                                    <td>@Model.Status</td>
+                                </tr>
+
+                                <tr>
+                                    <td class="col-lg-3">@Html.DisplayNameFor(model => model.Token)</td>
+                                    <td class="col-lg-1">:</td>
+                                    <td> @Model.Token</td>
+                                </tr>
+
+                                <tr>
+                                    <td class="col-lg-3">IP Address</td>
+                                    <td class="col-lg-1">:</td>
+                                    <td> @Model.UserSession.IPAddress</td>
+                                </tr>
+
+                                <tr>
+                                    <td class="col-lg-3">@Html.DisplayNameFor(model => model.Comments)</td>
+                                    <td class="col-lg-1">:</td>
+                                    <td> @Model.Comments</td>
+                                </tr>
+                                <tr>
+                                    <td class="col-lg-3">@Html.DisplayNameFor(model => model.TxReferenceNumber)</td>
+                                    <td class="col-lg-1">:</td>
+                                    <td> @Model.TxReferenceNumber</td>
+                                </tr>
+                                <tr>
+                                    <td class="col-lg-3">@Html.DisplayNameFor(model => model.InitializedOn)</td>
+                                    <td class="col-lg-1">:</td>
+                                    <td> @Model.InitializedOn</td>
+                                </tr>
+                                <tr>
+                                    <td class="col-lg-3">@Html.DisplayNameFor(model => model.TxRefNoUpdatedOn)</td>
+                                    <td class="col-lg-1">:</td>
+                                    <td> @(Model.TxRefNoUpdatedOn != null ? Model.TxRefNoUpdatedOn.ToString() : null)</td>
+                                </tr>
+                                <tr>
+                                    <td class="col-lg-3">@Html.DisplayNameFor(model => model.ConfirmedOn)</td>
+                                    <td class="col-lg-1">:</td>
+                                    <td> @(Model.ConfirmedOn != null ? Model.ConfirmedOn.ToString() : null)</td>
+
+                                </tr>
+                                <tr>
+                                    <td class="col-lg-3">@Html.DisplayNameFor(model => model.ReceivedAmount)</td>
+                                    <td class="col-lg-1">:</td>
+                                    <td> @(Model.ReceivedAmount != null ? Model.ReceivedAmount.ToString() : null)</td>
+                                </tr>
+                                <tr>
+                                    <td class="col-lg-3">@Html.DisplayNameFor(model => model.ExchangeRate)</td>
+                                    <td class="col-lg-1">:</td>
+                                    <td> @(Model.ExchangeRate != null ? String.Format("{0:0.00}", Model.ExchangeRate.ToString(), MidpointRounding.AwayFromZero) : null)</td>
+                                </tr>
+
+                                <tr>
+                                    <td class="col-lg-3">@Html.DisplayNameFor(model => model.TokenAmount)</td>
+                                    <td class="col-lg-1">:</td>
+                                    <td> @(Model.TokenAmount != null ? String.Format("{0:0.0000000}", Model.TokenAmount.ToString(), MidpointRounding.AwayFromZero) : null)</td>
+                                </tr>
+                                    <tr>
+                                    <td class="col-lg-3">@Html.DisplayNameFor(model => model.RejectedOn)</td>
+                                    <td class="col-lg-1">:</td>
+                                    <td> @Model.RejectedOn</td>
+                                </tr>
+                                <tr>
+                                    <td class="col-lg-3">@Html.DisplayNameFor(model => model.IssuedOn)</td>
+                                    <td class="col-lg-1">:</td>
+                                    <td> @(Model.IssuedOn != null ? Model.IssuedOn.Value.ToString() : null)</td>
+
+                                </tr>
+                                <tr>
+                                    <td class="col-lg-3">@Html.DisplayNameFor(model => model.LastUpdatedOn)</td>
+                                    <td class="col-lg-1">:</td>
+                                    <td> @Model.LastUpdatedOn.ToString()</td>
+                                </tr>
+
+                                @{
+                                    if (Model.LastUpdatedByID != null)
+                                    {
+                                        <tr>
+                                            <td class="col-lg-3">@Html.DisplayNameFor(model => model.LastUpdatedByID)</td>
+                                            <td class="col-lg-1">:</td>
+                                            <td> @(Model.Administrator.Name)</td>
+                                        </tr>
+                                    }
+                                }
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>

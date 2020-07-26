@@ -1,0 +1,59 @@
+﻿@model ModuleAccessRequest
+@{
+    ViewBag.Title = "Access Permission";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section JavaScript{
+    @{
+        if (Request.QueryString["module"] == "rewarding")
+        {
+            <script type="text/javascript">$(document).ready(function () { WebApp.Core.HighlightCurrentMenuItem('Rewarding Body') });</script>
+
+        }
+        else if (Request.QueryString["module"] == "retail")
+        {
+            <script type="text/javascript">$(document).ready(function () { WebApp.Core.HighlightCurrentMenuItem('Retail End') });</script>
+
+        }
+        else if (Request.QueryString["module"] == "provenance")
+        {
+            <script type="text/javascript">$(document).ready(function () { WebApp.Core.HighlightCurrentMenuItem('Provenance') });</script>
+        }
+    }
+    <script type="text/javascript">$(document).ready(function () { WebApp.Core.HighlightCurrentMenuItem('Users') });</script>
+    <script src="/wallet/assets/plugins/bootstrap-toggle/bootstrap-toggle.min.js"></script>
+    <script src="/wallet/scripts/jquery.validate.unobtrusive.min.js"></script>
+}
+@section CSS{
+    <link href="/wallet/assets/plugins/bootstrap-toggle/bootstrap-toggle.min.css" rel="stylesheet" />
+}
+@section Breadcrumbs{
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/wallet/default/dashboard">Dashboard</a></li>
+        <li class="breadcrumb-item"><span>Send Access Request</span></li>
+    </ul>
+}
+
+<div class="content-box">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="element-wrapper">
+                <div class="element-box">
+                    <form method="post" class="form-horizontal" action="" enctype="multipart/form-data">
+                        <h5 class="element-header">Send Access Request</h5>
+                        <div class="form-group">
+                            <h3 style="font-size:20px; margin: 50px 0 20px;">Sorry, you don't have access to this page</h3>
+                            <h3 style="font-size:25px; margin: 20px 0 20px;">If you wish to use this service, please send Access Request</h3>
+                            @Html.TextAreaFor(model => model.Message, new { @placeholder = "Type your message here", @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Message, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-buttons-w text-right">
+                            <a href="/wallet/users/requestaccess?module=@Request.QueryString["module"]" class="btn btn-default">Reset</a>
+                            <button class="btn btn-primary" type="submit">Send Request</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

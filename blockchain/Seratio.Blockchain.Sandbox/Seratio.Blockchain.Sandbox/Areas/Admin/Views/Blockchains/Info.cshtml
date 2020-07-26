@@ -1,0 +1,30 @@
+﻿@model Tuple<object, object>
+@{
+    ViewBag.Title = "Blockchain Information";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section JavaScript{
+    <script type="text/javascript">$(document).ready(function () { WebApp.Core.HighlightCurrentMenuItem('Blockchain') });</script>
+}
+@section Breadcrumbs{
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/wallet/default/dashboard">Dashboard</a></li>
+        <li class="breadcrumb-item"><span>Blockchain Information</span></li>
+    </ul>
+}
+
+<div class="content-box">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="element-wrapper">
+                <div class="element-box">
+                    <span class="header-title">Node Info.</span>
+                    <pre>@Model.Item1</pre>
+
+                    <span class="header-title">Peers</span>
+                    <pre>@Model.Item2</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

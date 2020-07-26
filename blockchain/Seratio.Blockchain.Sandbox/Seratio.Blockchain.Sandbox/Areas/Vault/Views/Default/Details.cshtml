@@ -1,0 +1,113 @@
+﻿@model Seratio.Blockchain.Sandbox.Models.WalletTransaction
+@{
+    ViewBag.Title = "Wallet Transaction History";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section JavaScript{
+    <script type="text/javascript">$(document).ready(function () { WebApp.Core.HighlightCurrentMenuItem('Seratio Wallet') });</script>
+}
+
+
+@section CSS{
+
+}
+@section Breadcrumbs{
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/wallet/default/dashboard">Dashboard</a></li>
+        <li class="breadcrumb-item"><a href="/wallet/wallets/seratiowallet/index">Seratio Wallet</a></li>
+        <li class="breadcrumb-item"><a href="/wallet/wallets/seratiowallet/history">Wallet Transaction History</a></li>
+        <li class="breadcrumb-item"><span>Wallet Transaction Details</span></li>
+    </ul>
+}
+
+<div class="content-box">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="element-wrapper">
+                <div class="element-box">
+                    <h5 class="element-header">Wallet Transaction Details</h5>
+                    <div class="heading-elements">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="main">
+                                <table class="table table-lightborder">
+                                    <tbody>
+             
+                                        <tr>
+                                            <td>Receiver</td>
+                                            <td>:</td>
+                                            <td> <a href='https://etherscan.io/address/@Model.Recipient' target='_blank'>@Model.Recipient</a></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>@Html.DisplayNameFor(model => model.Amount)</td>
+                                            <td>:</td>
+                                            <td> @Model.Amount</td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td>@Html.DisplayNameFor(model => model.Coin)</td>
+                                            <td>:</td>
+                                            <td> @Model.Coin.Name</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Transaction Hash</td>
+                                            <td>:</td>
+                                            <td><a href="https://etherscan.io/tx/@Model.TransactionHash" target="_blank">@Model.TransactionHash</a></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Transaction Index</td>
+                                            <td>:</td>
+                                            <td> @Model.TransactionIndex</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Block Hash</td>
+                                            <td>:</td>
+                                            <td> @Model.BlockHash</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Block Number</td>
+                                            <td>:</td>
+                                            <td>
+                                                    <a href="https://etherscan.io/block/@Model.BlockNumber" target="_blank">@Model.BlockNumber</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Cumulative Gas Used</td>
+                                            <td>:</td>
+                                            <td> @Model.CumulativeGasUsed</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Gas Used</td>
+                                            <td>:</td>
+                                            <td> @Model.GasUsed</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>@Html.DisplayNameFor(model => model.Logs)</td>
+                                            <td>:</td>
+                                            <td><pre>@Model.Logs</pre></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>@Html.DisplayNameFor(model => model.Time)</td>
+                                            <td>:</td>
+                                            <td> @Model.Time</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

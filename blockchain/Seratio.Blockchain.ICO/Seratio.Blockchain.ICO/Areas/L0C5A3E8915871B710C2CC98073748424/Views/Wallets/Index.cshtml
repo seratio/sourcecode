@@ -1,0 +1,100 @@
+﻿@model Seratio.Platform.ICO.Models.Wallet
+
+@{
+    ViewBag.Title = "Manage Wallets";
+    Layout = "~/Areas/L0C5A3E8915871B710C2CC98073748424/Views/Shared/_Layout.cshtml";
+}
+
+
+@section JavaScript{
+    <script type="text/javascript">$(document).ready(function () { WebApp.Core.HighlightCurrentMenuItem('Wallets') });</script>
+}
+
+@{
+    string _daterange = Request.QueryString["daterange"];
+    {
+        if (_daterange == null)
+        {
+            _daterange = (!string.IsNullOrEmpty(Request.QueryString["start"]) ? Request.QueryString["start"] + " - " : "") + (!string.IsNullOrEmpty(Request.QueryString["end"]) ? Request.QueryString["end"] : "");
+        }
+    }
+}
+
+<div class="page-header">
+    <div class="page-header-content">
+        <div class="page-title">
+            <h4><span class="text-semibold">Manage Wallets</span></h4>
+        </div>
+        <div class="heading-elements">
+            <div class="heading-btn-group">
+            </div>
+        </div>
+    </div>
+    <div class="breadcrumb-line">
+        <ul class="breadcrumb">
+            <li><a href="/L0C5A3E8915871B710C2CC98073748424/default/dashboard"><i class="icon-home4 position-left"></i>Dashboard</a></li>
+            <li class="active">Wallets</li>
+        </ul>
+    </div>
+</div>
+<div class="content">
+    <div class="panel panel-flat">
+        <fieldset class="content-group filter-table">
+            @using (Html.BeginForm("Index", "wallets", FormMethod.Get, new { @class = "" }))
+            {
+                <div class="form-horizontal">
+                    <div class="form-group" style="margin: 0;">
+                        <label class="control-label col-lg-1">Dates:</label>
+                        <div class="col-md-3">
+                            <div class="input-group date controls" id="DateFilter">
+                                <span class="input-group-addon "><i class="icon-calendar22"></i></span>
+                                <input type="text" placeholder="Select Date Range" name="daterange" value="@_daterange" class="form-control date-range" />
+                            </div>
+                        </div>
+
+                        <div hidden>
+                            <input id="daterange_start" type="text" value="@Request.QueryString["start"]" class="form-control">
+                            <input id="daterange_end" type="text" value="@Request.QueryString["end"]" class="form-control">
+                        </div>
+
+                        <div class="col-lg-2">
+                            <button type="submit" class="btn btn-primary btn-block">Search<i class="icon-search4 position-right"></i></button>
+                        </div>
+
+                        <div class="col-lg-2">
+                            <a href="~/wallets" class="btn btn-default btn-block">Reset<i class="icon-reload-alt position-right"></i> </a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </fieldset>
+        <table class="table data-table table-bordered table-striped table-hover" data-source="/L0C5A3E8915871B710C2CC98073748424/wallets/list/" data-key="6">
+            <thead>
+
+            <tr>
+                <th>
+                    USer
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Address)
+                </th>
+                <th class="no-sort">
+                    @Html.DisplayNameFor(model => model.WalletFile)
+                </th>
+                <th class="no-sort">
+                    @Html.DisplayNameFor(model => model.WalletHTMLFile)
+                </th>
+                <th class="no-sort">
+                    @Html.DisplayNameFor(model => model.WalletImageFile)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LastUpdatedOn)
+                </th>
+
+                <th class="text-center no-sort">Options</th>
+            </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</div>

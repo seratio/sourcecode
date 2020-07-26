@@ -1,0 +1,128 @@
+﻿@model Seratio.Platform.ICO.Models.Investment
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Investment</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Mode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Amount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Token)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Token)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comments)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comments)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TxReferenceNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TxReferenceNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InitializedOn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InitializedOn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TxRefNoUpdatedOn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TxRefNoUpdatedOn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ConfirmedOn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ConfirmedOn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RejectedOn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RejectedOn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IssuedOn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IssuedOn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastUpdatedOn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastUpdatedOn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.Title)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,14 @@
+apps:
+  - script   : ./index.js
+    name     : 'endpoint'
+    instances: 2
+    exec_mode: cluster
+  - script : ./etc-geth.js
+    name   : 'etc-geth'
+  - script : ./eth-geth.js
+    name   : 'eth-geth'
+#    watch  : true
+#    env    :
+#      NODE_ENV: development
+#    env_production:
+#      NODE_ENV: production

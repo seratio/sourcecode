@@ -1,0 +1,132 @@
+{
+	"id": "975eb26d-bb25-b9b3-865b-e291d6873073",
+	"name": "Seratio Platform API",
+	"description": "",
+	"order": [
+		"ee90d9ae-1108-25c3-2872-28e033dbeba7",
+		"d7c156f2-1bfc-c8ea-0498-093e35342bea"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1521271050623,
+	"owner": "692830",
+	"public": false,
+	"requests": [
+		{
+			"id": "d7c156f2-1bfc-c8ea-0498-093e35342bea",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://199.247.17.149/api/users/signin",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "Email",
+					"value": "someone@markuplab.net",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "Password",
+					"value": "sachin",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1522249711967,
+			"name": "Login",
+			"description": "",
+			"collectionId": "975eb26d-bb25-b9b3-865b-e291d6873073",
+			"responses": []
+		},
+		{
+			"id": "ee90d9ae-1108-25c3-2872-28e033dbeba7",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://199.247.17.149/api/users/signup",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "Title",
+					"value": "Mr.",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "FirstName",
+					"value": "Sachin",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "LastName",
+					"value": "TK",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "Gender",
+					"value": "Male",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "Email",
+					"value": "someone@markuplab.net",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "Password",
+					"value": "sachin",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1522249726578,
+			"name": "Signup",
+			"description": "",
+			"collectionId": "975eb26d-bb25-b9b3-865b-e291d6873073",
+			"responses": []
+		}
+	]
+}

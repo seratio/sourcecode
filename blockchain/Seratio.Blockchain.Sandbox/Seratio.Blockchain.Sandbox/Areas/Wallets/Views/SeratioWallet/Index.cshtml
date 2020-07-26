@@ -1,0 +1,98 @@
+﻿@using Seratio.Blockchain.Sandbox.Core.Utilities
+@model  List<Coin>
+@{
+    ViewBag.Title = "Seratio Wallet";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string _address = ViewBag.WalletAddress;
+}
+
+@section JavaScript{
+    <script type="text/javascript">$(document).ready(function () { WebApp.Core.HighlightCurrentMenuItem('Seratio Wallet') });</script>
+    <script type="text/javascript" src="/wallet/assets/plugins/tooltipster/dist/js/tooltipster.bundle.min.js"></script>
+}
+
+@section CSS{
+    <link rel="stylesheet" type="text/css" href="/wallet/assets/plugins/tooltipster/dist/css/tooltipster.bundle.min.css" />
+}
+
+@section Breadcrumbs{
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/wallet/default/dashboard">Dashboard</a></li>
+        <li class="breadcrumb-item"><span>Seratio Wallet</span></li>
+    </ul>
+}
+
+<div class="content-box">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="element-wrapper">
+                <div class="element-box heading-responsive-fix-1">
+                    <h5 class="element-header">Seratio Wallet (@_address)</h5>
+                    <div class="heading-elements">
+                        <a href="/wallet/wallets/seratiowallet/transfer"><i class="fa fa-plus-square"></i><span>Transfer Coins</span></a>
+                    </div>
+                    <div class="heading-elements">
+                        <a href="/wallet/wallets/seratiowallet/transfer"><i class="fa fa-plus-square"></i><span>Transfer Coin</span></a>
+                        <a href="/wallet/wallets/seratiowallet/history"><i class="fa fa-plus-square"></i><span>Transaction History</span></a>
+                    </div>
+                    <div class="row">
+                        @{
+                            int i = 1;
+
+                            foreach (Coin _coin in Model)
+                            {
+                                if (_coin.Symbol != "MCR_")
+                                {
+                                    <div class="col-md-4">
+                                        <div class="box type-@i">
+                                            @if (_coin.Image == null)
+                                            {
+                                                <img src="/wallet/assets/images/defaultCoin.png" />
+                                            }
+                                            else
+                                            {
+                                                <img src="~/uploads/@_coin.Image" />
+                                            }
+
+                                            <div class="right">
+                                                <div class="heading">@_coin.Name</div>
+                                                <div class="value">@(_coin.Balance.CarefullyTrim(_coin.NumberOfDecimals))</div>
+                                                <div class="count">@_coin.Symbol</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="col-md-4 tooltipster" title="Check available Microshares">
+                                        <a href="/wallet/wallets/microshares">
+                                            <div class="box type-@i">
+                                                @if (_coin.Image == null)
+                                                {
+                                                    <img src="/wallet/assets/images/defaultCoin.png" />
+                                                }
+                                                else
+                                                {
+                                                    <img src="~/uploads/@_coin.Image" />
+                                                }
+
+                                                <div class="right">
+                                                    <div class="heading">@_coin.Name</div>
+                                                    <div class="value">@(_coin.Balance.CarefullyTrim(_coin.NumberOfDecimals))</div>
+                                                    <div class="count">@_coin.Symbol</div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                }
+
+
+                                i++;
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

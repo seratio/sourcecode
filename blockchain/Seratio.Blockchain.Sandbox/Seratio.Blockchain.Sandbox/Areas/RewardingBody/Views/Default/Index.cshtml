@@ -1,0 +1,111 @@
+﻿@model AcceptedSocialActivity
+
+@{
+    ViewBag.Title = "Issue Reward";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section CSS
+{
+    <link href="/wallet/assets/plugins/bootstrap-slider/bootstrap-slider.css" rel="stylesheet" />
+}
+
+@section JavaScript{
+    <script type="text/javascript">$(document).ready(function () { WebApp.Core.HighlightCurrentMenuItem('Manage Social Activities') });</script>
+    <script src="/wallet/scripts/html5-qrcode.min.js" type="text/javascript"></script>
+    <script src="/wallet/assets/plugins/bootstrap-slider/bootstrap-slider.js"></script>
+}
+
+@section Breadcrumbs{
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/wallet/default/dashboard">Dashboard</a></li>
+        <li class="breadcrumb-item"><span>Issue Reward</span></li>
+    </ul>
+}
+
+<div class="content-box">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="element-wrapper">
+                <div class="element-box">
+                    <form class="form-horizontal" action="" enctype="multipart/form-data" method="post" autocomplete="off">
+                        <input type="hidden" name="transactionid" value="@ViewBag.TransactionID" />
+                        <h5 class="element-header">Issue Reward</h5>
+
+                        <div class="heading-elements">
+                        </div>
+                        <div class="form-group">
+                            <div class="row" style="margin-top: 20px;">
+                                <label for="" class="col-lg-3 control-label">Activity</label>
+                                <div class="col-lg-8">
+                                    <select id="activity" name="ActivityID" class="form-control" data-val="true" data-val-required="Please select a value for Activity">
+
+                                        @{
+                                            foreach (SocialActivity _activity in ViewBag.Activities)
+                                            {
+                                                <option value="@_activity.ID">@_activity.Name</option>
+                                            }
+                                        }
+
+                                    </select>
+                                    @Html.ValidationMessageFor(model => model.ActivityID, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top: 20px;">
+
+                                <label class="col-lg-3 control-label">User's Wallet Address</label>
+                                <div class="col-lg-8">
+                                    <input type="text" id="WalletAddress" name="WalletAddress" class="form-control" data-val="true" data-val-required="Please enter the wallet address" placeholder="Please enter the wallet address" />
+                                </div>
+                            </div>
+
+                            <div class="row" style="margin-top: 20px;">
+                                @Html.HiddenFor(model => model.RewardedCoinID)
+
+                                <label class="col-lg-3 control-label">Rewarding Coin</label>
+                                <div class="col-lg-8">
+                                    <input type="text" id="coinname" class="form-control" readonly="readonly" placeholder="Please select an activity" />
+                                </div>
+                            </div>
+
+                            <div class="row" style="margin-top: 20px;">
+                                <label class="col-lg-3 control-label">@Html.DisplayNameFor(model => model.RewardedAmount)</label>
+                                <div class="col-lg-8">
+                                    @Html.TextBoxFor(model => model.RewardedAmount, new { @placeholder = "Please select an activity", @class = "form-control", @readonly = "readonly" })
+                                    @Html.ValidationMessageFor(model => model.RewardedAmount, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="row" style="margin-top: 20px;">
+                                <label class="col-lg-3 control-label">@Html.DisplayNameFor(model => model.Description)</label>
+                                <div class="col-lg-8">
+                                    @Html.TextAreaFor(model => model.Description, new { @placeholder = "Please enter the Description", @class = "form-control", @rows = "5" })
+                                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="row" style="margin-top: 20px;">
+                                <label class="col-lg-3 control-label">Mnemonic Words</label>
+                                <div class="col-lg-8">
+                                    <input name="mnemonic" type="text" placeholder="Please enter the Mnemonic Words" class="form-control" data-val="true" data-val-required="Please enter a value for Mnemonic Words." required="required">
+                                    @Html.ValidationMessage("mnemonic", "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="row" style="margin-top: 20px; display: none">
+                                <label class="col-lg-3 control-label">Gas Price</label>
+                                <div class="col-lg-8">
+                                    <input id="gas" type="text" name="gas" value="" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-buttons-w text-right">
+                            <a href="/wallet/rewardingbody" class="btn btn-default">Reset</a>
+                            <button class="btn btn-primary" type="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

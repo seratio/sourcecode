@@ -1,0 +1,258 @@
+﻿@model Seratio.Platform.ICO.Models.Investment
+
+@{
+    ViewBag.Title = "Investment Details";
+    Layout = "~/Areas/Users//Views/Shared/_Layout.cshtml";
+}
+
+@section JavaScript{
+    <script type="text/javascript">$(document).ready(function () { WebApp.Core.HighlightCurrentMenuItem('Investments') });</script>
+
+}
+@section CSS{
+}
+@section Breadcrumbs{
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/users/default/dashboard">Dashboard</a></li>
+        <li class="breadcrumb-item"><a href="/users/investments">Investments</a></li>
+        <li class="breadcrumb-item"><span>Investment Details</span></li>
+    </ul>
+}
+
+<div class="content-box">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="element-wrapper">
+                <div class="element-box">
+                    <h5 class="element-header">Investment Details</h5>
+                    <div class="heading-elements">
+                        @{
+                            if (Model.TxRefNoUpdatedOn == null && Model.TxReferenceNumber == null)
+                            {
+                                <a href="/users/investments/updatereferencenumber/@Model.ID" class='confirm' data-confirm='Please confirm your action as this could only be done once?'><i class="os-icon os-icon-edit-1"></i><span>Update Tx. Rereference Number</span></a>
+
+                            }
+
+                            if (Model.ConfirmedOn != null)
+                            {
+                                <a href="/users/investments/printreceipt/@Model.ID" target="_blank"><i class="os-icon os-icon-window-content"></i><span>Print Investment Receipt</span></a>
+                            }
+
+                            if (Model.Status == "Wallet Created" || Model.Status == "Coins Issued")
+                            {
+                                <a href="/users/investments/download/@Model.UserID" target="_blank"><i class="os-icon os-icon-window-content"></i><span>Download Wallet</span></a>
+                            }
+                        }
+
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="table-responsive">
+                                        <table class="table table-lightborder">
+                                            <tbody>
+
+                                                <tr>
+                                                    <td>@Html.DisplayNameFor(model => model.UserID)</td>
+                                                    <td>:</td>
+                                                    <td>   @((string.IsNullOrEmpty(Model.User.Title) ? "" : Model.User.Title + ". ") + Model.User.FirstName + " " + Model.User.LastName)</td>
+                                                </tr>
+
+
+                                                <tr>
+                                                    <td >@Html.DisplayNameFor(model => model.Mode)</td>
+                                                    <td>:</td>
+                                                    <td> @Model.Mode</td>
+                                                </tr>
+                                            <tr>
+                                                <td >@Html.DisplayNameFor(model => model.Type)</td>
+                                                <td>:</td>
+                                                <td> @Model.Type</td>
+                                            </tr>
+
+
+                                            <tr>
+                                                <td >@Html.DisplayNameFor(model => model.Amount)</td>
+                                                <td>:</td>
+
+                                                <td>
+                                                    @{
+                                                        switch (Model.Mode)
+                                                        {
+                                                            case "AUD":
+                                                                @String.Format("{0:0.00}", Model.Amount, MidpointRounding.AwayFromZero);
+                                                                break;
+                                                            case "CAD":
+                                                                @String.Format("{0:0.00}", Model.Amount, MidpointRounding.AwayFromZero);
+                                                                break;
+                                                            case "CHF":
+                                                                @String.Format("{0:0.00}", Model.Amount, MidpointRounding.AwayFromZero);
+                                                                break;
+                                                            case "CNY":
+                                                                @String.Format("{0:0.00}", Model.Amount, MidpointRounding.AwayFromZero);
+                                                                break;
+                                                            case "EUR":
+                                                                @String.Format("{0:0.00}", Model.Amount, MidpointRounding.AwayFromZero);
+                                                                break;
+                                                            case "USD":
+                                                                @String.Format("{0:0.00}", Model.Amount, MidpointRounding.AwayFromZero);
+                                                                break;
+                                                            case "GBP":
+                                                                @String.Format("{0:0.00}", Model.Amount, MidpointRounding.AwayFromZero);
+                                                                break;
+                                                            case "JPY":
+                                                                @String.Format("{0:0.00}", Model.Amount, MidpointRounding.AwayFromZero);
+                                                                break;
+                                                            case "SEK":
+                                                                @String.Format("{0:0.00}", Model.Amount, MidpointRounding.AwayFromZero);
+                                                                break;
+                                                            case "NZD":
+                                                                @String.Format("{0:0.00}", Model.Amount, MidpointRounding.AwayFromZero);
+                                                                break;
+                                                            case "MXN":
+                                                                @String.Format("{0:0.00}", Model.Amount, MidpointRounding.AwayFromZero);
+                                                                break;
+                                                            case "SGD":
+                                                                @String.Format("{0:0.00}", Model.Amount, MidpointRounding.AwayFromZero);
+                                                                break;
+                                                            case "HKD":
+                                                                @String.Format("{0:0.00}", Model.Amount, MidpointRounding.AwayFromZero);
+                                                                break;
+                                                            case "NOK":
+                                                                @String.Format("{0:0.00}", Model.Amount, MidpointRounding.AwayFromZero);
+                                                                break;
+                                                            case "KRW":
+                                                                @String.Format("{0:0.00}", Model.Amount, MidpointRounding.AwayFromZero);
+                                                                break;
+                                                            case "TRY":
+                                                                @String.Format("{0:0.00}", Model.Amount, MidpointRounding.AwayFromZero);
+                                                                break;
+                                                            case "RUB":
+                                                                @String.Format("{0:0.00}", Model.Amount, MidpointRounding.AwayFromZero);
+                                                                break;
+                                                            case "INR":
+                                                                @String.Format("{0:0.00}", Model.Amount, MidpointRounding.AwayFromZero);
+                                                                break;
+                                                            case "BRL":
+                                                                @String.Format("{0:0.00}", Model.Amount, MidpointRounding.AwayFromZero);
+                                                                break;
+                                                            case "ZAR":
+                                                                @String.Format("{0:0.00}", Model.Amount, MidpointRounding.AwayFromZero);
+                                                                break;
+                                                            default:
+                                                                @Model.Amount
+                                                                break;
+                                                        }
+                                                    }
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td >Investment Type</td>
+                                                <td>:</td>
+                                                <td>@Model.InvestmentType</td>
+                                            </tr>
+                                                <tr>
+                                                    <td >Campaign Code</td>
+                                                    <td>:</td>
+                                                    <td>@Model.CampaignCode</td>
+                                                </tr>
+                                                <tr>
+                                                    <td >@Html.DisplayNameFor(model => model.Status)</td>
+                                                    <td>:</td>
+                                                    <td>@Model.Status</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td >@Html.DisplayNameFor(model => model.Token)</td>
+                                                    <td>:</td>
+                                                    <td> @Model.Token</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td >@Html.DisplayNameFor(model => model.Comments)</td>
+                                                    <td>:</td>
+                                                    <td> @Model.Comments</td>
+                                                </tr>
+                                                <tr>
+                                                    <td >@Html.DisplayNameFor(model => model.TxReferenceNumber)</td>
+                                                    <td>:</td>
+                                                    <td> @Model.TxReferenceNumber</td>
+                                                </tr>
+                                                <tr>
+                                                    <td >@Html.DisplayNameFor(model => model.InitializedOn)</td>
+                                                    <td>:</td>
+                                                    <td> @Model.InitializedOn</td>
+                                                </tr>
+                                                <tr>
+                                                    <td >@Html.DisplayNameFor(model => model.TxRefNoUpdatedOn)</td>
+                                                    <td>:</td>
+                                                    <td> @(Model.TxRefNoUpdatedOn != null ? Model.TxRefNoUpdatedOn.ToString() : null)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td >@Html.DisplayNameFor(model => model.ConfirmedOn)</td>
+                                                    <td>:</td>
+                                                    <td> @(Model.ConfirmedOn != null ? Model.ConfirmedOn.ToString() : null)</td>
+
+                                                </tr>
+
+                                                <tr>
+                                                    <td >@Html.DisplayNameFor(model => model.ReceivedAmount)</td>
+                                                    <td>:</td>
+                                                    <td> @(Model.ReceivedAmount != null ? Model.ReceivedAmount.ToString() : null)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td >@Html.DisplayNameFor(model => model.ExchangeRate)</td>
+                                                    <td>:</td>
+                                                    <td> @(Model.ExchangeRate != null ? String.Format("{0:0.00}", Model.ExchangeRate.ToString(), MidpointRounding.AwayFromZero) : null)</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td >@Html.DisplayNameFor(model => model.TokenAmount)</td>
+                                                    <td>:</td>
+                                                    <td> @(Model.TokenAmount != null ? String.Format("{0:0.0000000}", Model.TokenAmount.ToString(), MidpointRounding.AwayFromZero) : null)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td >@Html.DisplayNameFor(model => model.RejectedOn)</td>
+                                                    <td>:</td>
+                                                    <td> @Model.RejectedOn</td>
+                                                </tr>
+                                                <tr>
+                                                    <td >@Html.DisplayNameFor(model => model.IssuedOn)</td>
+                                                    <td>:</td>
+                                                    <td> @(Model.IssuedOn != null ? Model.IssuedOn.Value.ToString() : null)</td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td >@Html.DisplayNameFor(model => model.LastUpdatedOn)</td>
+                                                    <td>:</td>
+                                                    <td> @Model.LastUpdatedOn.ToString()</td>
+                                                </tr>
+
+                                                @{
+                                                    if (Model.LastUpdatedByID != null)
+                                                    {
+                                                        <tr>
+                                                            <td >@Html.DisplayNameFor(model => model.LastUpdatedByID)</td>
+                                                            <td>:</td>
+                                                            <td> @(Model.Administrator.Name)</td>
+                                                        </tr>
+                                                    }
+                                                }
+
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

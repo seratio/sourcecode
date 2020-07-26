@@ -1,0 +1,94 @@
+﻿@model Seratio.Platform.ICO.Models.Offer
+
+@{
+    ViewBag.Title = "Offer Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section JavaScript{
+    <script type="text/javascript">$(document).ready(function () { WebApp.Core.HighlightCurrentMenuItem('Offers') });</script>
+}
+
+@section CSS{
+
+}
+
+<div class="page-header">
+    <div class="page-header-content">
+        <div class="page-title">
+            <h4><span class="text-semibold">Offer Details</span></h4>
+        </div>
+        <div class="heading-elements">
+            <div class="heading-btn-group">
+                <a class="btn btn-link btn-float has-text" href="/offers/edit/@Model.ID"><i class="icon-pencil7 text-primary"></i><span>Edit</span></a>
+                <a class="btn btn-link btn-float has-text confirm mr5" title="Delete" data-confirm="Are you sure you want to delete this Offer?" href="/offers/delete/@Model.ID"><i class="icon-cancel-square text-primary"></i><span>Delete</span></a>
+            </div>
+        </div>
+    </div>
+    <div class="breadcrumb-line">
+        <ul class="breadcrumb">
+            <li><a href="/L0C5A3E8915871B710C2CC98073748424/default/dashboard"><i class="icon-home4 position-left"></i>Dashboard</a></li>
+            <li><a href="/offers/index"> Offers</a></li>
+            <li class="active">Offer Details</li>
+        </ul>
+    </div>
+</div>
+<div class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-flat">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="main">
+                                <table class="table table-borderless table-xs content-group-sm">
+                                    <tbody>
+
+                                        <tr>
+                                            <td class="col-lg-2">@Html.DisplayNameFor(model => model.CreatedByID)</td>
+                                            <td class="col-lg-1">:</td>
+                                            <td> @Model.CreatedByID</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col-lg-2">@Html.DisplayNameFor(model => model.LastUpdatedByID)</td>
+                                            <td class="col-lg-1">:</td>
+                                            <td> @Model.LastUpdatedByID</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col-lg-2">@Html.DisplayNameFor(model => model.Title)</td>
+                                            <td class="col-lg-1">:</td>
+                                            <td> @Model.Title</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col-lg-2">@Html.DisplayNameFor(model => model.Discount)</td>
+                                            <td class="col-lg-1">:</td>
+                                            <td> @Model.Discount</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col-lg-2">@Html.DisplayNameFor(model => model.LastDate)</td>
+                                            <td class="col-lg-1">:</td>
+                                            <td> @Model.LastDate</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col-lg-2">@Html.DisplayNameFor(model => model.CreatedOn)</td>
+                                            <td class="col-lg-1">:</td>
+                                            <td> @Model.CreatedOn</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col-lg-2">@Html.DisplayNameFor(model => model.LastUpdatedOn)</td>
+                                            <td class="col-lg-1">:</td>
+                                            <td> @Model.LastUpdatedOn</td>
+                                        </tr>
+
+                                       
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   <div class='footer text-muted hidden-xs'>Copyright &copy; @AppManager.ProjectName(). Powered by Markuplab Technologies (P) Ltd.  |<a href='http://markuplab.com/' target='_blank'> www.markuplab.com</a> | Tel: (+91) 484-2806790, (+91) 999 5785 136</div>
+</div>

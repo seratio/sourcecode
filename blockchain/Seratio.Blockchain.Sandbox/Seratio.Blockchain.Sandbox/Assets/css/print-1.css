@@ -1,0 +1,64 @@
+body {
+    font-family: Roboto,Helvetica Neue,Helvetica,Arial,sans-serif;
+    font-size: 13px;
+    line-height: 1.5384616;
+    color: #333;
+    background-color: #074454;
+    margin: 0;
+    padding: 40px;
+}
+
+.box {
+    background-color: #eee;
+    border-radius: 3px;
+    margin: 0 auto;
+    padding: 0;
+    width: 100%;
+}
+
+.table-1 {
+	margin: 0 auto;
+	width: 95%;
+}
+
+h1 {
+    font-size: 45px;
+    font-weight: 400;
+    color: #000;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 35px;
+    font-weight: 400;
+    color: #000;
+    margin-bottom: 20px;
+}
+
+h4 {
+    font-size: 25px;
+    font-weight: 400;
+    color: #000;
+    margin-bottom: 20px;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-center {
+    text-align: center;
+}
+
+p {
+    margin: 0 0 10px 0;
+}
+
+.image-1 {
+    /*height: 250px;*/
+    width: 88%;
+}

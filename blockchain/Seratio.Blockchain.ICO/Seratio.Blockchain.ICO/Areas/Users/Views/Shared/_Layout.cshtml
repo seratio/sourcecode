@@ -1,0 +1,315 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <meta content="ie=edge" http-equiv="x-ua-compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>@ViewBag.Title - Seratio Platform</title>
+    <link href="/areas/users/assets/images/favicon.png" rel="icon" type="image/png">
+    <link href="/areas/users/assets/icon_fonts_assets/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/areas/users/assets/bower_components/perfect-scrollbar/css/perfect-scrollbar.min.css" rel="stylesheet">
+    <link href="/areas/users/assets/css/main.css" rel="stylesheet">
+    <link href="/areas/users/assets/css/custom.css" rel="stylesheet">
+    <link href="/areas/users/assets/css/select2.css" rel="stylesheet" type="text/css">
+    <link href="/areas/users/assets/css/remodal.css" rel="stylesheet">
+    <link href="/areas/users/assets/css/remodal-default-theme.css" rel="stylesheet">
+    <link href="~/areas/users/assets/css/jquery.tagit.css" rel="stylesheet" type="text/css">
+    <link href="~/areas/users/assets/css/tagit.ui-zendesk.css" rel="stylesheet" type="text/css">
+    <link href="/areas/users/assets/plugins/bootstrap-toastr/toastr.min.css" rel="stylesheet" type="text/css" />
+    <link href="/areas/users/assets/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.rawgit.com/LeaVerou/awesomplete/gh-pages/awesomplete.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/assets/owl.carousel.min.css" />
+    @RenderSection("CSS", required: false)
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body class="pantone">
+    <div class="all-wrapper menu-side">
+        <div class="layout-w">
+            <div class="menu-mobile menu-activated-on-click">
+                <div class="mm-logo-buttons-w">
+                    <a class="mm-logo" href="/users/default/dashboard"><img src="/areas/users/assets/images/logo.png"><span>Seratio Platform</span></a>
+                    <div class="mm-buttons">
+                        <div class="content-panel-open">
+                            <div class="os-icon os-icon-grid-circles"></div>
+                        </div>
+                        <div class="mobile-menu-trigger">
+                            <div class="os-icon os-icon-hamburger-menu-1"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-and-user">
+                    <ul class="main-menu">
+                        <li>
+                            <a href="/users/default/dashboard">
+                                <div class="icon-w">
+                                    <div class="os-icon os-icon-window-content"></div>
+                                </div>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/users/investments">
+                                <div class="icon-w">
+                                    <div class="fa fa-briefcase"></div>
+                                </div>
+                                <span>Investments</span>
+                            </a>
+                        </li>
+                        <li class="has-sub-menu">
+                            <a href="javascript:void(0)">
+                                <div class="icon-w">
+                                    <div class="fa fa-info-circle"></div>
+                                </div>
+                                <span>Info Help</span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li><a href="/files/Instructions.pdf" target="_blank">Instructions (English)</a></li>
+                                <li><a href="/files/Instructions-cn.pdf" target="_blank">Instructions (Chinese)</a></li>
+                                @*<li><a href="/files/Instructions-kr.docx" target="_blank">Instructions (Korean)</a></li>*@
+                                <li><a href="/Files/FAQ.pdf" target="_blank">FAQ</a></li>
+                                <li><a href="/Files/terms-and-conditions.pdf" target="_blank">Terms & Conditions</a></li>
+                                <li><a href="//privacy-policy.html" target="_blank">Privacy Policy</a></li>
+                                <li><a href="mailto:blockchain.lab@cceg.org.uk" target="_blank">Contact Us</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="desktop-menu menu-side-w menu-activated-on-click">
+                <div class="logo-w">
+                    <a class="logo" href="/users/default/dashboard">
+                        <img src="/areas/users/assets/images/logo.png">
+                    </a>
+                </div>
+                <div class="menu-and-user">
+                    @{
+                        if (Session["ICOType"] != null)
+                        {
+                            string _icoType = Session["ICOType"].ToString();
+
+                            if (_icoType == "Womens Coin")
+                            {
+                                <div class="logged-user-w">
+                                    <img src="/areas/users/assets/images/womenscoinlogov2.png" style="width: 60%;">
+                                </div>
+                            }
+                            else if (_icoType == "Student Coin")
+                            {
+                                <div class="logged-user-w">
+                                    <img src="/areas/users/assets/images/studentcoin.png" style="width: 60%;">
+                                </div>
+                            }    
+                            else if (_icoType == "Growth Token")
+                            {
+                                <div class="logged-user-w">
+                                    <img src="/areas/users/assets/images/10xaccountlogo.png" style="width: 100%;">
+                                </div>
+                            }      
+                            else if (_icoType == "TimeTraveler Coin")
+                            {
+                                <div class="logged-user-w">
+                                    <img src="/Assets/images/timetraveler.png" style="width: 60%;">
+                                </div>
+                            } 
+                        }
+                        else
+                        {
+                            <div class="logged-user-w">
+                                <div class="owl-carousel owl-theme">
+                                    <div class="item">
+                                        <img src="/areas/users/assets/images/**************logo.jpg" style="width: 60%;margin-left: 55px;">
+                                    </div>
+                                    <div class="item">
+                                        <img src="/areas/users/assets/images/womenscoinlogov2.png" style="width: 60%;margin-left: 55px;">
+                                    </div>
+                                    <div class="item">
+                                        <img src="/areas/users/assets/images/studentcoin.png" style="width: 60%;margin-left: 55px;">
+                                    </div>
+                                    <div class="item">
+                                        <img src="/areas/users/assets/images/10xaccountlogo.png" style="width: 100%;">
+                                    </div>
+                                    <div class="item">
+                                        <img src="/Assets/images/timetraveler.png" style="width: 60%;margin-left: 55px;">
+                                    </div>
+                                    <div class="item">
+                                        <img src="/areas/users/assets/images/**************logo.jpg" style="width: 60%;margin-left: 55px;">
+                                    </div>
+                                    <div class="item">
+                                        <img src="/areas/users/assets/images/womenscoinlogov2.png" style="width: 60%;margin-left: 55px;">
+                                    </div>
+                                    <div class="item">
+                                        <img src="/areas/users/assets/images/studentcoin.png" style="width: 60%;margin-left: 55px;">
+                                    </div>
+                                    <div class="item">
+                                        <img src="/areas/users/assets/images/10xaccountlogo.png" style="width: 100%;">
+                                    </div>
+                                    <div class="item">
+                                        <img src="/Assets/images/timetraveler.png" style="width: 60%;margin-left: 55px;">
+                                    </div>
+                                    <div class="item">
+                                        <img src="/areas/users/assets/images/**************logo.jpg" style="width: 60%;margin-left: 55px;">
+                                    </div>
+                                    <div class="item">
+                                        <img src="/areas/users/assets/images/womenscoinlogov2.png" style="width: 60%;margin-left: 55px;">
+                                    </div>
+                                    <div class="item">
+                                        <img src="/areas/users/assets/images/studentcoin.png" style="width: 60%;margin-left: 55px;">
+                                    </div>
+                                    <div class="item">
+                                        <img src="/areas/users/assets/images/10xaccountlogo.png" style="width: 100%;">
+                                    </div>
+                                    <div class="item">
+                                        <img src="/Assets/images/timetraveler.png" style="width: 60%;margin-left: 55px;">
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                    <ul class="main-menu">
+                        <li>
+                            <a href="/users/default/dashboard">
+                                <div class="icon-w">
+                                    <div class="fa fa-home"></div>
+                                </div>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/users/investments">
+                                <div class="icon-w">
+                                    <div class="fa fa-briefcase"></div>
+                                </div>
+                                <span>Investments</span>
+                            </a>
+
+                        </li>
+                        <li class="has-sub-menu">
+                            <a href="javascript:void(0)">
+                                <div class="icon-w">
+                                    <div class="fa fa-info-circle"></div>
+                                </div>
+                                <span>Info Help</span>
+                            </a>
+                            <ul class="sub-menu">
+                                @{
+                                    string _instructionDocument = "Instructions.pdf";
+
+                                    if (Session["ICOType"] != null)
+                                    {
+                                        string _icoType = Session["ICOType"].ToString();
+
+                                        if (_icoType == "Womens Coin")
+                                        {
+                                            _instructionDocument = "Instructions_WC.pdf";
+                                        }
+                                    }
+                                }
+
+                                <li><a href="/files/@_instructionDocument" target="_blank">Instructions (English)</a></li>
+                                <li><a href="/files/Instructions-cn.pdf" target="_blank">Instructions (Chinese)</a></li>
+                                @*<li><a href="/files/Instructions-kr.docx" target="_blank">Instructions (Korean)</a></li>*@
+                                <li><a href="/Files/FAQ.pdf" target="_blank">FAQ</a></li>
+                                <li><a href="/Files/terms-and-conditions.pdf" target="_blank">Terms & Conditions</a></li>
+                                <li><a href="//privacy-policy.html" target="_blank">Privacy Policy</a></li>
+                                <li><a href="mailto:blockchain.lab@cceg.org.uk" target="_blank">Contact Us</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="content-w">
+                <div class="top-bar">
+                    @RenderSection("Breadcrumbs", required: false)
+                    <ul class="nav nav-pills smaller nav navbar-nav">
+                        @*           <li class="nav-item"><a class="nav-link add-on" data-toggle="tab" href="javascript:void(0)" aria-expanded="false" title="Services"><i class="fa fa-server"></i></a></li>*@
+
+
+                        <li class="nav-item">
+                            <div class="btn-group">
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" title="Settings"><i class="fa fa-cog"></i></a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <a class="dropdown-item" href="/users/users/profile"><i class="fa fa-user-plus"></i> My Profile</a>
+                                    <a class="dropdown-item" href="/users/users/changepassword"><i class="fa fa-lock"></i> Change Password</a>
+                                    @*<a class="dropdown-item" href="/accessrequests/userrequests"><i class="fa fa-key"></i> My Access Requests</a>*@
+                                    <a class="dropdown-item" href="/users/default/logout"><i class="fa fa-power-off"></i> Logout</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="floated-chat-w activity-body">
+                        <div class="floated-chat-i">
+                            <div class="activity-close"><i class="os-icon os-icon-close"></i></div>
+                            <div class="chat-head">
+                                <div class="user-w with-status status-green">
+                                    <div class="user-name">
+
+                                        <h6 class="user-title">Notifications</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="user-name-top">@(AppManager.User.FirstName + " " + AppManager.User.LastName)</p>
+                </div>
+
+                <div class="content-i">
+                    @RenderBody()
+                    <div class="footer">&copy; 2020 CCEG. All Rights Reserved.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/areas/users/assets/js/jquery.min.js"></script>
+    <script src="/areas/users/assets/js/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+    <script src="/areas/users/assets/bower_components/bootstrap/js/dist/util.js"></script>
+    <script src="/areas/users/assets/bower_components/bootstrap/js/dist/tab.js"></script>
+    <script src="/areas/users/assets/bower_components/perfect-scrollbar/js/perfect-scrollbar.jquery.min.js"></script>
+    <script src="/areas/users/assets/js/main.js"></script>
+    <script type="text/javascript" src="/areas/users/assets/js/moment.min.js"></script>
+    <script type="text/javascript" src="~/areas/users/assets/js/select2.js"></script>
+    <script type="text/javascript" src="/areas/users/assets/plugins/pickers/pickadate/picker.js"></script>
+    <script type="text/javascript" src="/areas/users/assets/plugins/pickers/pickadate/picker.date.js"></script>
+    <script type="text/javascript" src="/areas/users/assets/plugins/forms/styling/uniform.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
+    @*<script src="~/areas/users/assets/js/app.js" type="text/javascript"></script>*@
+    <script src="~/areas/users/assets/js/jquery.livequery.js" type="text/javascript"></script>
+    <script src="~/Scripts/jquery.validate.min.js" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.0/additional-methods.min.js"></script>
+    <script src="~/areas/users/assets/plugins/bootstrap-toastr/toastr.min.js" type="text/javascript"></script>
+    <script src="/areas/users/assets/plugins/bootstrap-daterangepicker/daterangepicker.js" type="text/javascript"></script>
+    <script src="~/areas/users/assets/plugins/pickers/datepicker.js" type="text/javascript"></script>
+    <script src="/areas/users/assets/js/jquery.cookie.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    @*<script src="~/Scripts/html5-qrcode.min.js" type="text/javascript"></script>*@
+    <script type="text/javascript" src="https://cdn.rawgit.com/bassjobsen/Bootstrap-3-Typeahead/master/bootstrap3-typeahead.min.js"></script>
+    @*<script type="text/javascript" src="/areas/users/assets/js/scripts.js"></script>*@
+    <script src="https://cdn.rawgit.com/LeaVerou/awesomplete/gh-pages/awesomplete.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js"></script>
+    @RenderSection("JavaScript", required: false)
+    <script src="~/Scripts/app.js?_=@DateTime.Now.Ticks" type="text/javascript"></script>
+    <script>
+        $(document).ready(function () {
+            //App.init();
+            @{
+                if (TempData["Notification"] != null)
+                {
+                    Notification notification = (Notification)TempData["Notification"];
+                    <text>WebApp.Notifications.Show('@notification.Type', '@notification.Text');</text>
+                }
+            }
+        });
+    </script>
+</body>
+</html>

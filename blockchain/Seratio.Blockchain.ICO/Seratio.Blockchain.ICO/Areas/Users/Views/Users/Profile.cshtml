@@ -1,0 +1,110 @@
+﻿@model User
+
+@{
+    ViewBag.Title = "My Profile";
+    Layout = "~/Areas/Users//Views/Shared/_Layout.cshtml";
+}
+@section JavaScript{
+    <script type="text/javascript">$(document).ready(function () { WebApp.Core.HighlightCurrentMenuItem('My Profile') });</script>
+    <script src="~/areas/users/Assets/plugins/bootstrap-toggle/bootstrap-toggle.min.js"></script>
+}
+@section CSS{
+    <link href="~/areas/users/Assets/plugins/bootstrap-toggle/bootstrap-toggle.min.css" rel="stylesheet" />
+}
+@section Breadcrumbs{
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/users/default/dashboard">Dashboard</a></li>
+        <li class="breadcrumb-item"><span>My Profile</span></li>
+    </ul>
+}
+
+<div class="content-box">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="element-wrapper">
+                <div class="element-box">
+                    <h5 class="element-header">My Profile</h5>
+                    <div class="heading-elements">
+                        <a href="/users/users/edit/@Model.ID"><i class="os-icon os-icon-edit-1"></i><span>Edit Profile</span></a>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="table-responsive">
+                                        <table class="table table-lightborder">
+                                            <tbody>
+
+                                                <tr>
+                                                    <td>Name</td>
+                                                    <td>:</td>
+                                                    <td>@((string.IsNullOrEmpty(Model.Title) ? "" : Model.Title + ". ") + Model.FirstName + " " + Model.LastName)</td>  
+                                                 
+                                                </tr>
+                                                <tr>
+                                                    <td>@Html.DisplayNameFor(model => model.Gender)</td>
+                                                    <td>:</td>
+                                                    <td>@Model.Gender</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>@Html.DisplayNameFor(model => model.Position)</td>
+                                                    <td>:</td>
+                                                    <td>@Model.Position</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>@Html.DisplayNameFor(model => model.Organization)</td>
+                                                    <td>:</td>
+                                                    <td>@Model.Organization</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>@Html.DisplayNameFor(model => model.Email)</td>
+                                                    <td>:</td>
+                                                    <td>@Model.Email</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>@Html.DisplayNameFor(model => model.Phone)</td>
+                                                    <td>:</td>
+                                                    <td>@Model.Phone</td>
+                                                </tr>
+                                            <tr>
+                                                <td>@Html.DisplayNameFor(model => model.PostalCode)</td>
+                                                <td>:</td>
+                                                <td>@Model.PostalCode</td>
+                                            </tr>
+
+
+                                                <tr>
+                                                    <td>@Html.DisplayNameFor(model => model.EmailVerifiedOn)</td>
+                                                    <td>:</td>
+                                                    <td>@(Model.EmailVerifiedOn != null ? Model.EmailVerifiedOn.ToString() : "")</td>
+                                                </tr>
+
+
+                                                <tr>
+                                                    <td>@Html.DisplayNameFor(model => model.CreatedOn)</td>
+                                                    <td>:</td>
+                                                    <td>@Model.CreatedOn</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>@Html.DisplayNameFor(model => model.LastUpdatedOn)</td>
+                                                    <td>:</td>
+                                                    <td>@Model.LastUpdatedOn</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

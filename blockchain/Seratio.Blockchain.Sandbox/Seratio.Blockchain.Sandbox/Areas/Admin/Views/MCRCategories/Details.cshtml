@@ -1,0 +1,101 @@
+﻿@model  Coin
+    @{
+        ViewBag.Title = "MCR Category Details";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    @section JavaScript{
+        <script type="text/javascript">$(document).ready(function () { WebApp.Core.HighlightCurrentMenuItem('MCR Categories') });</script>
+    }
+    @section CSS{
+
+    }
+    @section Breadcrumbs{
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/wallet/default/dashboard">Dashboard</a></li>
+            <li class="breadcrumb-item"><a href="/wallet/admin/mcrcategories">MCR Categories</a></li>
+            <li class="breadcrumb-item"><span>MCR Category Details</span></li>
+        </ul>
+    }
+
+    <div class="content-box">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="element-wrapper">
+                    <div class="element-box">
+                        <h5 class="element-header">MCR Category Details</h5>
+                        <div class="heading-elements">
+
+                            <a href="/wallet/admin/mcrcategories/delete/@Model.ID" class="confirm" data-confirm="Are you sure you want to delete this MCR Category?"><i class="fa fa-trash"></i><span>Delete</span></a>
+                            <a href="/wallet/admin/mcrcategories/edit/@Model.ID"><i class="os-icon os-icon-edit-1"></i><span>Edit</span></a>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="main">
+                                    <table class="table table-lightborder">
+                                        <tbody>
+                                            <tr>
+                                                <td class="col-lg-2">@Html.DisplayNameFor(model => model.Name)</td>
+                                                <td class="col-lg-1">:</td>
+                                                <td> @Model.Name</td>
+                                            </tr>
+
+                                            <tr>
+                                                <td class="col-lg-2">@Html.DisplayNameFor(model => model.Symbol)</td>
+                                                <td class="col-lg-1">:</td>
+                                                <td> @Model.Symbol</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="col-lg-2">@Html.DisplayNameFor(model => model.Description)</td>
+                                                <td class="col-lg-1">:</td>
+                                                <td> @Model.Description</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="col-lg-2">@Html.DisplayNameFor(model => model.Image)</td>
+                                                <td class="col-lg-1">:</td>
+                                                @{
+                                                    if (!string.IsNullOrEmpty(Model.Image))
+                                                    {
+                                                        <td><a href="/wallet/Uploads/@Model.Image" target="_blank"><img src="/wallet/Uploads/@Model.Image" height='75px' width=75px /></a></td>
+                                                    }
+                                                    else
+                                                    {
+                                                        <td></td>
+                                                    }
+                                                }
+                                            </tr>
+
+                                            <tr>
+                                                <td class="col-lg-2">@Html.DisplayNameFor(model => model.UserID)</td>
+                                                <td class="col-lg-1">:</td>
+                                                <td> @Model.User.Email</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="col-lg-2">@Html.DisplayNameFor(model => model.CreatedOn)</td>
+                                                <td class="col-lg-1">:</td>
+                                                <td> @Model.CreatedOn.ToString()</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="col-lg-2">@Html.DisplayNameFor(model => model.LastUpdatedOn)</td>
+                                                <td class="col-lg-1">:</td>
+                                                <td> @Model.LastUpdatedOn.ToString()</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+

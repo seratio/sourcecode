@@ -1,0 +1,109 @@
+﻿@model Seratio.Blockchain.Sandbox.Models.RetailPolicy
+
+@{
+    ViewBag.Title = "My Vouchers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section JavaScript{
+    <script type="text/javascript">$(document).ready(function () { WebApp.Core.HighlightCurrentMenuItem('My Vouchers') });</script>
+}
+
+@{
+    string _daterange = Request.QueryString["daterange"];
+    {
+        if (_daterange == null)
+        {
+            _daterange = (!string.IsNullOrEmpty(Request.QueryString["start"]) ? Request.QueryString["start"] + " - " : "") + (!string.IsNullOrEmpty(Request.QueryString["end"]) ? Request.QueryString["end"] : "");
+        }
+    }
+}
+@section CSS
+{
+    <style>
+        .alert-info {
+            color: #bce8f1;
+            background: #004250 none repeat scroll 0 0;
+        }
+
+        .alert {
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid transparent;
+            border-top-color: transparent;
+            border-right-color: transparent;
+            border-bottom-color: transparent;
+            border-left-color: transparent;
+            border-radius: 4px;
+        }
+
+        .alert-info .alert-link {
+            color: #245269;
+        }
+
+        .alert .alert-link {
+            font-weight: 700;
+        }
+    </style>
+}
+
+@section Breadcrumbs{
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/wallet/default/dashboard">Dashboard</a></li>
+        <li class="breadcrumb-item"><a href="/wallet/retailend/default">Retail End</a></li>
+        <li class="breadcrumb-item"><span>Vouchers</span></li>
+    </ul>
+}
+
+@{
+    if (ViewBag.RecentRedeemID != null)
+    {
+        <div class="content-box" style="padding-bottom: 0 !important">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="alert alert-info">
+                        Congratulations on redeeming your voucher; we'd like to hear your feedback on your purchase at the Retail End. <a href="/wallet/retailend/vouchers/feedback/@ViewBag.RecentRedeemID" class="alert-link">Click here</a> to share your experience.
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}
+
+
+<div class="content-box">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="element-wrapper">
+                <div class="element-box">
+                    <h5 class="element-header">My Vouchers</h5>
+                    <div class="heading-elements">
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table data-table table-hover" data-source="/wallet/retailend/vouchers/mylist?daterange=@Request.QueryString["daterange"]" data-key="4">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Name)
+                                    </th>
+                                    <th>
+                                        Voucher Code
+                                    </th>
+                                    <th>
+                                        Retailer
+                                    </th>
+
+                                    <th>
+                                        Collected On
+                                    </th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

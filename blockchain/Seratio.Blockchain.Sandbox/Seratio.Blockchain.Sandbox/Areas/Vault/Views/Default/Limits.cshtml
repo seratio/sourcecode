@@ -1,0 +1,87 @@
+﻿@using Seratio.Blockchain.Sandbox.Models
+@model List<Seratio.Blockchain.Sandbox.Models.Coin>
+@{
+    ViewBag.Title = "Vault Limits";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section JavaScript{
+    <script type="text/javascript">$(document).ready(function () { WebApp.Core.HighlightCurrentMenuItem('Seratio Wallet') });</script>
+}
+
+
+@section CSS{
+
+}
+@section Breadcrumbs{
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/wallet/default/dashboard">Dashboard</a></li>
+        <li class="breadcrumb-item"><a href="/wallet/vault/default">Safe Vault</a></li>
+        <li class="breadcrumb-item"><span>Limits</span></li>
+    </ul>
+}
+
+<div class="content-box">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="element-wrapper">
+                <div class="element-box">
+                    <h5 class="element-header">Vault Limits</h5>
+                    <div class="heading-elements">
+                        <a href="/wallet/vault/default/update"><i class="fa fa-plus-square"></i><span>Update Limit</span></a>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p>Vault limit signifies the maximum deposit that you would make for a token. For example you can have a vault limit of 500 and deposit tokens within the limit to the vault. Although the vault limit can be upgraded, it is best to have a value equal to the total amount of tokens you own. For ETH the vault limit is preset to unlimited amount. However for SER it needs to be as per the users’ needs.</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="main">
+                                <table class="table table-lightborder">
+                                    <tbody>
+                                        <tr>
+                                            <th>
+                                                Coin
+                                            </th>
+                                            <th>
+                                                Vault Contract
+                                            </th>
+                                            <th>
+                                                Approved Limit
+                                            </th>
+                                        </tr>
+                                    </tbody>
+                                    <tbody>
+                                        @{
+                                            foreach (Coin _coin in Model)
+                                            {
+                                                <tr>
+                                                    <td>@_coin.Name</td>
+                                                    <td><a href='https://etherscan.io/address/@_coin.Blockchain.VaultContractAddress' target='_blank'>@_coin.Blockchain.VaultContractAddress</a></td>
+                                                    <td>
+                                                        @{
+                                                            if (string.IsNullOrEmpty(_coin.Address))
+                                                            {
+                                                                @("Unlimited")
+                                                            }
+                                                            else
+                                                            {
+                                                                @($"{_coin.Balance} {_coin.Symbol}")
+                                                            }
+                                                        }
+                                                    </td>
+                                                </tr>
+                                            }
+                                        }
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
